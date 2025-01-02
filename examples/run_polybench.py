@@ -4,7 +4,7 @@ import sys
 
 permOpt_list=[1]
 paralOpt_list=[1]
-combOpt_list=[0]
+combOpt_list=[1]
 tilelimit=16
 timelimit=1
 dsps_list=[2560] #, 1280, 2560]
@@ -19,7 +19,7 @@ for dsps in dsps_list:
       for paralOpt in paralOpt_list:
         if combOpt == 1 and permOpt + paralOpt != 2:
           continue
-        outDir=f'experiments/{benchmark}/opt4'
+        outDir=f'experiments/{benchmark}/opt5'
         # outDir=f'experiments/{benchmark}/opt0'
         for kernel in kernels:
           print(f'Running {kernel}...')
