@@ -1,0 +1,298 @@
+
+
+================================================================
+== Synthesis Summary Report of 'forward'
+================================================================
++ General Information: 
+    * Date:           Tue Oct  1 14:23:56 2024
+    * Version:        2023.2 (Build 4023990 on Oct 11 2023)
+    * Project:        hls_FeedForward
+    * Solution:       solution1 (Vivado IP Flow Target)
+    * Product family: virtexuplusHBM
+    * Target device:  xcu280-fsvh2892-2L-e
+    
+
++ Performance & Resource Estimates: 
+    
+    PS: '+' for module; 'o' for loop; '*' for dataflow
+    +--------------------------+--------+-------+----------+-----------+----------+----------+----------+----------+------------+----------+------------+------------+-----+
+    |          Modules         |  Issue |       | Latency  |  Latency  | Iteration|          |   Trip   |          |            |          |            |            |     |
+    |          & Loops         |  Type  | Slack | (cycles) |    (ns)   |  Latency | Interval |   Count  | Pipelined|    BRAM    |    DSP   |     FF     |     LUT    | URAM|
+    +--------------------------+--------+-------+----------+-----------+----------+----------+----------+----------+------------+----------+------------+------------+-----+
+    |+ forward*                |  Timing|  -0.27|  67141684|  2.236e+08|         -|  67108877|         -|  dataflow|  1157 (28%)|  10 (~0%)|  4119 (~0%)|  4732 (~0%)|    -|
+    | + node7                  |  Timing|  -0.06|     65540|  2.182e+05|         -|     65540|         -|        no|           -|         -|    90 (~0%)|   225 (~0%)|    -|
+    |  o loop16_loop17         |       -|   2.43|     65538|  2.182e+05|         4|         1|     65536|       yes|           -|         -|           -|           -|    -|
+    | + node6                  |  Timing|  -0.08|     32772|  1.091e+05|         -|     32772|         -|        no|           -|         -|   166 (~0%)|   266 (~0%)|    -|
+    |  o loop14_loop15         |       -|   2.43|     32770|  1.091e+05|         4|         1|     32768|       yes|           -|         -|           -|           -|    -|
+    | + node3                  |  Timing|  -0.06|     32772|  1.091e+05|         -|     32772|         -|        no|           -|         -|   166 (~0%)|   265 (~0%)|    -|
+    |  o loop7_loop8           |       -|   2.43|     32770|  1.091e+05|         4|         1|     32768|       yes|           -|         -|           -|           -|    -|
+    | + node5                  |  Timing|  -0.27|  67108876|  2.235e+08|         -|  67108876|         -|        no|   448 (11%)|   3 (~0%)|  1070 (~0%)|  1256 (~0%)|    -|
+    |  o loop11_loop12_loop13  |      II|   2.43|  67108874|  2.235e+08|        15|         4|  16777216|       yes|           -|         -|           -|           -|    -|
+    | + node4                  |  Timing|  -0.17|    131084|  4.365e+05|         -|    131084|         -|        no|           -|   2 (~0%)|   528 (~0%)|   403 (~0%)|    -|
+    |  o loop9_loop10          |       -|   2.43|    131082|  4.365e+05|        12|         1|    131072|       yes|           -|         -|           -|           -|    -|
+    | + node2                  |  Timing|  -0.27|  67108876|  2.235e+08|         -|  67108876|         -|        no|   448 (11%)|   3 (~0%)|  1071 (~0%)|  1258 (~0%)|    -|
+    |  o loop4_loop5_loop6     |      II|   2.43|  67108874|  2.235e+08|        15|         4|  16777216|       yes|           -|         -|           -|           -|    -|
+    | + node1                  |  Timing|  -0.06|     65546|  2.183e+05|         -|     65546|         -|        no|           -|   2 (~0%)|   459 (~0%)|   373 (~0%)|    -|
+    |  o loop2_loop3           |       -|   2.43|     65544|  2.183e+05|        10|         1|     65536|       yes|           -|         -|           -|           -|    -|
+    | + node0                  |  Timing|  -0.06|     65539|  2.182e+05|         -|     65539|         -|        no|           -|         -|    89 (~0%)|   227 (~0%)|    -|
+    |  o loop0_loop1           |       -|   2.43|     65537|  2.182e+05|         3|         1|     65536|       yes|           -|         -|           -|           -|    -|
+    +--------------------------+--------+-------+----------+-----------+----------+----------+----------+----------+------------+----------+------------+------------+-----+
+
+
+================================================================
+== HW Interfaces
+================================================================
+* AP_MEMORY
++--------------+-----------+----------+
+| Port         | Direction | Bitwidth |
++--------------+-----------+----------+
+| v75_address0 | out       | 16       |
+| v75_address1 | out       | 16       |
+| v75_d0       | out       | 32       |
+| v75_d1       | out       | 32       |
+| v75_q0       | in        | 32       |
+| v75_q1       | in        | 32       |
+| v76_address0 | out       | 8        |
+| v76_address1 | out       | 8        |
+| v76_d0       | out       | 32       |
+| v76_d1       | out       | 32       |
+| v76_q0       | in        | 32       |
+| v76_q1       | in        | 32       |
+| v77_address0 | out       | 15       |
+| v77_address1 | out       | 15       |
+| v77_d0       | out       | 32       |
+| v77_d1       | out       | 32       |
+| v77_q0       | in        | 32       |
+| v77_q1       | in        | 32       |
+| v78_address0 | out       | 7        |
+| v78_address1 | out       | 7        |
+| v78_d0       | out       | 32       |
+| v78_d1       | out       | 32       |
+| v78_q0       | in        | 32       |
+| v78_q1       | in        | 32       |
+| v79_address0 | out       | 15       |
+| v79_address1 | out       | 15       |
+| v79_d0       | out       | 32       |
+| v79_d1       | out       | 32       |
+| v79_q0       | in        | 32       |
+| v79_q1       | in        | 32       |
+| v80_address0 | out       | 16       |
+| v80_address1 | out       | 16       |
+| v80_d0       | out       | 32       |
+| v80_d1       | out       | 32       |
+| v80_q0       | in        | 32       |
+| v80_q1       | in        | 32       |
++--------------+-----------+----------+
+
+* TOP LEVEL CONTROL
++-----------+------------+-----------------------------------+
+| Interface | Type       | Ports                             |
++-----------+------------+-----------------------------------+
+| ap_clk    | clock      | ap_clk                            |
+| ap_rst    | reset      | ap_rst                            |
+| ap_ctrl   | ap_ctrl_hs | ap_done ap_idle ap_ready ap_start |
++-----------+------------+-----------------------------------+
+
+
+================================================================
+== SW I/O Information
+================================================================
+* Top Function Arguments
++----------+-----------+----------+
+| Argument | Direction | Datatype |
++----------+-----------+----------+
+| v75      | in        | float*   |
+| v76      | in        | float*   |
+| v77      | in        | float*   |
+| v78      | in        | float*   |
+| v79      | in        | float*   |
+| v80      | out       | float*   |
++----------+-----------+----------+
+
+* SW-to-HW Mapping
++----------+--------------+---------+----------+
+| Argument | HW Interface | HW Type | HW Usage |
++----------+--------------+---------+----------+
+| v75      | v75_address0 | port    | offset   |
+| v75      | v75_ce0      | port    |          |
+| v75      | v75_d0       | port    |          |
+| v75      | v75_q0       | port    |          |
+| v75      | v75_we0      | port    |          |
+| v75      | v75_address1 | port    | offset   |
+| v75      | v75_ce1      | port    |          |
+| v75      | v75_d1       | port    |          |
+| v75      | v75_q1       | port    |          |
+| v75      | v75_we1      | port    |          |
+| v76      | v76_address0 | port    | offset   |
+| v76      | v76_ce0      | port    |          |
+| v76      | v76_d0       | port    |          |
+| v76      | v76_q0       | port    |          |
+| v76      | v76_we0      | port    |          |
+| v76      | v76_address1 | port    | offset   |
+| v76      | v76_ce1      | port    |          |
+| v76      | v76_d1       | port    |          |
+| v76      | v76_q1       | port    |          |
+| v76      | v76_we1      | port    |          |
+| v77      | v77_address0 | port    | offset   |
+| v77      | v77_ce0      | port    |          |
+| v77      | v77_d0       | port    |          |
+| v77      | v77_q0       | port    |          |
+| v77      | v77_we0      | port    |          |
+| v77      | v77_address1 | port    | offset   |
+| v77      | v77_ce1      | port    |          |
+| v77      | v77_d1       | port    |          |
+| v77      | v77_q1       | port    |          |
+| v77      | v77_we1      | port    |          |
+| v78      | v78_address0 | port    | offset   |
+| v78      | v78_ce0      | port    |          |
+| v78      | v78_d0       | port    |          |
+| v78      | v78_q0       | port    |          |
+| v78      | v78_we0      | port    |          |
+| v78      | v78_address1 | port    | offset   |
+| v78      | v78_ce1      | port    |          |
+| v78      | v78_d1       | port    |          |
+| v78      | v78_q1       | port    |          |
+| v78      | v78_we1      | port    |          |
+| v79      | v79_address0 | port    | offset   |
+| v79      | v79_ce0      | port    |          |
+| v79      | v79_d0       | port    |          |
+| v79      | v79_q0       | port    |          |
+| v79      | v79_we0      | port    |          |
+| v79      | v79_address1 | port    | offset   |
+| v79      | v79_ce1      | port    |          |
+| v79      | v79_d1       | port    |          |
+| v79      | v79_q1       | port    |          |
+| v79      | v79_we1      | port    |          |
+| v80      | v80_address0 | port    | offset   |
+| v80      | v80_ce0      | port    |          |
+| v80      | v80_d0       | port    |          |
+| v80      | v80_q0       | port    |          |
+| v80      | v80_we0      | port    |          |
+| v80      | v80_address1 | port    | offset   |
+| v80      | v80_ce1      | port    |          |
+| v80      | v80_d1       | port    |          |
+| v80      | v80_q1       | port    |          |
+| v80      | v80_we1      | port    |          |
++----------+--------------+---------+----------+
+
+
+================================================================
+== Bind Op Report
+================================================================
++---------------------------------------+-----+--------+-------------+------+---------+---------+
+| Name                                  | DSP | Pragma | Variable    | Op   | Impl    | Latency |
++---------------------------------------+-----+--------+-------------+------+---------+---------+
+| + forward                             | 10  |        |             |      |         |         |
+|  + node7                              | 0   |        |             |      |         |         |
+|    add_ln187_1_fu_108_p2              |     |        | add_ln187_1 | add  | fabric  | 0       |
+|    add_ln187_fu_120_p2                |     |        | add_ln187   | add  | fabric  | 0       |
+|    add_ln191_fu_164_p2                |     |        | add_ln191   | add  | fabric  | 0       |
+|    add_ln188_fu_170_p2                |     |        | add_ln188   | add  | fabric  | 0       |
+|  + node6                              | 0   |        |             |      |         |         |
+|    add_ln172_1_fu_112_p2              |     |        | add_ln172_1 | add  | fabric  | 0       |
+|    add_ln172_fu_124_p2                |     |        | add_ln172   | add  | fabric  | 0       |
+|    add_ln176_fu_184_p2                |     |        | add_ln176   | add  | fabric  | 0       |
+|    add_ln177_fu_190_p2                |     |        | add_ln177   | add  | fabric  | 0       |
+|    add_ln173_fu_196_p2                |     |        | add_ln173   | add  | fabric  | 0       |
+|  + node3                              | 0   |        |             |      |         |         |
+|    add_ln95_1_fu_112_p2               |     |        | add_ln95_1  | add  | fabric  | 0       |
+|    add_ln95_fu_124_p2                 |     |        | add_ln95    | add  | fabric  | 0       |
+|    add_ln99_fu_184_p2                 |     |        | add_ln99    | add  | fabric  | 0       |
+|    add_ln100_fu_190_p2                |     |        | add_ln100   | add  | fabric  | 0       |
+|    add_ln96_fu_196_p2                 |     |        | add_ln96    | add  | fabric  | 0       |
+|  + node5                              | 3   |        |             |      |         |         |
+|    add_ln136_1_fu_231_p2              |     |        | add_ln136_1 | add  | fabric  | 0       |
+|    add_ln136_fu_328_p2                |     |        | add_ln136   | add  | fabric  | 0       |
+|    add_ln137_fu_281_p2                |     |        | add_ln137   | add  | fabric  | 0       |
+|    empty_7_fu_443_p2                  |     |        | empty_7     | add  | fabric  | 0       |
+|    add_ln147_fu_382_p2                |     |        | add_ln147   | add  | fabric  | 0       |
+|    add_ln143_fu_457_p2                |     |        | add_ln143   | add  | fabric  | 0       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U6   | 3   |        | v62         | fmul | maxdsp  | 3       |
+|    fadd_32ns_32ns_32_5_no_dsp_1_U5    |     |        | v63         | fadd | fabric  | 4       |
+|    add_ln138_fu_400_p2                |     |        | add_ln138   | add  | fabric  | 0       |
+|    add_ln137_1_fu_301_p2              |     |        | add_ln137_1 | add  | fabric  | 0       |
+|  + node4                              | 2   |        |             |      |         |         |
+|    add_ln112_fu_112_p2                |     |        | add_ln112   | add  | fabric  | 0       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U15 | 2   |        | v44         | fadd | fulldsp | 6       |
+|    add_ln113_fu_140_p2                |     |        | add_ln113   | add  | fabric  | 0       |
+|  + node2                              | 3   |        |             |      |         |         |
+|    add_ln59_1_fu_231_p2               |     |        | add_ln59_1  | add  | fabric  | 0       |
+|    add_ln59_fu_328_p2                 |     |        | add_ln59    | add  | fabric  | 0       |
+|    add_ln60_fu_281_p2                 |     |        | add_ln60    | add  | fabric  | 0       |
+|    empty_8_fu_443_p2                  |     |        | empty_8     | add  | fabric  | 0       |
+|    add_ln70_fu_382_p2                 |     |        | add_ln70    | add  | fabric  | 0       |
+|    add_ln66_fu_457_p2                 |     |        | add_ln66    | add  | fabric  | 0       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U25  | 3   |        | v28         | fmul | maxdsp  | 3       |
+|    fadd_32ns_32ns_32_5_no_dsp_1_U24   |     |        | v29         | fadd | fabric  | 4       |
+|    add_ln61_fu_400_p2                 |     |        | add_ln61    | add  | fabric  | 0       |
+|    add_ln60_1_fu_301_p2               |     |        | add_ln60_1  | add  | fabric  | 0       |
+|  + node1                              | 2   |        |             |      |         |         |
+|    add_ln37_fu_105_p2                 |     |        | add_ln37    | add  | fabric  | 0       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U29 | 2   |        | v12         | fadd | fulldsp | 6       |
+|    add_ln38_fu_133_p2                 |     |        | add_ln38    | add  | fabric  | 0       |
+|  + node0                              | 0   |        |             |      |         |         |
+|    add_ln21_1_fu_107_p2               |     |        | add_ln21_1  | add  | fabric  | 0       |
+|    add_ln21_fu_124_p2                 |     |        | add_ln21    | add  | fabric  | 0       |
+|    add_ln26_fu_168_p2                 |     |        | add_ln26    | add  | fabric  | 0       |
+|    add_ln22_fu_174_p2                 |     |        | add_ln22    | add  | fabric  | 0       |
++---------------------------------------+-----+--------+-------------+------+---------+---------+
+
+
+================================================================
+== Storage Report
+================================================================
++-----------+----------------+--------+------+------+--------+----------+--------+---------+------------------+
+| Name      | Usage          | Type   | BRAM | URAM | Pragma | Variable | Impl   | Latency | Bitwidth, Depth, |
+|           |                |        |      |      |        |          |        |         | Banks            |
++-----------+----------------+--------+------+------+--------+----------+--------+---------+------------------+
+| + forward |                |        | 1157 | 0    |        |          |        |         |                  |
+|   v87_U   | fifo channel   | stream | 1    |      |        | v87      | memory | 0       | 32, 65536, 1     |
+|   v86_U   | ram_1p channel | pipo   | 128  |      |        | v86      | auto   | 1       | 32, 32768, 2     |
+|   v85_U   | fifo channel   | stream | 1    |      |        | v85      | memory | 0       | 32, 131072, 1    |
+|   v84_U   | fifo channel   | stream | 1    |      |        | v84      | memory | 0       | 32, 131072, 1    |
+|   v83_U   | ram_1p channel | pipo   | 128  |      |        | v83      | auto   | 1       | 32, 32768, 2     |
+|   v82_U   | fifo channel   | stream | 1    |      |        | v82      | memory | 0       | 32, 65536, 1     |
+|   v81_U   | fifo channel   | stream | 1    |      |        | v81      | memory | 0       | 32, 65536, 1     |
+|  + node5  |                |        | 448  | 0    |        |          |        |         |                  |
+|    v51_U  | ram_1p array   |        | 256  |      |        | v51      | auto   | 1       | 32, 131072, 1    |
+|    v52_U  | ram_1p array   |        | 64   |      |        | v52      | auto   | 1       | 32, 32768, 1     |
+|    v53_U  | ram_1p array   |        | 128  |      |        | v53      | auto   | 1       | 32, 65536, 1     |
+|  + node2  |                |        | 448  | 0    |        |          |        |         |                  |
+|    v17_U  | ram_1p array   |        | 128  |      |        | v17      | auto   | 1       | 32, 65536, 1     |
+|    v18_U  | ram_1p array   |        | 64   |      |        | v18      | auto   | 1       | 32, 32768, 1     |
+|    v19_U  | ram_1p array   |        | 256  |      |        | v19      | auto   | 1       | 32, 131072, 1    |
++-----------+----------------+--------+------+------+--------+----------+--------+---------+------------------+
+
+
+================================================================
+== Pragma Report
+================================================================
+* Valid Pragma Syntax
++--------------+---------------------------+-----------------------------------------+
+| Type         | Options                   | Location                                |
++--------------+---------------------------+-----------------------------------------+
+| pipeline     | II=1                      | src/FeedForward.cpp:23 in node0         |
+| loop_flatten |                           | src/FeedForward.cpp:24 in node0         |
+| pipeline     | II=1                      | src/FeedForward.cpp:39 in node1         |
+| loop_flatten |                           | src/FeedForward.cpp:40 in node1         |
+| pipeline     | II=1                      | src/FeedForward.cpp:62 in node2         |
+| loop_flatten |                           | src/FeedForward.cpp:63 in node2         |
+| pipeline     | II=1                      | src/FeedForward.cpp:97 in node3         |
+| loop_flatten |                           | src/FeedForward.cpp:98 in node3         |
+| pipeline     | II=1                      | src/FeedForward.cpp:114 in node4        |
+| loop_flatten |                           | src/FeedForward.cpp:115 in node4        |
+| pipeline     | II=1                      | src/FeedForward.cpp:139 in node5        |
+| loop_flatten |                           | src/FeedForward.cpp:140 in node5        |
+| pipeline     | II=1                      | src/FeedForward.cpp:174 in node6        |
+| loop_flatten |                           | src/FeedForward.cpp:175 in node6        |
+| pipeline     | II=1                      | src/FeedForward.cpp:189 in node7        |
+| loop_flatten |                           | src/FeedForward.cpp:190 in node7        |
+| dataflow     |                           | src/FeedForward.cpp:206 in forward      |
+| stream       | variable=v81 depth=65536  | src/FeedForward.cpp:208 in forward, v81 |
+| stream       | variable=v82 depth=65536  | src/FeedForward.cpp:210 in forward, v82 |
+| stream       | variable=v84 depth=131072 | src/FeedForward.cpp:213 in forward, v84 |
+| stream       | variable=v85 depth=131072 | src/FeedForward.cpp:215 in forward, v85 |
+| stream       | variable=v87 depth=65536  | src/FeedForward.cpp:218 in forward, v87 |
++--------------+---------------------------+-----------------------------------------+
+
+

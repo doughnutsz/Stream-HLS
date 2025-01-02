@@ -1,0 +1,62 @@
+<design_size title="Design Size Report">
+    <item name="Total Instructions per Compilation Phase">
+        <table>
+            <keys size="4">Phase, Step, Instructions, Description</keys>
+            <column name="Compile/Link">, 1134, After all functions are compiled and linked into a single design</column>
+            <column name="">, , </column>
+            <column name="Unroll/Inline">, , After user unroll and inline pragmas are applied</column>
+            <column name="">(1) unroll,   550, user unroll pragmas are applied</column>
+            <column name="">(2) simplification,   481, simplification of applied user unroll pragmas</column>
+            <column name="">(3) inline,   456, user inline pragmas are applied</column>
+            <column name="">(4) simplification,   456, simplification of applied user inline pragmas</column>
+            <column name="">, , </column>
+            <column name="Array/Struct">, , After user array partition and struct aggregate/disaggregate pragmas are applied</column>
+            <column name="">(1) array partition,   400, user array partition pragmas are applied</column>
+            <column name="">(2) simplification,   400, simplification of applied user array partition &amp; struct aggregate/disaggregate pragmas</column>
+            <column name="">(3) aggregate/disaggregate ,   400, user struct aggregate/disaggregate pragmas are applied</column>
+            <column name="">(4) array reshape,   400, apply array reshape pragmas</column>
+            <column name="">(5) access patterns,   404, array access pattern optmizations</column>
+            <column name="">, , </column>
+            <column name="Performance">, , After transformations are applied to meet performance pragma targets</column>
+            <column name="">(1) loop simplification,   400, loop and instruction simplification</column>
+            <column name="">(2) parallelization,   400, loops are unrolled or pipelined to meet performance targets</column>
+            <column name="">(3) array partition,   400, arrays are partitioned to meet performance targets</column>
+            <column name="">(4) simplification,   400, simplification of design after performance transformations</column>
+            <column name="">, , </column>
+            <column name="HW Transforms">, , After hardware transfomations</column>
+            <column name="">(1) lowering,   475, initial conversion to HW specific instructions</column>
+            <column name="">(2) optimizations,   658, high level synthesis optimizations</column>
+        </table>
+    </item>
+    <item name="Instructions per Function for each Compilation Phase">
+        <hiertable>
+            <header size="7" col0="Function" col1="Location" col2="Compile/Link" col3="Unroll/Inline" col4="Array/Struct" col5="Performance" col6="HW Transforms"/>
+            <rows>
+                <row id="0" col0="forward" col1="ResMLP.cpp:349" col2="1134" col3="456" col4="404" col5="400" col6="658">
+                    <row id="7" col0="node13" col1="ResMLP.cpp:334" col2="35" col3="14" col4="14" col5="14" col6="24"/>
+                    <row id="6" col0="node12" col1="ResMLP.cpp:298" col2="109" col3="42" col4="43" col5="42" col6="60"/>
+                    <row id="2" col0="node11" col1="ResMLP.cpp:278" col2="52" col3="17" col4="17" col5="17" col6="34"/>
+                    <row id="4" col0="node10" col1="ResMLP.cpp:260" col2="48" col3="15" col4="15" col5="15" col6="29"/>
+                    <row id="8" col0="node9" col1="ResMLP.cpp:245" col2="35" col3="14" col4="14" col5="14" col6="24"/>
+                    <row id="10" col0="node8" col1="ResMLP.cpp:204" col2="135" col3="49" col4="50" col5="49" col6="69"/>
+                    <row id="13" col0="node7" col1="ResMLP.cpp:180" col2="66" col3="20" col4="20" col5="20" col6="38"/>
+                    <row id="12" col0="node6" col1="ResMLP.cpp:165" col2="35" col3="14" col4="14" col5="14" col6="24"/>
+                    <row id="1" col0="node5" col1="ResMLP.cpp:124" col2="135" col3="49" col4="50" col5="49" col6="69"/>
+                    <row id="3" col0="node4" col1="ResMLP.cpp:106" col2="47" col3="16" col4="16" col5="16" col6="31"/>
+                    <row id="5" col0="node3" col1="ResMLP.cpp:91" col2="35" col3="14" col4="14" col5="14" col6="24"/>
+                    <row id="14" col0="node2" col1="ResMLP.cpp:50" col2="135" col3="49" col4="50" col5="49" col6="69"/>
+                    <row id="11" col0="node1" col1="ResMLP.cpp:32" col2="47" col3="16" col4="16" col5="16" col6="31"/>
+                    <row id="9" col0="node0" col1="ResMLP.cpp:17" col2="37" col3="14" col4="14" col5="14" col6="24"/>
+                </row>
+            </rows>
+            <notes/>
+        </hiertable>
+    </item>
+    <item name="Design Size Message Settings">
+        <table>
+            <keys size="3">Message Setting, Value, Description</keys>
+            <column name="config_compile -design_size_maximum_warning">100000, Show a warning when total design instructions exceeds this value</column>
+        </table>
+    </item>
+</design_size>
+

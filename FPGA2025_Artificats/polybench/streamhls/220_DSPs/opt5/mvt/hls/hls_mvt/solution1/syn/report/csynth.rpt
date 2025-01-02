@@ -1,0 +1,1310 @@
+
+
+================================================================
+== Synthesis Summary Report of 'forward'
+================================================================
++ General Information: 
+    * Date:           Mon Oct  7 15:44:18 2024
+    * Version:        2023.2 (Build 4023990 on Oct 11 2023)
+    * Project:        hls_mvt
+    * Solution:       solution1 (Vivado IP Flow Target)
+    * Product family: virtexuplusHBM
+    * Target device:  xcu280-fsvh2892-2L-e
+    
+
++ Performance & Resource Estimates: 
+    
+    PS: '+' for module; 'o' for loop; '*' for dataflow
+    +-------------------+--------+-------+---------+-----------+----------+---------+------+----------+----------+----------+-------------+------------+-----+
+    |      Modules      |  Issue |       | Latency |  Latency  | Iteration|         | Trip |          |          |          |             |            |     |
+    |      & Loops      |  Type  | Slack | (cycles)|    (ns)   |  Latency | Interval| Count| Pipelined|   BRAM   |    DSP   |      FF     |     LUT    | URAM|
+    +-------------------+--------+-------+---------+-----------+----------+---------+------+----------+----------+----------+-------------+------------+-----+
+    |+ forward*         |  Timing|  -0.39|     8041|  2.678e+04|         -|     8036|     -|  dataflow|  24 (~0%)|  202 (2%)|   30917 (1%)|  17188 (1%)|    -|
+    | + node4           |  Timing|  -0.05|     8025|  2.672e+04|         -|     8025|     -|        no|         -|  101 (1%)|  13891 (~0%)|  7140 (~0%)|    -|
+    |  o loop12_loop13  |       -|   2.43|     8023|  2.672e+04|        25|        1|  8000|       yes|         -|         -|            -|           -|    -|
+    | + node3           |  Timing|  -0.06|     8006|  2.666e+04|         -|     8006|     -|        no|         -|   1 (~0%)|    696 (~0%)|   357 (~0%)|    -|
+    |  o loop8_loop9    |       -|   2.43|     8004|  2.665e+04|         6|        1|  8000|       yes|         -|         -|            -|           -|    -|
+    | + node2           |  Timing|  -0.39|     8035|  2.676e+04|         -|     8035|     -|        no|   2 (~0%)|  100 (1%)|  13029 (~0%)|  6694 (~0%)|    -|
+    |  o loop4_loop5    |       -|   2.43|     8033|  2.675e+04|        35|        1|  8000|       yes|         -|         -|            -|           -|    -|
+    | + node1           |       -|   0.52|       42|    139.860|         -|       42|     -|        no|         -|         -|     15 (~0%)|   160 (~0%)|    -|
+    |  o loop2          |       -|   2.43|       40|    133.200|         2|        1|    40|       yes|         -|         -|            -|           -|    -|
+    | + node0           |       -|   0.04|      202|    672.660|         -|      202|     -|        no|         -|         -|     19 (~0%)|    92 (~0%)|    -|
+    |  o loop0          |       -|   2.43|      200|    666.000|         2|        1|   200|       yes|         -|         -|            -|           -|    -|
+    +-------------------+--------+-------+---------+-----------+----------+---------+------+----------+----------+----------+-------------+------------+-----+
+
+
+================================================================
+== HW Interfaces
+================================================================
+* AP_MEMORY
++------------------+-----------+----------+
+| Port             | Direction | Bitwidth |
++------------------+-----------+----------+
+| v47_0_0_address0 | out       | 13       |
+| v47_0_0_address1 | out       | 13       |
+| v47_0_0_d0       | out       | 32       |
+| v47_0_0_d1       | out       | 32       |
+| v47_0_0_q0       | in        | 32       |
+| v47_0_0_q1       | in        | 32       |
+| v47_0_1_address0 | out       | 13       |
+| v47_0_1_address1 | out       | 13       |
+| v47_0_1_d0       | out       | 32       |
+| v47_0_1_d1       | out       | 32       |
+| v47_0_1_q0       | in        | 32       |
+| v47_0_1_q1       | in        | 32       |
+| v47_1_0_address0 | out       | 13       |
+| v47_1_0_address1 | out       | 13       |
+| v47_1_0_d0       | out       | 32       |
+| v47_1_0_d1       | out       | 32       |
+| v47_1_0_q0       | in        | 32       |
+| v47_1_0_q1       | in        | 32       |
+| v47_1_1_address0 | out       | 13       |
+| v47_1_1_address1 | out       | 13       |
+| v47_1_1_d0       | out       | 32       |
+| v47_1_1_d1       | out       | 32       |
+| v47_1_1_q0       | in        | 32       |
+| v47_1_1_q1       | in        | 32       |
+| v47_2_0_address0 | out       | 13       |
+| v47_2_0_address1 | out       | 13       |
+| v47_2_0_d0       | out       | 32       |
+| v47_2_0_d1       | out       | 32       |
+| v47_2_0_q0       | in        | 32       |
+| v47_2_0_q1       | in        | 32       |
+| v47_2_1_address0 | out       | 13       |
+| v47_2_1_address1 | out       | 13       |
+| v47_2_1_d0       | out       | 32       |
+| v47_2_1_d1       | out       | 32       |
+| v47_2_1_q0       | in        | 32       |
+| v47_2_1_q1       | in        | 32       |
+| v47_3_0_address0 | out       | 13       |
+| v47_3_0_address1 | out       | 13       |
+| v47_3_0_d0       | out       | 32       |
+| v47_3_0_d1       | out       | 32       |
+| v47_3_0_q0       | in        | 32       |
+| v47_3_0_q1       | in        | 32       |
+| v47_3_1_address0 | out       | 13       |
+| v47_3_1_address1 | out       | 13       |
+| v47_3_1_d0       | out       | 32       |
+| v47_3_1_d1       | out       | 32       |
+| v47_3_1_q0       | in        | 32       |
+| v47_3_1_q1       | in        | 32       |
+| v47_4_0_address0 | out       | 13       |
+| v47_4_0_address1 | out       | 13       |
+| v47_4_0_d0       | out       | 32       |
+| v47_4_0_d1       | out       | 32       |
+| v47_4_0_q0       | in        | 32       |
+| v47_4_0_q1       | in        | 32       |
+| v47_4_1_address0 | out       | 13       |
+| v47_4_1_address1 | out       | 13       |
+| v47_4_1_d0       | out       | 32       |
+| v47_4_1_d1       | out       | 32       |
+| v47_4_1_q0       | in        | 32       |
+| v47_4_1_q1       | in        | 32       |
+| v47_5_0_address0 | out       | 13       |
+| v47_5_0_address1 | out       | 13       |
+| v47_5_0_d0       | out       | 32       |
+| v47_5_0_d1       | out       | 32       |
+| v47_5_0_q0       | in        | 32       |
+| v47_5_0_q1       | in        | 32       |
+| v47_5_1_address0 | out       | 13       |
+| v47_5_1_address1 | out       | 13       |
+| v47_5_1_d0       | out       | 32       |
+| v47_5_1_d1       | out       | 32       |
+| v47_5_1_q0       | in        | 32       |
+| v47_5_1_q1       | in        | 32       |
+| v47_6_0_address0 | out       | 13       |
+| v47_6_0_address1 | out       | 13       |
+| v47_6_0_d0       | out       | 32       |
+| v47_6_0_d1       | out       | 32       |
+| v47_6_0_q0       | in        | 32       |
+| v47_6_0_q1       | in        | 32       |
+| v47_6_1_address0 | out       | 13       |
+| v47_6_1_address1 | out       | 13       |
+| v47_6_1_d0       | out       | 32       |
+| v47_6_1_d1       | out       | 32       |
+| v47_6_1_q0       | in        | 32       |
+| v47_6_1_q1       | in        | 32       |
+| v47_7_0_address0 | out       | 13       |
+| v47_7_0_address1 | out       | 13       |
+| v47_7_0_d0       | out       | 32       |
+| v47_7_0_d1       | out       | 32       |
+| v47_7_0_q0       | in        | 32       |
+| v47_7_0_q1       | in        | 32       |
+| v47_7_1_address0 | out       | 13       |
+| v47_7_1_address1 | out       | 13       |
+| v47_7_1_d0       | out       | 32       |
+| v47_7_1_d1       | out       | 32       |
+| v47_7_1_q0       | in        | 32       |
+| v47_7_1_q1       | in        | 32       |
+| v47_8_0_address0 | out       | 13       |
+| v47_8_0_address1 | out       | 13       |
+| v47_8_0_d0       | out       | 32       |
+| v47_8_0_d1       | out       | 32       |
+| v47_8_0_q0       | in        | 32       |
+| v47_8_0_q1       | in        | 32       |
+| v47_8_1_address0 | out       | 13       |
+| v47_8_1_address1 | out       | 13       |
+| v47_8_1_d0       | out       | 32       |
+| v47_8_1_d1       | out       | 32       |
+| v47_8_1_q0       | in        | 32       |
+| v47_8_1_q1       | in        | 32       |
+| v47_9_0_address0 | out       | 13       |
+| v47_9_0_address1 | out       | 13       |
+| v47_9_0_d0       | out       | 32       |
+| v47_9_0_d1       | out       | 32       |
+| v47_9_0_q0       | in        | 32       |
+| v47_9_0_q1       | in        | 32       |
+| v47_9_1_address0 | out       | 13       |
+| v47_9_1_address1 | out       | 13       |
+| v47_9_1_d0       | out       | 32       |
+| v47_9_1_d1       | out       | 32       |
+| v47_9_1_q0       | in        | 32       |
+| v47_9_1_q1       | in        | 32       |
+| v48_0_0_address0 | out       | 13       |
+| v48_0_0_address1 | out       | 13       |
+| v48_0_0_d0       | out       | 32       |
+| v48_0_0_d1       | out       | 32       |
+| v48_0_0_q0       | in        | 32       |
+| v48_0_0_q1       | in        | 32       |
+| v48_0_1_address0 | out       | 13       |
+| v48_0_1_address1 | out       | 13       |
+| v48_0_1_d0       | out       | 32       |
+| v48_0_1_d1       | out       | 32       |
+| v48_0_1_q0       | in        | 32       |
+| v48_0_1_q1       | in        | 32       |
+| v48_1_0_address0 | out       | 13       |
+| v48_1_0_address1 | out       | 13       |
+| v48_1_0_d0       | out       | 32       |
+| v48_1_0_d1       | out       | 32       |
+| v48_1_0_q0       | in        | 32       |
+| v48_1_0_q1       | in        | 32       |
+| v48_1_1_address0 | out       | 13       |
+| v48_1_1_address1 | out       | 13       |
+| v48_1_1_d0       | out       | 32       |
+| v48_1_1_d1       | out       | 32       |
+| v48_1_1_q0       | in        | 32       |
+| v48_1_1_q1       | in        | 32       |
+| v48_2_0_address0 | out       | 13       |
+| v48_2_0_address1 | out       | 13       |
+| v48_2_0_d0       | out       | 32       |
+| v48_2_0_d1       | out       | 32       |
+| v48_2_0_q0       | in        | 32       |
+| v48_2_0_q1       | in        | 32       |
+| v48_2_1_address0 | out       | 13       |
+| v48_2_1_address1 | out       | 13       |
+| v48_2_1_d0       | out       | 32       |
+| v48_2_1_d1       | out       | 32       |
+| v48_2_1_q0       | in        | 32       |
+| v48_2_1_q1       | in        | 32       |
+| v48_3_0_address0 | out       | 13       |
+| v48_3_0_address1 | out       | 13       |
+| v48_3_0_d0       | out       | 32       |
+| v48_3_0_d1       | out       | 32       |
+| v48_3_0_q0       | in        | 32       |
+| v48_3_0_q1       | in        | 32       |
+| v48_3_1_address0 | out       | 13       |
+| v48_3_1_address1 | out       | 13       |
+| v48_3_1_d0       | out       | 32       |
+| v48_3_1_d1       | out       | 32       |
+| v48_3_1_q0       | in        | 32       |
+| v48_3_1_q1       | in        | 32       |
+| v48_4_0_address0 | out       | 13       |
+| v48_4_0_address1 | out       | 13       |
+| v48_4_0_d0       | out       | 32       |
+| v48_4_0_d1       | out       | 32       |
+| v48_4_0_q0       | in        | 32       |
+| v48_4_0_q1       | in        | 32       |
+| v48_4_1_address0 | out       | 13       |
+| v48_4_1_address1 | out       | 13       |
+| v48_4_1_d0       | out       | 32       |
+| v48_4_1_d1       | out       | 32       |
+| v48_4_1_q0       | in        | 32       |
+| v48_4_1_q1       | in        | 32       |
+| v48_5_0_address0 | out       | 13       |
+| v48_5_0_address1 | out       | 13       |
+| v48_5_0_d0       | out       | 32       |
+| v48_5_0_d1       | out       | 32       |
+| v48_5_0_q0       | in        | 32       |
+| v48_5_0_q1       | in        | 32       |
+| v48_5_1_address0 | out       | 13       |
+| v48_5_1_address1 | out       | 13       |
+| v48_5_1_d0       | out       | 32       |
+| v48_5_1_d1       | out       | 32       |
+| v48_5_1_q0       | in        | 32       |
+| v48_5_1_q1       | in        | 32       |
+| v48_6_0_address0 | out       | 13       |
+| v48_6_0_address1 | out       | 13       |
+| v48_6_0_d0       | out       | 32       |
+| v48_6_0_d1       | out       | 32       |
+| v48_6_0_q0       | in        | 32       |
+| v48_6_0_q1       | in        | 32       |
+| v48_6_1_address0 | out       | 13       |
+| v48_6_1_address1 | out       | 13       |
+| v48_6_1_d0       | out       | 32       |
+| v48_6_1_d1       | out       | 32       |
+| v48_6_1_q0       | in        | 32       |
+| v48_6_1_q1       | in        | 32       |
+| v48_7_0_address0 | out       | 13       |
+| v48_7_0_address1 | out       | 13       |
+| v48_7_0_d0       | out       | 32       |
+| v48_7_0_d1       | out       | 32       |
+| v48_7_0_q0       | in        | 32       |
+| v48_7_0_q1       | in        | 32       |
+| v48_7_1_address0 | out       | 13       |
+| v48_7_1_address1 | out       | 13       |
+| v48_7_1_d0       | out       | 32       |
+| v48_7_1_d1       | out       | 32       |
+| v48_7_1_q0       | in        | 32       |
+| v48_7_1_q1       | in        | 32       |
+| v48_8_0_address0 | out       | 13       |
+| v48_8_0_address1 | out       | 13       |
+| v48_8_0_d0       | out       | 32       |
+| v48_8_0_d1       | out       | 32       |
+| v48_8_0_q0       | in        | 32       |
+| v48_8_0_q1       | in        | 32       |
+| v48_8_1_address0 | out       | 13       |
+| v48_8_1_address1 | out       | 13       |
+| v48_8_1_d0       | out       | 32       |
+| v48_8_1_d1       | out       | 32       |
+| v48_8_1_q0       | in        | 32       |
+| v48_8_1_q1       | in        | 32       |
+| v48_9_0_address0 | out       | 13       |
+| v48_9_0_address1 | out       | 13       |
+| v48_9_0_d0       | out       | 32       |
+| v48_9_0_d1       | out       | 32       |
+| v48_9_0_q0       | in        | 32       |
+| v48_9_0_q1       | in        | 32       |
+| v48_9_1_address0 | out       | 13       |
+| v48_9_1_address1 | out       | 13       |
+| v48_9_1_d0       | out       | 32       |
+| v48_9_1_d1       | out       | 32       |
+| v48_9_1_q0       | in        | 32       |
+| v48_9_1_q1       | in        | 32       |
+| v49_0_address0   | out       | 8        |
+| v49_0_address1   | out       | 8        |
+| v49_0_d0         | out       | 32       |
+| v49_0_d1         | out       | 32       |
+| v49_0_q0         | in        | 32       |
+| v49_0_q1         | in        | 32       |
+| v49_1_address0   | out       | 8        |
+| v49_1_address1   | out       | 8        |
+| v49_1_d0         | out       | 32       |
+| v49_1_d1         | out       | 32       |
+| v49_1_q0         | in        | 32       |
+| v49_1_q1         | in        | 32       |
+| v50_0_address0   | out       | 6        |
+| v50_0_address1   | out       | 6        |
+| v50_0_d0         | out       | 32       |
+| v50_0_d1         | out       | 32       |
+| v50_0_q0         | in        | 32       |
+| v50_0_q1         | in        | 32       |
+| v50_1_address0   | out       | 6        |
+| v50_1_address1   | out       | 6        |
+| v50_1_d0         | out       | 32       |
+| v50_1_d1         | out       | 32       |
+| v50_1_q0         | in        | 32       |
+| v50_1_q1         | in        | 32       |
+| v50_2_address0   | out       | 6        |
+| v50_2_address1   | out       | 6        |
+| v50_2_d0         | out       | 32       |
+| v50_2_d1         | out       | 32       |
+| v50_2_q0         | in        | 32       |
+| v50_2_q1         | in        | 32       |
+| v50_3_address0   | out       | 6        |
+| v50_3_address1   | out       | 6        |
+| v50_3_d0         | out       | 32       |
+| v50_3_d1         | out       | 32       |
+| v50_3_q0         | in        | 32       |
+| v50_3_q1         | in        | 32       |
+| v50_4_address0   | out       | 6        |
+| v50_4_address1   | out       | 6        |
+| v50_4_d0         | out       | 32       |
+| v50_4_d1         | out       | 32       |
+| v50_4_q0         | in        | 32       |
+| v50_4_q1         | in        | 32       |
+| v50_5_address0   | out       | 6        |
+| v50_5_address1   | out       | 6        |
+| v50_5_d0         | out       | 32       |
+| v50_5_d1         | out       | 32       |
+| v50_5_q0         | in        | 32       |
+| v50_5_q1         | in        | 32       |
+| v50_6_address0   | out       | 6        |
+| v50_6_address1   | out       | 6        |
+| v50_6_d0         | out       | 32       |
+| v50_6_d1         | out       | 32       |
+| v50_6_q0         | in        | 32       |
+| v50_6_q1         | in        | 32       |
+| v50_7_address0   | out       | 6        |
+| v50_7_address1   | out       | 6        |
+| v50_7_d0         | out       | 32       |
+| v50_7_d1         | out       | 32       |
+| v50_7_q0         | in        | 32       |
+| v50_7_q1         | in        | 32       |
+| v50_8_address0   | out       | 6        |
+| v50_8_address1   | out       | 6        |
+| v50_8_d0         | out       | 32       |
+| v50_8_d1         | out       | 32       |
+| v50_8_q0         | in        | 32       |
+| v50_8_q1         | in        | 32       |
+| v50_9_address0   | out       | 6        |
+| v50_9_address1   | out       | 6        |
+| v50_9_d0         | out       | 32       |
+| v50_9_d1         | out       | 32       |
+| v50_9_q0         | in        | 32       |
+| v50_9_q1         | in        | 32       |
+| v51_0_address0   | out       | 6        |
+| v51_0_address1   | out       | 6        |
+| v51_0_d0         | out       | 32       |
+| v51_0_d1         | out       | 32       |
+| v51_0_q0         | in        | 32       |
+| v51_0_q1         | in        | 32       |
+| v51_1_address0   | out       | 6        |
+| v51_1_address1   | out       | 6        |
+| v51_1_d0         | out       | 32       |
+| v51_1_d1         | out       | 32       |
+| v51_1_q0         | in        | 32       |
+| v51_1_q1         | in        | 32       |
+| v51_2_address0   | out       | 6        |
+| v51_2_address1   | out       | 6        |
+| v51_2_d0         | out       | 32       |
+| v51_2_d1         | out       | 32       |
+| v51_2_q0         | in        | 32       |
+| v51_2_q1         | in        | 32       |
+| v51_3_address0   | out       | 6        |
+| v51_3_address1   | out       | 6        |
+| v51_3_d0         | out       | 32       |
+| v51_3_d1         | out       | 32       |
+| v51_3_q0         | in        | 32       |
+| v51_3_q1         | in        | 32       |
+| v51_4_address0   | out       | 6        |
+| v51_4_address1   | out       | 6        |
+| v51_4_d0         | out       | 32       |
+| v51_4_d1         | out       | 32       |
+| v51_4_q0         | in        | 32       |
+| v51_4_q1         | in        | 32       |
+| v51_5_address0   | out       | 6        |
+| v51_5_address1   | out       | 6        |
+| v51_5_d0         | out       | 32       |
+| v51_5_d1         | out       | 32       |
+| v51_5_q0         | in        | 32       |
+| v51_5_q1         | in        | 32       |
+| v51_6_address0   | out       | 6        |
+| v51_6_address1   | out       | 6        |
+| v51_6_d0         | out       | 32       |
+| v51_6_d1         | out       | 32       |
+| v51_6_q0         | in        | 32       |
+| v51_6_q1         | in        | 32       |
+| v51_7_address0   | out       | 6        |
+| v51_7_address1   | out       | 6        |
+| v51_7_d0         | out       | 32       |
+| v51_7_d1         | out       | 32       |
+| v51_7_q0         | in        | 32       |
+| v51_7_q1         | in        | 32       |
+| v51_8_address0   | out       | 6        |
+| v51_8_address1   | out       | 6        |
+| v51_8_d0         | out       | 32       |
+| v51_8_d1         | out       | 32       |
+| v51_8_q0         | in        | 32       |
+| v51_8_q1         | in        | 32       |
+| v51_9_address0   | out       | 6        |
+| v51_9_address1   | out       | 6        |
+| v51_9_d0         | out       | 32       |
+| v51_9_d1         | out       | 32       |
+| v51_9_q0         | in        | 32       |
+| v51_9_q1         | in        | 32       |
+| v52_0_address0   | out       | 8        |
+| v52_0_address1   | out       | 8        |
+| v52_0_d0         | out       | 32       |
+| v52_0_d1         | out       | 32       |
+| v52_0_q0         | in        | 32       |
+| v52_0_q1         | in        | 32       |
+| v52_1_address0   | out       | 8        |
+| v52_1_address1   | out       | 8        |
+| v52_1_d0         | out       | 32       |
+| v52_1_d1         | out       | 32       |
+| v52_1_q0         | in        | 32       |
+| v52_1_q1         | in        | 32       |
++------------------+-----------+----------+
+
+* TOP LEVEL CONTROL
++-----------+------------+-----------------------------------+
+| Interface | Type       | Ports                             |
++-----------+------------+-----------------------------------+
+| ap_clk    | clock      | ap_clk                            |
+| ap_rst    | reset      | ap_rst                            |
+| ap_ctrl   | ap_ctrl_hs | ap_done ap_idle ap_ready ap_start |
++-----------+------------+-----------------------------------+
+
+
+================================================================
+== SW I/O Information
+================================================================
+* Top Function Arguments
++----------+-----------+----------+
+| Argument | Direction | Datatype |
++----------+-----------+----------+
+| v47      | in        | float*   |
+| v48      | in        | float*   |
+| v49      | in        | float*   |
+| v50      | in        | float*   |
+| v51      | out       | float*   |
+| v52      | out       | float*   |
++----------+-----------+----------+
+
+* SW-to-HW Mapping
++----------+------------------+---------+----------+
+| Argument | HW Interface     | HW Type | HW Usage |
++----------+------------------+---------+----------+
+| v47      | v47_0_0_address0 | port    | offset   |
+| v47      | v47_0_0_ce0      | port    |          |
+| v47      | v47_0_0_d0       | port    |          |
+| v47      | v47_0_0_q0       | port    |          |
+| v47      | v47_0_0_we0      | port    |          |
+| v47      | v47_0_0_address1 | port    | offset   |
+| v47      | v47_0_0_ce1      | port    |          |
+| v47      | v47_0_0_d1       | port    |          |
+| v47      | v47_0_0_q1       | port    |          |
+| v47      | v47_0_0_we1      | port    |          |
+| v47      | v47_0_1_address0 | port    | offset   |
+| v47      | v47_0_1_ce0      | port    |          |
+| v47      | v47_0_1_d0       | port    |          |
+| v47      | v47_0_1_q0       | port    |          |
+| v47      | v47_0_1_we0      | port    |          |
+| v47      | v47_0_1_address1 | port    | offset   |
+| v47      | v47_0_1_ce1      | port    |          |
+| v47      | v47_0_1_d1       | port    |          |
+| v47      | v47_0_1_q1       | port    |          |
+| v47      | v47_0_1_we1      | port    |          |
+| v47      | v47_1_0_address0 | port    | offset   |
+| v47      | v47_1_0_ce0      | port    |          |
+| v47      | v47_1_0_d0       | port    |          |
+| v47      | v47_1_0_q0       | port    |          |
+| v47      | v47_1_0_we0      | port    |          |
+| v47      | v47_1_0_address1 | port    | offset   |
+| v47      | v47_1_0_ce1      | port    |          |
+| v47      | v47_1_0_d1       | port    |          |
+| v47      | v47_1_0_q1       | port    |          |
+| v47      | v47_1_0_we1      | port    |          |
+| v47      | v47_1_1_address0 | port    | offset   |
+| v47      | v47_1_1_ce0      | port    |          |
+| v47      | v47_1_1_d0       | port    |          |
+| v47      | v47_1_1_q0       | port    |          |
+| v47      | v47_1_1_we0      | port    |          |
+| v47      | v47_1_1_address1 | port    | offset   |
+| v47      | v47_1_1_ce1      | port    |          |
+| v47      | v47_1_1_d1       | port    |          |
+| v47      | v47_1_1_q1       | port    |          |
+| v47      | v47_1_1_we1      | port    |          |
+| v47      | v47_2_0_address0 | port    | offset   |
+| v47      | v47_2_0_ce0      | port    |          |
+| v47      | v47_2_0_d0       | port    |          |
+| v47      | v47_2_0_q0       | port    |          |
+| v47      | v47_2_0_we0      | port    |          |
+| v47      | v47_2_0_address1 | port    | offset   |
+| v47      | v47_2_0_ce1      | port    |          |
+| v47      | v47_2_0_d1       | port    |          |
+| v47      | v47_2_0_q1       | port    |          |
+| v47      | v47_2_0_we1      | port    |          |
+| v47      | v47_2_1_address0 | port    | offset   |
+| v47      | v47_2_1_ce0      | port    |          |
+| v47      | v47_2_1_d0       | port    |          |
+| v47      | v47_2_1_q0       | port    |          |
+| v47      | v47_2_1_we0      | port    |          |
+| v47      | v47_2_1_address1 | port    | offset   |
+| v47      | v47_2_1_ce1      | port    |          |
+| v47      | v47_2_1_d1       | port    |          |
+| v47      | v47_2_1_q1       | port    |          |
+| v47      | v47_2_1_we1      | port    |          |
+| v47      | v47_3_0_address0 | port    | offset   |
+| v47      | v47_3_0_ce0      | port    |          |
+| v47      | v47_3_0_d0       | port    |          |
+| v47      | v47_3_0_q0       | port    |          |
+| v47      | v47_3_0_we0      | port    |          |
+| v47      | v47_3_0_address1 | port    | offset   |
+| v47      | v47_3_0_ce1      | port    |          |
+| v47      | v47_3_0_d1       | port    |          |
+| v47      | v47_3_0_q1       | port    |          |
+| v47      | v47_3_0_we1      | port    |          |
+| v47      | v47_3_1_address0 | port    | offset   |
+| v47      | v47_3_1_ce0      | port    |          |
+| v47      | v47_3_1_d0       | port    |          |
+| v47      | v47_3_1_q0       | port    |          |
+| v47      | v47_3_1_we0      | port    |          |
+| v47      | v47_3_1_address1 | port    | offset   |
+| v47      | v47_3_1_ce1      | port    |          |
+| v47      | v47_3_1_d1       | port    |          |
+| v47      | v47_3_1_q1       | port    |          |
+| v47      | v47_3_1_we1      | port    |          |
+| v47      | v47_4_0_address0 | port    | offset   |
+| v47      | v47_4_0_ce0      | port    |          |
+| v47      | v47_4_0_d0       | port    |          |
+| v47      | v47_4_0_q0       | port    |          |
+| v47      | v47_4_0_we0      | port    |          |
+| v47      | v47_4_0_address1 | port    | offset   |
+| v47      | v47_4_0_ce1      | port    |          |
+| v47      | v47_4_0_d1       | port    |          |
+| v47      | v47_4_0_q1       | port    |          |
+| v47      | v47_4_0_we1      | port    |          |
+| v47      | v47_4_1_address0 | port    | offset   |
+| v47      | v47_4_1_ce0      | port    |          |
+| v47      | v47_4_1_d0       | port    |          |
+| v47      | v47_4_1_q0       | port    |          |
+| v47      | v47_4_1_we0      | port    |          |
+| v47      | v47_4_1_address1 | port    | offset   |
+| v47      | v47_4_1_ce1      | port    |          |
+| v47      | v47_4_1_d1       | port    |          |
+| v47      | v47_4_1_q1       | port    |          |
+| v47      | v47_4_1_we1      | port    |          |
+| v47      | v47_5_0_address0 | port    | offset   |
+| v47      | v47_5_0_ce0      | port    |          |
+| v47      | v47_5_0_d0       | port    |          |
+| v47      | v47_5_0_q0       | port    |          |
+| v47      | v47_5_0_we0      | port    |          |
+| v47      | v47_5_0_address1 | port    | offset   |
+| v47      | v47_5_0_ce1      | port    |          |
+| v47      | v47_5_0_d1       | port    |          |
+| v47      | v47_5_0_q1       | port    |          |
+| v47      | v47_5_0_we1      | port    |          |
+| v47      | v47_5_1_address0 | port    | offset   |
+| v47      | v47_5_1_ce0      | port    |          |
+| v47      | v47_5_1_d0       | port    |          |
+| v47      | v47_5_1_q0       | port    |          |
+| v47      | v47_5_1_we0      | port    |          |
+| v47      | v47_5_1_address1 | port    | offset   |
+| v47      | v47_5_1_ce1      | port    |          |
+| v47      | v47_5_1_d1       | port    |          |
+| v47      | v47_5_1_q1       | port    |          |
+| v47      | v47_5_1_we1      | port    |          |
+| v47      | v47_6_0_address0 | port    | offset   |
+| v47      | v47_6_0_ce0      | port    |          |
+| v47      | v47_6_0_d0       | port    |          |
+| v47      | v47_6_0_q0       | port    |          |
+| v47      | v47_6_0_we0      | port    |          |
+| v47      | v47_6_0_address1 | port    | offset   |
+| v47      | v47_6_0_ce1      | port    |          |
+| v47      | v47_6_0_d1       | port    |          |
+| v47      | v47_6_0_q1       | port    |          |
+| v47      | v47_6_0_we1      | port    |          |
+| v47      | v47_6_1_address0 | port    | offset   |
+| v47      | v47_6_1_ce0      | port    |          |
+| v47      | v47_6_1_d0       | port    |          |
+| v47      | v47_6_1_q0       | port    |          |
+| v47      | v47_6_1_we0      | port    |          |
+| v47      | v47_6_1_address1 | port    | offset   |
+| v47      | v47_6_1_ce1      | port    |          |
+| v47      | v47_6_1_d1       | port    |          |
+| v47      | v47_6_1_q1       | port    |          |
+| v47      | v47_6_1_we1      | port    |          |
+| v47      | v47_7_0_address0 | port    | offset   |
+| v47      | v47_7_0_ce0      | port    |          |
+| v47      | v47_7_0_d0       | port    |          |
+| v47      | v47_7_0_q0       | port    |          |
+| v47      | v47_7_0_we0      | port    |          |
+| v47      | v47_7_0_address1 | port    | offset   |
+| v47      | v47_7_0_ce1      | port    |          |
+| v47      | v47_7_0_d1       | port    |          |
+| v47      | v47_7_0_q1       | port    |          |
+| v47      | v47_7_0_we1      | port    |          |
+| v47      | v47_7_1_address0 | port    | offset   |
+| v47      | v47_7_1_ce0      | port    |          |
+| v47      | v47_7_1_d0       | port    |          |
+| v47      | v47_7_1_q0       | port    |          |
+| v47      | v47_7_1_we0      | port    |          |
+| v47      | v47_7_1_address1 | port    | offset   |
+| v47      | v47_7_1_ce1      | port    |          |
+| v47      | v47_7_1_d1       | port    |          |
+| v47      | v47_7_1_q1       | port    |          |
+| v47      | v47_7_1_we1      | port    |          |
+| v47      | v47_8_0_address0 | port    | offset   |
+| v47      | v47_8_0_ce0      | port    |          |
+| v47      | v47_8_0_d0       | port    |          |
+| v47      | v47_8_0_q0       | port    |          |
+| v47      | v47_8_0_we0      | port    |          |
+| v47      | v47_8_0_address1 | port    | offset   |
+| v47      | v47_8_0_ce1      | port    |          |
+| v47      | v47_8_0_d1       | port    |          |
+| v47      | v47_8_0_q1       | port    |          |
+| v47      | v47_8_0_we1      | port    |          |
+| v47      | v47_8_1_address0 | port    | offset   |
+| v47      | v47_8_1_ce0      | port    |          |
+| v47      | v47_8_1_d0       | port    |          |
+| v47      | v47_8_1_q0       | port    |          |
+| v47      | v47_8_1_we0      | port    |          |
+| v47      | v47_8_1_address1 | port    | offset   |
+| v47      | v47_8_1_ce1      | port    |          |
+| v47      | v47_8_1_d1       | port    |          |
+| v47      | v47_8_1_q1       | port    |          |
+| v47      | v47_8_1_we1      | port    |          |
+| v47      | v47_9_0_address0 | port    | offset   |
+| v47      | v47_9_0_ce0      | port    |          |
+| v47      | v47_9_0_d0       | port    |          |
+| v47      | v47_9_0_q0       | port    |          |
+| v47      | v47_9_0_we0      | port    |          |
+| v47      | v47_9_0_address1 | port    | offset   |
+| v47      | v47_9_0_ce1      | port    |          |
+| v47      | v47_9_0_d1       | port    |          |
+| v47      | v47_9_0_q1       | port    |          |
+| v47      | v47_9_0_we1      | port    |          |
+| v47      | v47_9_1_address0 | port    | offset   |
+| v47      | v47_9_1_ce0      | port    |          |
+| v47      | v47_9_1_d0       | port    |          |
+| v47      | v47_9_1_q0       | port    |          |
+| v47      | v47_9_1_we0      | port    |          |
+| v47      | v47_9_1_address1 | port    | offset   |
+| v47      | v47_9_1_ce1      | port    |          |
+| v47      | v47_9_1_d1       | port    |          |
+| v47      | v47_9_1_q1       | port    |          |
+| v47      | v47_9_1_we1      | port    |          |
+| v48      | v48_0_0_address0 | port    | offset   |
+| v48      | v48_0_0_ce0      | port    |          |
+| v48      | v48_0_0_d0       | port    |          |
+| v48      | v48_0_0_q0       | port    |          |
+| v48      | v48_0_0_we0      | port    |          |
+| v48      | v48_0_0_address1 | port    | offset   |
+| v48      | v48_0_0_ce1      | port    |          |
+| v48      | v48_0_0_d1       | port    |          |
+| v48      | v48_0_0_q1       | port    |          |
+| v48      | v48_0_0_we1      | port    |          |
+| v48      | v48_0_1_address0 | port    | offset   |
+| v48      | v48_0_1_ce0      | port    |          |
+| v48      | v48_0_1_d0       | port    |          |
+| v48      | v48_0_1_q0       | port    |          |
+| v48      | v48_0_1_we0      | port    |          |
+| v48      | v48_0_1_address1 | port    | offset   |
+| v48      | v48_0_1_ce1      | port    |          |
+| v48      | v48_0_1_d1       | port    |          |
+| v48      | v48_0_1_q1       | port    |          |
+| v48      | v48_0_1_we1      | port    |          |
+| v48      | v48_1_0_address0 | port    | offset   |
+| v48      | v48_1_0_ce0      | port    |          |
+| v48      | v48_1_0_d0       | port    |          |
+| v48      | v48_1_0_q0       | port    |          |
+| v48      | v48_1_0_we0      | port    |          |
+| v48      | v48_1_0_address1 | port    | offset   |
+| v48      | v48_1_0_ce1      | port    |          |
+| v48      | v48_1_0_d1       | port    |          |
+| v48      | v48_1_0_q1       | port    |          |
+| v48      | v48_1_0_we1      | port    |          |
+| v48      | v48_1_1_address0 | port    | offset   |
+| v48      | v48_1_1_ce0      | port    |          |
+| v48      | v48_1_1_d0       | port    |          |
+| v48      | v48_1_1_q0       | port    |          |
+| v48      | v48_1_1_we0      | port    |          |
+| v48      | v48_1_1_address1 | port    | offset   |
+| v48      | v48_1_1_ce1      | port    |          |
+| v48      | v48_1_1_d1       | port    |          |
+| v48      | v48_1_1_q1       | port    |          |
+| v48      | v48_1_1_we1      | port    |          |
+| v48      | v48_2_0_address0 | port    | offset   |
+| v48      | v48_2_0_ce0      | port    |          |
+| v48      | v48_2_0_d0       | port    |          |
+| v48      | v48_2_0_q0       | port    |          |
+| v48      | v48_2_0_we0      | port    |          |
+| v48      | v48_2_0_address1 | port    | offset   |
+| v48      | v48_2_0_ce1      | port    |          |
+| v48      | v48_2_0_d1       | port    |          |
+| v48      | v48_2_0_q1       | port    |          |
+| v48      | v48_2_0_we1      | port    |          |
+| v48      | v48_2_1_address0 | port    | offset   |
+| v48      | v48_2_1_ce0      | port    |          |
+| v48      | v48_2_1_d0       | port    |          |
+| v48      | v48_2_1_q0       | port    |          |
+| v48      | v48_2_1_we0      | port    |          |
+| v48      | v48_2_1_address1 | port    | offset   |
+| v48      | v48_2_1_ce1      | port    |          |
+| v48      | v48_2_1_d1       | port    |          |
+| v48      | v48_2_1_q1       | port    |          |
+| v48      | v48_2_1_we1      | port    |          |
+| v48      | v48_3_0_address0 | port    | offset   |
+| v48      | v48_3_0_ce0      | port    |          |
+| v48      | v48_3_0_d0       | port    |          |
+| v48      | v48_3_0_q0       | port    |          |
+| v48      | v48_3_0_we0      | port    |          |
+| v48      | v48_3_0_address1 | port    | offset   |
+| v48      | v48_3_0_ce1      | port    |          |
+| v48      | v48_3_0_d1       | port    |          |
+| v48      | v48_3_0_q1       | port    |          |
+| v48      | v48_3_0_we1      | port    |          |
+| v48      | v48_3_1_address0 | port    | offset   |
+| v48      | v48_3_1_ce0      | port    |          |
+| v48      | v48_3_1_d0       | port    |          |
+| v48      | v48_3_1_q0       | port    |          |
+| v48      | v48_3_1_we0      | port    |          |
+| v48      | v48_3_1_address1 | port    | offset   |
+| v48      | v48_3_1_ce1      | port    |          |
+| v48      | v48_3_1_d1       | port    |          |
+| v48      | v48_3_1_q1       | port    |          |
+| v48      | v48_3_1_we1      | port    |          |
+| v48      | v48_4_0_address0 | port    | offset   |
+| v48      | v48_4_0_ce0      | port    |          |
+| v48      | v48_4_0_d0       | port    |          |
+| v48      | v48_4_0_q0       | port    |          |
+| v48      | v48_4_0_we0      | port    |          |
+| v48      | v48_4_0_address1 | port    | offset   |
+| v48      | v48_4_0_ce1      | port    |          |
+| v48      | v48_4_0_d1       | port    |          |
+| v48      | v48_4_0_q1       | port    |          |
+| v48      | v48_4_0_we1      | port    |          |
+| v48      | v48_4_1_address0 | port    | offset   |
+| v48      | v48_4_1_ce0      | port    |          |
+| v48      | v48_4_1_d0       | port    |          |
+| v48      | v48_4_1_q0       | port    |          |
+| v48      | v48_4_1_we0      | port    |          |
+| v48      | v48_4_1_address1 | port    | offset   |
+| v48      | v48_4_1_ce1      | port    |          |
+| v48      | v48_4_1_d1       | port    |          |
+| v48      | v48_4_1_q1       | port    |          |
+| v48      | v48_4_1_we1      | port    |          |
+| v48      | v48_5_0_address0 | port    | offset   |
+| v48      | v48_5_0_ce0      | port    |          |
+| v48      | v48_5_0_d0       | port    |          |
+| v48      | v48_5_0_q0       | port    |          |
+| v48      | v48_5_0_we0      | port    |          |
+| v48      | v48_5_0_address1 | port    | offset   |
+| v48      | v48_5_0_ce1      | port    |          |
+| v48      | v48_5_0_d1       | port    |          |
+| v48      | v48_5_0_q1       | port    |          |
+| v48      | v48_5_0_we1      | port    |          |
+| v48      | v48_5_1_address0 | port    | offset   |
+| v48      | v48_5_1_ce0      | port    |          |
+| v48      | v48_5_1_d0       | port    |          |
+| v48      | v48_5_1_q0       | port    |          |
+| v48      | v48_5_1_we0      | port    |          |
+| v48      | v48_5_1_address1 | port    | offset   |
+| v48      | v48_5_1_ce1      | port    |          |
+| v48      | v48_5_1_d1       | port    |          |
+| v48      | v48_5_1_q1       | port    |          |
+| v48      | v48_5_1_we1      | port    |          |
+| v48      | v48_6_0_address0 | port    | offset   |
+| v48      | v48_6_0_ce0      | port    |          |
+| v48      | v48_6_0_d0       | port    |          |
+| v48      | v48_6_0_q0       | port    |          |
+| v48      | v48_6_0_we0      | port    |          |
+| v48      | v48_6_0_address1 | port    | offset   |
+| v48      | v48_6_0_ce1      | port    |          |
+| v48      | v48_6_0_d1       | port    |          |
+| v48      | v48_6_0_q1       | port    |          |
+| v48      | v48_6_0_we1      | port    |          |
+| v48      | v48_6_1_address0 | port    | offset   |
+| v48      | v48_6_1_ce0      | port    |          |
+| v48      | v48_6_1_d0       | port    |          |
+| v48      | v48_6_1_q0       | port    |          |
+| v48      | v48_6_1_we0      | port    |          |
+| v48      | v48_6_1_address1 | port    | offset   |
+| v48      | v48_6_1_ce1      | port    |          |
+| v48      | v48_6_1_d1       | port    |          |
+| v48      | v48_6_1_q1       | port    |          |
+| v48      | v48_6_1_we1      | port    |          |
+| v48      | v48_7_0_address0 | port    | offset   |
+| v48      | v48_7_0_ce0      | port    |          |
+| v48      | v48_7_0_d0       | port    |          |
+| v48      | v48_7_0_q0       | port    |          |
+| v48      | v48_7_0_we0      | port    |          |
+| v48      | v48_7_0_address1 | port    | offset   |
+| v48      | v48_7_0_ce1      | port    |          |
+| v48      | v48_7_0_d1       | port    |          |
+| v48      | v48_7_0_q1       | port    |          |
+| v48      | v48_7_0_we1      | port    |          |
+| v48      | v48_7_1_address0 | port    | offset   |
+| v48      | v48_7_1_ce0      | port    |          |
+| v48      | v48_7_1_d0       | port    |          |
+| v48      | v48_7_1_q0       | port    |          |
+| v48      | v48_7_1_we0      | port    |          |
+| v48      | v48_7_1_address1 | port    | offset   |
+| v48      | v48_7_1_ce1      | port    |          |
+| v48      | v48_7_1_d1       | port    |          |
+| v48      | v48_7_1_q1       | port    |          |
+| v48      | v48_7_1_we1      | port    |          |
+| v48      | v48_8_0_address0 | port    | offset   |
+| v48      | v48_8_0_ce0      | port    |          |
+| v48      | v48_8_0_d0       | port    |          |
+| v48      | v48_8_0_q0       | port    |          |
+| v48      | v48_8_0_we0      | port    |          |
+| v48      | v48_8_0_address1 | port    | offset   |
+| v48      | v48_8_0_ce1      | port    |          |
+| v48      | v48_8_0_d1       | port    |          |
+| v48      | v48_8_0_q1       | port    |          |
+| v48      | v48_8_0_we1      | port    |          |
+| v48      | v48_8_1_address0 | port    | offset   |
+| v48      | v48_8_1_ce0      | port    |          |
+| v48      | v48_8_1_d0       | port    |          |
+| v48      | v48_8_1_q0       | port    |          |
+| v48      | v48_8_1_we0      | port    |          |
+| v48      | v48_8_1_address1 | port    | offset   |
+| v48      | v48_8_1_ce1      | port    |          |
+| v48      | v48_8_1_d1       | port    |          |
+| v48      | v48_8_1_q1       | port    |          |
+| v48      | v48_8_1_we1      | port    |          |
+| v48      | v48_9_0_address0 | port    | offset   |
+| v48      | v48_9_0_ce0      | port    |          |
+| v48      | v48_9_0_d0       | port    |          |
+| v48      | v48_9_0_q0       | port    |          |
+| v48      | v48_9_0_we0      | port    |          |
+| v48      | v48_9_0_address1 | port    | offset   |
+| v48      | v48_9_0_ce1      | port    |          |
+| v48      | v48_9_0_d1       | port    |          |
+| v48      | v48_9_0_q1       | port    |          |
+| v48      | v48_9_0_we1      | port    |          |
+| v48      | v48_9_1_address0 | port    | offset   |
+| v48      | v48_9_1_ce0      | port    |          |
+| v48      | v48_9_1_d0       | port    |          |
+| v48      | v48_9_1_q0       | port    |          |
+| v48      | v48_9_1_we0      | port    |          |
+| v48      | v48_9_1_address1 | port    | offset   |
+| v48      | v48_9_1_ce1      | port    |          |
+| v48      | v48_9_1_d1       | port    |          |
+| v48      | v48_9_1_q1       | port    |          |
+| v48      | v48_9_1_we1      | port    |          |
+| v49      | v49_0_address0   | port    | offset   |
+| v49      | v49_0_ce0        | port    |          |
+| v49      | v49_0_d0         | port    |          |
+| v49      | v49_0_q0         | port    |          |
+| v49      | v49_0_we0        | port    |          |
+| v49      | v49_0_address1   | port    | offset   |
+| v49      | v49_0_ce1        | port    |          |
+| v49      | v49_0_d1         | port    |          |
+| v49      | v49_0_q1         | port    |          |
+| v49      | v49_0_we1        | port    |          |
+| v49      | v49_1_address0   | port    | offset   |
+| v49      | v49_1_ce0        | port    |          |
+| v49      | v49_1_d0         | port    |          |
+| v49      | v49_1_q0         | port    |          |
+| v49      | v49_1_we0        | port    |          |
+| v49      | v49_1_address1   | port    | offset   |
+| v49      | v49_1_ce1        | port    |          |
+| v49      | v49_1_d1         | port    |          |
+| v49      | v49_1_q1         | port    |          |
+| v49      | v49_1_we1        | port    |          |
+| v50      | v50_0_address0   | port    | offset   |
+| v50      | v50_0_ce0        | port    |          |
+| v50      | v50_0_d0         | port    |          |
+| v50      | v50_0_q0         | port    |          |
+| v50      | v50_0_we0        | port    |          |
+| v50      | v50_0_address1   | port    | offset   |
+| v50      | v50_0_ce1        | port    |          |
+| v50      | v50_0_d1         | port    |          |
+| v50      | v50_0_q1         | port    |          |
+| v50      | v50_0_we1        | port    |          |
+| v50      | v50_1_address0   | port    | offset   |
+| v50      | v50_1_ce0        | port    |          |
+| v50      | v50_1_d0         | port    |          |
+| v50      | v50_1_q0         | port    |          |
+| v50      | v50_1_we0        | port    |          |
+| v50      | v50_1_address1   | port    | offset   |
+| v50      | v50_1_ce1        | port    |          |
+| v50      | v50_1_d1         | port    |          |
+| v50      | v50_1_q1         | port    |          |
+| v50      | v50_1_we1        | port    |          |
+| v50      | v50_2_address0   | port    | offset   |
+| v50      | v50_2_ce0        | port    |          |
+| v50      | v50_2_d0         | port    |          |
+| v50      | v50_2_q0         | port    |          |
+| v50      | v50_2_we0        | port    |          |
+| v50      | v50_2_address1   | port    | offset   |
+| v50      | v50_2_ce1        | port    |          |
+| v50      | v50_2_d1         | port    |          |
+| v50      | v50_2_q1         | port    |          |
+| v50      | v50_2_we1        | port    |          |
+| v50      | v50_3_address0   | port    | offset   |
+| v50      | v50_3_ce0        | port    |          |
+| v50      | v50_3_d0         | port    |          |
+| v50      | v50_3_q0         | port    |          |
+| v50      | v50_3_we0        | port    |          |
+| v50      | v50_3_address1   | port    | offset   |
+| v50      | v50_3_ce1        | port    |          |
+| v50      | v50_3_d1         | port    |          |
+| v50      | v50_3_q1         | port    |          |
+| v50      | v50_3_we1        | port    |          |
+| v50      | v50_4_address0   | port    | offset   |
+| v50      | v50_4_ce0        | port    |          |
+| v50      | v50_4_d0         | port    |          |
+| v50      | v50_4_q0         | port    |          |
+| v50      | v50_4_we0        | port    |          |
+| v50      | v50_4_address1   | port    | offset   |
+| v50      | v50_4_ce1        | port    |          |
+| v50      | v50_4_d1         | port    |          |
+| v50      | v50_4_q1         | port    |          |
+| v50      | v50_4_we1        | port    |          |
+| v50      | v50_5_address0   | port    | offset   |
+| v50      | v50_5_ce0        | port    |          |
+| v50      | v50_5_d0         | port    |          |
+| v50      | v50_5_q0         | port    |          |
+| v50      | v50_5_we0        | port    |          |
+| v50      | v50_5_address1   | port    | offset   |
+| v50      | v50_5_ce1        | port    |          |
+| v50      | v50_5_d1         | port    |          |
+| v50      | v50_5_q1         | port    |          |
+| v50      | v50_5_we1        | port    |          |
+| v50      | v50_6_address0   | port    | offset   |
+| v50      | v50_6_ce0        | port    |          |
+| v50      | v50_6_d0         | port    |          |
+| v50      | v50_6_q0         | port    |          |
+| v50      | v50_6_we0        | port    |          |
+| v50      | v50_6_address1   | port    | offset   |
+| v50      | v50_6_ce1        | port    |          |
+| v50      | v50_6_d1         | port    |          |
+| v50      | v50_6_q1         | port    |          |
+| v50      | v50_6_we1        | port    |          |
+| v50      | v50_7_address0   | port    | offset   |
+| v50      | v50_7_ce0        | port    |          |
+| v50      | v50_7_d0         | port    |          |
+| v50      | v50_7_q0         | port    |          |
+| v50      | v50_7_we0        | port    |          |
+| v50      | v50_7_address1   | port    | offset   |
+| v50      | v50_7_ce1        | port    |          |
+| v50      | v50_7_d1         | port    |          |
+| v50      | v50_7_q1         | port    |          |
+| v50      | v50_7_we1        | port    |          |
+| v50      | v50_8_address0   | port    | offset   |
+| v50      | v50_8_ce0        | port    |          |
+| v50      | v50_8_d0         | port    |          |
+| v50      | v50_8_q0         | port    |          |
+| v50      | v50_8_we0        | port    |          |
+| v50      | v50_8_address1   | port    | offset   |
+| v50      | v50_8_ce1        | port    |          |
+| v50      | v50_8_d1         | port    |          |
+| v50      | v50_8_q1         | port    |          |
+| v50      | v50_8_we1        | port    |          |
+| v50      | v50_9_address0   | port    | offset   |
+| v50      | v50_9_ce0        | port    |          |
+| v50      | v50_9_d0         | port    |          |
+| v50      | v50_9_q0         | port    |          |
+| v50      | v50_9_we0        | port    |          |
+| v50      | v50_9_address1   | port    | offset   |
+| v50      | v50_9_ce1        | port    |          |
+| v50      | v50_9_d1         | port    |          |
+| v50      | v50_9_q1         | port    |          |
+| v50      | v50_9_we1        | port    |          |
+| v51      | v51_0_address0   | port    | offset   |
+| v51      | v51_0_ce0        | port    |          |
+| v51      | v51_0_d0         | port    |          |
+| v51      | v51_0_q0         | port    |          |
+| v51      | v51_0_we0        | port    |          |
+| v51      | v51_0_address1   | port    | offset   |
+| v51      | v51_0_ce1        | port    |          |
+| v51      | v51_0_d1         | port    |          |
+| v51      | v51_0_q1         | port    |          |
+| v51      | v51_0_we1        | port    |          |
+| v51      | v51_1_address0   | port    | offset   |
+| v51      | v51_1_ce0        | port    |          |
+| v51      | v51_1_d0         | port    |          |
+| v51      | v51_1_q0         | port    |          |
+| v51      | v51_1_we0        | port    |          |
+| v51      | v51_1_address1   | port    | offset   |
+| v51      | v51_1_ce1        | port    |          |
+| v51      | v51_1_d1         | port    |          |
+| v51      | v51_1_q1         | port    |          |
+| v51      | v51_1_we1        | port    |          |
+| v51      | v51_2_address0   | port    | offset   |
+| v51      | v51_2_ce0        | port    |          |
+| v51      | v51_2_d0         | port    |          |
+| v51      | v51_2_q0         | port    |          |
+| v51      | v51_2_we0        | port    |          |
+| v51      | v51_2_address1   | port    | offset   |
+| v51      | v51_2_ce1        | port    |          |
+| v51      | v51_2_d1         | port    |          |
+| v51      | v51_2_q1         | port    |          |
+| v51      | v51_2_we1        | port    |          |
+| v51      | v51_3_address0   | port    | offset   |
+| v51      | v51_3_ce0        | port    |          |
+| v51      | v51_3_d0         | port    |          |
+| v51      | v51_3_q0         | port    |          |
+| v51      | v51_3_we0        | port    |          |
+| v51      | v51_3_address1   | port    | offset   |
+| v51      | v51_3_ce1        | port    |          |
+| v51      | v51_3_d1         | port    |          |
+| v51      | v51_3_q1         | port    |          |
+| v51      | v51_3_we1        | port    |          |
+| v51      | v51_4_address0   | port    | offset   |
+| v51      | v51_4_ce0        | port    |          |
+| v51      | v51_4_d0         | port    |          |
+| v51      | v51_4_q0         | port    |          |
+| v51      | v51_4_we0        | port    |          |
+| v51      | v51_4_address1   | port    | offset   |
+| v51      | v51_4_ce1        | port    |          |
+| v51      | v51_4_d1         | port    |          |
+| v51      | v51_4_q1         | port    |          |
+| v51      | v51_4_we1        | port    |          |
+| v51      | v51_5_address0   | port    | offset   |
+| v51      | v51_5_ce0        | port    |          |
+| v51      | v51_5_d0         | port    |          |
+| v51      | v51_5_q0         | port    |          |
+| v51      | v51_5_we0        | port    |          |
+| v51      | v51_5_address1   | port    | offset   |
+| v51      | v51_5_ce1        | port    |          |
+| v51      | v51_5_d1         | port    |          |
+| v51      | v51_5_q1         | port    |          |
+| v51      | v51_5_we1        | port    |          |
+| v51      | v51_6_address0   | port    | offset   |
+| v51      | v51_6_ce0        | port    |          |
+| v51      | v51_6_d0         | port    |          |
+| v51      | v51_6_q0         | port    |          |
+| v51      | v51_6_we0        | port    |          |
+| v51      | v51_6_address1   | port    | offset   |
+| v51      | v51_6_ce1        | port    |          |
+| v51      | v51_6_d1         | port    |          |
+| v51      | v51_6_q1         | port    |          |
+| v51      | v51_6_we1        | port    |          |
+| v51      | v51_7_address0   | port    | offset   |
+| v51      | v51_7_ce0        | port    |          |
+| v51      | v51_7_d0         | port    |          |
+| v51      | v51_7_q0         | port    |          |
+| v51      | v51_7_we0        | port    |          |
+| v51      | v51_7_address1   | port    | offset   |
+| v51      | v51_7_ce1        | port    |          |
+| v51      | v51_7_d1         | port    |          |
+| v51      | v51_7_q1         | port    |          |
+| v51      | v51_7_we1        | port    |          |
+| v51      | v51_8_address0   | port    | offset   |
+| v51      | v51_8_ce0        | port    |          |
+| v51      | v51_8_d0         | port    |          |
+| v51      | v51_8_q0         | port    |          |
+| v51      | v51_8_we0        | port    |          |
+| v51      | v51_8_address1   | port    | offset   |
+| v51      | v51_8_ce1        | port    |          |
+| v51      | v51_8_d1         | port    |          |
+| v51      | v51_8_q1         | port    |          |
+| v51      | v51_8_we1        | port    |          |
+| v51      | v51_9_address0   | port    | offset   |
+| v51      | v51_9_ce0        | port    |          |
+| v51      | v51_9_d0         | port    |          |
+| v51      | v51_9_q0         | port    |          |
+| v51      | v51_9_we0        | port    |          |
+| v51      | v51_9_address1   | port    | offset   |
+| v51      | v51_9_ce1        | port    |          |
+| v51      | v51_9_d1         | port    |          |
+| v51      | v51_9_q1         | port    |          |
+| v51      | v51_9_we1        | port    |          |
+| v52      | v52_0_address0   | port    | offset   |
+| v52      | v52_0_ce0        | port    |          |
+| v52      | v52_0_d0         | port    |          |
+| v52      | v52_0_q0         | port    |          |
+| v52      | v52_0_we0        | port    |          |
+| v52      | v52_0_address1   | port    | offset   |
+| v52      | v52_0_ce1        | port    |          |
+| v52      | v52_0_d1         | port    |          |
+| v52      | v52_0_q1         | port    |          |
+| v52      | v52_0_we1        | port    |          |
+| v52      | v52_1_address0   | port    | offset   |
+| v52      | v52_1_ce0        | port    |          |
+| v52      | v52_1_d0         | port    |          |
+| v52      | v52_1_q0         | port    |          |
+| v52      | v52_1_we0        | port    |          |
+| v52      | v52_1_address1   | port    | offset   |
+| v52      | v52_1_ce1        | port    |          |
+| v52      | v52_1_d1         | port    |          |
+| v52      | v52_1_q1         | port    |          |
+| v52      | v52_1_we1        | port    |          |
++----------+------------------+---------+----------+
+
+
+================================================================
+== Bind Op Report
+================================================================
++----------------------------------------+-----+--------+-------------+------+-----------+---------+
+| Name                                   | DSP | Pragma | Variable    | Op   | Impl      | Latency |
++----------------------------------------+-----+--------+-------------+------+-----------+---------+
+| + forward                              | 202 |        |             |      |           |         |
+|  + node4                               | 101 |        |             |      |           |         |
+|    add_ln124_1_fu_888_p2               |     |        | add_ln124_1 | add  | fabric    | 0       |
+|    add_ln124_fu_940_p2                 |     |        | add_ln124   | add  | fabric    | 0       |
+|    mac_muladd_6ns_8ns_8ns_13_4_1_U41   | 1   |        | mul_ln130   | mul  | dsp_slice | 3       |
+|    mac_muladd_6ns_8ns_8ns_13_4_1_U41   | 1   |        | add_ln130   | add  | dsp_slice | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U21   | 3   |        | v44         | fmul | maxdsp    | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U22   | 3   |        | v44_1       | fmul | maxdsp    | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U23   | 3   |        | v44_2       | fmul | maxdsp    | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U24   | 3   |        | v44_3       | fmul | maxdsp    | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U25   | 3   |        | v44_4       | fmul | maxdsp    | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U26   | 3   |        | v44_5       | fmul | maxdsp    | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U27   | 3   |        | v44_6       | fmul | maxdsp    | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U28   | 3   |        | v44_7       | fmul | maxdsp    | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U29   | 3   |        | v44_8       | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U1   | 2   |        | v45         | fadd | fulldsp   | 6       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U2   | 2   |        | v45_8       | fadd | fulldsp   | 6       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U3   | 2   |        | v45_9       | fadd | fulldsp   | 6       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U4   | 2   |        | v45_10      | fadd | fulldsp   | 6       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U5   | 2   |        | v45_11      | fadd | fulldsp   | 6       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U6   | 2   |        | v45_12      | fadd | fulldsp   | 6       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U7   | 2   |        | v45_13      | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U30   | 3   |        | v44_9       | fmul | maxdsp    | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U31   | 3   |        | v44_10      | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U8   | 2   |        | tmp         | fadd | fulldsp   | 6       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U11  | 2   |        | v45_14      | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U34   | 3   |        | v44_19      | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U14  | 2   |        | v45_15      | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U35   | 3   |        | v44_11      | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U15  | 2   |        | v45_16      | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U36   | 3   |        | v44_12      | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U16  | 2   |        | v45_17      | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U37   | 3   |        | v44_13      | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U17  | 2   |        | v45_18      | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U38   | 3   |        | v44_14      | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U18  | 2   |        | v45_19      | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U39   | 3   |        | v44_15      | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U19  | 2   |        | v45_20      | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U40   | 3   |        | v44_16      | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U20  | 2   |        | v45_21      | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U32   | 3   |        | v44_17      | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U9   | 2   |        | tmp1        | fadd | fulldsp   | 6       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U12  | 2   |        | v45_22      | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U33   | 3   |        | v44_18      | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U10  | 2   |        | tmp2        | fadd | fulldsp   | 6       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U13  | 2   |        | v45_23      | fadd | fulldsp   | 6       |
+|    add_ln125_fu_921_p2                 |     |        | add_ln125   | add  | fabric    | 0       |
+|  + node3                               | 1   |        |             |      |           |         |
+|    add_ln95_1_fu_562_p2                |     |        | add_ln95_1  | add  | fabric    | 0       |
+|    add_ln95_fu_574_p2                  |     |        | add_ln95    | add  | fabric    | 0       |
+|    mac_muladd_6ns_8ns_8ns_13_4_1_U79   | 1   |        | mul_ln96    | mul  | dsp_slice | 3       |
+|    mac_muladd_6ns_8ns_8ns_13_4_1_U79   | 1   |        | add_ln101   | add  | dsp_slice | 3       |
+|    add_ln96_fu_606_p2                  |     |        | add_ln96    | add  | fabric    | 0       |
+|  + node2                               | 100 |        |             |      |           |         |
+|    add_ln62_1_fu_674_p2                |     |        | add_ln62_1  | add  | fabric    | 0       |
+|    add_ln62_fu_686_p2                  |     |        | add_ln62    | add  | fabric    | 0       |
+|    empty_fu_754_p2                     |     |        | empty       | add  | fabric    | 0       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U150  | 3   |        | v22         | fmul | maxdsp    | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U151  | 3   |        | v22_1       | fmul | maxdsp    | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U140  | 3   |        | v22_2       | fmul | maxdsp    | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U141  | 3   |        | v22_3       | fmul | maxdsp    | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U142  | 3   |        | v22_4       | fmul | maxdsp    | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U143  | 3   |        | v22_5       | fmul | maxdsp    | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U152  | 3   |        | v22_6       | fmul | maxdsp    | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U153  | 3   |        | v22_7       | fmul | maxdsp    | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U144  | 3   |        | v22_8       | fmul | maxdsp    | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U145  | 3   |        | v22_9       | fmul | maxdsp    | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U146  | 3   |        | v22_10      | fmul | maxdsp    | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U147  | 3   |        | v22_11      | fmul | maxdsp    | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U154  | 3   |        | v22_12      | fmul | maxdsp    | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U155  | 3   |        | v22_13      | fmul | maxdsp    | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U156  | 3   |        | v22_14      | fmul | maxdsp    | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U157  | 3   |        | v22_15      | fmul | maxdsp    | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U158  | 3   |        | v22_16      | fmul | maxdsp    | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U159  | 3   |        | v22_17      | fmul | maxdsp    | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U148  | 3   |        | v22_18      | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U126 | 2   |        | tmp         | fadd | fulldsp   | 6       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U120 | 2   |        | tmp1        | fadd | fulldsp   | 6       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U127 | 2   |        | tmp2        | fadd | fulldsp   | 6       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U134 | 2   |        | tmp3        | fadd | fulldsp   | 6       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U121 | 2   |        | tmp4        | fadd | fulldsp   | 6       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U128 | 2   |        | tmp5        | fadd | fulldsp   | 6       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U122 | 2   |        | tmp6        | fadd | fulldsp   | 6       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U129 | 2   |        | tmp7        | fadd | fulldsp   | 6       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U135 | 2   |        | tmp8        | fadd | fulldsp   | 6       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U138 | 2   |        | v23         | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U149  | 3   |        | v22_19      | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U130 | 2   |        | tmp9        | fadd | fulldsp   | 6       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U123 | 2   |        | tmp10       | fadd | fulldsp   | 6       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U131 | 2   |        | tmp11       | fadd | fulldsp   | 6       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U136 | 2   |        | tmp12       | fadd | fulldsp   | 6       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U124 | 2   |        | tmp13       | fadd | fulldsp   | 6       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U132 | 2   |        | tmp14       | fadd | fulldsp   | 6       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U125 | 2   |        | tmp15       | fadd | fulldsp   | 6       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U133 | 2   |        | tmp16       | fadd | fulldsp   | 6       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U137 | 2   |        | tmp17       | fadd | fulldsp   | 6       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U139 | 2   |        | v23_1       | fadd | fulldsp   | 6       |
+|    add_ln63_fu_772_p2                  |     |        | add_ln63    | add  | fabric    | 0       |
+|  + node1                               | 0   |        |             |      |           |         |
+|    add_ln40_fu_292_p2                  |     |        | add_ln40    | add  | fabric    | 0       |
+|  + node0                               | 0   |        |             |      |           |         |
+|    add_ln23_fu_100_p2                  |     |        | add_ln23    | add  | fabric    | 0       |
++----------------------------------------+-----+--------+-------------+------+-----------+---------+
+
+
+================================================================
+== Storage Report
+================================================================
++------------+---------------+--------+------+------+--------+----------+--------+---------+------------------+
+| Name       | Usage         | Type   | BRAM | URAM | Pragma | Variable | Impl   | Latency | Bitwidth, Depth, |
+|            |               |        |      |      |        |          |        |         | Banks            |
++------------+---------------+--------+------+------+--------+----------+--------+---------+------------------+
+| + forward  |               |        | 24   | 0    |        |          |        |         |                  |
+|   v55_U    | fifo channel  | stream |      |      |        | v55      | memory | 0       | 32, 40, 1        |
+|   v55_1_U  | fifo channel  | stream |      |      |        | v55_1    | memory | 0       | 32, 40, 1        |
+|   v55_2_U  | fifo channel  | stream |      |      |        | v55_2    | memory | 0       | 32, 40, 1        |
+|   v55_3_U  | fifo channel  | stream |      |      |        | v55_3    | memory | 0       | 32, 40, 1        |
+|   v55_4_U  | fifo channel  | stream |      |      |        | v55_4    | memory | 0       | 32, 40, 1        |
+|   v55_5_U  | fifo channel  | stream |      |      |        | v55_5    | memory | 0       | 32, 40, 1        |
+|   v55_6_U  | fifo channel  | stream |      |      |        | v55_6    | memory | 0       | 32, 40, 1        |
+|   v55_7_U  | fifo channel  | stream |      |      |        | v55_7    | memory | 0       | 32, 40, 1        |
+|   v55_8_U  | fifo channel  | stream |      |      |        | v55_8    | memory | 0       | 32, 40, 1        |
+|   v55_9_U  | fifo channel  | stream |      |      |        | v55_9    | memory | 0       | 32, 40, 1        |
+|   v54_U    | fifo channel  | stream | 1    |      |        | v54      | memory | 0       | 32, 8000, 1      |
+|   v54_1_U  | fifo channel  | stream | 1    |      |        | v54_1    | memory | 0       | 32, 8000, 1      |
+|   v54_2_U  | fifo channel  | stream | 1    |      |        | v54_2    | memory | 0       | 32, 8000, 1      |
+|   v54_3_U  | fifo channel  | stream | 1    |      |        | v54_3    | memory | 0       | 32, 8000, 1      |
+|   v54_4_U  | fifo channel  | stream | 1    |      |        | v54_4    | memory | 0       | 32, 8000, 1      |
+|   v54_5_U  | fifo channel  | stream | 1    |      |        | v54_5    | memory | 0       | 32, 8000, 1      |
+|   v54_6_U  | fifo channel  | stream | 1    |      |        | v54_6    | memory | 0       | 32, 8000, 1      |
+|   v54_7_U  | fifo channel  | stream | 1    |      |        | v54_7    | memory | 0       | 32, 8000, 1      |
+|   v54_8_U  | fifo channel  | stream | 1    |      |        | v54_8    | memory | 0       | 32, 8000, 1      |
+|   v54_9_U  | fifo channel  | stream | 1    |      |        | v54_9    | memory | 0       | 32, 8000, 1      |
+|   v54_10_U | fifo channel  | stream | 1    |      |        | v54_10   | memory | 0       | 32, 8000, 1      |
+|   v54_11_U | fifo channel  | stream | 1    |      |        | v54_11   | memory | 0       | 32, 8000, 1      |
+|   v54_12_U | fifo channel  | stream | 1    |      |        | v54_12   | memory | 0       | 32, 8000, 1      |
+|   v54_13_U | fifo channel  | stream | 1    |      |        | v54_13   | memory | 0       | 32, 8000, 1      |
+|   v54_14_U | fifo channel  | stream | 1    |      |        | v54_14   | memory | 0       | 32, 8000, 1      |
+|   v54_15_U | fifo channel  | stream | 1    |      |        | v54_15   | memory | 0       | 32, 8000, 1      |
+|   v54_16_U | fifo channel  | stream | 1    |      |        | v54_16   | memory | 0       | 32, 8000, 1      |
+|   v54_17_U | fifo channel  | stream | 1    |      |        | v54_17   | memory | 0       | 32, 8000, 1      |
+|   v54_18_U | fifo channel  | stream | 1    |      |        | v54_18   | memory | 0       | 32, 8000, 1      |
+|   v54_19_U | fifo channel  | stream | 1    |      |        | v54_19   | memory | 0       | 32, 8000, 1      |
+|   v53_U    | fifo channel  | stream | 1    |      |        | v53      | memory | 0       | 32, 200, 1       |
+|   v53_1_U  | fifo channel  | stream | 1    |      |        | v53_1    | memory | 0       | 32, 200, 1       |
+|  + node4   |               |        | 0    | 0    |        |          |        |         |                  |
+|    v36_U   | ram_s2p array |        |      |      |        | v36      | auto   | 1       | 32, 40, 1        |
+|    v36_1_U | ram_s2p array |        |      |      |        | v36_1    | auto   | 1       | 32, 40, 1        |
+|    v36_2_U | ram_s2p array |        |      |      |        | v36_2    | auto   | 1       | 32, 40, 1        |
+|    v36_3_U | ram_s2p array |        |      |      |        | v36_3    | auto   | 1       | 32, 40, 1        |
+|    v36_4_U | ram_s2p array |        |      |      |        | v36_4    | auto   | 1       | 32, 40, 1        |
+|    v36_5_U | ram_s2p array |        |      |      |        | v36_5    | auto   | 1       | 32, 40, 1        |
+|    v36_6_U | ram_s2p array |        |      |      |        | v36_6    | auto   | 1       | 32, 40, 1        |
+|    v36_7_U | ram_s2p array |        |      |      |        | v36_7    | auto   | 1       | 32, 40, 1        |
+|    v36_8_U | ram_s2p array |        |      |      |        | v36_8    | auto   | 1       | 32, 40, 1        |
+|    v36_9_U | ram_s2p array |        |      |      |        | v36_9    | auto   | 1       | 32, 40, 1        |
+|  + node2   |               |        | 2    | 0    |        |          |        |         |                  |
+|    v14_U   | ram_s2p array |        | 1    |      |        | v14      | auto   | 1       | 32, 200, 1       |
+|    v14_1_U | ram_s2p array |        | 1    |      |        | v14_1    | auto   | 1       | 32, 200, 1       |
++------------+---------------+--------+------+------+--------+----------+--------+---------+------------------+
+
+
+================================================================
+== Pragma Report
+================================================================
+* Valid Pragma Syntax
++-----------------+-------------------------------------+---------------------------------+
+| Type            | Options                             | Location                        |
++-----------------+-------------------------------------+---------------------------------+
+| array_partition | variable=v1 cyclic dim=1 factor=2   | src/mvt.cpp:21 in node0, v1     |
+| pipeline        | II=1                                | src/mvt.cpp:24 in node0         |
+| loop_flatten    |                                     | src/mvt.cpp:25 in node0         |
+| array_partition | variable=v6 cyclic dim=1 factor=10  | src/mvt.cpp:38 in node1, v6     |
+| pipeline        | II=1                                | src/mvt.cpp:41 in node1         |
+| loop_flatten    |                                     | src/mvt.cpp:42 in node1         |
+| array_partition | variable=v11 cyclic dim=1 factor=10 | src/mvt.cpp:57 in node2, v11    |
+| array_partition | variable=v14 cyclic dim=1 factor=2  | src/mvt.cpp:60 in node2, v14    |
+| pipeline        | II=1                                | src/mvt.cpp:64 in node2         |
+| loop_flatten    |                                     | src/mvt.cpp:65 in node2         |
+| array_partition | variable=v25 cyclic dim=1 factor=10 | src/mvt.cpp:92 in node3, v25    |
+| array_partition | variable=v25 cyclic dim=2 factor=2  | src/mvt.cpp:93 in node3, v25    |
+| pipeline        | II=1                                | src/mvt.cpp:97 in node3         |
+| loop_flatten    |                                     | src/mvt.cpp:98 in node3         |
+| array_partition | variable=v32 cyclic dim=1 factor=10 | src/mvt.cpp:116 in node4, v32   |
+| array_partition | variable=v32 cyclic dim=2 factor=2  | src/mvt.cpp:117 in node4, v32   |
+| array_partition | variable=v33 cyclic dim=1 factor=2  | src/mvt.cpp:119 in node4, v33   |
+| array_partition | variable=v36 cyclic dim=1 factor=10 | src/mvt.cpp:122 in node4, v36   |
+| pipeline        | II=1                                | src/mvt.cpp:126 in node4        |
+| loop_flatten    |                                     | src/mvt.cpp:127 in node4        |
+| dataflow        |                                     | src/mvt.cpp:158 in forward      |
+| array_partition | variable=v47 cyclic dim=1 factor=10 | src/mvt.cpp:159 in forward, v47 |
+| array_partition | variable=v47 cyclic dim=2 factor=2  | src/mvt.cpp:160 in forward, v47 |
+| array_partition | variable=v48 cyclic dim=1 factor=10 | src/mvt.cpp:162 in forward, v48 |
+| array_partition | variable=v48 cyclic dim=2 factor=2  | src/mvt.cpp:163 in forward, v48 |
+| array_partition | variable=v49 cyclic dim=1 factor=2  | src/mvt.cpp:165 in forward, v49 |
+| array_partition | variable=v50 cyclic dim=1 factor=10 | src/mvt.cpp:167 in forward, v50 |
+| array_partition | variable=v51 cyclic dim=1 factor=10 | src/mvt.cpp:169 in forward, v51 |
+| array_partition | variable=v52 cyclic dim=1 factor=2  | src/mvt.cpp:171 in forward, v52 |
+| stream          | variable=v53 depth=200              | src/mvt.cpp:174 in forward, v53 |
+| stream          | variable=v54 depth=8000             | src/mvt.cpp:176 in forward, v54 |
+| stream          | variable=v55 depth=40               | src/mvt.cpp:178 in forward, v55 |
++-----------------+-------------------------------------+---------------------------------+
+
+

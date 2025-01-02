@@ -1,0 +1,437 @@
+
+
+================================================================
+== Vitis HLS Report for 'node0'
+================================================================
+* Date:           Tue Sep 24 20:57:38 2024
+
+* Version:        2023.2 (Build 4023990 on Oct 11 2023)
+* Project:        hls_Autoencoder
+* Solution:       solution1 (Vivado IP Flow Target)
+* Product family: virtexuplusHBM
+* Target device:  xcu280-fsvh2892-2L-e
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  |  3.33 ns|  2.466 ns|     0.90 ns|
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+---------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline|
+    |   min   |   max   |    min   |    max   | min | max |   Type  |
+    +---------+---------+----------+----------+-----+-----+---------+
+    |      898|      898|  2.990 us|  2.990 us|  898|  898|       no|
+    +---------+---------+----------+----------+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +---------------+---------+---------+----------+-----------+-----------+------+----------+
+        |               |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
+        |   Loop Name   |   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
+        +---------------+---------+---------+----------+-----------+-----------+------+----------+
+        |- loop0_loop1  |      896|      896|         2|          1|          1|   896|       yes|
+        +---------------+---------+---------+----------+-----------+-----------+------+----------+
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++---------------------+---------+------+---------+---------+-----+
+|         Name        | BRAM_18K|  DSP |    FF   |   LUT   | URAM|
++---------------------+---------+------+---------+---------+-----+
+|DSP                  |        -|     -|        -|        -|    -|
+|Expression           |        -|     -|        0|      126|    -|
+|FIFO                 |        -|     -|        -|        -|    -|
+|Instance             |        -|     -|        -|        -|    -|
+|Memory               |        -|     -|        -|        -|    -|
+|Multiplexer          |        -|     -|        -|      324|    -|
+|Register             |        -|     -|       34|        -|    -|
++---------------------+---------+------+---------+---------+-----+
+|Total                |        0|     0|       34|      450|    0|
++---------------------+---------+------+---------+---------+-----+
+|Available SLR        |     1344|  3008|   869120|   434560|  320|
++---------------------+---------+------+---------+---------+-----+
+|Utilization SLR (%)  |        0|     0|       ~0|       ~0|    0|
++---------------------+---------+------+---------+---------+-----+
+|Available            |     4032|  9024|  2607360|  1303680|  960|
++---------------------+---------+------+---------+---------+-----+
+|Utilization (%)      |        0|     0|       ~0|       ~0|    0|
++---------------------+---------+------+---------+---------+-----+
+
++ Detail: 
+    * Instance: 
+    N/A
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +----------------------------------+----------+----+---+----+------------+------------+
+    |           Variable Name          | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +----------------------------------+----------+----+---+----+------------+------------+
+    |add_ln23_1_fu_758_p2              |         +|   0|  0|  17|          10|           1|
+    |add_ln23_fu_770_p2                |         +|   0|  0|  13|           6|           1|
+    |add_ln24_fu_838_p2                |         +|   0|  0|  12|           5|           1|
+    |add_ln29_fu_832_p2                |         +|   0|  0|  18|          10|          10|
+    |sub_ln29_fu_822_p2                |         -|   0|  0|  18|          10|          10|
+    |ap_condition_551                  |       and|   0|  0|   2|           1|           1|
+    |icmp_ln23_fu_752_p2               |      icmp|   0|  0|  17|          10|           9|
+    |icmp_ln24_fu_776_p2               |      icmp|   0|  0|  12|           5|           4|
+    |ap_block_pp0_stage0_11001         |        or|   0|  0|   2|           1|           1|
+    |ap_block_state2_pp0_stage0_iter1  |        or|   0|  0|   2|           1|           1|
+    |select_ln23_1_fu_790_p3           |    select|   0|  0|   6|           1|           6|
+    |select_ln23_fu_782_p3             |    select|   0|  0|   5|           1|           1|
+    |ap_enable_pp0                     |       xor|   0|  0|   2|           1|           2|
+    +----------------------------------+----------+----+---+----+------------+------------+
+    |Total                             |          |   0|  0| 126|          62|          48|
+    +----------------------------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    +--------------------------------------+----+-----------+-----+-----------+
+    |                 Name                 | LUT| Input Size| Bits| Total Bits|
+    +--------------------------------------+----+-----------+-----+-----------+
+    |ap_done_int                           |   9|          2|    1|          2|
+    |ap_enable_reg_pp0_iter1               |   9|          2|    1|          2|
+    |ap_sig_allocacmp_indvar_flatten_load  |   9|          2|   10|         20|
+    |ap_sig_allocacmp_v2_load              |   9|          2|    6|         12|
+    |ap_sig_allocacmp_v3_load              |   9|          2|    5|         10|
+    |indvar_flatten_fu_170                 |   9|          2|   10|         20|
+    |v264_0_blk_n                          |   9|          2|    1|          2|
+    |v264_10_blk_n                         |   9|          2|    1|          2|
+    |v264_11_blk_n                         |   9|          2|    1|          2|
+    |v264_12_blk_n                         |   9|          2|    1|          2|
+    |v264_13_blk_n                         |   9|          2|    1|          2|
+    |v264_14_blk_n                         |   9|          2|    1|          2|
+    |v264_15_blk_n                         |   9|          2|    1|          2|
+    |v264_16_blk_n                         |   9|          2|    1|          2|
+    |v264_17_blk_n                         |   9|          2|    1|          2|
+    |v264_18_blk_n                         |   9|          2|    1|          2|
+    |v264_19_blk_n                         |   9|          2|    1|          2|
+    |v264_1_blk_n                          |   9|          2|    1|          2|
+    |v264_20_blk_n                         |   9|          2|    1|          2|
+    |v264_21_blk_n                         |   9|          2|    1|          2|
+    |v264_22_blk_n                         |   9|          2|    1|          2|
+    |v264_23_blk_n                         |   9|          2|    1|          2|
+    |v264_24_blk_n                         |   9|          2|    1|          2|
+    |v264_25_blk_n                         |   9|          2|    1|          2|
+    |v264_26_blk_n                         |   9|          2|    1|          2|
+    |v264_27_blk_n                         |   9|          2|    1|          2|
+    |v264_2_blk_n                          |   9|          2|    1|          2|
+    |v264_3_blk_n                          |   9|          2|    1|          2|
+    |v264_4_blk_n                          |   9|          2|    1|          2|
+    |v264_5_blk_n                          |   9|          2|    1|          2|
+    |v264_6_blk_n                          |   9|          2|    1|          2|
+    |v264_7_blk_n                          |   9|          2|    1|          2|
+    |v264_8_blk_n                          |   9|          2|    1|          2|
+    |v264_9_blk_n                          |   9|          2|    1|          2|
+    |v2_fu_166                             |   9|          2|    6|         12|
+    |v3_fu_162                             |   9|          2|    5|         10|
+    +--------------------------------------+----+-----------+-----+-----------+
+    |Total                                 | 324|         72|   72|        144|
+    +--------------------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +-------------------------+----+----+-----+-----------+
+    |           Name          | FF | LUT| Bits| Const Bits|
+    +-------------------------+----+----+-----+-----------+
+    |add_ln29_reg_914         |  10|   0|   10|          0|
+    |ap_CS_fsm                |   1|   0|    1|          0|
+    |ap_done_reg              |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter1  |   1|   0|    1|          0|
+    |indvar_flatten_fu_170    |  10|   0|   10|          0|
+    |v2_fu_166                |   6|   0|    6|          0|
+    |v3_fu_162                |   5|   0|    5|          0|
+    +-------------------------+----+----+-----+-----------+
+    |Total                    |  34|   0|   34|          0|
+    +-------------------------+----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++------------------------+-----+-----+------------+--------------+--------------+
+|        RTL Ports       | Dir | Bits|  Protocol  | Source Object|    C Type    |
++------------------------+-----+-----+------------+--------------+--------------+
+|ap_clk                  |   in|    1|  ap_ctrl_hs|         node0|  return value|
+|ap_rst                  |   in|    1|  ap_ctrl_hs|         node0|  return value|
+|ap_start                |   in|    1|  ap_ctrl_hs|         node0|  return value|
+|ap_done                 |  out|    1|  ap_ctrl_hs|         node0|  return value|
+|ap_continue             |   in|    1|  ap_ctrl_hs|         node0|  return value|
+|ap_idle                 |  out|    1|  ap_ctrl_hs|         node0|  return value|
+|ap_ready                |  out|    1|  ap_ctrl_hs|         node0|  return value|
+|v264_0_dout             |   in|   32|     ap_fifo|        v264_0|       pointer|
+|v264_0_num_data_valid   |   in|   11|     ap_fifo|        v264_0|       pointer|
+|v264_0_fifo_cap         |   in|   11|     ap_fifo|        v264_0|       pointer|
+|v264_0_empty_n          |   in|    1|     ap_fifo|        v264_0|       pointer|
+|v264_0_read             |  out|    1|     ap_fifo|        v264_0|       pointer|
+|v264_1_dout             |   in|   32|     ap_fifo|        v264_1|       pointer|
+|v264_1_num_data_valid   |   in|   11|     ap_fifo|        v264_1|       pointer|
+|v264_1_fifo_cap         |   in|   11|     ap_fifo|        v264_1|       pointer|
+|v264_1_empty_n          |   in|    1|     ap_fifo|        v264_1|       pointer|
+|v264_1_read             |  out|    1|     ap_fifo|        v264_1|       pointer|
+|v264_2_dout             |   in|   32|     ap_fifo|        v264_2|       pointer|
+|v264_2_num_data_valid   |   in|   11|     ap_fifo|        v264_2|       pointer|
+|v264_2_fifo_cap         |   in|   11|     ap_fifo|        v264_2|       pointer|
+|v264_2_empty_n          |   in|    1|     ap_fifo|        v264_2|       pointer|
+|v264_2_read             |  out|    1|     ap_fifo|        v264_2|       pointer|
+|v264_3_dout             |   in|   32|     ap_fifo|        v264_3|       pointer|
+|v264_3_num_data_valid   |   in|   11|     ap_fifo|        v264_3|       pointer|
+|v264_3_fifo_cap         |   in|   11|     ap_fifo|        v264_3|       pointer|
+|v264_3_empty_n          |   in|    1|     ap_fifo|        v264_3|       pointer|
+|v264_3_read             |  out|    1|     ap_fifo|        v264_3|       pointer|
+|v264_4_dout             |   in|   32|     ap_fifo|        v264_4|       pointer|
+|v264_4_num_data_valid   |   in|   11|     ap_fifo|        v264_4|       pointer|
+|v264_4_fifo_cap         |   in|   11|     ap_fifo|        v264_4|       pointer|
+|v264_4_empty_n          |   in|    1|     ap_fifo|        v264_4|       pointer|
+|v264_4_read             |  out|    1|     ap_fifo|        v264_4|       pointer|
+|v264_5_dout             |   in|   32|     ap_fifo|        v264_5|       pointer|
+|v264_5_num_data_valid   |   in|   11|     ap_fifo|        v264_5|       pointer|
+|v264_5_fifo_cap         |   in|   11|     ap_fifo|        v264_5|       pointer|
+|v264_5_empty_n          |   in|    1|     ap_fifo|        v264_5|       pointer|
+|v264_5_read             |  out|    1|     ap_fifo|        v264_5|       pointer|
+|v264_6_dout             |   in|   32|     ap_fifo|        v264_6|       pointer|
+|v264_6_num_data_valid   |   in|   11|     ap_fifo|        v264_6|       pointer|
+|v264_6_fifo_cap         |   in|   11|     ap_fifo|        v264_6|       pointer|
+|v264_6_empty_n          |   in|    1|     ap_fifo|        v264_6|       pointer|
+|v264_6_read             |  out|    1|     ap_fifo|        v264_6|       pointer|
+|v264_7_dout             |   in|   32|     ap_fifo|        v264_7|       pointer|
+|v264_7_num_data_valid   |   in|   11|     ap_fifo|        v264_7|       pointer|
+|v264_7_fifo_cap         |   in|   11|     ap_fifo|        v264_7|       pointer|
+|v264_7_empty_n          |   in|    1|     ap_fifo|        v264_7|       pointer|
+|v264_7_read             |  out|    1|     ap_fifo|        v264_7|       pointer|
+|v264_8_dout             |   in|   32|     ap_fifo|        v264_8|       pointer|
+|v264_8_num_data_valid   |   in|   11|     ap_fifo|        v264_8|       pointer|
+|v264_8_fifo_cap         |   in|   11|     ap_fifo|        v264_8|       pointer|
+|v264_8_empty_n          |   in|    1|     ap_fifo|        v264_8|       pointer|
+|v264_8_read             |  out|    1|     ap_fifo|        v264_8|       pointer|
+|v264_9_dout             |   in|   32|     ap_fifo|        v264_9|       pointer|
+|v264_9_num_data_valid   |   in|   11|     ap_fifo|        v264_9|       pointer|
+|v264_9_fifo_cap         |   in|   11|     ap_fifo|        v264_9|       pointer|
+|v264_9_empty_n          |   in|    1|     ap_fifo|        v264_9|       pointer|
+|v264_9_read             |  out|    1|     ap_fifo|        v264_9|       pointer|
+|v264_10_dout            |   in|   32|     ap_fifo|       v264_10|       pointer|
+|v264_10_num_data_valid  |   in|   11|     ap_fifo|       v264_10|       pointer|
+|v264_10_fifo_cap        |   in|   11|     ap_fifo|       v264_10|       pointer|
+|v264_10_empty_n         |   in|    1|     ap_fifo|       v264_10|       pointer|
+|v264_10_read            |  out|    1|     ap_fifo|       v264_10|       pointer|
+|v264_11_dout            |   in|   32|     ap_fifo|       v264_11|       pointer|
+|v264_11_num_data_valid  |   in|   11|     ap_fifo|       v264_11|       pointer|
+|v264_11_fifo_cap        |   in|   11|     ap_fifo|       v264_11|       pointer|
+|v264_11_empty_n         |   in|    1|     ap_fifo|       v264_11|       pointer|
+|v264_11_read            |  out|    1|     ap_fifo|       v264_11|       pointer|
+|v264_12_dout            |   in|   32|     ap_fifo|       v264_12|       pointer|
+|v264_12_num_data_valid  |   in|   11|     ap_fifo|       v264_12|       pointer|
+|v264_12_fifo_cap        |   in|   11|     ap_fifo|       v264_12|       pointer|
+|v264_12_empty_n         |   in|    1|     ap_fifo|       v264_12|       pointer|
+|v264_12_read            |  out|    1|     ap_fifo|       v264_12|       pointer|
+|v264_13_dout            |   in|   32|     ap_fifo|       v264_13|       pointer|
+|v264_13_num_data_valid  |   in|   11|     ap_fifo|       v264_13|       pointer|
+|v264_13_fifo_cap        |   in|   11|     ap_fifo|       v264_13|       pointer|
+|v264_13_empty_n         |   in|    1|     ap_fifo|       v264_13|       pointer|
+|v264_13_read            |  out|    1|     ap_fifo|       v264_13|       pointer|
+|v264_14_dout            |   in|   32|     ap_fifo|       v264_14|       pointer|
+|v264_14_num_data_valid  |   in|   11|     ap_fifo|       v264_14|       pointer|
+|v264_14_fifo_cap        |   in|   11|     ap_fifo|       v264_14|       pointer|
+|v264_14_empty_n         |   in|    1|     ap_fifo|       v264_14|       pointer|
+|v264_14_read            |  out|    1|     ap_fifo|       v264_14|       pointer|
+|v264_15_dout            |   in|   32|     ap_fifo|       v264_15|       pointer|
+|v264_15_num_data_valid  |   in|   11|     ap_fifo|       v264_15|       pointer|
+|v264_15_fifo_cap        |   in|   11|     ap_fifo|       v264_15|       pointer|
+|v264_15_empty_n         |   in|    1|     ap_fifo|       v264_15|       pointer|
+|v264_15_read            |  out|    1|     ap_fifo|       v264_15|       pointer|
+|v264_16_dout            |   in|   32|     ap_fifo|       v264_16|       pointer|
+|v264_16_num_data_valid  |   in|   11|     ap_fifo|       v264_16|       pointer|
+|v264_16_fifo_cap        |   in|   11|     ap_fifo|       v264_16|       pointer|
+|v264_16_empty_n         |   in|    1|     ap_fifo|       v264_16|       pointer|
+|v264_16_read            |  out|    1|     ap_fifo|       v264_16|       pointer|
+|v264_17_dout            |   in|   32|     ap_fifo|       v264_17|       pointer|
+|v264_17_num_data_valid  |   in|   11|     ap_fifo|       v264_17|       pointer|
+|v264_17_fifo_cap        |   in|   11|     ap_fifo|       v264_17|       pointer|
+|v264_17_empty_n         |   in|    1|     ap_fifo|       v264_17|       pointer|
+|v264_17_read            |  out|    1|     ap_fifo|       v264_17|       pointer|
+|v264_18_dout            |   in|   32|     ap_fifo|       v264_18|       pointer|
+|v264_18_num_data_valid  |   in|   11|     ap_fifo|       v264_18|       pointer|
+|v264_18_fifo_cap        |   in|   11|     ap_fifo|       v264_18|       pointer|
+|v264_18_empty_n         |   in|    1|     ap_fifo|       v264_18|       pointer|
+|v264_18_read            |  out|    1|     ap_fifo|       v264_18|       pointer|
+|v264_19_dout            |   in|   32|     ap_fifo|       v264_19|       pointer|
+|v264_19_num_data_valid  |   in|   11|     ap_fifo|       v264_19|       pointer|
+|v264_19_fifo_cap        |   in|   11|     ap_fifo|       v264_19|       pointer|
+|v264_19_empty_n         |   in|    1|     ap_fifo|       v264_19|       pointer|
+|v264_19_read            |  out|    1|     ap_fifo|       v264_19|       pointer|
+|v264_20_dout            |   in|   32|     ap_fifo|       v264_20|       pointer|
+|v264_20_num_data_valid  |   in|   11|     ap_fifo|       v264_20|       pointer|
+|v264_20_fifo_cap        |   in|   11|     ap_fifo|       v264_20|       pointer|
+|v264_20_empty_n         |   in|    1|     ap_fifo|       v264_20|       pointer|
+|v264_20_read            |  out|    1|     ap_fifo|       v264_20|       pointer|
+|v264_21_dout            |   in|   32|     ap_fifo|       v264_21|       pointer|
+|v264_21_num_data_valid  |   in|   11|     ap_fifo|       v264_21|       pointer|
+|v264_21_fifo_cap        |   in|   11|     ap_fifo|       v264_21|       pointer|
+|v264_21_empty_n         |   in|    1|     ap_fifo|       v264_21|       pointer|
+|v264_21_read            |  out|    1|     ap_fifo|       v264_21|       pointer|
+|v264_22_dout            |   in|   32|     ap_fifo|       v264_22|       pointer|
+|v264_22_num_data_valid  |   in|   11|     ap_fifo|       v264_22|       pointer|
+|v264_22_fifo_cap        |   in|   11|     ap_fifo|       v264_22|       pointer|
+|v264_22_empty_n         |   in|    1|     ap_fifo|       v264_22|       pointer|
+|v264_22_read            |  out|    1|     ap_fifo|       v264_22|       pointer|
+|v264_23_dout            |   in|   32|     ap_fifo|       v264_23|       pointer|
+|v264_23_num_data_valid  |   in|   11|     ap_fifo|       v264_23|       pointer|
+|v264_23_fifo_cap        |   in|   11|     ap_fifo|       v264_23|       pointer|
+|v264_23_empty_n         |   in|    1|     ap_fifo|       v264_23|       pointer|
+|v264_23_read            |  out|    1|     ap_fifo|       v264_23|       pointer|
+|v264_24_dout            |   in|   32|     ap_fifo|       v264_24|       pointer|
+|v264_24_num_data_valid  |   in|   11|     ap_fifo|       v264_24|       pointer|
+|v264_24_fifo_cap        |   in|   11|     ap_fifo|       v264_24|       pointer|
+|v264_24_empty_n         |   in|    1|     ap_fifo|       v264_24|       pointer|
+|v264_24_read            |  out|    1|     ap_fifo|       v264_24|       pointer|
+|v264_25_dout            |   in|   32|     ap_fifo|       v264_25|       pointer|
+|v264_25_num_data_valid  |   in|   11|     ap_fifo|       v264_25|       pointer|
+|v264_25_fifo_cap        |   in|   11|     ap_fifo|       v264_25|       pointer|
+|v264_25_empty_n         |   in|    1|     ap_fifo|       v264_25|       pointer|
+|v264_25_read            |  out|    1|     ap_fifo|       v264_25|       pointer|
+|v264_26_dout            |   in|   32|     ap_fifo|       v264_26|       pointer|
+|v264_26_num_data_valid  |   in|   11|     ap_fifo|       v264_26|       pointer|
+|v264_26_fifo_cap        |   in|   11|     ap_fifo|       v264_26|       pointer|
+|v264_26_empty_n         |   in|    1|     ap_fifo|       v264_26|       pointer|
+|v264_26_read            |  out|    1|     ap_fifo|       v264_26|       pointer|
+|v264_27_dout            |   in|   32|     ap_fifo|       v264_27|       pointer|
+|v264_27_num_data_valid  |   in|   11|     ap_fifo|       v264_27|       pointer|
+|v264_27_fifo_cap        |   in|   11|     ap_fifo|       v264_27|       pointer|
+|v264_27_empty_n         |   in|    1|     ap_fifo|       v264_27|       pointer|
+|v264_27_read            |  out|    1|     ap_fifo|       v264_27|       pointer|
+|v263_0_address0         |  out|   10|   ap_memory|        v263_0|         array|
+|v263_0_ce0              |  out|    1|   ap_memory|        v263_0|         array|
+|v263_0_we0              |  out|    1|   ap_memory|        v263_0|         array|
+|v263_0_d0               |  out|   32|   ap_memory|        v263_0|         array|
+|v263_1_address0         |  out|   10|   ap_memory|        v263_1|         array|
+|v263_1_ce0              |  out|    1|   ap_memory|        v263_1|         array|
+|v263_1_we0              |  out|    1|   ap_memory|        v263_1|         array|
+|v263_1_d0               |  out|   32|   ap_memory|        v263_1|         array|
+|v263_2_address0         |  out|   10|   ap_memory|        v263_2|         array|
+|v263_2_ce0              |  out|    1|   ap_memory|        v263_2|         array|
+|v263_2_we0              |  out|    1|   ap_memory|        v263_2|         array|
+|v263_2_d0               |  out|   32|   ap_memory|        v263_2|         array|
+|v263_3_address0         |  out|   10|   ap_memory|        v263_3|         array|
+|v263_3_ce0              |  out|    1|   ap_memory|        v263_3|         array|
+|v263_3_we0              |  out|    1|   ap_memory|        v263_3|         array|
+|v263_3_d0               |  out|   32|   ap_memory|        v263_3|         array|
+|v263_4_address0         |  out|   10|   ap_memory|        v263_4|         array|
+|v263_4_ce0              |  out|    1|   ap_memory|        v263_4|         array|
+|v263_4_we0              |  out|    1|   ap_memory|        v263_4|         array|
+|v263_4_d0               |  out|   32|   ap_memory|        v263_4|         array|
+|v263_5_address0         |  out|   10|   ap_memory|        v263_5|         array|
+|v263_5_ce0              |  out|    1|   ap_memory|        v263_5|         array|
+|v263_5_we0              |  out|    1|   ap_memory|        v263_5|         array|
+|v263_5_d0               |  out|   32|   ap_memory|        v263_5|         array|
+|v263_6_address0         |  out|   10|   ap_memory|        v263_6|         array|
+|v263_6_ce0              |  out|    1|   ap_memory|        v263_6|         array|
+|v263_6_we0              |  out|    1|   ap_memory|        v263_6|         array|
+|v263_6_d0               |  out|   32|   ap_memory|        v263_6|         array|
+|v263_7_address0         |  out|   10|   ap_memory|        v263_7|         array|
+|v263_7_ce0              |  out|    1|   ap_memory|        v263_7|         array|
+|v263_7_we0              |  out|    1|   ap_memory|        v263_7|         array|
+|v263_7_d0               |  out|   32|   ap_memory|        v263_7|         array|
+|v263_8_address0         |  out|   10|   ap_memory|        v263_8|         array|
+|v263_8_ce0              |  out|    1|   ap_memory|        v263_8|         array|
+|v263_8_we0              |  out|    1|   ap_memory|        v263_8|         array|
+|v263_8_d0               |  out|   32|   ap_memory|        v263_8|         array|
+|v263_9_address0         |  out|   10|   ap_memory|        v263_9|         array|
+|v263_9_ce0              |  out|    1|   ap_memory|        v263_9|         array|
+|v263_9_we0              |  out|    1|   ap_memory|        v263_9|         array|
+|v263_9_d0               |  out|   32|   ap_memory|        v263_9|         array|
+|v263_10_address0        |  out|   10|   ap_memory|       v263_10|         array|
+|v263_10_ce0             |  out|    1|   ap_memory|       v263_10|         array|
+|v263_10_we0             |  out|    1|   ap_memory|       v263_10|         array|
+|v263_10_d0              |  out|   32|   ap_memory|       v263_10|         array|
+|v263_11_address0        |  out|   10|   ap_memory|       v263_11|         array|
+|v263_11_ce0             |  out|    1|   ap_memory|       v263_11|         array|
+|v263_11_we0             |  out|    1|   ap_memory|       v263_11|         array|
+|v263_11_d0              |  out|   32|   ap_memory|       v263_11|         array|
+|v263_12_address0        |  out|   10|   ap_memory|       v263_12|         array|
+|v263_12_ce0             |  out|    1|   ap_memory|       v263_12|         array|
+|v263_12_we0             |  out|    1|   ap_memory|       v263_12|         array|
+|v263_12_d0              |  out|   32|   ap_memory|       v263_12|         array|
+|v263_13_address0        |  out|   10|   ap_memory|       v263_13|         array|
+|v263_13_ce0             |  out|    1|   ap_memory|       v263_13|         array|
+|v263_13_we0             |  out|    1|   ap_memory|       v263_13|         array|
+|v263_13_d0              |  out|   32|   ap_memory|       v263_13|         array|
+|v263_14_address0        |  out|   10|   ap_memory|       v263_14|         array|
+|v263_14_ce0             |  out|    1|   ap_memory|       v263_14|         array|
+|v263_14_we0             |  out|    1|   ap_memory|       v263_14|         array|
+|v263_14_d0              |  out|   32|   ap_memory|       v263_14|         array|
+|v263_15_address0        |  out|   10|   ap_memory|       v263_15|         array|
+|v263_15_ce0             |  out|    1|   ap_memory|       v263_15|         array|
+|v263_15_we0             |  out|    1|   ap_memory|       v263_15|         array|
+|v263_15_d0              |  out|   32|   ap_memory|       v263_15|         array|
+|v263_16_address0        |  out|   10|   ap_memory|       v263_16|         array|
+|v263_16_ce0             |  out|    1|   ap_memory|       v263_16|         array|
+|v263_16_we0             |  out|    1|   ap_memory|       v263_16|         array|
+|v263_16_d0              |  out|   32|   ap_memory|       v263_16|         array|
+|v263_17_address0        |  out|   10|   ap_memory|       v263_17|         array|
+|v263_17_ce0             |  out|    1|   ap_memory|       v263_17|         array|
+|v263_17_we0             |  out|    1|   ap_memory|       v263_17|         array|
+|v263_17_d0              |  out|   32|   ap_memory|       v263_17|         array|
+|v263_18_address0        |  out|   10|   ap_memory|       v263_18|         array|
+|v263_18_ce0             |  out|    1|   ap_memory|       v263_18|         array|
+|v263_18_we0             |  out|    1|   ap_memory|       v263_18|         array|
+|v263_18_d0              |  out|   32|   ap_memory|       v263_18|         array|
+|v263_19_address0        |  out|   10|   ap_memory|       v263_19|         array|
+|v263_19_ce0             |  out|    1|   ap_memory|       v263_19|         array|
+|v263_19_we0             |  out|    1|   ap_memory|       v263_19|         array|
+|v263_19_d0              |  out|   32|   ap_memory|       v263_19|         array|
+|v263_20_address0        |  out|   10|   ap_memory|       v263_20|         array|
+|v263_20_ce0             |  out|    1|   ap_memory|       v263_20|         array|
+|v263_20_we0             |  out|    1|   ap_memory|       v263_20|         array|
+|v263_20_d0              |  out|   32|   ap_memory|       v263_20|         array|
+|v263_21_address0        |  out|   10|   ap_memory|       v263_21|         array|
+|v263_21_ce0             |  out|    1|   ap_memory|       v263_21|         array|
+|v263_21_we0             |  out|    1|   ap_memory|       v263_21|         array|
+|v263_21_d0              |  out|   32|   ap_memory|       v263_21|         array|
+|v263_22_address0        |  out|   10|   ap_memory|       v263_22|         array|
+|v263_22_ce0             |  out|    1|   ap_memory|       v263_22|         array|
+|v263_22_we0             |  out|    1|   ap_memory|       v263_22|         array|
+|v263_22_d0              |  out|   32|   ap_memory|       v263_22|         array|
+|v263_23_address0        |  out|   10|   ap_memory|       v263_23|         array|
+|v263_23_ce0             |  out|    1|   ap_memory|       v263_23|         array|
+|v263_23_we0             |  out|    1|   ap_memory|       v263_23|         array|
+|v263_23_d0              |  out|   32|   ap_memory|       v263_23|         array|
+|v263_24_address0        |  out|   10|   ap_memory|       v263_24|         array|
+|v263_24_ce0             |  out|    1|   ap_memory|       v263_24|         array|
+|v263_24_we0             |  out|    1|   ap_memory|       v263_24|         array|
+|v263_24_d0              |  out|   32|   ap_memory|       v263_24|         array|
+|v263_25_address0        |  out|   10|   ap_memory|       v263_25|         array|
+|v263_25_ce0             |  out|    1|   ap_memory|       v263_25|         array|
+|v263_25_we0             |  out|    1|   ap_memory|       v263_25|         array|
+|v263_25_d0              |  out|   32|   ap_memory|       v263_25|         array|
+|v263_26_address0        |  out|   10|   ap_memory|       v263_26|         array|
+|v263_26_ce0             |  out|    1|   ap_memory|       v263_26|         array|
+|v263_26_we0             |  out|    1|   ap_memory|       v263_26|         array|
+|v263_26_d0              |  out|   32|   ap_memory|       v263_26|         array|
+|v263_27_address0        |  out|   10|   ap_memory|       v263_27|         array|
+|v263_27_ce0             |  out|    1|   ap_memory|       v263_27|         array|
+|v263_27_we0             |  out|    1|   ap_memory|       v263_27|         array|
+|v263_27_d0              |  out|   32|   ap_memory|       v263_27|         array|
++------------------------+-----+-----+------------+--------------+--------------+
+

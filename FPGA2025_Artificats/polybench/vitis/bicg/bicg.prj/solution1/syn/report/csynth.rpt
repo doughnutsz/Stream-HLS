@@ -1,0 +1,133 @@
+
+
+================================================================
+== Synthesis Summary Report of 'kernel'
+================================================================
++ General Information: 
+    * Date:           Fri Sep 20 17:09:46 2024
+    * Version:        2023.2 (Build 4023990 on Oct 11 2023)
+    * Project:        bicg.prj
+    * Solution:       solution1 (Vivado IP Flow Target)
+    * Product family: virtexuplusHBM
+    * Target device:  xcu280-fsvh2892-2L-e
+    
+
++ Performance & Resource Estimates: 
+    
+    PS: '+' for module; 'o' for loop; '*' for dataflow
+    +----------------------------------------------------+------+------+---------+-----------+----------+---------+--------+----------+------+---------+-----------+-----------+-----+
+    |                       Modules                      | Issue|      | Latency |  Latency  | Iteration|         |  Trip  |          |      |         |           |           |     |
+    |                       & Loops                      | Type | Slack| (cycles)|    (ns)   |  Latency | Interval|  Count | Pipelined| BRAM |   DSP   |     FF    |    LUT    | URAM|
+    +----------------------------------------------------+------+------+---------+-----------+----------+---------+--------+----------+------+---------+-----------+-----------+-----+
+    |+ kernel                                            |     -|  0.09|  1279606|  4.261e+06|         -|  1279607|       -|        no|     -|  6 (~0%)|  953 (~0%)|  819 (~0%)|    -|
+    | + kernel_Pipeline_VITIS_LOOP_24_1                  |     -|  0.13|      392|  1.305e+03|         -|      392|       -|        no|     -|        -|   11 (~0%)|   59 (~0%)|    -|
+    |  o VITIS_LOOP_24_1                                 |     -|  2.43|      390|  1.299e+03|         1|        1|     390|       yes|     -|        -|          -|          -|    -|
+    | + kernel_Pipeline_VITIS_LOOP_26_2_VITIS_LOOP_29_3  |     -|  0.09|  1279211|  4.260e+06|         -|  1279211|       -|        no|     -|  6 (~0%)|  936 (~0%)|  669 (~0%)|    -|
+    |  o VITIS_LOOP_26_2_VITIS_LOOP_29_3                 |    II|  2.43|  1279209|  4.260e+06|        18|        8|  159900|       yes|     -|        -|          -|          -|    -|
+    +----------------------------------------------------+------+------+---------+-----------+----------+---------+--------+----------+------+---------+-----------+-----------+-----+
+
+
+================================================================
+== HW Interfaces
+================================================================
+* AP_MEMORY
++------------+-----------+----------+
+| Port       | Direction | Bitwidth |
++------------+-----------+----------+
+| A_address0 | out       | 18       |
+| A_q0       | in        | 32       |
+| p_address0 | out       | 9        |
+| p_q0       | in        | 32       |
+| q_address0 | out       | 9        |
+| q_d0       | out       | 32       |
+| r_address0 | out       | 9        |
+| r_q0       | in        | 32       |
+| s_address0 | out       | 9        |
+| s_address1 | out       | 9        |
+| s_d0       | out       | 32       |
+| s_q1       | in        | 32       |
++------------+-----------+----------+
+
+* TOP LEVEL CONTROL
++-----------+------------+-----------------------------------+
+| Interface | Type       | Ports                             |
++-----------+------------+-----------------------------------+
+| ap_clk    | clock      | ap_clk                            |
+| ap_rst    | reset      | ap_rst                            |
+| ap_ctrl   | ap_ctrl_hs | ap_done ap_idle ap_ready ap_start |
++-----------+------------+-----------------------------------+
+
+
+================================================================
+== SW I/O Information
+================================================================
+* Top Function Arguments
++----------+-----------+----------+
+| Argument | Direction | Datatype |
++----------+-----------+----------+
+| A        | in        | float*   |
+| s        | inout     | float*   |
+| q        | out       | float*   |
+| p        | in        | float*   |
+| r        | in        | float*   |
++----------+-----------+----------+
+
+* SW-to-HW Mapping
++----------+--------------+---------+----------+
+| Argument | HW Interface | HW Type | HW Usage |
++----------+--------------+---------+----------+
+| A        | A_address0   | port    | offset   |
+| A        | A_ce0        | port    |          |
+| A        | A_q0         | port    |          |
+| s        | s_address0   | port    | offset   |
+| s        | s_ce0        | port    |          |
+| s        | s_we0        | port    |          |
+| s        | s_d0         | port    |          |
+| s        | s_address1   | port    | offset   |
+| s        | s_ce1        | port    |          |
+| s        | s_q1         | port    |          |
+| q        | q_address0   | port    | offset   |
+| q        | q_ce0        | port    |          |
+| q        | q_we0        | port    |          |
+| q        | q_d0         | port    |          |
+| p        | p_address0   | port    | offset   |
+| p        | p_ce0        | port    |          |
+| p        | p_q0         | port    |          |
+| r        | r_address0   | port    | offset   |
+| r        | r_ce0        | port    |          |
+| r        | r_q0         | port    |          |
++----------+--------------+---------+----------+
+
+
+================================================================
+== Bind Op Report
+================================================================
++----------------------------------------------------+-----+--------+------------+------+-----------+---------+
+| Name                                               | DSP | Pragma | Variable   | Op   | Impl      | Latency |
++----------------------------------------------------+-----+--------+------------+------+-----------+---------+
+| + kernel                                           | 6   |        |            |      |           |         |
+|  + kernel_Pipeline_VITIS_LOOP_24_1                 | 0   |        |            |      |           |         |
+|    add_ln24_fu_64_p2                               |     |        | add_ln24   | add  | fabric    | 0       |
+|  + kernel_Pipeline_VITIS_LOOP_26_2_VITIS_LOOP_29_3 | 6   |        |            |      |           |         |
+|    add_ln26_1_fu_175_p2                            |     |        | add_ln26_1 | add  | fabric    | 0       |
+|    add_ln26_fu_187_p2                              |     |        | add_ln26   | add  | fabric    | 0       |
+|    mac_muladd_9ns_9ns_9ns_18_4_1_U4                | 1   |        | mul_ln31   | mul  | dsp_slice | 3       |
+|    mac_muladd_9ns_9ns_9ns_18_4_1_U4                | 1   |        | add_ln31   | add  | dsp_slice | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U3                | 3   |        | mul        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U2               | 2   |        | add        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U3                | 3   |        | mul1       | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U2               | 2   |        | add1       | fadd | fulldsp   | 6       |
+|    add_ln29_fu_260_p2                              |     |        | add_ln29   | add  | fabric    | 0       |
++----------------------------------------------------+-----+--------+------------+------+-----------+---------+
+
+
+================================================================
+== Storage Report
+================================================================
+  No bind storage info in design
+
+================================================================
+== Pragma Report
+================================================================
+  No pragmas found
+

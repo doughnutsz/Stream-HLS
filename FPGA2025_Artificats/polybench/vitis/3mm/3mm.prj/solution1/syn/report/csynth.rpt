@@ -1,0 +1,173 @@
+
+
+================================================================
+== Synthesis Summary Report of 'kernel'
+================================================================
++ General Information: 
+    * Date:           Fri Sep 20 17:09:46 2024
+    * Version:        2023.2 (Build 4023990 on Oct 11 2023)
+    * Project:        3mm.prj
+    * Solution:       solution1 (Vivado IP Flow Target)
+    * Product family: virtexuplusHBM
+    * Target device:  xcu280-fsvh2892-2L-e
+    
+
++ Performance & Resource Estimates: 
+    
+    PS: '+' for module; 'o' for loop; '*' for dataflow
+    +--------------------------------------------------------------------+------+------+-----------+-----------+----------+-----------+---------+----------+------+----------+------------+------------+-----+
+    |                               Modules                              | Issue|      |  Latency  |  Latency  | Iteration|           |   Trip  |          |      |          |            |            |     |
+    |                               & Loops                              | Type | Slack|  (cycles) |    (ns)   |  Latency |  Interval |  Count  | Pipelined| BRAM |    DSP   |     FF     |     LUT    | URAM|
+    +--------------------------------------------------------------------+------+------+-----------+-----------+----------+-----------+---------+----------+------+----------+------------+------------+-----+
+    |+ kernel                                                            |     -|  0.09|  127680025|  4.252e+08|         -|  127680026|        -|        no|     -|  19 (~0%)|  2019 (~0%)|  2018 (~0%)|    -|
+    | + kernel_Pipeline_VITIS_LOOP_34_1_VITIS_LOOP_35_2_VITIS_LOOP_38_3  |     -|  0.09|   54720011|  1.822e+08|         -|   54720011|        -|        no|     -|   3 (~0%)|   363 (~0%)|   426 (~0%)|    -|
+    |  o VITIS_LOOP_34_1_VITIS_LOOP_35_2_VITIS_LOOP_38_3                 |    II|  2.43|   54720009|  1.822e+08|        18|          8|  6840000|       yes|     -|         -|           -|           -|    -|
+    | + kernel_Pipeline_VITIS_LOOP_42_4_VITIS_LOOP_43_5_VITIS_LOOP_46_6  |     -|  0.09|   70224011|  2.338e+08|         -|   70224011|        -|        no|     -|   8 (~0%)|   825 (~0%)|   704 (~0%)|    -|
+    |  o VITIS_LOOP_42_4_VITIS_LOOP_43_5_VITIS_LOOP_46_6                 |    II|  2.43|   70224009|  2.338e+08|        18|          8|  8778000|       yes|     -|         -|           -|           -|    -|
+    | + kernel_Pipeline_VITIS_LOOP_50_7_VITIS_LOOP_51_8_VITIS_LOOP_54_9  |     -|  0.09|   57456011|  1.913e+08|         -|   57456011|        -|        no|     -|   3 (~0%)|   363 (~0%)|   426 (~0%)|    -|
+    |  o VITIS_LOOP_50_7_VITIS_LOOP_51_8_VITIS_LOOP_54_9                 |    II|  2.43|   57456009|  1.913e+08|        18|          8|  7182000|       yes|     -|         -|           -|           -|    -|
+    +--------------------------------------------------------------------+------+------+-----------+-----------+----------+-----------+---------+----------+------+----------+------------+------------+-----+
+
+
+================================================================
+== HW Interfaces
+================================================================
+* AP_MEMORY
++------------+-----------+----------+
+| Port       | Direction | Bitwidth |
++------------+-----------+----------+
+| A_address0 | out       | 16       |
+| A_q0       | in        | 32       |
+| B_address0 | out       | 16       |
+| B_q0       | in        | 32       |
+| C_address0 | out       | 16       |
+| C_q0       | in        | 32       |
+| D_address0 | out       | 16       |
+| D_q0       | in        | 32       |
+| E_address0 | out       | 16       |
+| E_d0       | out       | 32       |
+| E_q0       | in        | 32       |
+| F_address0 | out       | 16       |
+| F_d0       | out       | 32       |
+| F_q0       | in        | 32       |
+| G_address0 | out       | 16       |
+| G_d0       | out       | 32       |
++------------+-----------+----------+
+
+* TOP LEVEL CONTROL
++-----------+------------+-----------------------------------+
+| Interface | Type       | Ports                             |
++-----------+------------+-----------------------------------+
+| ap_clk    | clock      | ap_clk                            |
+| ap_rst    | reset      | ap_rst                            |
+| ap_ctrl   | ap_ctrl_hs | ap_done ap_idle ap_ready ap_start |
++-----------+------------+-----------------------------------+
+
+
+================================================================
+== SW I/O Information
+================================================================
+* Top Function Arguments
++----------+-----------+----------+
+| Argument | Direction | Datatype |
++----------+-----------+----------+
+| E        | inout     | float*   |
+| A        | in        | float*   |
+| B        | in        | float*   |
+| F        | inout     | float*   |
+| C        | in        | float*   |
+| D        | in        | float*   |
+| G        | out       | float*   |
++----------+-----------+----------+
+
+* SW-to-HW Mapping
++----------+--------------+---------+----------+
+| Argument | HW Interface | HW Type | HW Usage |
++----------+--------------+---------+----------+
+| E        | E_address0   | port    | offset   |
+| E        | E_ce0        | port    |          |
+| E        | E_we0        | port    |          |
+| E        | E_d0         | port    |          |
+| E        | E_q0         | port    |          |
+| A        | A_address0   | port    | offset   |
+| A        | A_ce0        | port    |          |
+| A        | A_q0         | port    |          |
+| B        | B_address0   | port    | offset   |
+| B        | B_ce0        | port    |          |
+| B        | B_q0         | port    |          |
+| F        | F_address0   | port    | offset   |
+| F        | F_ce0        | port    |          |
+| F        | F_we0        | port    |          |
+| F        | F_d0         | port    |          |
+| F        | F_q0         | port    |          |
+| C        | C_address0   | port    | offset   |
+| C        | C_ce0        | port    |          |
+| C        | C_q0         | port    |          |
+| D        | D_address0   | port    | offset   |
+| D        | D_ce0        | port    |          |
+| D        | D_q0         | port    |          |
+| G        | G_address0   | port    | offset   |
+| G        | G_ce0        | port    |          |
+| G        | G_we0        | port    |          |
+| G        | G_d0         | port    |          |
++----------+--------------+---------+----------+
+
+
+================================================================
+== Bind Op Report
+================================================================
++--------------------------------------------------------------------+-----+--------+------------+------+-----------+---------+
+| Name                                                               | DSP | Pragma | Variable   | Op   | Impl      | Latency |
++--------------------------------------------------------------------+-----+--------+------------+------+-----------+---------+
+| + kernel                                                           | 19  |        |            |      |           |         |
+|  + kernel_Pipeline_VITIS_LOOP_34_1_VITIS_LOOP_35_2_VITIS_LOOP_38_3 | 3   |        |            |      |           |         |
+|    add_ln34_1_fu_169_p2                                            |     |        | add_ln34_1 | add  | fabric    | 0       |
+|    add_ln34_fu_178_p2                                              |     |        | add_ln34   | add  | fabric    | 0       |
+|    add_ln35_fu_259_p2                                              |     |        | add_ln35   | add  | fabric    | 0       |
+|    mac_muladd_8ns_8ns_8ns_16_4_1_U5                                | 1   |        | mul_ln37   | mul  | dsp_slice | 3       |
+|    mac_muladd_8ns_8ns_8ns_16_4_1_U3                                | 1   |        | mul_ln39   | mul  | dsp_slice | 3       |
+|    mac_muladd_8ns_8ns_8ns_16_4_1_U5                                | 1   |        | add_ln37   | add  | dsp_slice | 3       |
+|    mac_muladd_8ns_8ns_8ns_16_4_1_U3                                | 1   |        | add_ln39   | add  | dsp_slice | 3       |
+|    mac_muladd_8ns_8ns_8ns_16_4_1_U4                                | 1   |        | mul_ln39_1 | mul  | dsp_slice | 3       |
+|    mac_muladd_8ns_8ns_8ns_16_4_1_U4                                | 1   |        | add_ln39_1 | add  | dsp_slice | 3       |
+|    add_ln38_fu_272_p2                                              |     |        | add_ln38   | add  | fabric    | 0       |
+|    add_ln35_1_fu_311_p2                                            |     |        | add_ln35_1 | add  | fabric    | 0       |
+|  + kernel_Pipeline_VITIS_LOOP_42_4_VITIS_LOOP_43_5_VITIS_LOOP_46_6 | 8   |        |            |      |           |         |
+|    add_ln42_1_fu_169_p2                                            |     |        | add_ln42_1 | add  | fabric    | 0       |
+|    add_ln42_fu_178_p2                                              |     |        | add_ln42   | add  | fabric    | 0       |
+|    add_ln43_fu_259_p2                                              |     |        | add_ln43   | add  | fabric    | 0       |
+|    mac_muladd_8ns_8ns_8ns_16_4_1_U14                               | 1   |        | mul_ln45   | mul  | dsp_slice | 3       |
+|    mac_muladd_8ns_8ns_8ns_16_4_1_U12                               | 1   |        | mul_ln47   | mul  | dsp_slice | 3       |
+|    mac_muladd_8ns_8ns_8ns_16_4_1_U14                               | 1   |        | add_ln45   | add  | dsp_slice | 3       |
+|    mac_muladd_8ns_8ns_8ns_16_4_1_U12                               | 1   |        | add_ln47   | add  | dsp_slice | 3       |
+|    mac_muladd_8ns_8ns_8ns_16_4_1_U13                               | 1   |        | mul_ln47_1 | mul  | dsp_slice | 3       |
+|    mac_muladd_8ns_8ns_8ns_16_4_1_U13                               | 1   |        | add_ln47_1 | add  | dsp_slice | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U11                               | 3   |        | mul1       | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U10                              | 2   |        | add1       | fadd | fulldsp   | 6       |
+|    add_ln46_fu_272_p2                                              |     |        | add_ln46   | add  | fabric    | 0       |
+|    add_ln43_1_fu_311_p2                                            |     |        | add_ln43_1 | add  | fabric    | 0       |
+|  + kernel_Pipeline_VITIS_LOOP_50_7_VITIS_LOOP_51_8_VITIS_LOOP_54_9 | 3   |        |            |      |           |         |
+|    add_ln50_1_fu_169_p2                                            |     |        | add_ln50_1 | add  | fabric    | 0       |
+|    add_ln50_fu_178_p2                                              |     |        | add_ln50   | add  | fabric    | 0       |
+|    add_ln51_fu_259_p2                                              |     |        | add_ln51   | add  | fabric    | 0       |
+|    mac_muladd_8ns_8ns_8ns_16_4_1_U20                               | 1   |        | mul_ln55   | mul  | dsp_slice | 3       |
+|    mac_muladd_8ns_8ns_8ns_16_4_1_U22                               | 1   |        | mul_ln53   | mul  | dsp_slice | 3       |
+|    mac_muladd_8ns_8ns_8ns_16_4_1_U22                               | 1   |        | add_ln53   | add  | dsp_slice | 3       |
+|    mac_muladd_8ns_8ns_8ns_16_4_1_U20                               | 1   |        | add_ln55   | add  | dsp_slice | 3       |
+|    mac_muladd_8ns_8ns_8ns_16_4_1_U21                               | 1   |        | mul_ln55_1 | mul  | dsp_slice | 3       |
+|    mac_muladd_8ns_8ns_8ns_16_4_1_U21                               | 1   |        | add_ln55_1 | add  | dsp_slice | 3       |
+|    add_ln54_fu_272_p2                                              |     |        | add_ln54   | add  | fabric    | 0       |
+|    add_ln51_1_fu_311_p2                                            |     |        | add_ln51_1 | add  | fabric    | 0       |
++--------------------------------------------------------------------+-----+--------+------------+------+-----------+---------+
+
+
+================================================================
+== Storage Report
+================================================================
+  No bind storage info in design
+
+================================================================
+== Pragma Report
+================================================================
+  No pragmas found
+

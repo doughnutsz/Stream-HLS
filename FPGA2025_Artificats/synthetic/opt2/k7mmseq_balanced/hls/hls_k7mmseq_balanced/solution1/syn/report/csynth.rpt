@@ -1,0 +1,381 @@
+
+
+================================================================
+== Synthesis Summary Report of 'forward'
+================================================================
++ General Information: 
+    * Date:           Tue Oct  1 18:34:32 2024
+    * Version:        2023.2 (Build 4023990 on Oct 11 2023)
+    * Project:        hls_k7mmseq_balanced
+    * Solution:       solution1 (Vivado IP Flow Target)
+    * Product family: virtexuplusHBM
+    * Target device:  xcu280-fsvh2892-2L-e
+    
+
++ Performance & Resource Estimates: 
+    
+    PS: '+' for module; 'o' for loop; '*' for dataflow
+    +--------------------------+--------+-------+---------+-----------+----------+---------+--------+----------+---------+----------+------------+------------+---------+
+    |          Modules         |  Issue |       | Latency |  Latency  | Iteration|         |  Trip  |          |         |          |            |            |         |
+    |          & Loops         |  Type  | Slack | (cycles)|    (ns)   |  Latency | Interval|  Count | Pipelined|  BRAM   |    DSP   |     FF     |     LUT    |   URAM  |
+    +--------------------------+--------+-------+---------+-----------+----------+---------+--------+----------+---------+----------+------------+------------+---------+
+    |+ forward*                |  Timing|  -0.19|   262240|  8.733e+05|         -|   262161|       -|  dataflow|  7 (~0%)|  35 (~0%)|  7425 (~0%)|  6665 (~0%)|  7 (~0%)|
+    | + node7                  |  Timing|  -0.19|   262160|  8.730e+05|         -|   262160|       -|        no|        -|   5 (~0%)|  1083 (~0%)|   883 (~0%)|  1 (~0%)|
+    |  o loop20_loop21_loop22  |       -|   2.43|   262158|  8.730e+05|        16|        1|  262144|       yes|        -|         -|           -|           -|        -|
+    | + node6                  |  Timing|  -0.19|   262160|  8.730e+05|         -|   262160|       -|        no|        -|   5 (~0%)|   932 (~0%)|   821 (~0%)|  1 (~0%)|
+    |  o loop17_loop18_loop19  |       -|   2.43|   262158|  8.730e+05|        16|        1|  262144|       yes|        -|         -|           -|           -|        -|
+    | + node5                  |  Timing|  -0.19|   262160|  8.730e+05|         -|   262160|       -|        no|        -|   5 (~0%)|   932 (~0%)|   821 (~0%)|  1 (~0%)|
+    |  o loop14_loop15_loop16  |       -|   2.43|   262158|  8.730e+05|        16|        1|  262144|       yes|        -|         -|           -|           -|        -|
+    | + node4                  |  Timing|  -0.19|   262160|  8.730e+05|         -|   262160|       -|        no|        -|   5 (~0%)|   932 (~0%)|   821 (~0%)|  1 (~0%)|
+    |  o loop11_loop12_loop13  |       -|   2.43|   262158|  8.730e+05|        16|        1|  262144|       yes|        -|         -|           -|           -|        -|
+    | + node3                  |  Timing|  -0.19|   262160|  8.730e+05|         -|   262160|       -|        no|        -|   5 (~0%)|   932 (~0%)|   821 (~0%)|  1 (~0%)|
+    |  o loop8_loop9_loop10    |       -|   2.43|   262158|  8.730e+05|        16|        1|  262144|       yes|        -|         -|           -|           -|        -|
+    | + node2                  |  Timing|  -0.19|   262160|  8.730e+05|         -|   262160|       -|        no|        -|   5 (~0%)|   932 (~0%)|   821 (~0%)|  1 (~0%)|
+    |  o loop5_loop6_loop7     |       -|   2.43|   262158|  8.730e+05|        16|        1|  262144|       yes|        -|         -|           -|           -|        -|
+    | + node1                  |  Timing|  -0.19|   262160|  8.730e+05|         -|   262160|       -|        no|        -|   5 (~0%)|   933 (~0%)|   830 (~0%)|  1 (~0%)|
+    |  o loop2_loop3_loop4     |       -|   2.43|   262158|  8.730e+05|        16|        1|  262144|       yes|        -|         -|           -|           -|        -|
+    | + node0                  |  Timing|  -0.06|     4099|  1.365e+04|         -|     4099|       -|        no|        -|         -|    77 (~0%)|   206 (~0%)|        -|
+    |  o loop0_loop1           |       -|   2.43|     4097|  1.364e+04|         3|        1|    4096|       yes|        -|         -|           -|           -|        -|
+    +--------------------------+--------+-------+---------+-----------+----------+---------+--------+----------+---------+----------+------------+------------+---------+
+
+
+================================================================
+== HW Interfaces
+================================================================
+* AP_MEMORY
++---------------+-----------+----------+
+| Port          | Direction | Bitwidth |
++---------------+-----------+----------+
+| v115_address0 | out       | 12       |
+| v115_address1 | out       | 12       |
+| v115_d0       | out       | 32       |
+| v115_d1       | out       | 32       |
+| v115_q0       | in        | 32       |
+| v115_q1       | in        | 32       |
+| v116_address0 | out       | 12       |
+| v116_address1 | out       | 12       |
+| v116_d0       | out       | 32       |
+| v116_d1       | out       | 32       |
+| v116_q0       | in        | 32       |
+| v116_q1       | in        | 32       |
+| v117_address0 | out       | 12       |
+| v117_address1 | out       | 12       |
+| v117_d0       | out       | 32       |
+| v117_d1       | out       | 32       |
+| v117_q0       | in        | 32       |
+| v117_q1       | in        | 32       |
+| v118_address0 | out       | 12       |
+| v118_address1 | out       | 12       |
+| v118_d0       | out       | 32       |
+| v118_d1       | out       | 32       |
+| v118_q0       | in        | 32       |
+| v118_q1       | in        | 32       |
+| v119_address0 | out       | 12       |
+| v119_address1 | out       | 12       |
+| v119_d0       | out       | 32       |
+| v119_d1       | out       | 32       |
+| v119_q0       | in        | 32       |
+| v119_q1       | in        | 32       |
+| v120_address0 | out       | 12       |
+| v120_address1 | out       | 12       |
+| v120_d0       | out       | 32       |
+| v120_d1       | out       | 32       |
+| v120_q0       | in        | 32       |
+| v120_q1       | in        | 32       |
+| v121_address0 | out       | 12       |
+| v121_address1 | out       | 12       |
+| v121_d0       | out       | 32       |
+| v121_d1       | out       | 32       |
+| v121_q0       | in        | 32       |
+| v121_q1       | in        | 32       |
+| v122_address0 | out       | 12       |
+| v122_address1 | out       | 12       |
+| v122_d0       | out       | 32       |
+| v122_d1       | out       | 32       |
+| v122_q0       | in        | 32       |
+| v122_q1       | in        | 32       |
+| v123_address0 | out       | 12       |
+| v123_address1 | out       | 12       |
+| v123_d0       | out       | 32       |
+| v123_d1       | out       | 32       |
+| v123_q0       | in        | 32       |
+| v123_q1       | in        | 32       |
++---------------+-----------+----------+
+
+* TOP LEVEL CONTROL
++-----------+------------+-----------------------------------+
+| Interface | Type       | Ports                             |
++-----------+------------+-----------------------------------+
+| ap_clk    | clock      | ap_clk                            |
+| ap_rst    | reset      | ap_rst                            |
+| ap_ctrl   | ap_ctrl_hs | ap_done ap_idle ap_ready ap_start |
++-----------+------------+-----------------------------------+
+
+
+================================================================
+== SW I/O Information
+================================================================
+* Top Function Arguments
++----------+-----------+----------+
+| Argument | Direction | Datatype |
++----------+-----------+----------+
+| v115     | in        | float*   |
+| v116     | in        | float*   |
+| v117     | in        | float*   |
+| v118     | in        | float*   |
+| v119     | in        | float*   |
+| v120     | in        | float*   |
+| v121     | in        | float*   |
+| v122     | in        | float*   |
+| v123     | out       | float*   |
++----------+-----------+----------+
+
+* SW-to-HW Mapping
++----------+---------------+---------+----------+
+| Argument | HW Interface  | HW Type | HW Usage |
++----------+---------------+---------+----------+
+| v115     | v115_address0 | port    | offset   |
+| v115     | v115_ce0      | port    |          |
+| v115     | v115_d0       | port    |          |
+| v115     | v115_q0       | port    |          |
+| v115     | v115_we0      | port    |          |
+| v115     | v115_address1 | port    | offset   |
+| v115     | v115_ce1      | port    |          |
+| v115     | v115_d1       | port    |          |
+| v115     | v115_q1       | port    |          |
+| v115     | v115_we1      | port    |          |
+| v116     | v116_address0 | port    | offset   |
+| v116     | v116_ce0      | port    |          |
+| v116     | v116_d0       | port    |          |
+| v116     | v116_q0       | port    |          |
+| v116     | v116_we0      | port    |          |
+| v116     | v116_address1 | port    | offset   |
+| v116     | v116_ce1      | port    |          |
+| v116     | v116_d1       | port    |          |
+| v116     | v116_q1       | port    |          |
+| v116     | v116_we1      | port    |          |
+| v117     | v117_address0 | port    | offset   |
+| v117     | v117_ce0      | port    |          |
+| v117     | v117_d0       | port    |          |
+| v117     | v117_q0       | port    |          |
+| v117     | v117_we0      | port    |          |
+| v117     | v117_address1 | port    | offset   |
+| v117     | v117_ce1      | port    |          |
+| v117     | v117_d1       | port    |          |
+| v117     | v117_q1       | port    |          |
+| v117     | v117_we1      | port    |          |
+| v118     | v118_address0 | port    | offset   |
+| v118     | v118_ce0      | port    |          |
+| v118     | v118_d0       | port    |          |
+| v118     | v118_q0       | port    |          |
+| v118     | v118_we0      | port    |          |
+| v118     | v118_address1 | port    | offset   |
+| v118     | v118_ce1      | port    |          |
+| v118     | v118_d1       | port    |          |
+| v118     | v118_q1       | port    |          |
+| v118     | v118_we1      | port    |          |
+| v119     | v119_address0 | port    | offset   |
+| v119     | v119_ce0      | port    |          |
+| v119     | v119_d0       | port    |          |
+| v119     | v119_q0       | port    |          |
+| v119     | v119_we0      | port    |          |
+| v119     | v119_address1 | port    | offset   |
+| v119     | v119_ce1      | port    |          |
+| v119     | v119_d1       | port    |          |
+| v119     | v119_q1       | port    |          |
+| v119     | v119_we1      | port    |          |
+| v120     | v120_address0 | port    | offset   |
+| v120     | v120_ce0      | port    |          |
+| v120     | v120_d0       | port    |          |
+| v120     | v120_q0       | port    |          |
+| v120     | v120_we0      | port    |          |
+| v120     | v120_address1 | port    | offset   |
+| v120     | v120_ce1      | port    |          |
+| v120     | v120_d1       | port    |          |
+| v120     | v120_q1       | port    |          |
+| v120     | v120_we1      | port    |          |
+| v121     | v121_address0 | port    | offset   |
+| v121     | v121_ce0      | port    |          |
+| v121     | v121_d0       | port    |          |
+| v121     | v121_q0       | port    |          |
+| v121     | v121_we0      | port    |          |
+| v121     | v121_address1 | port    | offset   |
+| v121     | v121_ce1      | port    |          |
+| v121     | v121_d1       | port    |          |
+| v121     | v121_q1       | port    |          |
+| v121     | v121_we1      | port    |          |
+| v122     | v122_address0 | port    | offset   |
+| v122     | v122_ce0      | port    |          |
+| v122     | v122_d0       | port    |          |
+| v122     | v122_q0       | port    |          |
+| v122     | v122_we0      | port    |          |
+| v122     | v122_address1 | port    | offset   |
+| v122     | v122_ce1      | port    |          |
+| v122     | v122_d1       | port    |          |
+| v122     | v122_q1       | port    |          |
+| v122     | v122_we1      | port    |          |
+| v123     | v123_address0 | port    | offset   |
+| v123     | v123_ce0      | port    |          |
+| v123     | v123_d0       | port    |          |
+| v123     | v123_q0       | port    |          |
+| v123     | v123_we0      | port    |          |
+| v123     | v123_address1 | port    | offset   |
+| v123     | v123_ce1      | port    |          |
+| v123     | v123_d1       | port    |          |
+| v123     | v123_q1       | port    |          |
+| v123     | v123_we1      | port    |          |
++----------+---------------+---------+----------+
+
+
+================================================================
+== Bind Op Report
+================================================================
++---------------------------------------+-----+--------+-------------+------+---------+---------+
+| Name                                  | DSP | Pragma | Variable    | Op   | Impl    | Latency |
++---------------------------------------+-----+--------+-------------+------+---------+---------+
+| + forward                             | 35  |        |             |      |         |         |
+|  + node7                              | 5   |        |             |      |         |         |
+|    add_ln255_1_fu_201_p2              |     |        | add_ln255_1 | add  | fabric  | 0       |
+|    add_ln255_fu_246_p2                |     |        | add_ln255   | add  | fabric  | 0       |
+|    add_ln256_fu_292_p2                |     |        | add_ln256   | add  | fabric  | 0       |
+|    empty_7_fu_360_p2                  |     |        | empty_7     | add  | fabric  | 0       |
+|    add_ln261_fu_391_p2                |     |        | add_ln261   | add  | fabric  | 0       |
+|    add_ln265_fu_402_p2                |     |        | add_ln265   | add  | fabric  | 0       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U2   | 3   |        | v112        | fmul | maxdsp  | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U1  | 2   |        | v113        | fadd | fulldsp | 6       |
+|    add_ln257_fu_329_p2                |     |        | add_ln257   | add  | fabric  | 0       |
+|    add_ln256_1_fu_213_p2              |     |        | add_ln256_1 | add  | fabric  | 0       |
+|  + node6                              | 5   |        |             |      |         |         |
+|    add_ln220_1_fu_180_p2              |     |        | add_ln220_1 | add  | fabric  | 0       |
+|    add_ln220_fu_308_p2                |     |        | add_ln220   | add  | fabric  | 0       |
+|    add_ln221_fu_246_p2                |     |        | add_ln221   | add  | fabric  | 0       |
+|    add_ln230_fu_348_p2                |     |        | add_ln230   | add  | fabric  | 0       |
+|    add_ln234_fu_359_p2                |     |        | add_ln234   | add  | fabric  | 0       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U10  | 3   |        | v98         | fmul | maxdsp  | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U9  | 2   |        | v99         | fadd | fulldsp | 6       |
+|    add_ln222_fu_289_p2                |     |        | add_ln222   | add  | fabric  | 0       |
+|    add_ln221_1_fu_192_p2              |     |        | add_ln221_1 | add  | fabric  | 0       |
+|  + node5                              | 5   |        |             |      |         |         |
+|    add_ln184_1_fu_180_p2              |     |        | add_ln184_1 | add  | fabric  | 0       |
+|    add_ln184_fu_308_p2                |     |        | add_ln184   | add  | fabric  | 0       |
+|    add_ln185_fu_246_p2                |     |        | add_ln185   | add  | fabric  | 0       |
+|    add_ln194_fu_348_p2                |     |        | add_ln194   | add  | fabric  | 0       |
+|    add_ln198_fu_359_p2                |     |        | add_ln198   | add  | fabric  | 0       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U15  | 3   |        | v82         | fmul | maxdsp  | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U14 | 2   |        | v83         | fadd | fulldsp | 6       |
+|    add_ln186_fu_289_p2                |     |        | add_ln186   | add  | fabric  | 0       |
+|    add_ln185_1_fu_192_p2              |     |        | add_ln185_1 | add  | fabric  | 0       |
+|  + node4                              | 5   |        |             |      |         |         |
+|    add_ln148_1_fu_180_p2              |     |        | add_ln148_1 | add  | fabric  | 0       |
+|    add_ln148_fu_308_p2                |     |        | add_ln148   | add  | fabric  | 0       |
+|    add_ln149_fu_246_p2                |     |        | add_ln149   | add  | fabric  | 0       |
+|    add_ln158_fu_348_p2                |     |        | add_ln158   | add  | fabric  | 0       |
+|    add_ln162_fu_359_p2                |     |        | add_ln162   | add  | fabric  | 0       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U20  | 3   |        | v66         | fmul | maxdsp  | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U19 | 2   |        | v67         | fadd | fulldsp | 6       |
+|    add_ln150_fu_289_p2                |     |        | add_ln150   | add  | fabric  | 0       |
+|    add_ln149_1_fu_192_p2              |     |        | add_ln149_1 | add  | fabric  | 0       |
+|  + node3                              | 5   |        |             |      |         |         |
+|    add_ln112_1_fu_180_p2              |     |        | add_ln112_1 | add  | fabric  | 0       |
+|    add_ln112_fu_308_p2                |     |        | add_ln112   | add  | fabric  | 0       |
+|    add_ln113_fu_246_p2                |     |        | add_ln113   | add  | fabric  | 0       |
+|    add_ln122_fu_348_p2                |     |        | add_ln122   | add  | fabric  | 0       |
+|    add_ln126_fu_359_p2                |     |        | add_ln126   | add  | fabric  | 0       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U25  | 3   |        | v50         | fmul | maxdsp  | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U24 | 2   |        | v51         | fadd | fulldsp | 6       |
+|    add_ln114_fu_289_p2                |     |        | add_ln114   | add  | fabric  | 0       |
+|    add_ln113_1_fu_192_p2              |     |        | add_ln113_1 | add  | fabric  | 0       |
+|  + node2                              | 5   |        |             |      |         |         |
+|    add_ln76_1_fu_180_p2               |     |        | add_ln76_1  | add  | fabric  | 0       |
+|    add_ln76_fu_308_p2                 |     |        | add_ln76    | add  | fabric  | 0       |
+|    add_ln77_fu_246_p2                 |     |        | add_ln77    | add  | fabric  | 0       |
+|    add_ln86_fu_348_p2                 |     |        | add_ln86    | add  | fabric  | 0       |
+|    add_ln90_fu_359_p2                 |     |        | add_ln90    | add  | fabric  | 0       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U30  | 3   |        | v34         | fmul | maxdsp  | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U29 | 2   |        | v35         | fadd | fulldsp | 6       |
+|    add_ln78_fu_289_p2                 |     |        | add_ln78    | add  | fabric  | 0       |
+|    add_ln77_1_fu_192_p2               |     |        | add_ln77_1  | add  | fabric  | 0       |
+|  + node1                              | 5   |        |             |      |         |         |
+|    add_ln40_1_fu_180_p2               |     |        | add_ln40_1  | add  | fabric  | 0       |
+|    add_ln40_fu_308_p2                 |     |        | add_ln40    | add  | fabric  | 0       |
+|    add_ln41_fu_246_p2                 |     |        | add_ln41    | add  | fabric  | 0       |
+|    add_ln50_fu_348_p2                 |     |        | add_ln50    | add  | fabric  | 0       |
+|    add_ln54_fu_359_p2                 |     |        | add_ln54    | add  | fabric  | 0       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U35  | 3   |        | v18         | fmul | maxdsp  | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U34 | 2   |        | v19         | fadd | fulldsp | 6       |
+|    add_ln42_fu_289_p2                 |     |        | add_ln42    | add  | fabric  | 0       |
+|    add_ln41_1_fu_192_p2               |     |        | add_ln41_1  | add  | fabric  | 0       |
+|  + node0                              | 0   |        |             |      |         |         |
+|    add_ln21_1_fu_103_p2               |     |        | add_ln21_1  | add  | fabric  | 0       |
+|    add_ln21_fu_120_p2                 |     |        | add_ln21    | add  | fabric  | 0       |
+|    add_ln26_fu_164_p2                 |     |        | add_ln26    | add  | fabric  | 0       |
+|    add_ln22_fu_170_p2                 |     |        | add_ln22    | add  | fabric  | 0       |
++---------------------------------------+-----+--------+-------------+------+---------+---------+
+
+
+================================================================
+== Storage Report
+================================================================
++-----------+---------------+--------+------+------+--------+----------+--------+---------+------------------+
+| Name      | Usage         | Type   | BRAM | URAM | Pragma | Variable | Impl   | Latency | Bitwidth, Depth, |
+|           |               |        |      |      |        |          |        |         | Banks            |
++-----------+---------------+--------+------+------+--------+----------+--------+---------+------------------+
+| + forward |               |        | 7    | 7    |        |          |        |         |                  |
+|   v130_U  | fifo channel  | stream | 1    |      |        | v130     | memory | 0       | 32, 4096, 1      |
+|   v129_U  | fifo channel  | stream | 1    |      |        | v129     | memory | 0       | 32, 4096, 1      |
+|   v128_U  | fifo channel  | stream | 1    |      |        | v128     | memory | 0       | 32, 4096, 1      |
+|   v127_U  | fifo channel  | stream | 1    |      |        | v127     | memory | 0       | 32, 4096, 1      |
+|   v126_U  | fifo channel  | stream | 1    |      |        | v126     | memory | 0       | 32, 4096, 1      |
+|   v125_U  | fifo channel  | stream | 1    |      |        | v125     | memory | 0       | 32, 4096, 1      |
+|   v124_U  | fifo channel  | stream | 1    |      |        | v124     | memory | 0       | 32, 4096, 1      |
+|  + node7  |               |        | 0    | 1    |        |          |        |         |                  |
+|    v105_U | ram_s2p array |        |      | 1    |        | v105     | auto   | 1       | 32, 4096, 1      |
+|  + node6  |               |        | 0    | 1    |        |          |        |         |                  |
+|    v89_U  | ram_s2p array |        |      | 1    |        | v89      | auto   | 1       | 32, 4096, 1      |
+|  + node5  |               |        | 0    | 1    |        |          |        |         |                  |
+|    v73_U  | ram_s2p array |        |      | 1    |        | v73      | auto   | 1       | 32, 4096, 1      |
+|  + node4  |               |        | 0    | 1    |        |          |        |         |                  |
+|    v57_U  | ram_s2p array |        |      | 1    |        | v57      | auto   | 1       | 32, 4096, 1      |
+|  + node3  |               |        | 0    | 1    |        |          |        |         |                  |
+|    v41_U  | ram_s2p array |        |      | 1    |        | v41      | auto   | 1       | 32, 4096, 1      |
+|  + node2  |               |        | 0    | 1    |        |          |        |         |                  |
+|    v25_U  | ram_s2p array |        |      | 1    |        | v25      | auto   | 1       | 32, 4096, 1      |
+|  + node1  |               |        | 0    | 1    |        |          |        |         |                  |
+|    v9_U   | ram_s2p array |        |      | 1    |        | v9       | auto   | 1       | 32, 4096, 1      |
++-----------+---------------+--------+------+------+--------+----------+--------+---------+------------------+
+
+
+================================================================
+== Pragma Report
+================================================================
+* Valid Pragma Syntax
++--------------+--------------------------+-----------------------------------------------+
+| Type         | Options                  | Location                                      |
++--------------+--------------------------+-----------------------------------------------+
+| pipeline     | II=1                     | src/k7mmseq_balanced.cpp:23 in node0          |
+| loop_flatten |                          | src/k7mmseq_balanced.cpp:24 in node0          |
+| pipeline     | II=1                     | src/k7mmseq_balanced.cpp:43 in node1          |
+| loop_flatten |                          | src/k7mmseq_balanced.cpp:44 in node1          |
+| pipeline     | II=1                     | src/k7mmseq_balanced.cpp:79 in node2          |
+| loop_flatten |                          | src/k7mmseq_balanced.cpp:80 in node2          |
+| pipeline     | II=1                     | src/k7mmseq_balanced.cpp:115 in node3         |
+| loop_flatten |                          | src/k7mmseq_balanced.cpp:116 in node3         |
+| pipeline     | II=1                     | src/k7mmseq_balanced.cpp:151 in node4         |
+| loop_flatten |                          | src/k7mmseq_balanced.cpp:152 in node4         |
+| pipeline     | II=1                     | src/k7mmseq_balanced.cpp:187 in node5         |
+| loop_flatten |                          | src/k7mmseq_balanced.cpp:188 in node5         |
+| pipeline     | II=1                     | src/k7mmseq_balanced.cpp:223 in node6         |
+| loop_flatten |                          | src/k7mmseq_balanced.cpp:224 in node6         |
+| pipeline     | II=1                     | src/k7mmseq_balanced.cpp:258 in node7         |
+| loop_flatten |                          | src/k7mmseq_balanced.cpp:259 in node7         |
+| dataflow     |                          | src/k7mmseq_balanced.cpp:290 in forward       |
+| stream       | variable=v124 depth=4096 | src/k7mmseq_balanced.cpp:292 in forward, v124 |
+| stream       | variable=v125 depth=4096 | src/k7mmseq_balanced.cpp:294 in forward, v125 |
+| stream       | variable=v126 depth=4096 | src/k7mmseq_balanced.cpp:296 in forward, v126 |
+| stream       | variable=v127 depth=4096 | src/k7mmseq_balanced.cpp:298 in forward, v127 |
+| stream       | variable=v128 depth=4096 | src/k7mmseq_balanced.cpp:300 in forward, v128 |
+| stream       | variable=v129 depth=4096 | src/k7mmseq_balanced.cpp:302 in forward, v129 |
+| stream       | variable=v130 depth=4096 | src/k7mmseq_balanced.cpp:304 in forward, v130 |
++--------------+--------------------------+-----------------------------------------------+
+
+

@@ -1,0 +1,1813 @@
+{
+  "Top": "test_gemm",
+  "RtlTop": "test_gemm",
+  "RtlPrefix": "",
+  "RtlSubPrefix": "test_gemm_",
+  "SourceLanguage": "cpp",
+  "HostMachineBits": "64",
+  "FunctionProtocol": "ap_ctrl_hs",
+  "ResetStyle": "control",
+  "Target": {
+    "Family": "virtexuplushbm",
+    "Device": "xcu280",
+    "Package": "-fsvh2892",
+    "Speed": "-2L-e",
+    "Triple": "fpga64-xilinx-none"
+  },
+  "Args": {
+    "v0": {
+      "index": "0",
+      "direction": "in",
+      "srcType": "float",
+      "srcSize": "32",
+      "hwRefs": [{
+          "type": "register",
+          "interface": "s_axi_ctrl",
+          "name": "v0",
+          "usage": "data",
+          "direction": "in"
+        }]
+    },
+    "v1": {
+      "index": "1",
+      "direction": "in",
+      "srcType": "float",
+      "srcSize": "32",
+      "hwRefs": [{
+          "type": "register",
+          "interface": "s_axi_ctrl",
+          "name": "v1",
+          "usage": "data",
+          "direction": "in"
+        }]
+    },
+    "v2": {
+      "index": "2",
+      "direction": "in",
+      "srcType": "float*",
+      "srcSize": "32",
+      "hwRefs": [
+        {
+          "type": "interface",
+          "interface": "v2_0_0_PORTA",
+          "name": "",
+          "usage": "data",
+          "direction": "in"
+        },
+        {
+          "type": "interface",
+          "interface": "v2_0_1_PORTA",
+          "name": "",
+          "usage": "data",
+          "direction": "in"
+        },
+        {
+          "type": "interface",
+          "interface": "v2_1_0_PORTA",
+          "name": "",
+          "usage": "data",
+          "direction": "in"
+        },
+        {
+          "type": "interface",
+          "interface": "v2_1_1_PORTA",
+          "name": "",
+          "usage": "data",
+          "direction": "in"
+        }
+      ]
+    },
+    "v3": {
+      "index": "3",
+      "direction": "in",
+      "srcType": "float*",
+      "srcSize": "32",
+      "hwRefs": [
+        {
+          "type": "interface",
+          "interface": "v3_0_0_PORTA",
+          "name": "",
+          "usage": "data",
+          "direction": "in"
+        },
+        {
+          "type": "interface",
+          "interface": "v3_0_1_PORTA",
+          "name": "",
+          "usage": "data",
+          "direction": "in"
+        },
+        {
+          "type": "interface",
+          "interface": "v3_1_0_PORTA",
+          "name": "",
+          "usage": "data",
+          "direction": "in"
+        },
+        {
+          "type": "interface",
+          "interface": "v3_1_1_PORTA",
+          "name": "",
+          "usage": "data",
+          "direction": "in"
+        }
+      ]
+    },
+    "v4": {
+      "index": "4",
+      "direction": "inout",
+      "srcType": "float*",
+      "srcSize": "32",
+      "hwRefs": [
+        {
+          "type": "interface",
+          "interface": "v4_0_0_PORTA",
+          "name": "",
+          "usage": "data",
+          "direction": "inout"
+        },
+        {
+          "type": "interface",
+          "interface": "v4_0_0_PORTB",
+          "name": "",
+          "usage": "data",
+          "direction": "inout"
+        },
+        {
+          "type": "interface",
+          "interface": "v4_0_1_PORTA",
+          "name": "",
+          "usage": "data",
+          "direction": "inout"
+        },
+        {
+          "type": "interface",
+          "interface": "v4_0_1_PORTB",
+          "name": "",
+          "usage": "data",
+          "direction": "inout"
+        },
+        {
+          "type": "interface",
+          "interface": "v4_1_0_PORTA",
+          "name": "",
+          "usage": "data",
+          "direction": "inout"
+        },
+        {
+          "type": "interface",
+          "interface": "v4_1_0_PORTB",
+          "name": "",
+          "usage": "data",
+          "direction": "inout"
+        },
+        {
+          "type": "interface",
+          "interface": "v4_1_1_PORTA",
+          "name": "",
+          "usage": "data",
+          "direction": "inout"
+        },
+        {
+          "type": "interface",
+          "interface": "v4_1_1_PORTB",
+          "name": "",
+          "usage": "data",
+          "direction": "inout"
+        }
+      ]
+    }
+  },
+  "HlsSolution": {
+    "FlowTarget": "vivado",
+    "ConfigTcl": [
+      "config_compile -complex-mul-dsp=0",
+      "config_compile -unsafe_math_optimizations=1"
+    ],
+    "DirectiveTcl": ["set_directive_top test_gemm -name test_gemm"],
+    "ProfileOption": "0",
+    "ProfileType": "none",
+    "KernelName": "test_gemm"
+  },
+  "ClockInfo": {
+    "ClockName": "ap_clk",
+    "ClockPeriod": "3.33",
+    "Uncertainty": "0.8991",
+    "IsCombinational": "0",
+    "II": "1331041",
+    "Latency": "1331040"
+  },
+  "Xdc": {"OocClocks": ["create_clock -name ap_clk -period 3.330 [get_ports ap_clk]"]},
+  "Ipx": {
+    "Vendor": "xilinx.com",
+    "Library": "hls",
+    "Name": "test_gemm",
+    "Version": "1.0",
+    "DisplayName": "Test_gemm",
+    "Revision": "2113767446",
+    "Description": "An IP generated by Vitis HLS",
+    "Taxonomy": "\/VITIS_HLS_IP",
+    "AutoFamilySupport": "",
+    "ZipFile": "xilinx_com_hls_test_gemm_1_0.zip"
+  },
+  "Files": {
+    "CSource": ["..\/..\/gemm.cpp"],
+    "Vhdl": [
+      "impl\/vhdl\/test_gemm_ctrl_s_axi.vhd",
+      "impl\/vhdl\/test_gemm_fadd_32ns_32ns_32_7_full_dsp_1.vhd",
+      "impl\/vhdl\/test_gemm_flow_control_loop_pipe_sequential_init.vhd",
+      "impl\/vhdl\/test_gemm_fmul_32ns_32ns_32_4_max_dsp_1.vhd",
+      "impl\/vhdl\/test_gemm_mac_muladd_7ns_7ns_7ns_14_4_1.vhd",
+      "impl\/vhdl\/test_gemm_test_gemm_Pipeline_VITIS_LOOP_49_1_VITIS_LOOP_50_2.vhd",
+      "impl\/vhdl\/test_gemm_test_gemm_Pipeline_VITIS_LOOP_66_3_VITIS_LOOP_67_4_VITIS_LOOP_68_5.vhd",
+      "impl\/vhdl\/test_gemm.vhd"
+    ],
+    "Verilog": [
+      "impl\/verilog\/test_gemm_ctrl_s_axi.v",
+      "impl\/verilog\/test_gemm_fadd_32ns_32ns_32_7_full_dsp_1.v",
+      "impl\/verilog\/test_gemm_flow_control_loop_pipe_sequential_init.v",
+      "impl\/verilog\/test_gemm_fmul_32ns_32ns_32_4_max_dsp_1.v",
+      "impl\/verilog\/test_gemm_mac_muladd_7ns_7ns_7ns_14_4_1.v",
+      "impl\/verilog\/test_gemm_test_gemm_Pipeline_VITIS_LOOP_49_1_VITIS_LOOP_50_2.v",
+      "impl\/verilog\/test_gemm_test_gemm_Pipeline_VITIS_LOOP_66_3_VITIS_LOOP_67_4_VITIS_LOOP_68_5.v",
+      "impl\/verilog\/test_gemm.v"
+    ],
+    "SwDriver": [
+      "impl\/misc\/drivers\/test_gemm_v1_0\/data\/test_gemm.mdd",
+      "impl\/misc\/drivers\/test_gemm_v1_0\/data\/test_gemm.tcl",
+      "impl\/misc\/drivers\/test_gemm_v1_0\/data\/test_gemm.yaml",
+      "impl\/misc\/drivers\/test_gemm_v1_0\/src\/CMakeLists.txt",
+      "impl\/misc\/drivers\/test_gemm_v1_0\/src\/Makefile",
+      "impl\/misc\/drivers\/test_gemm_v1_0\/src\/xtest_gemm.c",
+      "impl\/misc\/drivers\/test_gemm_v1_0\/src\/xtest_gemm.h",
+      "impl\/misc\/drivers\/test_gemm_v1_0\/src\/xtest_gemm_hw.h",
+      "impl\/misc\/drivers\/test_gemm_v1_0\/src\/xtest_gemm_linux.c",
+      "impl\/misc\/drivers\/test_gemm_v1_0\/src\/xtest_gemm_sinit.c"
+    ],
+    "IpMisc": ["impl\/misc\/logo.png"],
+    "Subcore": [
+      "impl\/misc\/test_gemm_fadd_32ns_32ns_32_7_full_dsp_1_ip.tcl",
+      "impl\/misc\/test_gemm_fmul_32ns_32ns_32_4_max_dsp_1_ip.tcl"
+    ],
+    "CsynthXml": "syn\/report\/csynth.xml",
+    "DebugDir": ".debug",
+    "KernelXml": ".autopilot\/db\/kernel.internal.xml",
+    "Xo": "",
+    "XoHlsDir": "",
+    "ProtoInst": [".debug\/test_gemm.protoinst"]
+  },
+  "SubcoreInfo": {
+    "HasXpmMemory": false,
+    "HasClockedDsp": false,
+    "Ip": [
+      {
+        "Name": "test_gemm_fadd_32ns_32ns_32_7_full_dsp_1_ip",
+        "Vlnv": "xilinx.com:ip:floating_point:7.1",
+        "Params": "CONFIG.a_precision_type Single CONFIG.a_tuser_width 1 CONFIG.add_sub_value Add CONFIG.b_tuser_width 1 CONFIG.c_a_exponent_width 8 CONFIG.c_a_fraction_width 24 CONFIG.c_compare_operation Programmable CONFIG.c_has_divide_by_zero false CONFIG.c_has_invalid_op false CONFIG.c_has_overflow false CONFIG.c_has_underflow false CONFIG.c_latency 5 CONFIG.c_mult_usage Full_Usage CONFIG.c_optimization Speed_Optimized CONFIG.c_rate 1 CONFIG.c_result_exponent_width 8 CONFIG.c_result_fraction_width 24 CONFIG.component_name test_gemm_fadd_32ns_32ns_32_7_full_dsp_1_ip CONFIG.flow_control NonBlocking CONFIG.has_a_tlast false CONFIG.has_a_tuser false CONFIG.has_aclken true CONFIG.has_aresetn false CONFIG.has_b_tlast false CONFIG.has_b_tuser false CONFIG.has_operation_tlast false CONFIG.has_operation_tuser false CONFIG.has_result_tready false CONFIG.maximum_latency false CONFIG.operation_tuser_width 1 CONFIG.operation_type Add_Subtract CONFIG.result_precision_type Single CONFIG.result_tlast_behv Null"
+      },
+      {
+        "Name": "test_gemm_fmul_32ns_32ns_32_4_max_dsp_1_ip",
+        "Vlnv": "xilinx.com:ip:floating_point:7.1",
+        "Params": "CONFIG.a_precision_type Single CONFIG.a_tuser_width 1 CONFIG.add_sub_value Both CONFIG.b_tuser_width 1 CONFIG.c_a_exponent_width 8 CONFIG.c_a_fraction_width 24 CONFIG.c_compare_operation Programmable CONFIG.c_has_divide_by_zero false CONFIG.c_has_invalid_op false CONFIG.c_has_overflow false CONFIG.c_has_underflow false CONFIG.c_latency 2 CONFIG.c_mult_usage Max_Usage CONFIG.c_optimization Speed_Optimized CONFIG.c_rate 1 CONFIG.c_result_exponent_width 8 CONFIG.c_result_fraction_width 24 CONFIG.component_name test_gemm_fmul_32ns_32ns_32_4_max_dsp_1_ip CONFIG.flow_control NonBlocking CONFIG.has_a_tlast false CONFIG.has_a_tuser false CONFIG.has_aclken true CONFIG.has_aresetn false CONFIG.has_b_tlast false CONFIG.has_b_tuser false CONFIG.has_operation_tlast false CONFIG.has_operation_tuser false CONFIG.has_result_tready false CONFIG.maximum_latency false CONFIG.operation_tuser_width 1 CONFIG.operation_type Multiply CONFIG.result_precision_type Single CONFIG.result_tlast_behv Null"
+      }
+    ]
+  },
+  "Interfaces": {
+    "s_axi_ctrl": {
+      "type": "axi4lite",
+      "busTypeName": "aximm",
+      "mode": "slave",
+      "dataWidth": "32",
+      "addrWidth": "5",
+      "portPrefix": "s_axi_ctrl_",
+      "paramPrefix": "C_S_AXI_CTRL_",
+      "ports": [
+        "s_axi_ctrl_ARADDR",
+        "s_axi_ctrl_ARREADY",
+        "s_axi_ctrl_ARVALID",
+        "s_axi_ctrl_AWADDR",
+        "s_axi_ctrl_AWREADY",
+        "s_axi_ctrl_AWVALID",
+        "s_axi_ctrl_BREADY",
+        "s_axi_ctrl_BRESP",
+        "s_axi_ctrl_BVALID",
+        "s_axi_ctrl_RDATA",
+        "s_axi_ctrl_RREADY",
+        "s_axi_ctrl_RRESP",
+        "s_axi_ctrl_RVALID",
+        "s_axi_ctrl_WDATA",
+        "s_axi_ctrl_WREADY",
+        "s_axi_ctrl_WSTRB",
+        "s_axi_ctrl_WVALID"
+      ],
+      "registers": [
+        {
+          "offset": "0x00",
+          "name": "CTRL",
+          "access": "RW",
+          "description": "Control signals",
+          "range": "32",
+          "fields": [
+            {
+              "offset": "0",
+              "width": "1",
+              "name": "AP_START",
+              "access": "RW",
+              "description": "Control signal Register for 'ap_start'."
+            },
+            {
+              "offset": "1",
+              "width": "1",
+              "name": "AP_DONE",
+              "access": "R",
+              "description": "Control signal Register for 'ap_done'."
+            },
+            {
+              "offset": "2",
+              "width": "1",
+              "name": "AP_IDLE",
+              "access": "R",
+              "description": "Control signal Register for 'ap_idle'."
+            },
+            {
+              "offset": "3",
+              "width": "1",
+              "name": "AP_READY",
+              "access": "R",
+              "description": "Control signal Register for 'ap_ready'."
+            },
+            {
+              "offset": "4",
+              "width": "3",
+              "name": "RESERVED_1",
+              "access": "R",
+              "description": "Reserved.  0s on read."
+            },
+            {
+              "offset": "7",
+              "width": "1",
+              "name": "AUTO_RESTART",
+              "access": "RW",
+              "description": "Control signal Register for 'auto_restart'."
+            },
+            {
+              "offset": "8",
+              "width": "1",
+              "name": "RESERVED_2",
+              "access": "R",
+              "description": "Reserved.  0s on read."
+            },
+            {
+              "offset": "9",
+              "width": "1",
+              "name": "INTERRUPT",
+              "access": "R",
+              "description": "Control signal Register for 'interrupt'."
+            },
+            {
+              "offset": "10",
+              "width": "22",
+              "name": "RESERVED_3",
+              "access": "R",
+              "description": "Reserved.  0s on read."
+            }
+          ]
+        },
+        {
+          "offset": "0x04",
+          "name": "GIER",
+          "access": "RW",
+          "description": "Global Interrupt Enable Register",
+          "range": "32",
+          "fields": [
+            {
+              "offset": "0",
+              "width": "1",
+              "name": "Enable",
+              "access": "RW",
+              "description": "Master enable for the device interrupt output to the system interrupt controller: 0 = Disabled, 1 = Enabled"
+            },
+            {
+              "offset": "1",
+              "width": "31",
+              "name": "RESERVED",
+              "access": "R",
+              "description": "Reserved.  0s on read."
+            }
+          ]
+        },
+        {
+          "offset": "0x08",
+          "name": "IP_IER",
+          "access": "RW",
+          "description": "IP Interrupt Enable Register",
+          "range": "32",
+          "fields": [
+            {
+              "offset": "0",
+              "width": "1",
+              "name": "CHAN0_INT_EN",
+              "access": "RW",
+              "description": "Enable Channel 0 (ap_done) Interrupt.  0 = Disabled, 1 = Enabled."
+            },
+            {
+              "offset": "1",
+              "width": "1",
+              "name": "CHAN1_INT_EN",
+              "access": "RW",
+              "description": "Enable Channel 1 (ap_ready) Interrupt.  0 = Disabled, 1 = Enabled."
+            },
+            {
+              "offset": "2",
+              "width": "30",
+              "name": "RESERVED_0",
+              "access": "R",
+              "description": "Reserved.  0s on read."
+            }
+          ]
+        },
+        {
+          "offset": "0x0c",
+          "name": "IP_ISR",
+          "access": "RW",
+          "description": "IP Interrupt Status Register",
+          "range": "32",
+          "fields": [
+            {
+              "offset": "0",
+              "width": "1",
+              "name": "CHAN0_INT_ST",
+              "access": "RTOW",
+              "description": "Channel 0 (ap_done) Interrupt Status. 0 = No Channel 0 interrupt, 1 = Channel 0 interrupt."
+            },
+            {
+              "offset": "1",
+              "width": "1",
+              "name": "CHAN1_INT_ST",
+              "access": "RTOW",
+              "description": "Channel 1 (ap_ready) Interrupt Status. 0 = No Channel 1 interrupt, 1 = Channel 1 interrupt."
+            },
+            {
+              "offset": "2",
+              "width": "30",
+              "name": "RESERVED_0",
+              "access": "R",
+              "description": "Reserved.  0s on read."
+            }
+          ]
+        },
+        {
+          "offset": "0x10",
+          "name": "v0",
+          "access": "W",
+          "description": "Data signal of v0",
+          "range": "32",
+          "fields": [{
+              "offset": "0",
+              "width": "32",
+              "name": "v0",
+              "access": "W",
+              "description": "Bit 31 to 0 of v0"
+            }]
+        },
+        {
+          "offset": "0x18",
+          "name": "v1",
+          "access": "W",
+          "description": "Data signal of v1",
+          "range": "32",
+          "fields": [{
+              "offset": "0",
+              "width": "32",
+              "name": "v1",
+              "access": "W",
+              "description": "Bit 31 to 0 of v1"
+            }]
+        }
+      ],
+      "constraints": [
+        {
+          "constraint_type": "pragma interface",
+          "mode": "s_axilite",
+          "register_option": "0",
+          "offset": "16",
+          "argName": "v0"
+        },
+        {
+          "constraint_type": "pragma interface",
+          "mode": "s_axilite",
+          "register_option": "0",
+          "offset": "24",
+          "argName": "v1"
+        }
+      ]
+    },
+    "ap_clk": {
+      "type": "clock",
+      "busTypeName": "clock",
+      "mode": "slave",
+      "busParams": {
+        "ASSOCIATED_BUSIF": "s_axi_ctrl",
+        "ASSOCIATED_RESET": "ap_rst_n"
+      },
+      "portMap": {"ap_clk": "CLK"},
+      "ports": ["ap_clk"]
+    },
+    "ap_rst_n": {
+      "type": "reset",
+      "busTypeName": "reset",
+      "mode": "slave",
+      "busParams": {"POLARITY": "ACTIVE_LOW"},
+      "portMap": {"ap_rst_n": "RST"},
+      "ports": ["ap_rst_n"]
+    },
+    "interrupt": {
+      "type": "interrupt",
+      "busTypeName": "interrupt",
+      "mode": "master",
+      "dataWidth": "1",
+      "busParams": {"SENSITIVITY": "LEVEL_HIGH"},
+      "portMap": {"interrupt": "INTERRUPT"},
+      "ports": ["interrupt"]
+    },
+    "v2_0_0_PORTA": {
+      "type": "bram",
+      "busTypeName": "bram",
+      "mode": "master",
+      "dataWidth": "32",
+      "addrWidth": "32",
+      "portPrefix": "v2_0_0_",
+      "busParams": {
+        "MASTER_TYPE": "BRAM_CTRL",
+        "MEM_WIDTH": "32",
+        "MEM_SIZE": "4"
+      },
+      "portMap": {
+        "v2_0_0_Addr_A": "ADDR",
+        "v2_0_0_EN_A": "EN",
+        "v2_0_0_WEN_A": "WE",
+        "v2_0_0_Din_A": "DIN",
+        "v2_0_0_Dout_A": "DOUT",
+        "v2_0_0_Clk_A": "CLK",
+        "v2_0_0_Rst_A": "RST"
+      },
+      "ports": [
+        "v2_0_0_Addr_A",
+        "v2_0_0_Clk_A",
+        "v2_0_0_Din_A",
+        "v2_0_0_Dout_A",
+        "v2_0_0_EN_A",
+        "v2_0_0_Rst_A",
+        "v2_0_0_WEN_A"
+      ],
+      "constraints": [{
+          "constraint_type": "pragma interface",
+          "mode": "bram",
+          "register_option": "0",
+          "argName": "v2"
+        }]
+    },
+    "v2_0_1_PORTA": {
+      "type": "bram",
+      "busTypeName": "bram",
+      "mode": "master",
+      "dataWidth": "32",
+      "addrWidth": "32",
+      "portPrefix": "v2_0_1_",
+      "busParams": {
+        "MASTER_TYPE": "BRAM_CTRL",
+        "MEM_WIDTH": "32",
+        "MEM_SIZE": "4"
+      },
+      "portMap": {
+        "v2_0_1_Addr_A": "ADDR",
+        "v2_0_1_EN_A": "EN",
+        "v2_0_1_WEN_A": "WE",
+        "v2_0_1_Din_A": "DIN",
+        "v2_0_1_Dout_A": "DOUT",
+        "v2_0_1_Clk_A": "CLK",
+        "v2_0_1_Rst_A": "RST"
+      },
+      "ports": [
+        "v2_0_1_Addr_A",
+        "v2_0_1_Clk_A",
+        "v2_0_1_Din_A",
+        "v2_0_1_Dout_A",
+        "v2_0_1_EN_A",
+        "v2_0_1_Rst_A",
+        "v2_0_1_WEN_A"
+      ],
+      "constraints": [{
+          "constraint_type": "pragma interface",
+          "mode": "bram",
+          "register_option": "0",
+          "argName": "v2"
+        }]
+    },
+    "v2_1_0_PORTA": {
+      "type": "bram",
+      "busTypeName": "bram",
+      "mode": "master",
+      "dataWidth": "32",
+      "addrWidth": "32",
+      "portPrefix": "v2_1_0_",
+      "busParams": {
+        "MASTER_TYPE": "BRAM_CTRL",
+        "MEM_WIDTH": "32",
+        "MEM_SIZE": "4"
+      },
+      "portMap": {
+        "v2_1_0_Addr_A": "ADDR",
+        "v2_1_0_EN_A": "EN",
+        "v2_1_0_WEN_A": "WE",
+        "v2_1_0_Din_A": "DIN",
+        "v2_1_0_Dout_A": "DOUT",
+        "v2_1_0_Clk_A": "CLK",
+        "v2_1_0_Rst_A": "RST"
+      },
+      "ports": [
+        "v2_1_0_Addr_A",
+        "v2_1_0_Clk_A",
+        "v2_1_0_Din_A",
+        "v2_1_0_Dout_A",
+        "v2_1_0_EN_A",
+        "v2_1_0_Rst_A",
+        "v2_1_0_WEN_A"
+      ],
+      "constraints": [{
+          "constraint_type": "pragma interface",
+          "mode": "bram",
+          "register_option": "0",
+          "argName": "v2"
+        }]
+    },
+    "v2_1_1_PORTA": {
+      "type": "bram",
+      "busTypeName": "bram",
+      "mode": "master",
+      "dataWidth": "32",
+      "addrWidth": "32",
+      "portPrefix": "v2_1_1_",
+      "busParams": {
+        "MASTER_TYPE": "BRAM_CTRL",
+        "MEM_WIDTH": "32",
+        "MEM_SIZE": "4"
+      },
+      "portMap": {
+        "v2_1_1_Addr_A": "ADDR",
+        "v2_1_1_EN_A": "EN",
+        "v2_1_1_WEN_A": "WE",
+        "v2_1_1_Din_A": "DIN",
+        "v2_1_1_Dout_A": "DOUT",
+        "v2_1_1_Clk_A": "CLK",
+        "v2_1_1_Rst_A": "RST"
+      },
+      "ports": [
+        "v2_1_1_Addr_A",
+        "v2_1_1_Clk_A",
+        "v2_1_1_Din_A",
+        "v2_1_1_Dout_A",
+        "v2_1_1_EN_A",
+        "v2_1_1_Rst_A",
+        "v2_1_1_WEN_A"
+      ],
+      "constraints": [{
+          "constraint_type": "pragma interface",
+          "mode": "bram",
+          "register_option": "0",
+          "argName": "v2"
+        }]
+    },
+    "v3_0_0_PORTA": {
+      "type": "bram",
+      "busTypeName": "bram",
+      "mode": "master",
+      "dataWidth": "32",
+      "addrWidth": "32",
+      "portPrefix": "v3_0_0_",
+      "busParams": {
+        "MASTER_TYPE": "BRAM_CTRL",
+        "MEM_WIDTH": "32",
+        "MEM_SIZE": "4"
+      },
+      "portMap": {
+        "v3_0_0_Addr_A": "ADDR",
+        "v3_0_0_EN_A": "EN",
+        "v3_0_0_WEN_A": "WE",
+        "v3_0_0_Din_A": "DIN",
+        "v3_0_0_Dout_A": "DOUT",
+        "v3_0_0_Clk_A": "CLK",
+        "v3_0_0_Rst_A": "RST"
+      },
+      "ports": [
+        "v3_0_0_Addr_A",
+        "v3_0_0_Clk_A",
+        "v3_0_0_Din_A",
+        "v3_0_0_Dout_A",
+        "v3_0_0_EN_A",
+        "v3_0_0_Rst_A",
+        "v3_0_0_WEN_A"
+      ],
+      "constraints": [{
+          "constraint_type": "pragma interface",
+          "mode": "bram",
+          "register_option": "0",
+          "argName": "v3"
+        }]
+    },
+    "v3_0_1_PORTA": {
+      "type": "bram",
+      "busTypeName": "bram",
+      "mode": "master",
+      "dataWidth": "32",
+      "addrWidth": "32",
+      "portPrefix": "v3_0_1_",
+      "busParams": {
+        "MASTER_TYPE": "BRAM_CTRL",
+        "MEM_WIDTH": "32",
+        "MEM_SIZE": "4"
+      },
+      "portMap": {
+        "v3_0_1_Addr_A": "ADDR",
+        "v3_0_1_EN_A": "EN",
+        "v3_0_1_WEN_A": "WE",
+        "v3_0_1_Din_A": "DIN",
+        "v3_0_1_Dout_A": "DOUT",
+        "v3_0_1_Clk_A": "CLK",
+        "v3_0_1_Rst_A": "RST"
+      },
+      "ports": [
+        "v3_0_1_Addr_A",
+        "v3_0_1_Clk_A",
+        "v3_0_1_Din_A",
+        "v3_0_1_Dout_A",
+        "v3_0_1_EN_A",
+        "v3_0_1_Rst_A",
+        "v3_0_1_WEN_A"
+      ],
+      "constraints": [{
+          "constraint_type": "pragma interface",
+          "mode": "bram",
+          "register_option": "0",
+          "argName": "v3"
+        }]
+    },
+    "v3_1_0_PORTA": {
+      "type": "bram",
+      "busTypeName": "bram",
+      "mode": "master",
+      "dataWidth": "32",
+      "addrWidth": "32",
+      "portPrefix": "v3_1_0_",
+      "busParams": {
+        "MASTER_TYPE": "BRAM_CTRL",
+        "MEM_WIDTH": "32",
+        "MEM_SIZE": "4"
+      },
+      "portMap": {
+        "v3_1_0_Addr_A": "ADDR",
+        "v3_1_0_EN_A": "EN",
+        "v3_1_0_WEN_A": "WE",
+        "v3_1_0_Din_A": "DIN",
+        "v3_1_0_Dout_A": "DOUT",
+        "v3_1_0_Clk_A": "CLK",
+        "v3_1_0_Rst_A": "RST"
+      },
+      "ports": [
+        "v3_1_0_Addr_A",
+        "v3_1_0_Clk_A",
+        "v3_1_0_Din_A",
+        "v3_1_0_Dout_A",
+        "v3_1_0_EN_A",
+        "v3_1_0_Rst_A",
+        "v3_1_0_WEN_A"
+      ],
+      "constraints": [{
+          "constraint_type": "pragma interface",
+          "mode": "bram",
+          "register_option": "0",
+          "argName": "v3"
+        }]
+    },
+    "v3_1_1_PORTA": {
+      "type": "bram",
+      "busTypeName": "bram",
+      "mode": "master",
+      "dataWidth": "32",
+      "addrWidth": "32",
+      "portPrefix": "v3_1_1_",
+      "busParams": {
+        "MASTER_TYPE": "BRAM_CTRL",
+        "MEM_WIDTH": "32",
+        "MEM_SIZE": "4"
+      },
+      "portMap": {
+        "v3_1_1_Addr_A": "ADDR",
+        "v3_1_1_EN_A": "EN",
+        "v3_1_1_WEN_A": "WE",
+        "v3_1_1_Din_A": "DIN",
+        "v3_1_1_Dout_A": "DOUT",
+        "v3_1_1_Clk_A": "CLK",
+        "v3_1_1_Rst_A": "RST"
+      },
+      "ports": [
+        "v3_1_1_Addr_A",
+        "v3_1_1_Clk_A",
+        "v3_1_1_Din_A",
+        "v3_1_1_Dout_A",
+        "v3_1_1_EN_A",
+        "v3_1_1_Rst_A",
+        "v3_1_1_WEN_A"
+      ],
+      "constraints": [{
+          "constraint_type": "pragma interface",
+          "mode": "bram",
+          "register_option": "0",
+          "argName": "v3"
+        }]
+    },
+    "v4_0_0_PORTA": {
+      "type": "bram",
+      "busTypeName": "bram",
+      "mode": "master",
+      "dataWidth": "32",
+      "addrWidth": "32",
+      "portPrefix": "v4_0_0_",
+      "busParams": {
+        "MASTER_TYPE": "BRAM_CTRL",
+        "MEM_WIDTH": "32",
+        "MEM_SIZE": "4"
+      },
+      "portMap": {
+        "v4_0_0_Addr_A": "ADDR",
+        "v4_0_0_EN_A": "EN",
+        "v4_0_0_WEN_A": "WE",
+        "v4_0_0_Din_A": "DIN",
+        "v4_0_0_Dout_A": "DOUT",
+        "v4_0_0_Clk_A": "CLK",
+        "v4_0_0_Rst_A": "RST"
+      },
+      "ports": [
+        "v4_0_0_Addr_A",
+        "v4_0_0_Clk_A",
+        "v4_0_0_Din_A",
+        "v4_0_0_Dout_A",
+        "v4_0_0_EN_A",
+        "v4_0_0_Rst_A",
+        "v4_0_0_WEN_A"
+      ],
+      "constraints": [{
+          "constraint_type": "pragma interface",
+          "mode": "bram",
+          "register_option": "0",
+          "argName": "v4"
+        }]
+    },
+    "v4_0_0_PORTB": {
+      "type": "bram",
+      "busTypeName": "bram",
+      "mode": "master",
+      "dataWidth": "32",
+      "addrWidth": "32",
+      "portPrefix": "v4_0_0_",
+      "busParams": {
+        "MASTER_TYPE": "BRAM_CTRL",
+        "MEM_WIDTH": "32",
+        "MEM_SIZE": "4"
+      },
+      "portMap": {
+        "v4_0_0_Addr_B": "ADDR",
+        "v4_0_0_EN_B": "EN",
+        "v4_0_0_WEN_B": "WE",
+        "v4_0_0_Din_B": "DIN",
+        "v4_0_0_Dout_B": "DOUT",
+        "v4_0_0_Clk_B": "CLK",
+        "v4_0_0_Rst_B": "RST"
+      },
+      "ports": [
+        "v4_0_0_Addr_B",
+        "v4_0_0_Clk_B",
+        "v4_0_0_Din_B",
+        "v4_0_0_Dout_B",
+        "v4_0_0_EN_B",
+        "v4_0_0_Rst_B",
+        "v4_0_0_WEN_B"
+      ],
+      "constraints": [{
+          "constraint_type": "pragma interface",
+          "mode": "bram",
+          "register_option": "0",
+          "argName": "v4"
+        }]
+    },
+    "v4_0_1_PORTA": {
+      "type": "bram",
+      "busTypeName": "bram",
+      "mode": "master",
+      "dataWidth": "32",
+      "addrWidth": "32",
+      "portPrefix": "v4_0_1_",
+      "busParams": {
+        "MASTER_TYPE": "BRAM_CTRL",
+        "MEM_WIDTH": "32",
+        "MEM_SIZE": "4"
+      },
+      "portMap": {
+        "v4_0_1_Addr_A": "ADDR",
+        "v4_0_1_EN_A": "EN",
+        "v4_0_1_WEN_A": "WE",
+        "v4_0_1_Din_A": "DIN",
+        "v4_0_1_Dout_A": "DOUT",
+        "v4_0_1_Clk_A": "CLK",
+        "v4_0_1_Rst_A": "RST"
+      },
+      "ports": [
+        "v4_0_1_Addr_A",
+        "v4_0_1_Clk_A",
+        "v4_0_1_Din_A",
+        "v4_0_1_Dout_A",
+        "v4_0_1_EN_A",
+        "v4_0_1_Rst_A",
+        "v4_0_1_WEN_A"
+      ],
+      "constraints": [{
+          "constraint_type": "pragma interface",
+          "mode": "bram",
+          "register_option": "0",
+          "argName": "v4"
+        }]
+    },
+    "v4_0_1_PORTB": {
+      "type": "bram",
+      "busTypeName": "bram",
+      "mode": "master",
+      "dataWidth": "32",
+      "addrWidth": "32",
+      "portPrefix": "v4_0_1_",
+      "busParams": {
+        "MASTER_TYPE": "BRAM_CTRL",
+        "MEM_WIDTH": "32",
+        "MEM_SIZE": "4"
+      },
+      "portMap": {
+        "v4_0_1_Addr_B": "ADDR",
+        "v4_0_1_EN_B": "EN",
+        "v4_0_1_WEN_B": "WE",
+        "v4_0_1_Din_B": "DIN",
+        "v4_0_1_Dout_B": "DOUT",
+        "v4_0_1_Clk_B": "CLK",
+        "v4_0_1_Rst_B": "RST"
+      },
+      "ports": [
+        "v4_0_1_Addr_B",
+        "v4_0_1_Clk_B",
+        "v4_0_1_Din_B",
+        "v4_0_1_Dout_B",
+        "v4_0_1_EN_B",
+        "v4_0_1_Rst_B",
+        "v4_0_1_WEN_B"
+      ],
+      "constraints": [{
+          "constraint_type": "pragma interface",
+          "mode": "bram",
+          "register_option": "0",
+          "argName": "v4"
+        }]
+    },
+    "v4_1_0_PORTA": {
+      "type": "bram",
+      "busTypeName": "bram",
+      "mode": "master",
+      "dataWidth": "32",
+      "addrWidth": "32",
+      "portPrefix": "v4_1_0_",
+      "busParams": {
+        "MASTER_TYPE": "BRAM_CTRL",
+        "MEM_WIDTH": "32",
+        "MEM_SIZE": "4"
+      },
+      "portMap": {
+        "v4_1_0_Addr_A": "ADDR",
+        "v4_1_0_EN_A": "EN",
+        "v4_1_0_WEN_A": "WE",
+        "v4_1_0_Din_A": "DIN",
+        "v4_1_0_Dout_A": "DOUT",
+        "v4_1_0_Clk_A": "CLK",
+        "v4_1_0_Rst_A": "RST"
+      },
+      "ports": [
+        "v4_1_0_Addr_A",
+        "v4_1_0_Clk_A",
+        "v4_1_0_Din_A",
+        "v4_1_0_Dout_A",
+        "v4_1_0_EN_A",
+        "v4_1_0_Rst_A",
+        "v4_1_0_WEN_A"
+      ],
+      "constraints": [{
+          "constraint_type": "pragma interface",
+          "mode": "bram",
+          "register_option": "0",
+          "argName": "v4"
+        }]
+    },
+    "v4_1_0_PORTB": {
+      "type": "bram",
+      "busTypeName": "bram",
+      "mode": "master",
+      "dataWidth": "32",
+      "addrWidth": "32",
+      "portPrefix": "v4_1_0_",
+      "busParams": {
+        "MASTER_TYPE": "BRAM_CTRL",
+        "MEM_WIDTH": "32",
+        "MEM_SIZE": "4"
+      },
+      "portMap": {
+        "v4_1_0_Addr_B": "ADDR",
+        "v4_1_0_EN_B": "EN",
+        "v4_1_0_WEN_B": "WE",
+        "v4_1_0_Din_B": "DIN",
+        "v4_1_0_Dout_B": "DOUT",
+        "v4_1_0_Clk_B": "CLK",
+        "v4_1_0_Rst_B": "RST"
+      },
+      "ports": [
+        "v4_1_0_Addr_B",
+        "v4_1_0_Clk_B",
+        "v4_1_0_Din_B",
+        "v4_1_0_Dout_B",
+        "v4_1_0_EN_B",
+        "v4_1_0_Rst_B",
+        "v4_1_0_WEN_B"
+      ],
+      "constraints": [{
+          "constraint_type": "pragma interface",
+          "mode": "bram",
+          "register_option": "0",
+          "argName": "v4"
+        }]
+    },
+    "v4_1_1_PORTA": {
+      "type": "bram",
+      "busTypeName": "bram",
+      "mode": "master",
+      "dataWidth": "32",
+      "addrWidth": "32",
+      "portPrefix": "v4_1_1_",
+      "busParams": {
+        "MASTER_TYPE": "BRAM_CTRL",
+        "MEM_WIDTH": "32",
+        "MEM_SIZE": "4"
+      },
+      "portMap": {
+        "v4_1_1_Addr_A": "ADDR",
+        "v4_1_1_EN_A": "EN",
+        "v4_1_1_WEN_A": "WE",
+        "v4_1_1_Din_A": "DIN",
+        "v4_1_1_Dout_A": "DOUT",
+        "v4_1_1_Clk_A": "CLK",
+        "v4_1_1_Rst_A": "RST"
+      },
+      "ports": [
+        "v4_1_1_Addr_A",
+        "v4_1_1_Clk_A",
+        "v4_1_1_Din_A",
+        "v4_1_1_Dout_A",
+        "v4_1_1_EN_A",
+        "v4_1_1_Rst_A",
+        "v4_1_1_WEN_A"
+      ],
+      "constraints": [{
+          "constraint_type": "pragma interface",
+          "mode": "bram",
+          "register_option": "0",
+          "argName": "v4"
+        }]
+    },
+    "v4_1_1_PORTB": {
+      "type": "bram",
+      "busTypeName": "bram",
+      "mode": "master",
+      "dataWidth": "32",
+      "addrWidth": "32",
+      "portPrefix": "v4_1_1_",
+      "busParams": {
+        "MASTER_TYPE": "BRAM_CTRL",
+        "MEM_WIDTH": "32",
+        "MEM_SIZE": "4"
+      },
+      "portMap": {
+        "v4_1_1_Addr_B": "ADDR",
+        "v4_1_1_EN_B": "EN",
+        "v4_1_1_WEN_B": "WE",
+        "v4_1_1_Din_B": "DIN",
+        "v4_1_1_Dout_B": "DOUT",
+        "v4_1_1_Clk_B": "CLK",
+        "v4_1_1_Rst_B": "RST"
+      },
+      "ports": [
+        "v4_1_1_Addr_B",
+        "v4_1_1_Clk_B",
+        "v4_1_1_Din_B",
+        "v4_1_1_Dout_B",
+        "v4_1_1_EN_B",
+        "v4_1_1_Rst_B",
+        "v4_1_1_WEN_B"
+      ],
+      "constraints": [{
+          "constraint_type": "pragma interface",
+          "mode": "bram",
+          "register_option": "0",
+          "argName": "v4"
+        }]
+    }
+  },
+  "RtlPorts": {
+    "s_axi_ctrl_AWVALID": {
+      "dir": "in",
+      "width": "1"
+    },
+    "s_axi_ctrl_AWREADY": {
+      "dir": "out",
+      "width": "1"
+    },
+    "s_axi_ctrl_AWADDR": {
+      "dir": "in",
+      "width": "5"
+    },
+    "s_axi_ctrl_WVALID": {
+      "dir": "in",
+      "width": "1"
+    },
+    "s_axi_ctrl_WREADY": {
+      "dir": "out",
+      "width": "1"
+    },
+    "s_axi_ctrl_WDATA": {
+      "dir": "in",
+      "width": "32"
+    },
+    "s_axi_ctrl_WSTRB": {
+      "dir": "in",
+      "width": "4"
+    },
+    "s_axi_ctrl_ARVALID": {
+      "dir": "in",
+      "width": "1"
+    },
+    "s_axi_ctrl_ARREADY": {
+      "dir": "out",
+      "width": "1"
+    },
+    "s_axi_ctrl_ARADDR": {
+      "dir": "in",
+      "width": "5"
+    },
+    "s_axi_ctrl_RVALID": {
+      "dir": "out",
+      "width": "1"
+    },
+    "s_axi_ctrl_RREADY": {
+      "dir": "in",
+      "width": "1"
+    },
+    "s_axi_ctrl_RDATA": {
+      "dir": "out",
+      "width": "32"
+    },
+    "s_axi_ctrl_RRESP": {
+      "dir": "out",
+      "width": "2"
+    },
+    "s_axi_ctrl_BVALID": {
+      "dir": "out",
+      "width": "1"
+    },
+    "s_axi_ctrl_BREADY": {
+      "dir": "in",
+      "width": "1"
+    },
+    "s_axi_ctrl_BRESP": {
+      "dir": "out",
+      "width": "2"
+    },
+    "ap_clk": {
+      "dir": "in",
+      "width": "1"
+    },
+    "ap_rst_n": {
+      "dir": "in",
+      "width": "1"
+    },
+    "interrupt": {
+      "dir": "out",
+      "width": "1"
+    },
+    "v2_0_0_Addr_A": {
+      "dir": "out",
+      "width": "32"
+    },
+    "v2_0_0_EN_A": {
+      "dir": "out",
+      "width": "1"
+    },
+    "v2_0_0_WEN_A": {
+      "dir": "out",
+      "width": "4"
+    },
+    "v2_0_0_Din_A": {
+      "dir": "out",
+      "width": "32"
+    },
+    "v2_0_0_Dout_A": {
+      "dir": "in",
+      "width": "32"
+    },
+    "v2_0_0_Clk_A": {
+      "dir": "out",
+      "width": "1"
+    },
+    "v2_0_0_Rst_A": {
+      "dir": "out",
+      "width": "1"
+    },
+    "v2_0_1_Addr_A": {
+      "dir": "out",
+      "width": "32"
+    },
+    "v2_0_1_EN_A": {
+      "dir": "out",
+      "width": "1"
+    },
+    "v2_0_1_WEN_A": {
+      "dir": "out",
+      "width": "4"
+    },
+    "v2_0_1_Din_A": {
+      "dir": "out",
+      "width": "32"
+    },
+    "v2_0_1_Dout_A": {
+      "dir": "in",
+      "width": "32"
+    },
+    "v2_0_1_Clk_A": {
+      "dir": "out",
+      "width": "1"
+    },
+    "v2_0_1_Rst_A": {
+      "dir": "out",
+      "width": "1"
+    },
+    "v2_1_0_Addr_A": {
+      "dir": "out",
+      "width": "32"
+    },
+    "v2_1_0_EN_A": {
+      "dir": "out",
+      "width": "1"
+    },
+    "v2_1_0_WEN_A": {
+      "dir": "out",
+      "width": "4"
+    },
+    "v2_1_0_Din_A": {
+      "dir": "out",
+      "width": "32"
+    },
+    "v2_1_0_Dout_A": {
+      "dir": "in",
+      "width": "32"
+    },
+    "v2_1_0_Clk_A": {
+      "dir": "out",
+      "width": "1"
+    },
+    "v2_1_0_Rst_A": {
+      "dir": "out",
+      "width": "1"
+    },
+    "v2_1_1_Addr_A": {
+      "dir": "out",
+      "width": "32"
+    },
+    "v2_1_1_EN_A": {
+      "dir": "out",
+      "width": "1"
+    },
+    "v2_1_1_WEN_A": {
+      "dir": "out",
+      "width": "4"
+    },
+    "v2_1_1_Din_A": {
+      "dir": "out",
+      "width": "32"
+    },
+    "v2_1_1_Dout_A": {
+      "dir": "in",
+      "width": "32"
+    },
+    "v2_1_1_Clk_A": {
+      "dir": "out",
+      "width": "1"
+    },
+    "v2_1_1_Rst_A": {
+      "dir": "out",
+      "width": "1"
+    },
+    "v3_0_0_Addr_A": {
+      "dir": "out",
+      "width": "32"
+    },
+    "v3_0_0_EN_A": {
+      "dir": "out",
+      "width": "1"
+    },
+    "v3_0_0_WEN_A": {
+      "dir": "out",
+      "width": "4"
+    },
+    "v3_0_0_Din_A": {
+      "dir": "out",
+      "width": "32"
+    },
+    "v3_0_0_Dout_A": {
+      "dir": "in",
+      "width": "32"
+    },
+    "v3_0_0_Clk_A": {
+      "dir": "out",
+      "width": "1"
+    },
+    "v3_0_0_Rst_A": {
+      "dir": "out",
+      "width": "1"
+    },
+    "v3_0_1_Addr_A": {
+      "dir": "out",
+      "width": "32"
+    },
+    "v3_0_1_EN_A": {
+      "dir": "out",
+      "width": "1"
+    },
+    "v3_0_1_WEN_A": {
+      "dir": "out",
+      "width": "4"
+    },
+    "v3_0_1_Din_A": {
+      "dir": "out",
+      "width": "32"
+    },
+    "v3_0_1_Dout_A": {
+      "dir": "in",
+      "width": "32"
+    },
+    "v3_0_1_Clk_A": {
+      "dir": "out",
+      "width": "1"
+    },
+    "v3_0_1_Rst_A": {
+      "dir": "out",
+      "width": "1"
+    },
+    "v3_1_0_Addr_A": {
+      "dir": "out",
+      "width": "32"
+    },
+    "v3_1_0_EN_A": {
+      "dir": "out",
+      "width": "1"
+    },
+    "v3_1_0_WEN_A": {
+      "dir": "out",
+      "width": "4"
+    },
+    "v3_1_0_Din_A": {
+      "dir": "out",
+      "width": "32"
+    },
+    "v3_1_0_Dout_A": {
+      "dir": "in",
+      "width": "32"
+    },
+    "v3_1_0_Clk_A": {
+      "dir": "out",
+      "width": "1"
+    },
+    "v3_1_0_Rst_A": {
+      "dir": "out",
+      "width": "1"
+    },
+    "v3_1_1_Addr_A": {
+      "dir": "out",
+      "width": "32"
+    },
+    "v3_1_1_EN_A": {
+      "dir": "out",
+      "width": "1"
+    },
+    "v3_1_1_WEN_A": {
+      "dir": "out",
+      "width": "4"
+    },
+    "v3_1_1_Din_A": {
+      "dir": "out",
+      "width": "32"
+    },
+    "v3_1_1_Dout_A": {
+      "dir": "in",
+      "width": "32"
+    },
+    "v3_1_1_Clk_A": {
+      "dir": "out",
+      "width": "1"
+    },
+    "v3_1_1_Rst_A": {
+      "dir": "out",
+      "width": "1"
+    },
+    "v4_0_0_Addr_A": {
+      "dir": "out",
+      "width": "32"
+    },
+    "v4_0_0_EN_A": {
+      "dir": "out",
+      "width": "1"
+    },
+    "v4_0_0_WEN_A": {
+      "dir": "out",
+      "width": "4"
+    },
+    "v4_0_0_Din_A": {
+      "dir": "out",
+      "width": "32"
+    },
+    "v4_0_0_Dout_A": {
+      "dir": "in",
+      "width": "32"
+    },
+    "v4_0_0_Clk_A": {
+      "dir": "out",
+      "width": "1"
+    },
+    "v4_0_0_Rst_A": {
+      "dir": "out",
+      "width": "1"
+    },
+    "v4_0_0_Addr_B": {
+      "dir": "out",
+      "width": "32"
+    },
+    "v4_0_0_EN_B": {
+      "dir": "out",
+      "width": "1"
+    },
+    "v4_0_0_WEN_B": {
+      "dir": "out",
+      "width": "4"
+    },
+    "v4_0_0_Din_B": {
+      "dir": "out",
+      "width": "32"
+    },
+    "v4_0_0_Dout_B": {
+      "dir": "in",
+      "width": "32"
+    },
+    "v4_0_0_Clk_B": {
+      "dir": "out",
+      "width": "1"
+    },
+    "v4_0_0_Rst_B": {
+      "dir": "out",
+      "width": "1"
+    },
+    "v4_0_1_Addr_A": {
+      "dir": "out",
+      "width": "32"
+    },
+    "v4_0_1_EN_A": {
+      "dir": "out",
+      "width": "1"
+    },
+    "v4_0_1_WEN_A": {
+      "dir": "out",
+      "width": "4"
+    },
+    "v4_0_1_Din_A": {
+      "dir": "out",
+      "width": "32"
+    },
+    "v4_0_1_Dout_A": {
+      "dir": "in",
+      "width": "32"
+    },
+    "v4_0_1_Clk_A": {
+      "dir": "out",
+      "width": "1"
+    },
+    "v4_0_1_Rst_A": {
+      "dir": "out",
+      "width": "1"
+    },
+    "v4_0_1_Addr_B": {
+      "dir": "out",
+      "width": "32"
+    },
+    "v4_0_1_EN_B": {
+      "dir": "out",
+      "width": "1"
+    },
+    "v4_0_1_WEN_B": {
+      "dir": "out",
+      "width": "4"
+    },
+    "v4_0_1_Din_B": {
+      "dir": "out",
+      "width": "32"
+    },
+    "v4_0_1_Dout_B": {
+      "dir": "in",
+      "width": "32"
+    },
+    "v4_0_1_Clk_B": {
+      "dir": "out",
+      "width": "1"
+    },
+    "v4_0_1_Rst_B": {
+      "dir": "out",
+      "width": "1"
+    },
+    "v4_1_0_Addr_A": {
+      "dir": "out",
+      "width": "32"
+    },
+    "v4_1_0_EN_A": {
+      "dir": "out",
+      "width": "1"
+    },
+    "v4_1_0_WEN_A": {
+      "dir": "out",
+      "width": "4"
+    },
+    "v4_1_0_Din_A": {
+      "dir": "out",
+      "width": "32"
+    },
+    "v4_1_0_Dout_A": {
+      "dir": "in",
+      "width": "32"
+    },
+    "v4_1_0_Clk_A": {
+      "dir": "out",
+      "width": "1"
+    },
+    "v4_1_0_Rst_A": {
+      "dir": "out",
+      "width": "1"
+    },
+    "v4_1_0_Addr_B": {
+      "dir": "out",
+      "width": "32"
+    },
+    "v4_1_0_EN_B": {
+      "dir": "out",
+      "width": "1"
+    },
+    "v4_1_0_WEN_B": {
+      "dir": "out",
+      "width": "4"
+    },
+    "v4_1_0_Din_B": {
+      "dir": "out",
+      "width": "32"
+    },
+    "v4_1_0_Dout_B": {
+      "dir": "in",
+      "width": "32"
+    },
+    "v4_1_0_Clk_B": {
+      "dir": "out",
+      "width": "1"
+    },
+    "v4_1_0_Rst_B": {
+      "dir": "out",
+      "width": "1"
+    },
+    "v4_1_1_Addr_A": {
+      "dir": "out",
+      "width": "32"
+    },
+    "v4_1_1_EN_A": {
+      "dir": "out",
+      "width": "1"
+    },
+    "v4_1_1_WEN_A": {
+      "dir": "out",
+      "width": "4"
+    },
+    "v4_1_1_Din_A": {
+      "dir": "out",
+      "width": "32"
+    },
+    "v4_1_1_Dout_A": {
+      "dir": "in",
+      "width": "32"
+    },
+    "v4_1_1_Clk_A": {
+      "dir": "out",
+      "width": "1"
+    },
+    "v4_1_1_Rst_A": {
+      "dir": "out",
+      "width": "1"
+    },
+    "v4_1_1_Addr_B": {
+      "dir": "out",
+      "width": "32"
+    },
+    "v4_1_1_EN_B": {
+      "dir": "out",
+      "width": "1"
+    },
+    "v4_1_1_WEN_B": {
+      "dir": "out",
+      "width": "4"
+    },
+    "v4_1_1_Din_B": {
+      "dir": "out",
+      "width": "32"
+    },
+    "v4_1_1_Dout_B": {
+      "dir": "in",
+      "width": "32"
+    },
+    "v4_1_1_Clk_B": {
+      "dir": "out",
+      "width": "1"
+    },
+    "v4_1_1_Rst_B": {
+      "dir": "out",
+      "width": "1"
+    }
+  },
+  "ModuleInfo": {
+    "Hierarchy": {
+      "ModuleName": "test_gemm",
+      "Instances": [
+        {
+          "ModuleName": "test_gemm_Pipeline_VITIS_LOOP_49_1_VITIS_LOOP_50_2",
+          "InstanceName": "grp_test_gemm_Pipeline_VITIS_LOOP_49_1_VITIS_LOOP_50_2_fu_72"
+        },
+        {
+          "ModuleName": "test_gemm_Pipeline_VITIS_LOOP_66_3_VITIS_LOOP_67_4_VITIS_LOOP_68_5",
+          "InstanceName": "grp_test_gemm_Pipeline_VITIS_LOOP_66_3_VITIS_LOOP_67_4_VITIS_LOOP_68_5_fu_86"
+        }
+      ]
+    },
+    "Info": {
+      "test_gemm_Pipeline_VITIS_LOOP_49_1_VITIS_LOOP_50_2": {
+        "FunctionProtocol": "ap_ctrl_hs",
+        "isTaskLevelControl": "0",
+        "isPipelined": "1",
+        "isCombinational": "0",
+        "isOneStateSeq": "0"
+      },
+      "test_gemm_Pipeline_VITIS_LOOP_66_3_VITIS_LOOP_67_4_VITIS_LOOP_68_5": {
+        "FunctionProtocol": "ap_ctrl_hs",
+        "isTaskLevelControl": "0",
+        "isPipelined": "1",
+        "isCombinational": "0",
+        "isOneStateSeq": "0"
+      },
+      "test_gemm": {
+        "FunctionProtocol": "ap_ctrl_hs",
+        "isTaskLevelControl": "0",
+        "isPipelined": "0",
+        "isCombinational": "0",
+        "isOneStateSeq": "0"
+      }
+    },
+    "Metrics": {
+      "test_gemm_Pipeline_VITIS_LOOP_49_1_VITIS_LOOP_50_2": {
+        "Latency": {
+          "LatencyBest": "11010",
+          "LatencyAvg": "11010",
+          "LatencyWorst": "11010",
+          "PipelineII": "11010",
+          "PipelineDepth": "",
+          "PipelineType": "no"
+        },
+        "Timing": {
+          "Target": "3.33",
+          "Uncertainty": "0.90",
+          "Estimate": "2.494"
+        },
+        "Loops": [{
+            "Name": "VITIS_LOOP_49_1_VITIS_LOOP_50_2",
+            "TripCount": "11000",
+            "Latency": "11008",
+            "PipelineII": "1",
+            "PipelineDepth": "10"
+          }],
+        "Area": {
+          "DSP": "1",
+          "AVAIL_DSP": "9024",
+          "UTIL_DSP": "~0",
+          "FF": "629",
+          "AVAIL_FF": "2607360",
+          "UTIL_FF": "~0",
+          "LUT": "336",
+          "AVAIL_LUT": "1303680",
+          "UTIL_LUT": "~0",
+          "BRAM_18K": "0",
+          "AVAIL_BRAM": "4032",
+          "UTIL_BRAM": "0",
+          "URAM": "0",
+          "AVAIL_URAM": "960",
+          "UTIL_URAM": "0"
+        }
+      },
+      "test_gemm_Pipeline_VITIS_LOOP_66_3_VITIS_LOOP_67_4_VITIS_LOOP_68_5": {
+        "Latency": {
+          "LatencyBest": "1320027",
+          "LatencyAvg": "1320027",
+          "LatencyWorst": "1320027",
+          "PipelineII": "1320027",
+          "PipelineDepth": "",
+          "PipelineType": "no"
+        },
+        "Timing": {
+          "Target": "3.33",
+          "Uncertainty": "0.90",
+          "Estimate": "2.342"
+        },
+        "Loops": [{
+            "Name": "VITIS_LOOP_66_3_VITIS_LOOP_67_4_VITIS_LOOP_68_5",
+            "TripCount": "1320000",
+            "Latency": "1320025",
+            "PipelineII": "1",
+            "PipelineDepth": "27"
+          }],
+        "Area": {
+          "DSP": "42",
+          "AVAIL_DSP": "9024",
+          "UTIL_DSP": "~0",
+          "FF": "5468",
+          "AVAIL_FF": "2607360",
+          "UTIL_FF": "~0",
+          "LUT": "2808",
+          "AVAIL_LUT": "1303680",
+          "UTIL_LUT": "~0",
+          "BRAM_18K": "0",
+          "AVAIL_BRAM": "4032",
+          "UTIL_BRAM": "0",
+          "URAM": "0",
+          "AVAIL_URAM": "960",
+          "UTIL_URAM": "0"
+        }
+      },
+      "test_gemm": {
+        "Latency": {
+          "LatencyBest": "1331040",
+          "LatencyAvg": "1331040",
+          "LatencyWorst": "1331040",
+          "PipelineII": "1331041",
+          "PipelineDepth": "",
+          "PipelineType": "no"
+        },
+        "Timing": {
+          "Target": "3.33",
+          "Uncertainty": "0.90",
+          "Estimate": "2.494"
+        },
+        "Area": {
+          "BRAM_18K": "0",
+          "AVAIL_BRAM": "4032",
+          "UTIL_BRAM": "0",
+          "DSP": "55",
+          "AVAIL_DSP": "9024",
+          "UTIL_DSP": "~0",
+          "FF": "6851",
+          "AVAIL_FF": "2607360",
+          "UTIL_FF": "~0",
+          "LUT": "4154",
+          "AVAIL_LUT": "1303680",
+          "UTIL_LUT": "~0",
+          "URAM": "0",
+          "AVAIL_URAM": "960",
+          "UTIL_URAM": "0"
+        }
+      }
+    }
+  },
+  "GenerateBdFiles": "0",
+  "GenData": {
+    "DataVersion": "0.2",
+    "Time": "2024-10-07 12:26:38 PDT",
+    "ToolName": "vitis_hls",
+    "ToolVersion": "2023.2"
+  }
+}

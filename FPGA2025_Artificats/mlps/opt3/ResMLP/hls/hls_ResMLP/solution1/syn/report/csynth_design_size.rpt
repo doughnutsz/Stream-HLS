@@ -1,0 +1,63 @@
+================================================================
+== Design Size Report
+================================================================
+
+* Total Instructions per Compilation Phase
++---------------+-----------------------------+--------------+----------------------------------------------------------------------------------------+
+| Phase         | Step                        | Instructions | Description                                                                            |
++---------------+-----------------------------+--------------+----------------------------------------------------------------------------------------+
+| Compile/Link  |                             |  1,916       | After all functions are compiled and linked into a single design                       |
+|               |                             |              |                                                                                        |
+| Unroll/Inline |                             |              | After user unroll and inline pragmas are applied                                       |
+|               | (1) unroll                  | 19,868       | user unroll pragmas are applied                                                        |
+|               | (2) simplification          |  8,804       | simplification of applied user unroll pragmas                                          |
+|               | (3) inline                  |  8,463       | user inline pragmas are applied                                                        |
+|               | (4) simplification          |  8,463       | simplification of applied user inline pragmas                                          |
+|               |                             |              |                                                                                        |
+| Array/Struct  |                             |              | After user array partition and struct aggregate/disaggregate pragmas are applied       |
+|               | (1) array partition         |  9,435       | user array partition pragmas are applied                                               |
+|               | (2) simplification          |  9,435       | simplification of applied user array partition & struct aggregate/disaggregate pragmas |
+|               | (3) aggregate/disaggregate  |  9,435       | user struct aggregate/disaggregate pragmas are applied                                 |
+|               | (4) array reshape           |  9,435       | apply array reshape pragmas                                                            |
+|               | (5) access patterns         |  9,454       | array access pattern optmizations                                                      |
+|               |                             |              |                                                                                        |
+| Performance   |                             |              | After transformations are applied to meet performance pragma targets                   |
+|               | (1) loop simplification     |  9,397       | loop and instruction simplification                                                    |
+|               | (2) parallelization         |  9,397       | loops are unrolled or pipelined to meet performance targets                            |
+|               | (3) array partition         | 58,373       | arrays are partitioned to meet performance targets                                     |
+|               | (4) simplification          | 11,179       | simplification of design after performance transformations                             |
+|               |                             |              |                                                                                        |
+| HW Transforms |                             |              | After hardware transfomations                                                          |
+|               | (1) lowering                | 12,843       | initial conversion to HW specific instructions                                         |
+|               | (2) optimizations           | 13,520       | high level synthesis optimizations                                                     |
++---------------+-----------------------------+--------------+----------------------------------------------------------------------------------------+
+
+* Instructions per Function for each Compilation Phase
++-----------+----------------+--------------+---------------+--------------+-------------+---------------+
+| Function  | Location       | Compile/Link | Unroll/Inline | Array/Struct | Performance | HW Transforms |
++-----------+----------------+--------------+---------------+--------------+-------------+---------------+
+| + forward | ResMLP.cpp:413 | 1,916        | 8,463         | 9,454        | 11,179      | 13,520        |
+|    node13 | ResMLP.cpp:394 |   61         | 1,075         |  819         |   819       | 1,339         |
+|    node12 | ResMLP.cpp:352 |  172         | 3,015         | 2,039        | 2,189       | 3,002         |
+|    node11 | ResMLP.cpp:328 |   84         |   91          |   67         |    67       |   147         |
+|    node10 | ResMLP.cpp:306 |   74         |   59          |   43         |    43       |    99         |
+|    node9  | ResMLP.cpp:287 |   61         |  283          |  219         |   219       |   355         |
+|    node8  | ResMLP.cpp:240 |  207         |  824          |  661         | 1,161       | 1,384         |
+|    node7  | ResMLP.cpp:212 |   98         |  115          |   91         |    91       |   179         |
+|    node6  | ResMLP.cpp:193 |   61         |  547          |  419         |   419       |   683         |
+|    node5  | ResMLP.cpp:146 |  207         | 1,672         | 1,275        | 2,146       | 2,577         |
+|    node4  | ResMLP.cpp:124 |   75         |  139          |  107         |   107       |   227         |
+|    node3  | ResMLP.cpp:105 |   60         |   91          |   75         |    75       |   115         |
+|    node2  | ResMLP.cpp:58  |  200         |  353          |  321         |   525       |   590         |
+|    node1  | ResMLP.cpp:36  |   74         |   18          |   16         |    16       |    31         |
+|    node0  | ResMLP.cpp:17  |   61         |   15          |   14         |    14       |    24         |
++-----------+----------------+--------------+---------------+--------------+-------------+---------------+
+
+* Design Size Message Settings
++---------------------------------------------+--------+------------------------------------------------------------------+
+| Message Setting                             | Value  | Description                                                      |
++---------------------------------------------+--------+------------------------------------------------------------------+
+| config_compile -design_size_maximum_warning | 100000 | Show a warning when total design instructions exceeds this value |
++---------------------------------------------+--------+------------------------------------------------------------------+
+
+

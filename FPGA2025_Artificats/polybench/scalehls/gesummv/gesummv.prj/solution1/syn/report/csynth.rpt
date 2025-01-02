@@ -1,0 +1,649 @@
+
+
+================================================================
+== Synthesis Summary Report of 'test_gesummv'
+================================================================
++ General Information: 
+    * Date:           Fri Sep 20 17:15:35 2024
+    * Version:        2023.2 (Build 4023990 on Oct 11 2023)
+    * Project:        gesummv.prj
+    * Solution:       solution1 (Vivado IP Flow Target)
+    * Product family: virtexuplusHBM
+    * Target device:  xcu280-fsvh2892-2L-e
+    
+
++ Performance & Resource Estimates: 
+    
+    PS: '+' for module; 'o' for loop; '*' for dataflow
+    +------------------------------------+------+------+---------+-----------+----------+---------+------+----------+------+----------+-------------+-------------+-----+
+    |               Modules              | Issue|      | Latency |  Latency  | Iteration|         | Trip |          |      |          |             |             |     |
+    |               & Loops              | Type | Slack| (cycles)|    (ns)   |  Latency | Interval| Count| Pipelined| BRAM |    DSP   |      FF     |     LUT     | URAM|
+    +------------------------------------+------+------+---------+-----------+----------+---------+------+----------+------+----------+-------------+-------------+-----+
+    |+ test_gesummv                      |     -|  0.09|     6286|  2.093e+04|         -|     6287|     -|        no|     -|  141 (1%)|  21274 (~0%)|  11358 (~0%)|    -|
+    | o VITIS_LOOP_52_1_VITIS_LOOP_53_2  |     -|  2.43|     6284|  2.093e+04|        37|        2|  3125|       yes|     -|         -|            -|            -|    -|
+    +------------------------------------+------+------+---------+-----------+----------+---------+------+----------+------+----------+-------------+-------------+-----+
+
+
+================================================================
+== HW Interfaces
+================================================================
+* S_AXILITE Interfaces
++------------+------------+---------------+--------+----------+
+| Interface  | Data Width | Address Width | Offset | Register |
++------------+------------+---------------+--------+----------+
+| s_axi_ctrl | 32         | 5             | 16     | 0        |
++------------+------------+---------------+--------+----------+
+
+* S_AXILITE Registers
++------------+----------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+| Interface  | Register | Offset | Width | Access | Description                      | Bit Fields                                                           |
++------------+----------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+| s_axi_ctrl | CTRL     | 0x00   | 32    | RW     | Control signals                  | 0=AP_START 1=AP_DONE 2=AP_IDLE 3=AP_READY 7=AUTO_RESTART 9=INTERRUPT |
+| s_axi_ctrl | GIER     | 0x04   | 32    | RW     | Global Interrupt Enable Register | 0=Enable                                                             |
+| s_axi_ctrl | IP_IER   | 0x08   | 32    | RW     | IP Interrupt Enable Register     | 0=CHAN0_INT_EN 1=CHAN1_INT_EN                                        |
+| s_axi_ctrl | IP_ISR   | 0x0c   | 32    | RW     | IP Interrupt Status Register     | 0=CHAN0_INT_ST 1=CHAN1_INT_ST                                        |
+| s_axi_ctrl | v0       | 0x10   | 32    | W      | Data signal of v0                |                                                                      |
+| s_axi_ctrl | v1       | 0x18   | 32    | W      | Data signal of v1                |                                                                      |
++------------+----------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+
+* AP_MEMORY
++-----------------+-----------+----------+
+| Port            | Direction | Bitwidth |
++-----------------+-----------+----------+
+| v2_0_0_address0 | out       | 12       |
+| v2_0_0_q0       | in        | 32       |
+| v2_0_1_address0 | out       | 12       |
+| v2_0_1_q0       | in        | 32       |
+| v2_1_0_address0 | out       | 12       |
+| v2_1_0_q0       | in        | 32       |
+| v2_1_1_address0 | out       | 12       |
+| v2_1_1_q0       | in        | 32       |
+| v2_2_0_address0 | out       | 12       |
+| v2_2_0_q0       | in        | 32       |
+| v2_2_1_address0 | out       | 12       |
+| v2_2_1_q0       | in        | 32       |
+| v2_3_0_address0 | out       | 12       |
+| v2_3_0_q0       | in        | 32       |
+| v2_3_1_address0 | out       | 12       |
+| v2_3_1_q0       | in        | 32       |
+| v2_4_0_address0 | out       | 12       |
+| v2_4_0_q0       | in        | 32       |
+| v2_4_1_address0 | out       | 12       |
+| v2_4_1_q0       | in        | 32       |
+| v2_5_0_address0 | out       | 12       |
+| v2_5_0_q0       | in        | 32       |
+| v2_5_1_address0 | out       | 12       |
+| v2_5_1_q0       | in        | 32       |
+| v2_6_0_address0 | out       | 12       |
+| v2_6_0_q0       | in        | 32       |
+| v2_6_1_address0 | out       | 12       |
+| v2_6_1_q0       | in        | 32       |
+| v2_7_0_address0 | out       | 12       |
+| v2_7_0_q0       | in        | 32       |
+| v2_7_1_address0 | out       | 12       |
+| v2_7_1_q0       | in        | 32       |
+| v2_8_0_address0 | out       | 12       |
+| v2_8_0_q0       | in        | 32       |
+| v2_8_1_address0 | out       | 12       |
+| v2_8_1_q0       | in        | 32       |
+| v2_9_0_address0 | out       | 12       |
+| v2_9_0_q0       | in        | 32       |
+| v2_9_1_address0 | out       | 12       |
+| v2_9_1_q0       | in        | 32       |
+| v3_0_0_address0 | out       | 12       |
+| v3_0_0_q0       | in        | 32       |
+| v3_0_1_address0 | out       | 12       |
+| v3_0_1_q0       | in        | 32       |
+| v3_1_0_address0 | out       | 12       |
+| v3_1_0_q0       | in        | 32       |
+| v3_1_1_address0 | out       | 12       |
+| v3_1_1_q0       | in        | 32       |
+| v3_2_0_address0 | out       | 12       |
+| v3_2_0_q0       | in        | 32       |
+| v3_2_1_address0 | out       | 12       |
+| v3_2_1_q0       | in        | 32       |
+| v3_3_0_address0 | out       | 12       |
+| v3_3_0_q0       | in        | 32       |
+| v3_3_1_address0 | out       | 12       |
+| v3_3_1_q0       | in        | 32       |
+| v3_4_0_address0 | out       | 12       |
+| v3_4_0_q0       | in        | 32       |
+| v3_4_1_address0 | out       | 12       |
+| v3_4_1_q0       | in        | 32       |
+| v3_5_0_address0 | out       | 12       |
+| v3_5_0_q0       | in        | 32       |
+| v3_5_1_address0 | out       | 12       |
+| v3_5_1_q0       | in        | 32       |
+| v3_6_0_address0 | out       | 12       |
+| v3_6_0_q0       | in        | 32       |
+| v3_6_1_address0 | out       | 12       |
+| v3_6_1_q0       | in        | 32       |
+| v3_7_0_address0 | out       | 12       |
+| v3_7_0_q0       | in        | 32       |
+| v3_7_1_address0 | out       | 12       |
+| v3_7_1_q0       | in        | 32       |
+| v3_8_0_address0 | out       | 12       |
+| v3_8_0_q0       | in        | 32       |
+| v3_8_1_address0 | out       | 12       |
+| v3_8_1_q0       | in        | 32       |
+| v3_9_0_address0 | out       | 12       |
+| v3_9_0_q0       | in        | 32       |
+| v3_9_1_address0 | out       | 12       |
+| v3_9_1_q0       | in        | 32       |
+| v4_0_address0   | out       | 5        |
+| v4_0_d0         | out       | 32       |
+| v4_0_q0         | in        | 32       |
+| v4_1_address0   | out       | 5        |
+| v4_1_d0         | out       | 32       |
+| v4_1_q0         | in        | 32       |
+| v4_2_address0   | out       | 5        |
+| v4_2_d0         | out       | 32       |
+| v4_2_q0         | in        | 32       |
+| v4_3_address0   | out       | 5        |
+| v4_3_d0         | out       | 32       |
+| v4_3_q0         | in        | 32       |
+| v4_4_address0   | out       | 5        |
+| v4_4_d0         | out       | 32       |
+| v4_4_q0         | in        | 32       |
+| v4_5_address0   | out       | 5        |
+| v4_5_d0         | out       | 32       |
+| v4_5_q0         | in        | 32       |
+| v4_6_address0   | out       | 5        |
+| v4_6_d0         | out       | 32       |
+| v4_6_q0         | in        | 32       |
+| v4_7_address0   | out       | 5        |
+| v4_7_d0         | out       | 32       |
+| v4_7_q0         | in        | 32       |
+| v4_8_address0   | out       | 5        |
+| v4_8_d0         | out       | 32       |
+| v4_8_q0         | in        | 32       |
+| v4_9_address0   | out       | 5        |
+| v4_9_d0         | out       | 32       |
+| v4_9_q0         | in        | 32       |
+| v5_0_address0   | out       | 7        |
+| v5_0_q0         | in        | 32       |
+| v5_1_address0   | out       | 7        |
+| v5_1_q0         | in        | 32       |
+| v6_0_address0   | out       | 5        |
+| v6_0_d0         | out       | 32       |
+| v6_0_q0         | in        | 32       |
+| v6_1_address0   | out       | 5        |
+| v6_1_d0         | out       | 32       |
+| v6_1_q0         | in        | 32       |
+| v6_2_address0   | out       | 5        |
+| v6_2_d0         | out       | 32       |
+| v6_2_q0         | in        | 32       |
+| v6_3_address0   | out       | 5        |
+| v6_3_d0         | out       | 32       |
+| v6_3_q0         | in        | 32       |
+| v6_4_address0   | out       | 5        |
+| v6_4_d0         | out       | 32       |
+| v6_4_q0         | in        | 32       |
+| v6_5_address0   | out       | 5        |
+| v6_5_address1   | out       | 5        |
+| v6_5_d0         | out       | 32       |
+| v6_5_q1         | in        | 32       |
+| v6_6_address0   | out       | 5        |
+| v6_6_address1   | out       | 5        |
+| v6_6_d0         | out       | 32       |
+| v6_6_q1         | in        | 32       |
+| v6_7_address0   | out       | 5        |
+| v6_7_address1   | out       | 5        |
+| v6_7_d0         | out       | 32       |
+| v6_7_q1         | in        | 32       |
+| v6_8_address0   | out       | 5        |
+| v6_8_address1   | out       | 5        |
+| v6_8_d0         | out       | 32       |
+| v6_8_q1         | in        | 32       |
+| v6_9_address0   | out       | 5        |
+| v6_9_address1   | out       | 5        |
+| v6_9_d0         | out       | 32       |
+| v6_9_q1         | in        | 32       |
++-----------------+-----------+----------+
+
+* TOP LEVEL CONTROL
++-----------+------------+-----------+
+| Interface | Type       | Ports     |
++-----------+------------+-----------+
+| ap_clk    | clock      | ap_clk    |
+| ap_rst_n  | reset      | ap_rst_n  |
+| interrupt | interrupt  | interrupt |
+| ap_ctrl   | ap_ctrl_hs |           |
++-----------+------------+-----------+
+
+
+================================================================
+== SW I/O Information
+================================================================
+* Top Function Arguments
++----------+-----------+----------+
+| Argument | Direction | Datatype |
++----------+-----------+----------+
+| v0       | in        | float    |
+| v1       | in        | float    |
+| v2       | in        | float*   |
+| v3       | in        | float*   |
+| v4       | inout     | float*   |
+| v5       | in        | float*   |
+| v6       | inout     | float*   |
++----------+-----------+----------+
+
+* SW-to-HW Mapping
++----------+-----------------+----------+----------+------------------------------+
+| Argument | HW Interface    | HW Type  | HW Usage | HW Info                      |
++----------+-----------------+----------+----------+------------------------------+
+| v0       | s_axi_ctrl      | register |          | name=v0 offset=0x10 range=32 |
+| v1       | s_axi_ctrl      | register |          | name=v1 offset=0x18 range=32 |
+| v2       | v2_0_0_address0 | port     | offset   |                              |
+| v2       | v2_0_0_ce0      | port     |          |                              |
+| v2       | v2_0_0_q0       | port     |          |                              |
+| v2       | v2_0_1_address0 | port     | offset   |                              |
+| v2       | v2_0_1_ce0      | port     |          |                              |
+| v2       | v2_0_1_q0       | port     |          |                              |
+| v2       | v2_1_0_address0 | port     | offset   |                              |
+| v2       | v2_1_0_ce0      | port     |          |                              |
+| v2       | v2_1_0_q0       | port     |          |                              |
+| v2       | v2_1_1_address0 | port     | offset   |                              |
+| v2       | v2_1_1_ce0      | port     |          |                              |
+| v2       | v2_1_1_q0       | port     |          |                              |
+| v2       | v2_2_0_address0 | port     | offset   |                              |
+| v2       | v2_2_0_ce0      | port     |          |                              |
+| v2       | v2_2_0_q0       | port     |          |                              |
+| v2       | v2_2_1_address0 | port     | offset   |                              |
+| v2       | v2_2_1_ce0      | port     |          |                              |
+| v2       | v2_2_1_q0       | port     |          |                              |
+| v2       | v2_3_0_address0 | port     | offset   |                              |
+| v2       | v2_3_0_ce0      | port     |          |                              |
+| v2       | v2_3_0_q0       | port     |          |                              |
+| v2       | v2_3_1_address0 | port     | offset   |                              |
+| v2       | v2_3_1_ce0      | port     |          |                              |
+| v2       | v2_3_1_q0       | port     |          |                              |
+| v2       | v2_4_0_address0 | port     | offset   |                              |
+| v2       | v2_4_0_ce0      | port     |          |                              |
+| v2       | v2_4_0_q0       | port     |          |                              |
+| v2       | v2_4_1_address0 | port     | offset   |                              |
+| v2       | v2_4_1_ce0      | port     |          |                              |
+| v2       | v2_4_1_q0       | port     |          |                              |
+| v2       | v2_5_0_address0 | port     | offset   |                              |
+| v2       | v2_5_0_ce0      | port     |          |                              |
+| v2       | v2_5_0_q0       | port     |          |                              |
+| v2       | v2_5_1_address0 | port     | offset   |                              |
+| v2       | v2_5_1_ce0      | port     |          |                              |
+| v2       | v2_5_1_q0       | port     |          |                              |
+| v2       | v2_6_0_address0 | port     | offset   |                              |
+| v2       | v2_6_0_ce0      | port     |          |                              |
+| v2       | v2_6_0_q0       | port     |          |                              |
+| v2       | v2_6_1_address0 | port     | offset   |                              |
+| v2       | v2_6_1_ce0      | port     |          |                              |
+| v2       | v2_6_1_q0       | port     |          |                              |
+| v2       | v2_7_0_address0 | port     | offset   |                              |
+| v2       | v2_7_0_ce0      | port     |          |                              |
+| v2       | v2_7_0_q0       | port     |          |                              |
+| v2       | v2_7_1_address0 | port     | offset   |                              |
+| v2       | v2_7_1_ce0      | port     |          |                              |
+| v2       | v2_7_1_q0       | port     |          |                              |
+| v2       | v2_8_0_address0 | port     | offset   |                              |
+| v2       | v2_8_0_ce0      | port     |          |                              |
+| v2       | v2_8_0_q0       | port     |          |                              |
+| v2       | v2_8_1_address0 | port     | offset   |                              |
+| v2       | v2_8_1_ce0      | port     |          |                              |
+| v2       | v2_8_1_q0       | port     |          |                              |
+| v2       | v2_9_0_address0 | port     | offset   |                              |
+| v2       | v2_9_0_ce0      | port     |          |                              |
+| v2       | v2_9_0_q0       | port     |          |                              |
+| v2       | v2_9_1_address0 | port     | offset   |                              |
+| v2       | v2_9_1_ce0      | port     |          |                              |
+| v2       | v2_9_1_q0       | port     |          |                              |
+| v3       | v3_0_0_address0 | port     | offset   |                              |
+| v3       | v3_0_0_ce0      | port     |          |                              |
+| v3       | v3_0_0_q0       | port     |          |                              |
+| v3       | v3_0_1_address0 | port     | offset   |                              |
+| v3       | v3_0_1_ce0      | port     |          |                              |
+| v3       | v3_0_1_q0       | port     |          |                              |
+| v3       | v3_1_0_address0 | port     | offset   |                              |
+| v3       | v3_1_0_ce0      | port     |          |                              |
+| v3       | v3_1_0_q0       | port     |          |                              |
+| v3       | v3_1_1_address0 | port     | offset   |                              |
+| v3       | v3_1_1_ce0      | port     |          |                              |
+| v3       | v3_1_1_q0       | port     |          |                              |
+| v3       | v3_2_0_address0 | port     | offset   |                              |
+| v3       | v3_2_0_ce0      | port     |          |                              |
+| v3       | v3_2_0_q0       | port     |          |                              |
+| v3       | v3_2_1_address0 | port     | offset   |                              |
+| v3       | v3_2_1_ce0      | port     |          |                              |
+| v3       | v3_2_1_q0       | port     |          |                              |
+| v3       | v3_3_0_address0 | port     | offset   |                              |
+| v3       | v3_3_0_ce0      | port     |          |                              |
+| v3       | v3_3_0_q0       | port     |          |                              |
+| v3       | v3_3_1_address0 | port     | offset   |                              |
+| v3       | v3_3_1_ce0      | port     |          |                              |
+| v3       | v3_3_1_q0       | port     |          |                              |
+| v3       | v3_4_0_address0 | port     | offset   |                              |
+| v3       | v3_4_0_ce0      | port     |          |                              |
+| v3       | v3_4_0_q0       | port     |          |                              |
+| v3       | v3_4_1_address0 | port     | offset   |                              |
+| v3       | v3_4_1_ce0      | port     |          |                              |
+| v3       | v3_4_1_q0       | port     |          |                              |
+| v3       | v3_5_0_address0 | port     | offset   |                              |
+| v3       | v3_5_0_ce0      | port     |          |                              |
+| v3       | v3_5_0_q0       | port     |          |                              |
+| v3       | v3_5_1_address0 | port     | offset   |                              |
+| v3       | v3_5_1_ce0      | port     |          |                              |
+| v3       | v3_5_1_q0       | port     |          |                              |
+| v3       | v3_6_0_address0 | port     | offset   |                              |
+| v3       | v3_6_0_ce0      | port     |          |                              |
+| v3       | v3_6_0_q0       | port     |          |                              |
+| v3       | v3_6_1_address0 | port     | offset   |                              |
+| v3       | v3_6_1_ce0      | port     |          |                              |
+| v3       | v3_6_1_q0       | port     |          |                              |
+| v3       | v3_7_0_address0 | port     | offset   |                              |
+| v3       | v3_7_0_ce0      | port     |          |                              |
+| v3       | v3_7_0_q0       | port     |          |                              |
+| v3       | v3_7_1_address0 | port     | offset   |                              |
+| v3       | v3_7_1_ce0      | port     |          |                              |
+| v3       | v3_7_1_q0       | port     |          |                              |
+| v3       | v3_8_0_address0 | port     | offset   |                              |
+| v3       | v3_8_0_ce0      | port     |          |                              |
+| v3       | v3_8_0_q0       | port     |          |                              |
+| v3       | v3_8_1_address0 | port     | offset   |                              |
+| v3       | v3_8_1_ce0      | port     |          |                              |
+| v3       | v3_8_1_q0       | port     |          |                              |
+| v3       | v3_9_0_address0 | port     | offset   |                              |
+| v3       | v3_9_0_ce0      | port     |          |                              |
+| v3       | v3_9_0_q0       | port     |          |                              |
+| v3       | v3_9_1_address0 | port     | offset   |                              |
+| v3       | v3_9_1_ce0      | port     |          |                              |
+| v3       | v3_9_1_q0       | port     |          |                              |
+| v4       | v4_0_address0   | port     | offset   |                              |
+| v4       | v4_0_ce0        | port     |          |                              |
+| v4       | v4_0_we0        | port     |          |                              |
+| v4       | v4_0_d0         | port     |          |                              |
+| v4       | v4_0_q0         | port     |          |                              |
+| v4       | v4_1_address0   | port     | offset   |                              |
+| v4       | v4_1_ce0        | port     |          |                              |
+| v4       | v4_1_we0        | port     |          |                              |
+| v4       | v4_1_d0         | port     |          |                              |
+| v4       | v4_1_q0         | port     |          |                              |
+| v4       | v4_2_address0   | port     | offset   |                              |
+| v4       | v4_2_ce0        | port     |          |                              |
+| v4       | v4_2_we0        | port     |          |                              |
+| v4       | v4_2_d0         | port     |          |                              |
+| v4       | v4_2_q0         | port     |          |                              |
+| v4       | v4_3_address0   | port     | offset   |                              |
+| v4       | v4_3_ce0        | port     |          |                              |
+| v4       | v4_3_we0        | port     |          |                              |
+| v4       | v4_3_d0         | port     |          |                              |
+| v4       | v4_3_q0         | port     |          |                              |
+| v4       | v4_4_address0   | port     | offset   |                              |
+| v4       | v4_4_ce0        | port     |          |                              |
+| v4       | v4_4_we0        | port     |          |                              |
+| v4       | v4_4_d0         | port     |          |                              |
+| v4       | v4_4_q0         | port     |          |                              |
+| v4       | v4_5_address0   | port     | offset   |                              |
+| v4       | v4_5_ce0        | port     |          |                              |
+| v4       | v4_5_we0        | port     |          |                              |
+| v4       | v4_5_d0         | port     |          |                              |
+| v4       | v4_5_q0         | port     |          |                              |
+| v4       | v4_6_address0   | port     | offset   |                              |
+| v4       | v4_6_ce0        | port     |          |                              |
+| v4       | v4_6_we0        | port     |          |                              |
+| v4       | v4_6_d0         | port     |          |                              |
+| v4       | v4_6_q0         | port     |          |                              |
+| v4       | v4_7_address0   | port     | offset   |                              |
+| v4       | v4_7_ce0        | port     |          |                              |
+| v4       | v4_7_we0        | port     |          |                              |
+| v4       | v4_7_d0         | port     |          |                              |
+| v4       | v4_7_q0         | port     |          |                              |
+| v4       | v4_8_address0   | port     | offset   |                              |
+| v4       | v4_8_ce0        | port     |          |                              |
+| v4       | v4_8_we0        | port     |          |                              |
+| v4       | v4_8_d0         | port     |          |                              |
+| v4       | v4_8_q0         | port     |          |                              |
+| v4       | v4_9_address0   | port     | offset   |                              |
+| v4       | v4_9_ce0        | port     |          |                              |
+| v4       | v4_9_we0        | port     |          |                              |
+| v4       | v4_9_d0         | port     |          |                              |
+| v4       | v4_9_q0         | port     |          |                              |
+| v5       | v5_0_address0   | port     | offset   |                              |
+| v5       | v5_0_ce0        | port     |          |                              |
+| v5       | v5_0_q0         | port     |          |                              |
+| v5       | v5_1_address0   | port     | offset   |                              |
+| v5       | v5_1_ce0        | port     |          |                              |
+| v5       | v5_1_q0         | port     |          |                              |
+| v6       | v6_0_address0   | port     | offset   |                              |
+| v6       | v6_0_ce0        | port     |          |                              |
+| v6       | v6_0_we0        | port     |          |                              |
+| v6       | v6_0_d0         | port     |          |                              |
+| v6       | v6_0_q0         | port     |          |                              |
+| v6       | v6_1_address0   | port     | offset   |                              |
+| v6       | v6_1_ce0        | port     |          |                              |
+| v6       | v6_1_we0        | port     |          |                              |
+| v6       | v6_1_d0         | port     |          |                              |
+| v6       | v6_1_q0         | port     |          |                              |
+| v6       | v6_2_address0   | port     | offset   |                              |
+| v6       | v6_2_ce0        | port     |          |                              |
+| v6       | v6_2_we0        | port     |          |                              |
+| v6       | v6_2_d0         | port     |          |                              |
+| v6       | v6_2_q0         | port     |          |                              |
+| v6       | v6_3_address0   | port     | offset   |                              |
+| v6       | v6_3_ce0        | port     |          |                              |
+| v6       | v6_3_we0        | port     |          |                              |
+| v6       | v6_3_d0         | port     |          |                              |
+| v6       | v6_3_q0         | port     |          |                              |
+| v6       | v6_4_address0   | port     | offset   |                              |
+| v6       | v6_4_ce0        | port     |          |                              |
+| v6       | v6_4_we0        | port     |          |                              |
+| v6       | v6_4_d0         | port     |          |                              |
+| v6       | v6_4_q0         | port     |          |                              |
+| v6       | v6_5_address0   | port     | offset   |                              |
+| v6       | v6_5_ce0        | port     |          |                              |
+| v6       | v6_5_we0        | port     |          |                              |
+| v6       | v6_5_d0         | port     |          |                              |
+| v6       | v6_5_address1   | port     | offset   |                              |
+| v6       | v6_5_ce1        | port     |          |                              |
+| v6       | v6_5_q1         | port     |          |                              |
+| v6       | v6_6_address0   | port     | offset   |                              |
+| v6       | v6_6_ce0        | port     |          |                              |
+| v6       | v6_6_we0        | port     |          |                              |
+| v6       | v6_6_d0         | port     |          |                              |
+| v6       | v6_6_address1   | port     | offset   |                              |
+| v6       | v6_6_ce1        | port     |          |                              |
+| v6       | v6_6_q1         | port     |          |                              |
+| v6       | v6_7_address0   | port     | offset   |                              |
+| v6       | v6_7_ce0        | port     |          |                              |
+| v6       | v6_7_we0        | port     |          |                              |
+| v6       | v6_7_d0         | port     |          |                              |
+| v6       | v6_7_address1   | port     | offset   |                              |
+| v6       | v6_7_ce1        | port     |          |                              |
+| v6       | v6_7_q1         | port     |          |                              |
+| v6       | v6_8_address0   | port     | offset   |                              |
+| v6       | v6_8_ce0        | port     |          |                              |
+| v6       | v6_8_we0        | port     |          |                              |
+| v6       | v6_8_d0         | port     |          |                              |
+| v6       | v6_8_address1   | port     | offset   |                              |
+| v6       | v6_8_ce1        | port     |          |                              |
+| v6       | v6_8_q1         | port     |          |                              |
+| v6       | v6_9_address0   | port     | offset   |                              |
+| v6       | v6_9_ce0        | port     |          |                              |
+| v6       | v6_9_we0        | port     |          |                              |
+| v6       | v6_9_d0         | port     |          |                              |
+| v6       | v6_9_address1   | port     | offset   |                              |
+| v6       | v6_9_ce1        | port     |          |                              |
+| v6       | v6_9_q1         | port     |          |                              |
++----------+-----------------+----------+----------+------------------------------+
+
+
+================================================================
+== Bind Op Report
+================================================================
++--------------------------------------+-----+--------+------------+------+-----------+---------+
+| Name                                 | DSP | Pragma | Variable   | Op   | Impl      | Latency |
++--------------------------------------+-----+--------+------------+------+-----------+---------+
+| + test_gesummv                       | 141 |        |            |      |           |         |
+|   add_ln52_1_fu_1306_p2              |     |        | add_ln52_1 | add  | fabric    | 0       |
+|   add_ln52_fu_1352_p2                |     |        | add_ln52   | add  | fabric    | 0       |
+|   mac_muladd_5ns_7ns_7ns_12_4_1_U56  | 1   |        | mul_ln55   | mul  | dsp_slice | 3       |
+|   mac_muladd_5ns_7ns_7ns_12_4_1_U56  | 1   |        | add_ln55   | add  | dsp_slice | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U26  | 3   |        | v11        | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U27  | 3   |        | v13        | fmul | maxdsp    | 3       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U1  | 2   |        | v15        | fadd | fulldsp   | 6       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U28  | 3   |        | v17        | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U29  | 3   |        | v19        | fmul | maxdsp    | 3       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U2  | 2   |        | v21        | fadd | fulldsp   | 6       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U30  | 3   |        | v23        | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U31  | 3   |        | v25        | fmul | maxdsp    | 3       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U3  | 2   |        | v27        | fadd | fulldsp   | 6       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U32  | 3   |        | v29        | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U33  | 3   |        | v31        | fmul | maxdsp    | 3       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U4  | 2   |        | v33        | fadd | fulldsp   | 6       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U34  | 3   |        | v35        | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U35  | 3   |        | v37        | fmul | maxdsp    | 3       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U5  | 2   |        | v39        | fadd | fulldsp   | 6       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U36  | 3   |        | v41        | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U37  | 3   |        | v43        | fmul | maxdsp    | 3       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U6  | 2   |        | v45        | fadd | fulldsp   | 6       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U38  | 3   |        | v47        | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U39  | 3   |        | v49        | fmul | maxdsp    | 3       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U7  | 2   |        | v51        | fadd | fulldsp   | 6       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U40  | 3   |        | v53        | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U41  | 3   |        | v55        | fmul | maxdsp    | 3       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U8  | 2   |        | v57        | fadd | fulldsp   | 6       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U42  | 3   |        | v59        | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U43  | 3   |        | v61        | fmul | maxdsp    | 3       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U9  | 2   |        | v63        | fadd | fulldsp   | 6       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U44  | 3   |        | v65        | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U45  | 3   |        | v67        | fmul | maxdsp    | 3       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U10 | 2   |        | v69        | fadd | fulldsp   | 6       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U46  | 3   |        | v72        | fmul | maxdsp    | 3       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U11 | 2   |        | tmp        | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U1  | 2   |        | v75        | fadd | fulldsp   | 6       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U26  | 3   |        | v77        | fmul | maxdsp    | 3       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U2  | 2   |        | v78        | fadd | fulldsp   | 6       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U36  | 3   |        | v79        | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U37  | 3   |        | v80        | fmul | maxdsp    | 3       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U21 | 2   |        | v81        | fadd | fulldsp   | 6       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U47  | 3   |        | v84        | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U27  | 3   |        | v89        | fmul | maxdsp    | 3       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U3  | 2   |        | v90        | fadd | fulldsp   | 6       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U38  | 3   |        | v92        | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U48  | 3   |        | v96        | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U28  | 3   |        | v101       | fmul | maxdsp    | 3       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U4  | 2   |        | v102       | fadd | fulldsp   | 6       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U39  | 3   |        | v104       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U49  | 3   |        | v108       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U29  | 3   |        | v113       | fmul | maxdsp    | 3       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U5  | 2   |        | v114       | fadd | fulldsp   | 6       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U40  | 3   |        | v116       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U50  | 3   |        | v120       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U30  | 3   |        | v125       | fmul | maxdsp    | 3       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U6  | 2   |        | v126       | fadd | fulldsp   | 6       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U41  | 3   |        | v128       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U51  | 3   |        | v132       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U31  | 3   |        | v137       | fmul | maxdsp    | 3       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U7  | 2   |        | v138       | fadd | fulldsp   | 6       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U42  | 3   |        | v140       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U52  | 3   |        | v144       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U32  | 3   |        | v149       | fmul | maxdsp    | 3       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U8  | 2   |        | v150       | fadd | fulldsp   | 6       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U43  | 3   |        | v152       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U53  | 3   |        | v156       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U33  | 3   |        | v161       | fmul | maxdsp    | 3       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U9  | 2   |        | v162       | fadd | fulldsp   | 6       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U44  | 3   |        | v164       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U54  | 3   |        | v168       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U34  | 3   |        | v173       | fmul | maxdsp    | 3       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U10 | 2   |        | v174       | fadd | fulldsp   | 6       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U45  | 3   |        | v176       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U55  | 3   |        | v180       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U35  | 3   |        | v185       | fmul | maxdsp    | 3       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U11 | 2   |        | v186       | fadd | fulldsp   | 6       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U46  | 3   |        | v188       | fmul | maxdsp    | 3       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U12 | 2   |        | tmp1       | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U12 | 2   |        | v87_1      | fadd | fulldsp   | 6       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U47  | 3   |        | v91_1      | fmul | maxdsp    | 3       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U22 | 2   |        | v93_1      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U13 | 2   |        | tmp2       | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U13 | 2   |        | v99_1      | fadd | fulldsp   | 6       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U48  | 3   |        | v103_1     | fmul | maxdsp    | 3       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U23 | 2   |        | v105_1     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U14 | 2   |        | tmp3       | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U14 | 2   |        | v111_1     | fadd | fulldsp   | 6       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U49  | 3   |        | v115_1     | fmul | maxdsp    | 3       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U24 | 2   |        | v117_1     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U15 | 2   |        | tmp4       | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U15 | 2   |        | v123       | fadd | fulldsp   | 6       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U50  | 3   |        | v127       | fmul | maxdsp    | 3       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U25 | 2   |        | v129       | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U16 | 2   |        | tmp5       | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U16 | 2   |        | v135       | fadd | fulldsp   | 6       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U51  | 3   |        | v139       | fmul | maxdsp    | 3       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U21 | 2   |        | v141       | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U17 | 2   |        | tmp6       | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U17 | 2   |        | v147       | fadd | fulldsp   | 6       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U52  | 3   |        | v151       | fmul | maxdsp    | 3       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U22 | 2   |        | v153       | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U18 | 2   |        | tmp7       | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U18 | 2   |        | v159       | fadd | fulldsp   | 6       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U53  | 3   |        | v163       | fmul | maxdsp    | 3       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U23 | 2   |        | v165       | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U19 | 2   |        | tmp8       | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U19 | 2   |        | v171       | fadd | fulldsp   | 6       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U54  | 3   |        | v175       | fmul | maxdsp    | 3       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U24 | 2   |        | v177       | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U20 | 2   |        | tmp9       | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U20 | 2   |        | v183       | fadd | fulldsp   | 6       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U55  | 3   |        | v187       | fmul | maxdsp    | 3       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U25 | 2   |        | v189       | fadd | fulldsp   | 6       |
+|   add_ln53_fu_1333_p2                |     |        | add_ln53   | add  | fabric    | 0       |
++--------------------------------------+-----+--------+------------+------+-----------+---------+
+
+
+================================================================
+== Storage Report
+================================================================
++----------------+-----------+-----------+------+------+--------+----------+------+---------+------------------+
+| Name           | Usage     | Type      | BRAM | URAM | Pragma | Variable | Impl | Latency | Bitwidth, Depth, |
+|                |           |           |      |      |        |          |      |         | Banks            |
++----------------+-----------+-----------+------+------+--------+----------+------+---------+------------------+
+| + test_gesummv |           |           | 0    | 0    |        |          |      |         |                  |
+|   ctrl_s_axi_U | interface | s_axilite |      |      |        |          |      |         |                  |
++----------------+-----------+-----------+------+------+--------+----------+------+---------+------------------+
+
+
+================================================================
+== Pragma Report
+================================================================
+* Pragmas with Warnings
++----------+-------------------------------+------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+
+| Type     | Options                       | Location                           | Messages                                                                                                                         |
++----------+-------------------------------+------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+
+| resource | variable=v2 core=ram_t2p_bram | gesummv.cpp:37 in test_gesummv, v2 | 'Resource pragma' is deprecated, use 'bind_op/bind_storage pragma' instead                                                       |
+|          |                               |                                    | The resource pragma (bind_storage) on top-level function argument, in 'call' is unsupported, please use INTERFACE pragma instead |
+| resource | variable=v3 core=ram_t2p_bram | gesummv.cpp:41 in test_gesummv, v3 | 'Resource pragma' is deprecated, use 'bind_op/bind_storage pragma' instead                                                       |
+|          |                               |                                    | The resource pragma (bind_storage) on top-level function argument, in 'call' is unsupported, please use INTERFACE pragma instead |
+| resource | variable=v4 core=ram_t2p_bram | gesummv.cpp:44 in test_gesummv, v4 | 'Resource pragma' is deprecated, use 'bind_op/bind_storage pragma' instead                                                       |
+|          |                               |                                    | The resource pragma (bind_storage) on top-level function argument, in 'call' is unsupported, please use INTERFACE pragma instead |
+| resource | variable=v5 core=ram_t2p_bram | gesummv.cpp:47 in test_gesummv, v5 | 'Resource pragma' is deprecated, use 'bind_op/bind_storage pragma' instead                                                       |
+|          |                               |                                    | The resource pragma (bind_storage) on top-level function argument, in 'call' is unsupported, please use INTERFACE pragma instead |
+| resource | variable=v6 core=ram_t2p_bram | gesummv.cpp:50 in test_gesummv, v6 | 'Resource pragma' is deprecated, use 'bind_op/bind_storage pragma' instead                                                       |
+|          |                               |                                    | The resource pragma (bind_storage) on top-level function argument, in 'call' is unsupported, please use INTERFACE pragma instead |
++----------+-------------------------------+------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+
+
+* Valid Pragma Syntax
++-----------------+------------------------------------+----------------------------------------+
+| Type            | Options                            | Location                               |
++-----------------+------------------------------------+----------------------------------------+
+| interface       | s_axilite port=return bundle=ctrl  | gesummv.cpp:32 in test_gesummv, return |
+| interface       | s_axilite port=v0 bundle=ctrl      | gesummv.cpp:33 in test_gesummv, v0     |
+| interface       | s_axilite port=v1 bundle=ctrl      | gesummv.cpp:34 in test_gesummv, v1     |
+| array_partition | variable=v2 cyclic factor=10 dim=1 | gesummv.cpp:35 in test_gesummv, v2     |
+| array_partition | variable=v2 cyclic factor=2 dim=2  | gesummv.cpp:36 in test_gesummv, v2     |
+| array_partition | variable=v3 cyclic factor=10 dim=1 | gesummv.cpp:39 in test_gesummv, v3     |
+| array_partition | variable=v3 cyclic factor=2 dim=2  | gesummv.cpp:40 in test_gesummv, v3     |
+| array_partition | variable=v4 cyclic factor=10 dim=1 | gesummv.cpp:43 in test_gesummv, v4     |
+| array_partition | variable=v5 cyclic factor=2 dim=1  | gesummv.cpp:46 in test_gesummv, v5     |
+| array_partition | variable=v6 cyclic factor=10 dim=1 | gesummv.cpp:49 in test_gesummv, v6     |
+| pipeline        | II=2                               | gesummv.cpp:54 in test_gesummv         |
++-----------------+------------------------------------+----------------------------------------+
+
+

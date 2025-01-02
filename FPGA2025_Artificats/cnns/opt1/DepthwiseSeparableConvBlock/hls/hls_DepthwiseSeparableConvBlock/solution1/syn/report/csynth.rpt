@@ -1,0 +1,277 @@
+
+
+================================================================
+== Synthesis Summary Report of 'forward'
+================================================================
++ General Information: 
+    * Date:           Fri Oct  4 14:45:17 2024
+    * Version:        2023.2 (Build 4023990 on Oct 11 2023)
+    * Project:        hls_DepthwiseSeparableConvBlock
+    * Solution:       solution1 (Vivado IP Flow Target)
+    * Product family: virtexuplusHBM
+    * Target device:  xcu280-fsvh2892-2L-e
+    
+
++ Performance & Resource Estimates: 
+    
+    PS: '+' for module; 'o' for loop; '*' for dataflow
+    +------------------------------------------------+--------+-------+---------+-----------+----------+---------+--------+----------+-----------+----------+------------+------------+-----+
+    |                     Modules                    |  Issue |       | Latency |  Latency  | Iteration|         |  Trip  |          |           |          |            |            |     |
+    |                     & Loops                    |  Type  | Slack | (cycles)|    (ns)   |  Latency | Interval|  Count | Pipelined|   BRAM    |    DSP   |     FF     |     LUT    | URAM|
+    +------------------------------------------------+--------+-------+---------+-----------+----------+---------+--------+----------+-----------+----------+------------+------------+-----+
+    |+ forward*                                      |  Timing|  -0.27|  3817045|  1.271e+07|         -|  3612687|       -|  dataflow|  997 (24%)|  12 (~0%)|  3290 (~0%)|  4704 (~0%)|    -|
+    | + Loop_loop0_proc                              |  Timing|  -0.26|   204335|  6.804e+05|         -|   204335|       -|        no|          -|   2 (~0%)|   384 (~0%)|   878 (~0%)|    -|
+    |  + Loop_loop0_proc_Pipeline_loop0_loop1_loop2  |  Timing|  -0.26|   103974|  3.462e+05|         -|   103974|       -|        no|          -|   1 (~0%)|   155 (~0%)|   335 (~0%)|    -|
+    |   o loop0_loop1_loop2                          |       -|   2.43|   103972|  3.462e+05|         6|        1|  103968|       yes|          -|         -|           -|           -|    -|
+    |  + Loop_loop0_proc_Pipeline_loop3_loop4_loop5  |  Timing|  -0.26|   100358|  3.342e+05|         -|   100358|       -|        no|          -|   1 (~0%)|   222 (~0%)|   450 (~0%)|    -|
+    |   o loop3_loop4_loop5                          |       -|   2.43|   100356|  3.342e+05|         6|        1|  100352|       yes|          -|         -|           -|           -|    -|
+    | + Loop_loop6_proc1                             |  Timing|  -0.27|  3612686|  1.203e+07|         -|  3612686|       -|        no|   196 (4%)|   4 (~0%)|  1191 (~0%)|  1572 (~0%)|    -|
+    |  o loop6_loop7_loop8_loop9_loop10              |      II|   2.43|  3612684|  1.203e+07|        17|        4|  903168|       yes|          -|         -|           -|           -|    -|
+    | + Loop_loop11_proc2                            |  Timing|  -0.27|  3211275|  1.069e+07|         -|  3211275|       -|        no|   392 (9%)|   3 (~0%)|   999 (~0%)|  1361 (~0%)|    -|
+    |  o loop11_loop12_loop13_loop14                 |      II|   2.43|  3211273|  1.069e+07|        14|        4|  802816|       yes|          -|         -|           -|           -|    -|
+    | + Loop_loop15_proc3                            |       -|   0.11|   100361|  3.342e+05|         -|   100361|       -|        no|          -|   3 (~0%)|   306 (~0%)|   229 (~0%)|    -|
+    |  o loop15_loop16_loop17                        |       -|   2.43|   100359|  3.342e+05|         9|        1|  100352|       yes|          -|         -|           -|           -|    -|
+    | + Loop_loop18_proc4                            |  Timing|  -0.19|   100355|  3.342e+05|         -|   100355|       -|        no|          -|         -|   122 (~0%)|   387 (~0%)|    -|
+    |  o loop18_loop19_loop20                        |       -|   2.43|   100353|  3.342e+05|         3|        1|  100352|       yes|          -|         -|           -|           -|    -|
+    +------------------------------------------------+--------+-------+---------+-----------+----------+---------+--------+----------+-----------+----------+------------+------------+-----+
+
+
+================================================================
+== HW Interfaces
+================================================================
+* AP_MEMORY
++-------------+-----------+----------+
+| Port        | Direction | Bitwidth |
++-------------+-----------+----------+
+| v0_address0 | out       | 17       |
+| v0_address1 | out       | 17       |
+| v0_d0       | out       | 32       |
+| v0_d1       | out       | 32       |
+| v0_q0       | in        | 32       |
+| v0_q1       | in        | 32       |
+| v1_address0 | out       | 6        |
+| v1_address1 | out       | 6        |
+| v1_d0       | out       | 32       |
+| v1_d1       | out       | 32       |
+| v1_q0       | in        | 32       |
+| v1_q1       | in        | 32       |
+| v2_address0 | out       | 7        |
+| v2_address1 | out       | 7        |
+| v2_d0       | out       | 32       |
+| v2_d1       | out       | 32       |
+| v2_q0       | in        | 32       |
+| v2_q1       | in        | 32       |
+| v3_address0 | out       | 17       |
+| v3_address1 | out       | 17       |
+| v3_d0       | out       | 32       |
+| v3_d1       | out       | 32       |
+| v3_q0       | in        | 32       |
+| v3_q1       | in        | 32       |
++-------------+-----------+----------+
+
+* TOP LEVEL CONTROL
++-----------+------------+-----------------------------------+
+| Interface | Type       | Ports                             |
++-----------+------------+-----------------------------------+
+| ap_clk    | clock      | ap_clk                            |
+| ap_rst    | reset      | ap_rst                            |
+| ap_ctrl   | ap_ctrl_hs | ap_done ap_idle ap_ready ap_start |
++-----------+------------+-----------------------------------+
+
+
+================================================================
+== SW I/O Information
+================================================================
+* Top Function Arguments
++----------+-----------+----------+
+| Argument | Direction | Datatype |
++----------+-----------+----------+
+| v0       | in        | float*   |
+| v1       | in        | float*   |
+| v2       | in        | float*   |
+| v3       | out       | float*   |
++----------+-----------+----------+
+
+* SW-to-HW Mapping
++----------+--------------+---------+----------+
+| Argument | HW Interface | HW Type | HW Usage |
++----------+--------------+---------+----------+
+| v0       | v0_address0  | port    | offset   |
+| v0       | v0_ce0       | port    |          |
+| v0       | v0_d0        | port    |          |
+| v0       | v0_q0        | port    |          |
+| v0       | v0_we0       | port    |          |
+| v0       | v0_address1  | port    | offset   |
+| v0       | v0_ce1       | port    |          |
+| v0       | v0_d1        | port    |          |
+| v0       | v0_q1        | port    |          |
+| v0       | v0_we1       | port    |          |
+| v1       | v1_address0  | port    | offset   |
+| v1       | v1_ce0       | port    |          |
+| v1       | v1_d0        | port    |          |
+| v1       | v1_q0        | port    |          |
+| v1       | v1_we0       | port    |          |
+| v1       | v1_address1  | port    | offset   |
+| v1       | v1_ce1       | port    |          |
+| v1       | v1_d1        | port    |          |
+| v1       | v1_q1        | port    |          |
+| v1       | v1_we1       | port    |          |
+| v2       | v2_address0  | port    | offset   |
+| v2       | v2_ce0       | port    |          |
+| v2       | v2_d0        | port    |          |
+| v2       | v2_q0        | port    |          |
+| v2       | v2_we0       | port    |          |
+| v2       | v2_address1  | port    | offset   |
+| v2       | v2_ce1       | port    |          |
+| v2       | v2_d1        | port    |          |
+| v2       | v2_q1        | port    |          |
+| v2       | v2_we1       | port    |          |
+| v3       | v3_address0  | port    | offset   |
+| v3       | v3_ce0       | port    |          |
+| v3       | v3_d0        | port    |          |
+| v3       | v3_q0        | port    |          |
+| v3       | v3_we0       | port    |          |
+| v3       | v3_address1  | port    | offset   |
+| v3       | v3_ce1       | port    |          |
+| v3       | v3_d1        | port    |          |
+| v3       | v3_q1        | port    |          |
+| v3       | v3_we1       | port    |          |
++----------+--------------+---------+----------+
+
+
+================================================================
+== Bind Op Report
+================================================================
++------------------------------------------------+-----+--------+-------------------------+------+-----------+---------+
+| Name                                           | DSP | Pragma | Variable                | Op   | Impl      | Latency |
++------------------------------------------------+-----+--------+-------------------------+------+-----------+---------+
+| + forward                                      | 12  |        |                         |      |           |         |
+|  + Loop_loop0_proc                             | 2   |        |                         |      |           |         |
+|   + Loop_loop0_proc_Pipeline_loop0_loop1_loop2 | 1   |        |                         |      |           |         |
+|     add_ln25_1_fu_118_p2                       |     |        | add_ln25_1              | add  | fabric    | 0       |
+|     add_ln25_fu_130_p2                         |     |        | add_ln25                | add  | fabric    | 0       |
+|     add_ln26_fu_209_p2                         |     |        | add_ln26                | add  | fabric    | 0       |
+|     mul_4ns_8ns_11_1_1_U1                      |     |        | mul_ln30                | mul  | auto      | 0       |
+|     ama_addmuladd_11ns_7ns_7ns_7ns_17_4_1_U2   | 1   |        | add_ln30                | add  | dsp_slice | 3       |
+|     ama_addmuladd_11ns_7ns_7ns_7ns_17_4_1_U2   | 1   |        | mul_ln27                | mul  | dsp_slice | 3       |
+|     ama_addmuladd_11ns_7ns_7ns_7ns_17_4_1_U2   | 1   |        | add_ln30_1              | add  | dsp_slice | 3       |
+|     add_ln27_fu_245_p2                         |     |        | add_ln27                | add  | fabric    | 0       |
+|     add_ln26_1_fu_150_p2                       |     |        | add_ln26_1              | add  | fabric    | 0       |
+|   + Loop_loop0_proc_Pipeline_loop3_loop4_loop5 | 1   |        |                         |      |           |         |
+|     add_ln34_1_fu_146_p2                       |     |        | add_ln34_1              | add  | fabric    | 0       |
+|     add_ln34_fu_158_p2                         |     |        | add_ln34                | add  | fabric    | 0       |
+|     indvars_iv_next11318_fu_220_p2             |     |        | indvars_iv_next11318    | add  | fabric    | 0       |
+|     indvars_iv_next113_dup_fu_250_p2           |     |        | indvars_iv_next113_dup  | add  | fabric    | 0       |
+|     indvars_iv_next113_mid1_fu_269_p2          |     |        | indvars_iv_next113_mid1 | add  | fabric    | 0       |
+|     mul_4ns_8ns_11_1_1_U6                      |     |        | mul_ln40                | mul  | auto      | 0       |
+|     sub_ln39_fu_338_p2                         |     |        | sub_ln39                | sub  | fabric    | 0       |
+|     add_ln39_fu_351_p2                         |     |        | add_ln39                | add  | fabric    | 0       |
+|     ama_addmuladd_11ns_7ns_7ns_7ns_17_4_1_U7   | 1   |        | add_ln40_1              | add  | dsp_slice | 3       |
+|     ama_addmuladd_11ns_7ns_7ns_7ns_17_4_1_U7   | 1   |        | mul_ln36                | mul  | dsp_slice | 3       |
+|     add_ln40_fu_300_p2                         |     |        | add_ln40                | add  | fabric    | 0       |
+|     ama_addmuladd_11ns_7ns_7ns_7ns_17_4_1_U7   | 1   |        | add_ln40_2              | add  | dsp_slice | 3       |
+|     add_ln35_fu_178_p2                         |     |        | add_ln35                | add  | fabric    | 0       |
+|  + Loop_loop6_proc1                            | 4   |        |                         |      |           |         |
+|    add_ln48_1_fu_274_p2                        |     |        | add_ln48_1              | add  | fabric    | 0       |
+|    add_ln48_fu_567_p2                          |     |        | add_ln48                | add  | fabric    | 0       |
+|    add_ln49_fu_745_p2                          |     |        | add_ln49                | add  | fabric    | 0       |
+|    add_ln50_fu_396_p2                          |     |        | add_ln50                | add  | fabric    | 0       |
+|    add_ln51_fu_592_p2                          |     |        | add_ln51                | add  | fabric    | 0       |
+|    mul_4ns_8ns_11_1_1_U14                      |     |        | mul_ln55                | mul  | auto      | 0       |
+|    sub_ln56_fu_631_p2                          |     |        | sub_ln56                | sub  | fabric    | 0       |
+|    empty_27_fu_787_p2                          |     |        | empty_27                | sub  | fabric    | 0       |
+|    empty_28_fu_797_p2                          |     |        | empty_28                | add  | fabric    | 0       |
+|    add_ln56_fu_641_p2                          |     |        | add_ln56                | add  | fabric    | 0       |
+|    empty_32_fu_647_p2                          |     |        | empty_32                | add  | fabric    | 0       |
+|    ama_addmuladd_11ns_7ns_7ns_7ns_17_4_1_U15   | 1   |        | add_ln55_1              | add  | dsp_slice | 3       |
+|    ama_addmuladd_11ns_7ns_7ns_7ns_17_4_1_U15   | 1   |        | mul_ln52                | mul  | dsp_slice | 3       |
+|    add_ln55_fu_840_p2                          |     |        | add_ln55                | add  | fabric    | 0       |
+|    ama_addmuladd_11ns_7ns_7ns_7ns_17_4_1_U15   | 1   |        | add_ln55_2              | add  | dsp_slice | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U13           | 3   |        | v23                     | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_5_no_dsp_1_U12            |     |        | v24                     | fadd | fabric    | 4       |
+|    add_ln52_fu_482_p2                          |     |        | add_ln52                | add  | fabric    | 0       |
+|    add_ln51_1_fu_494_p2                        |     |        | add_ln51_1              | add  | fabric    | 0       |
+|    add_ln50_1_fu_508_p2                        |     |        | add_ln50_1              | add  | fabric    | 0       |
+|    add_ln49_1_fu_522_p2                        |     |        | add_ln49_1              | add  | fabric    | 0       |
+|  + Loop_loop11_proc2                           | 3   |        |                         |      |           |         |
+|    add_ln76_1_fu_248_p2                        |     |        | add_ln76_1              | add  | fabric    | 0       |
+|    add_ln76_fu_266_p2                          |     |        | add_ln76                | add  | fabric    | 0       |
+|    add_ln77_fu_334_p2                          |     |        | add_ln77                | add  | fabric    | 0       |
+|    add_ln78_fu_386_p2                          |     |        | add_ln78                | add  | fabric    | 0       |
+|    empty_33_fu_536_p2                          |     |        | empty_33                | sub  | fabric    | 0       |
+|    empty_34_fu_549_p2                          |     |        | empty_34                | add  | fabric    | 0       |
+|    add_ln87_fu_599_p2                          |     |        | add_ln87                | add  | fabric    | 0       |
+|    sub_ln86_fu_448_p2                          |     |        | sub_ln86                | sub  | fabric    | 0       |
+|    add_ln86_fu_613_p2                          |     |        | add_ln86                | add  | fabric    | 0       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U23           | 3   |        | v36                     | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_5_no_dsp_1_U22            |     |        | v37                     | fadd | fabric    | 4       |
+|    add_ln79_fu_675_p2                          |     |        | add_ln79                | add  | fabric    | 0       |
+|    add_ln78_1_fu_454_p2                        |     |        | add_ln78_1              | add  | fabric    | 0       |
+|    add_ln77_1_fu_468_p2                        |     |        | add_ln77_1              | add  | fabric    | 0       |
+|  + Loop_loop15_proc3                           | 3   |        |                         |      |           |         |
+|    add_ln105_fu_81_p2                          |     |        | add_ln105               | add  | fabric    | 0       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U28           | 3   |        | v47                     | fmul | maxdsp    | 3       |
+|  + Loop_loop18_proc4                           | 0   |        |                         |      |           |         |
+|    add_ln122_1_fu_137_p2                       |     |        | add_ln122_1             | add  | fabric    | 0       |
+|    add_ln122_fu_149_p2                         |     |        | add_ln122               | add  | fabric    | 0       |
+|    add_ln123_fu_228_p2                         |     |        | add_ln123               | add  | fabric    | 0       |
+|    sub_ln128_fu_277_p2                         |     |        | sub_ln128               | sub  | fabric    | 0       |
+|    add_ln128_fu_291_p2                         |     |        | add_ln128               | add  | fabric    | 0       |
+|    add_ln124_fu_301_p2                         |     |        | add_ln124               | add  | fabric    | 0       |
+|    add_ln123_1_fu_169_p2                       |     |        | add_ln123_1             | add  | fabric    | 0       |
++------------------------------------------------+-----+--------+-------------------------+------+-----------+---------+
+
+
+================================================================
+== Storage Report
+================================================================
++----------------------+----------------+--------+------+------+--------+----------+--------+---------+------------------+
+| Name                 | Usage          | Type   | BRAM | URAM | Pragma | Variable | Impl   | Latency | Bitwidth, Depth, |
+|                      |                |        |      |      |        |          |        |         | Banks            |
++----------------------+----------------+--------+------+------+--------+----------+--------+---------+------------------+
+| + forward            |                |        | 997  | 0    |        |          |        |         |                  |
+|   v4_U               | ram_1p channel | pipo   | 406  |      |        | v4       | auto   | 1       | 32, 103968, 2    |
+|   v13_U              | fifo channel   | stream | 1    |      |        | v13      | memory | 0       | 32, 100352, 1    |
+|   v27_U              | fifo channel   | stream | 1    |      |        | v27      | memory | 0       | 32, 100352, 1    |
+|   v39_U              | fifo channel   | stream | 1    |      |        | v39      | memory | 0       | 32, 100352, 1    |
+|  + Loop_loop6_proc1  |                |        | 196  | 0    |        |          |        |         |                  |
+|    v12_U             | ram_1p array   |        | 196  |      |        | v12      | auto   | 1       | 32, 100352, 1    |
+|  + Loop_loop11_proc2 |                |        | 392  | 0    |        |          |        |         |                  |
+|    v26_U             | ram_s2p array  |        | 196  |      |        | v26      | auto   | 1       | 32, 100352, 1    |
+|    v14_U             | ram_1p array   |        | 196  |      |        | v14      | auto   | 1       | 32, 100352, 1    |
++----------------------+----------------+--------+------+------+--------+----------+--------+---------+------------------+
+
+
+================================================================
+== Pragma Report
+================================================================
+* Pragmas with Warnings
++----------+---------+---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Type     | Options | Location                                          | Messages                                                                                                                                                                           |
++----------+---------+---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| dataflow |         | src/DepthwiseSeparableConvBlock.cpp:23 in forward | Since the only kind of statements allowed in a canonical dataflow region are variable declarations and function calls, the compiler may not be able to correctly handle the region |
+|          |         |                                                   | There are a total of 6 such instances of non-canonical statements in the dataflow region                                                                                           |
++----------+---------+---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+* Valid Pragma Syntax
++--------------+---------------------------+---------------------------------------------------------+
+| Type         | Options                   | Location                                                |
++--------------+---------------------------+---------------------------------------------------------+
+| pipeline     | II=1                      | src/DepthwiseSeparableConvBlock.cpp:28 in forward       |
+| loop_flatten |                           | src/DepthwiseSeparableConvBlock.cpp:29 in forward       |
+| pipeline     | II=1                      | src/DepthwiseSeparableConvBlock.cpp:37 in forward       |
+| loop_flatten |                           | src/DepthwiseSeparableConvBlock.cpp:38 in forward       |
+| stream       | variable=v13 depth=100352 | src/DepthwiseSeparableConvBlock.cpp:46 in forward, v13  |
+| pipeline     | II=1                      | src/DepthwiseSeparableConvBlock.cpp:53 in forward       |
+| loop_flatten |                           | src/DepthwiseSeparableConvBlock.cpp:54 in forward       |
+| stream       | variable=v27 depth=100352 | src/DepthwiseSeparableConvBlock.cpp:75 in forward, v27  |
+| pipeline     | II=1                      | src/DepthwiseSeparableConvBlock.cpp:80 in forward       |
+| loop_flatten |                           | src/DepthwiseSeparableConvBlock.cpp:81 in forward       |
+| stream       | variable=v39 depth=100352 | src/DepthwiseSeparableConvBlock.cpp:104 in forward, v39 |
+| pipeline     | II=1                      | src/DepthwiseSeparableConvBlock.cpp:108 in forward      |
+| loop_flatten |                           | src/DepthwiseSeparableConvBlock.cpp:109 in forward      |
+| pipeline     | II=1                      | src/DepthwiseSeparableConvBlock.cpp:125 in forward      |
+| loop_flatten |                           | src/DepthwiseSeparableConvBlock.cpp:126 in forward      |
++--------------+---------------------------+---------------------------------------------------------+
+
+

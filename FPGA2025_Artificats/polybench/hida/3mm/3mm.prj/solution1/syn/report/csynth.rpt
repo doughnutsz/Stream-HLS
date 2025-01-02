@@ -1,0 +1,1436 @@
+
+
+================================================================
+== Synthesis Summary Report of 'test_3mm'
+================================================================
++ General Information: 
+    * Date:           Fri Sep 20 17:16:35 2024
+    * Version:        2023.2 (Build 4023990 on Oct 11 2023)
+    * Project:        3mm.prj
+    * Solution:       solution1 (Vivado IP Flow Target)
+    * Product family: virtexuplusHBM
+    * Target device:  xcu280-fsvh2892-2L-e
+    
+
++ Performance & Resource Estimates: 
+    
+    PS: '+' for module; 'o' for loop; '*' for dataflow
+    +-------------------------------------------------------------------------+------+------+---------+-----------+----------+---------+-------+----------+------+----------+-------------+------------+-----+
+    |                                 Modules                                 | Issue|      | Latency |  Latency  | Iteration|         |  Trip |          |      |          |             |            |     |
+    |                                 & Loops                                 | Type | Slack| (cycles)|    (ns)   |  Latency | Interval| Count | Pipelined| BRAM |    DSP   |      FF     |     LUT    | URAM|
+    +-------------------------------------------------------------------------+------+------+---------+-----------+----------+---------+-------+----------+------+----------+-------------+------------+-----+
+    |+ test_3mm                                                               |     -|  0.00|   279356|  9.303e+05|         -|   279357|      -|        no|     -|  623 (6%)|  141605 (5%)|  83356 (6%)|    -|
+    | + test_3mm_Pipeline_VITIS_LOOP_60_1_VITIS_LOOP_61_2_VITIS_LOOP_62_3     |     -|  0.02|   114018|  3.797e+05|         -|   114018|      -|        no|     -|  303 (3%)|   47468 (1%)|  26253 (2%)|    -|
+    |  o VITIS_LOOP_60_1_VITIS_LOOP_61_2_VITIS_LOOP_62_3                      |     -|  2.43|   114016|  3.797e+05|        19|        2|  57000|       yes|     -|         -|            -|           -|    -|
+    | + test_3mm_Pipeline_VITIS_LOOP_569_4_VITIS_LOOP_570_5_VITIS_LOOP_571_6  |     -|  0.09|   146324|  4.873e+05|         -|   146324|      -|        no|     -|  33 (~0%)|  21797 (~0%)|  9660 (~0%)|    -|
+    |  o VITIS_LOOP_569_4_VITIS_LOOP_570_5_VITIS_LOOP_571_6                   |     -|  2.43|   146322|  4.873e+05|        25|        2|  73150|       yes|     -|         -|            -|           -|    -|
+    | + test_3mm_Pipeline_VITIS_LOOP_968_7_VITIS_LOOP_969_8_VITIS_LOOP_970_9  |     -|  0.00|   133029|  4.430e+05|         -|   133029|      -|        no|     -|  17 (~0%)|   47403 (1%)|  18515 (1%)|    -|
+    |  o VITIS_LOOP_968_7_VITIS_LOOP_969_8_VITIS_LOOP_970_9                   |     -|  2.43|   133027|  4.430e+05|        30|        2|  66500|       yes|     -|         -|            -|           -|    -|
+    +-------------------------------------------------------------------------+------+------+---------+-----------+----------+---------+-------+----------+------+----------+-------------+------------+-----+
+
+
+================================================================
+== HW Interfaces
+================================================================
+* S_AXILITE Interfaces
++------------+------------+---------------+
+| Interface  | Data Width | Address Width |
++------------+------------+---------------+
+| s_axi_ctrl | 32         | 4             |
++------------+------------+---------------+
+
+* S_AXILITE Registers
++------------+----------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+| Interface  | Register | Offset | Width | Access | Description                      | Bit Fields                                                           |
++------------+----------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+| s_axi_ctrl | CTRL     | 0x00   | 32    | RW     | Control signals                  | 0=AP_START 1=AP_DONE 2=AP_IDLE 3=AP_READY 7=AUTO_RESTART 9=INTERRUPT |
+| s_axi_ctrl | GIER     | 0x04   | 32    | RW     | Global Interrupt Enable Register | 0=Enable                                                             |
+| s_axi_ctrl | IP_IER   | 0x08   | 32    | RW     | IP Interrupt Enable Register     | 0=CHAN0_INT_EN 1=CHAN1_INT_EN                                        |
+| s_axi_ctrl | IP_ISR   | 0x0c   | 32    | RW     | IP Interrupt Status Register     | 0=CHAN0_INT_ST 1=CHAN1_INT_ST                                        |
++------------+----------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+
+* BRAM
++---------------+------------+---------------+
+| Interface     | Data Width | Address Width |
++---------------+------------+---------------+
+| v0_0_PORTA    | 32         | 32            |
+| v0_10_PORTA   | 32         | 32            |
+| v0_11_PORTA   | 32         | 32            |
+| v0_1_PORTA    | 32         | 32            |
+| v0_2_PORTA    | 32         | 32            |
+| v0_3_PORTA    | 32         | 32            |
+| v0_4_PORTA    | 32         | 32            |
+| v0_5_PORTA    | 32         | 32            |
+| v0_6_PORTA    | 32         | 32            |
+| v0_7_PORTA    | 32         | 32            |
+| v0_8_PORTA    | 32         | 32            |
+| v0_9_PORTA    | 32         | 32            |
+| v1_0_PORTA    | 32         | 32            |
+| v1_1_PORTA    | 32         | 32            |
+| v1_2_PORTA    | 32         | 32            |
+| v1_3_PORTA    | 32         | 32            |
+| v1_4_PORTA    | 32         | 32            |
+| v1_5_PORTA    | 32         | 32            |
+| v1_6_PORTA    | 32         | 32            |
+| v1_7_PORTA    | 32         | 32            |
+| v1_8_PORTA    | 32         | 32            |
+| v1_9_PORTA    | 32         | 32            |
+| v2_0_0_PORTA  | 32         | 32            |
+| v2_0_1_PORTA  | 32         | 32            |
+| v2_1_0_PORTA  | 32         | 32            |
+| v2_1_1_PORTA  | 32         | 32            |
+| v2_2_0_PORTA  | 32         | 32            |
+| v2_2_1_PORTA  | 32         | 32            |
+| v2_3_0_PORTA  | 32         | 32            |
+| v2_3_1_PORTA  | 32         | 32            |
+| v2_4_0_PORTA  | 32         | 32            |
+| v2_4_1_PORTA  | 32         | 32            |
+| v2_5_0_PORTA  | 32         | 32            |
+| v2_5_1_PORTA  | 32         | 32            |
+| v2_6_0_PORTA  | 32         | 32            |
+| v2_6_1_PORTA  | 32         | 32            |
+| v2_7_0_PORTA  | 32         | 32            |
+| v2_7_1_PORTA  | 32         | 32            |
+| v2_8_0_PORTA  | 32         | 32            |
+| v2_8_1_PORTA  | 32         | 32            |
+| v2_9_0_PORTA  | 32         | 32            |
+| v2_9_1_PORTA  | 32         | 32            |
+| v3_0_0_PORTA  | 32         | 32            |
+| v3_0_1_PORTA  | 32         | 32            |
+| v3_0_2_PORTA  | 32         | 32            |
+| v3_0_3_PORTA  | 32         | 32            |
+| v3_0_4_PORTA  | 32         | 32            |
+| v3_0_5_PORTA  | 32         | 32            |
+| v3_1_0_PORTA  | 32         | 32            |
+| v3_1_1_PORTA  | 32         | 32            |
+| v3_1_2_PORTA  | 32         | 32            |
+| v3_1_3_PORTA  | 32         | 32            |
+| v3_1_4_PORTA  | 32         | 32            |
+| v3_1_5_PORTA  | 32         | 32            |
+| v4_0_0_PORTA  | 32         | 32            |
+| v4_0_1_PORTA  | 32         | 32            |
+| v4_0_2_PORTA  | 32         | 32            |
+| v4_0_3_PORTA  | 32         | 32            |
+| v4_0_4_PORTA  | 32         | 32            |
+| v4_0_5_PORTA  | 32         | 32            |
+| v4_1_0_PORTA  | 32         | 32            |
+| v4_1_1_PORTA  | 32         | 32            |
+| v4_1_2_PORTA  | 32         | 32            |
+| v4_1_3_PORTA  | 32         | 32            |
+| v4_1_4_PORTA  | 32         | 32            |
+| v4_1_5_PORTA  | 32         | 32            |
+| v4_2_0_PORTA  | 32         | 32            |
+| v4_2_1_PORTA  | 32         | 32            |
+| v4_2_2_PORTA  | 32         | 32            |
+| v4_2_3_PORTA  | 32         | 32            |
+| v4_2_4_PORTA  | 32         | 32            |
+| v4_2_5_PORTA  | 32         | 32            |
+| v4_3_0_PORTA  | 32         | 32            |
+| v4_3_1_PORTA  | 32         | 32            |
+| v4_3_2_PORTA  | 32         | 32            |
+| v4_3_3_PORTA  | 32         | 32            |
+| v4_3_4_PORTA  | 32         | 32            |
+| v4_3_5_PORTA  | 32         | 32            |
+| v4_4_0_PORTA  | 32         | 32            |
+| v4_4_1_PORTA  | 32         | 32            |
+| v4_4_2_PORTA  | 32         | 32            |
+| v4_4_3_PORTA  | 32         | 32            |
+| v4_4_4_PORTA  | 32         | 32            |
+| v4_4_5_PORTA  | 32         | 32            |
+| v4_5_0_PORTA  | 32         | 32            |
+| v4_5_1_PORTA  | 32         | 32            |
+| v4_5_2_PORTA  | 32         | 32            |
+| v4_5_3_PORTA  | 32         | 32            |
+| v4_5_4_PORTA  | 32         | 32            |
+| v4_5_5_PORTA  | 32         | 32            |
+| v4_6_0_PORTA  | 32         | 32            |
+| v4_6_1_PORTA  | 32         | 32            |
+| v4_6_2_PORTA  | 32         | 32            |
+| v4_6_3_PORTA  | 32         | 32            |
+| v4_6_4_PORTA  | 32         | 32            |
+| v4_6_5_PORTA  | 32         | 32            |
+| v4_7_0_PORTA  | 32         | 32            |
+| v4_7_1_PORTA  | 32         | 32            |
+| v4_7_2_PORTA  | 32         | 32            |
+| v4_7_3_PORTA  | 32         | 32            |
+| v4_7_4_PORTA  | 32         | 32            |
+| v4_7_5_PORTA  | 32         | 32            |
+| v4_8_0_PORTA  | 32         | 32            |
+| v4_8_1_PORTA  | 32         | 32            |
+| v4_8_2_PORTA  | 32         | 32            |
+| v4_8_3_PORTA  | 32         | 32            |
+| v4_8_4_PORTA  | 32         | 32            |
+| v4_8_5_PORTA  | 32         | 32            |
+| v5_0_0_PORTA  | 32         | 32            |
+| v5_0_0_PORTB  | 32         | 32            |
+| v5_0_1_PORTA  | 32         | 32            |
+| v5_0_1_PORTB  | 32         | 32            |
+| v5_0_2_PORTA  | 32         | 32            |
+| v5_0_2_PORTB  | 32         | 32            |
+| v5_0_3_PORTA  | 32         | 32            |
+| v5_0_3_PORTB  | 32         | 32            |
+| v5_0_4_PORTA  | 32         | 32            |
+| v5_0_4_PORTB  | 32         | 32            |
+| v5_0_5_PORTA  | 32         | 32            |
+| v5_0_5_PORTB  | 32         | 32            |
+| v5_0_6_PORTA  | 32         | 32            |
+| v5_0_6_PORTB  | 32         | 32            |
+| v5_0_7_PORTA  | 32         | 32            |
+| v5_0_7_PORTB  | 32         | 32            |
+| v5_0_8_PORTA  | 32         | 32            |
+| v5_0_8_PORTB  | 32         | 32            |
+| v5_0_9_PORTA  | 32         | 32            |
+| v5_0_9_PORTB  | 32         | 32            |
+| v5_10_0_PORTA | 32         | 32            |
+| v5_10_0_PORTB | 32         | 32            |
+| v5_10_1_PORTA | 32         | 32            |
+| v5_10_1_PORTB | 32         | 32            |
+| v5_10_2_PORTA | 32         | 32            |
+| v5_10_2_PORTB | 32         | 32            |
+| v5_10_3_PORTA | 32         | 32            |
+| v5_10_3_PORTB | 32         | 32            |
+| v5_10_4_PORTA | 32         | 32            |
+| v5_10_4_PORTB | 32         | 32            |
+| v5_10_5_PORTA | 32         | 32            |
+| v5_10_5_PORTB | 32         | 32            |
+| v5_10_6_PORTA | 32         | 32            |
+| v5_10_6_PORTB | 32         | 32            |
+| v5_10_7_PORTA | 32         | 32            |
+| v5_10_7_PORTB | 32         | 32            |
+| v5_10_8_PORTA | 32         | 32            |
+| v5_10_8_PORTB | 32         | 32            |
+| v5_10_9_PORTA | 32         | 32            |
+| v5_10_9_PORTB | 32         | 32            |
+| v5_11_0_PORTA | 32         | 32            |
+| v5_11_0_PORTB | 32         | 32            |
+| v5_11_1_PORTA | 32         | 32            |
+| v5_11_1_PORTB | 32         | 32            |
+| v5_11_2_PORTA | 32         | 32            |
+| v5_11_2_PORTB | 32         | 32            |
+| v5_11_3_PORTA | 32         | 32            |
+| v5_11_3_PORTB | 32         | 32            |
+| v5_11_4_PORTA | 32         | 32            |
+| v5_11_4_PORTB | 32         | 32            |
+| v5_11_5_PORTA | 32         | 32            |
+| v5_11_5_PORTB | 32         | 32            |
+| v5_11_6_PORTA | 32         | 32            |
+| v5_11_6_PORTB | 32         | 32            |
+| v5_11_7_PORTA | 32         | 32            |
+| v5_11_7_PORTB | 32         | 32            |
+| v5_11_8_PORTA | 32         | 32            |
+| v5_11_8_PORTB | 32         | 32            |
+| v5_11_9_PORTA | 32         | 32            |
+| v5_11_9_PORTB | 32         | 32            |
+| v5_1_0_PORTA  | 32         | 32            |
+| v5_1_0_PORTB  | 32         | 32            |
+| v5_1_1_PORTA  | 32         | 32            |
+| v5_1_1_PORTB  | 32         | 32            |
+| v5_1_2_PORTA  | 32         | 32            |
+| v5_1_2_PORTB  | 32         | 32            |
+| v5_1_3_PORTA  | 32         | 32            |
+| v5_1_3_PORTB  | 32         | 32            |
+| v5_1_4_PORTA  | 32         | 32            |
+| v5_1_4_PORTB  | 32         | 32            |
+| v5_1_5_PORTA  | 32         | 32            |
+| v5_1_5_PORTB  | 32         | 32            |
+| v5_1_6_PORTA  | 32         | 32            |
+| v5_1_6_PORTB  | 32         | 32            |
+| v5_1_7_PORTA  | 32         | 32            |
+| v5_1_7_PORTB  | 32         | 32            |
+| v5_1_8_PORTA  | 32         | 32            |
+| v5_1_8_PORTB  | 32         | 32            |
+| v5_1_9_PORTA  | 32         | 32            |
+| v5_1_9_PORTB  | 32         | 32            |
+| v5_2_0_PORTA  | 32         | 32            |
+| v5_2_0_PORTB  | 32         | 32            |
+| v5_2_1_PORTA  | 32         | 32            |
+| v5_2_1_PORTB  | 32         | 32            |
+| v5_2_2_PORTA  | 32         | 32            |
+| v5_2_2_PORTB  | 32         | 32            |
+| v5_2_3_PORTA  | 32         | 32            |
+| v5_2_3_PORTB  | 32         | 32            |
+| v5_2_4_PORTA  | 32         | 32            |
+| v5_2_4_PORTB  | 32         | 32            |
+| v5_2_5_PORTA  | 32         | 32            |
+| v5_2_5_PORTB  | 32         | 32            |
+| v5_2_6_PORTA  | 32         | 32            |
+| v5_2_6_PORTB  | 32         | 32            |
+| v5_2_7_PORTA  | 32         | 32            |
+| v5_2_7_PORTB  | 32         | 32            |
+| v5_2_8_PORTA  | 32         | 32            |
+| v5_2_8_PORTB  | 32         | 32            |
+| v5_2_9_PORTA  | 32         | 32            |
+| v5_2_9_PORTB  | 32         | 32            |
+| v5_3_0_PORTA  | 32         | 32            |
+| v5_3_0_PORTB  | 32         | 32            |
+| v5_3_1_PORTA  | 32         | 32            |
+| v5_3_1_PORTB  | 32         | 32            |
+| v5_3_2_PORTA  | 32         | 32            |
+| v5_3_2_PORTB  | 32         | 32            |
+| v5_3_3_PORTA  | 32         | 32            |
+| v5_3_3_PORTB  | 32         | 32            |
+| v5_3_4_PORTA  | 32         | 32            |
+| v5_3_4_PORTB  | 32         | 32            |
+| v5_3_5_PORTA  | 32         | 32            |
+| v5_3_5_PORTB  | 32         | 32            |
+| v5_3_6_PORTA  | 32         | 32            |
+| v5_3_6_PORTB  | 32         | 32            |
+| v5_3_7_PORTA  | 32         | 32            |
+| v5_3_7_PORTB  | 32         | 32            |
+| v5_3_8_PORTA  | 32         | 32            |
+| v5_3_8_PORTB  | 32         | 32            |
+| v5_3_9_PORTA  | 32         | 32            |
+| v5_3_9_PORTB  | 32         | 32            |
+| v5_4_0_PORTA  | 32         | 32            |
+| v5_4_0_PORTB  | 32         | 32            |
+| v5_4_1_PORTA  | 32         | 32            |
+| v5_4_1_PORTB  | 32         | 32            |
+| v5_4_2_PORTA  | 32         | 32            |
+| v5_4_2_PORTB  | 32         | 32            |
+| v5_4_3_PORTA  | 32         | 32            |
+| v5_4_3_PORTB  | 32         | 32            |
+| v5_4_4_PORTA  | 32         | 32            |
+| v5_4_4_PORTB  | 32         | 32            |
+| v5_4_5_PORTA  | 32         | 32            |
+| v5_4_5_PORTB  | 32         | 32            |
+| v5_4_6_PORTA  | 32         | 32            |
+| v5_4_6_PORTB  | 32         | 32            |
+| v5_4_7_PORTA  | 32         | 32            |
+| v5_4_7_PORTB  | 32         | 32            |
+| v5_4_8_PORTA  | 32         | 32            |
+| v5_4_8_PORTB  | 32         | 32            |
+| v5_4_9_PORTA  | 32         | 32            |
+| v5_4_9_PORTB  | 32         | 32            |
+| v5_5_0_PORTA  | 32         | 32            |
+| v5_5_0_PORTB  | 32         | 32            |
+| v5_5_1_PORTA  | 32         | 32            |
+| v5_5_1_PORTB  | 32         | 32            |
+| v5_5_2_PORTA  | 32         | 32            |
+| v5_5_2_PORTB  | 32         | 32            |
+| v5_5_3_PORTA  | 32         | 32            |
+| v5_5_3_PORTB  | 32         | 32            |
+| v5_5_4_PORTA  | 32         | 32            |
+| v5_5_4_PORTB  | 32         | 32            |
+| v5_5_5_PORTA  | 32         | 32            |
+| v5_5_5_PORTB  | 32         | 32            |
+| v5_5_6_PORTA  | 32         | 32            |
+| v5_5_6_PORTB  | 32         | 32            |
+| v5_5_7_PORTA  | 32         | 32            |
+| v5_5_7_PORTB  | 32         | 32            |
+| v5_5_8_PORTA  | 32         | 32            |
+| v5_5_8_PORTB  | 32         | 32            |
+| v5_5_9_PORTA  | 32         | 32            |
+| v5_5_9_PORTB  | 32         | 32            |
+| v5_6_0_PORTA  | 32         | 32            |
+| v5_6_0_PORTB  | 32         | 32            |
+| v5_6_1_PORTA  | 32         | 32            |
+| v5_6_1_PORTB  | 32         | 32            |
+| v5_6_2_PORTA  | 32         | 32            |
+| v5_6_2_PORTB  | 32         | 32            |
+| v5_6_3_PORTA  | 32         | 32            |
+| v5_6_3_PORTB  | 32         | 32            |
+| v5_6_4_PORTA  | 32         | 32            |
+| v5_6_4_PORTB  | 32         | 32            |
+| v5_6_5_PORTA  | 32         | 32            |
+| v5_6_5_PORTB  | 32         | 32            |
+| v5_6_6_PORTA  | 32         | 32            |
+| v5_6_6_PORTB  | 32         | 32            |
+| v5_6_7_PORTA  | 32         | 32            |
+| v5_6_7_PORTB  | 32         | 32            |
+| v5_6_8_PORTA  | 32         | 32            |
+| v5_6_8_PORTB  | 32         | 32            |
+| v5_6_9_PORTA  | 32         | 32            |
+| v5_6_9_PORTB  | 32         | 32            |
+| v5_7_0_PORTA  | 32         | 32            |
+| v5_7_0_PORTB  | 32         | 32            |
+| v5_7_1_PORTA  | 32         | 32            |
+| v5_7_1_PORTB  | 32         | 32            |
+| v5_7_2_PORTA  | 32         | 32            |
+| v5_7_2_PORTB  | 32         | 32            |
+| v5_7_3_PORTA  | 32         | 32            |
+| v5_7_3_PORTB  | 32         | 32            |
+| v5_7_4_PORTA  | 32         | 32            |
+| v5_7_4_PORTB  | 32         | 32            |
+| v5_7_5_PORTA  | 32         | 32            |
+| v5_7_5_PORTB  | 32         | 32            |
+| v5_7_6_PORTA  | 32         | 32            |
+| v5_7_6_PORTB  | 32         | 32            |
+| v5_7_7_PORTA  | 32         | 32            |
+| v5_7_7_PORTB  | 32         | 32            |
+| v5_7_8_PORTA  | 32         | 32            |
+| v5_7_8_PORTB  | 32         | 32            |
+| v5_7_9_PORTA  | 32         | 32            |
+| v5_7_9_PORTB  | 32         | 32            |
+| v5_8_0_PORTA  | 32         | 32            |
+| v5_8_0_PORTB  | 32         | 32            |
+| v5_8_1_PORTA  | 32         | 32            |
+| v5_8_1_PORTB  | 32         | 32            |
+| v5_8_2_PORTA  | 32         | 32            |
+| v5_8_2_PORTB  | 32         | 32            |
+| v5_8_3_PORTA  | 32         | 32            |
+| v5_8_3_PORTB  | 32         | 32            |
+| v5_8_4_PORTA  | 32         | 32            |
+| v5_8_4_PORTB  | 32         | 32            |
+| v5_8_5_PORTA  | 32         | 32            |
+| v5_8_5_PORTB  | 32         | 32            |
+| v5_8_6_PORTA  | 32         | 32            |
+| v5_8_6_PORTB  | 32         | 32            |
+| v5_8_7_PORTA  | 32         | 32            |
+| v5_8_7_PORTB  | 32         | 32            |
+| v5_8_8_PORTA  | 32         | 32            |
+| v5_8_8_PORTB  | 32         | 32            |
+| v5_8_9_PORTA  | 32         | 32            |
+| v5_8_9_PORTB  | 32         | 32            |
+| v5_9_0_PORTA  | 32         | 32            |
+| v5_9_0_PORTB  | 32         | 32            |
+| v5_9_1_PORTA  | 32         | 32            |
+| v5_9_1_PORTB  | 32         | 32            |
+| v5_9_2_PORTA  | 32         | 32            |
+| v5_9_2_PORTB  | 32         | 32            |
+| v5_9_3_PORTA  | 32         | 32            |
+| v5_9_3_PORTB  | 32         | 32            |
+| v5_9_4_PORTA  | 32         | 32            |
+| v5_9_4_PORTB  | 32         | 32            |
+| v5_9_5_PORTA  | 32         | 32            |
+| v5_9_5_PORTB  | 32         | 32            |
+| v5_9_6_PORTA  | 32         | 32            |
+| v5_9_6_PORTB  | 32         | 32            |
+| v5_9_7_PORTA  | 32         | 32            |
+| v5_9_7_PORTB  | 32         | 32            |
+| v5_9_8_PORTA  | 32         | 32            |
+| v5_9_8_PORTB  | 32         | 32            |
+| v5_9_9_PORTA  | 32         | 32            |
+| v5_9_9_PORTB  | 32         | 32            |
+| v6_0_0_PORTA  | 32         | 32            |
+| v6_0_0_PORTB  | 32         | 32            |
+| v6_0_1_PORTA  | 32         | 32            |
+| v6_0_1_PORTB  | 32         | 32            |
+| v6_0_2_PORTA  | 32         | 32            |
+| v6_0_2_PORTB  | 32         | 32            |
+| v6_0_3_PORTA  | 32         | 32            |
+| v6_0_3_PORTB  | 32         | 32            |
+| v6_0_4_PORTA  | 32         | 32            |
+| v6_0_4_PORTB  | 32         | 32            |
+| v6_0_5_PORTA  | 32         | 32            |
+| v6_0_5_PORTB  | 32         | 32            |
+| v6_1_0_PORTA  | 32         | 32            |
+| v6_1_0_PORTB  | 32         | 32            |
+| v6_1_1_PORTA  | 32         | 32            |
+| v6_1_1_PORTB  | 32         | 32            |
+| v6_1_2_PORTA  | 32         | 32            |
+| v6_1_2_PORTB  | 32         | 32            |
+| v6_1_3_PORTA  | 32         | 32            |
+| v6_1_3_PORTB  | 32         | 32            |
+| v6_1_4_PORTA  | 32         | 32            |
+| v6_1_4_PORTB  | 32         | 32            |
+| v6_1_5_PORTA  | 32         | 32            |
+| v6_1_5_PORTB  | 32         | 32            |
+| v6_2_0_PORTA  | 32         | 32            |
+| v6_2_0_PORTB  | 32         | 32            |
+| v6_2_1_PORTA  | 32         | 32            |
+| v6_2_1_PORTB  | 32         | 32            |
+| v6_2_2_PORTA  | 32         | 32            |
+| v6_2_2_PORTB  | 32         | 32            |
+| v6_2_3_PORTA  | 32         | 32            |
+| v6_2_3_PORTB  | 32         | 32            |
+| v6_2_4_PORTA  | 32         | 32            |
+| v6_2_4_PORTB  | 32         | 32            |
+| v6_2_5_PORTA  | 32         | 32            |
+| v6_2_5_PORTB  | 32         | 32            |
+| v6_3_0_PORTA  | 32         | 32            |
+| v6_3_0_PORTB  | 32         | 32            |
+| v6_3_1_PORTA  | 32         | 32            |
+| v6_3_1_PORTB  | 32         | 32            |
+| v6_3_2_PORTA  | 32         | 32            |
+| v6_3_2_PORTB  | 32         | 32            |
+| v6_3_3_PORTA  | 32         | 32            |
+| v6_3_3_PORTB  | 32         | 32            |
+| v6_3_4_PORTA  | 32         | 32            |
+| v6_3_4_PORTB  | 32         | 32            |
+| v6_3_5_PORTA  | 32         | 32            |
+| v6_3_5_PORTB  | 32         | 32            |
+| v6_4_0_PORTA  | 32         | 32            |
+| v6_4_0_PORTB  | 32         | 32            |
+| v6_4_1_PORTA  | 32         | 32            |
+| v6_4_1_PORTB  | 32         | 32            |
+| v6_4_2_PORTA  | 32         | 32            |
+| v6_4_2_PORTB  | 32         | 32            |
+| v6_4_3_PORTA  | 32         | 32            |
+| v6_4_3_PORTB  | 32         | 32            |
+| v6_4_4_PORTA  | 32         | 32            |
+| v6_4_4_PORTB  | 32         | 32            |
+| v6_4_5_PORTA  | 32         | 32            |
+| v6_4_5_PORTB  | 32         | 32            |
+| v6_5_0_PORTA  | 32         | 32            |
+| v6_5_0_PORTB  | 32         | 32            |
+| v6_5_1_PORTA  | 32         | 32            |
+| v6_5_1_PORTB  | 32         | 32            |
+| v6_5_2_PORTA  | 32         | 32            |
+| v6_5_2_PORTB  | 32         | 32            |
+| v6_5_3_PORTA  | 32         | 32            |
+| v6_5_3_PORTB  | 32         | 32            |
+| v6_5_4_PORTA  | 32         | 32            |
+| v6_5_4_PORTB  | 32         | 32            |
+| v6_5_5_PORTA  | 32         | 32            |
+| v6_5_5_PORTB  | 32         | 32            |
+| v6_6_0_PORTA  | 32         | 32            |
+| v6_6_0_PORTB  | 32         | 32            |
+| v6_6_1_PORTA  | 32         | 32            |
+| v6_6_1_PORTB  | 32         | 32            |
+| v6_6_2_PORTA  | 32         | 32            |
+| v6_6_2_PORTB  | 32         | 32            |
+| v6_6_3_PORTA  | 32         | 32            |
+| v6_6_3_PORTB  | 32         | 32            |
+| v6_6_4_PORTA  | 32         | 32            |
+| v6_6_4_PORTB  | 32         | 32            |
+| v6_6_5_PORTA  | 32         | 32            |
+| v6_6_5_PORTB  | 32         | 32            |
+| v6_7_0_PORTA  | 32         | 32            |
+| v6_7_0_PORTB  | 32         | 32            |
+| v6_7_1_PORTA  | 32         | 32            |
+| v6_7_1_PORTB  | 32         | 32            |
+| v6_7_2_PORTA  | 32         | 32            |
+| v6_7_2_PORTB  | 32         | 32            |
+| v6_7_3_PORTA  | 32         | 32            |
+| v6_7_3_PORTB  | 32         | 32            |
+| v6_7_4_PORTA  | 32         | 32            |
+| v6_7_4_PORTB  | 32         | 32            |
+| v6_7_5_PORTA  | 32         | 32            |
+| v6_7_5_PORTB  | 32         | 32            |
+| v6_8_0_PORTA  | 32         | 32            |
+| v6_8_0_PORTB  | 32         | 32            |
+| v6_8_1_PORTA  | 32         | 32            |
+| v6_8_1_PORTB  | 32         | 32            |
+| v6_8_2_PORTA  | 32         | 32            |
+| v6_8_2_PORTB  | 32         | 32            |
+| v6_8_3_PORTA  | 32         | 32            |
+| v6_8_3_PORTB  | 32         | 32            |
+| v6_8_4_PORTA  | 32         | 32            |
+| v6_8_4_PORTB  | 32         | 32            |
+| v6_8_5_PORTA  | 32         | 32            |
+| v6_8_5_PORTB  | 32         | 32            |
+| v6_9_0_PORTA  | 32         | 32            |
+| v6_9_0_PORTB  | 32         | 32            |
+| v6_9_1_PORTA  | 32         | 32            |
+| v6_9_1_PORTB  | 32         | 32            |
+| v6_9_2_PORTA  | 32         | 32            |
+| v6_9_2_PORTB  | 32         | 32            |
+| v6_9_3_PORTA  | 32         | 32            |
+| v6_9_3_PORTB  | 32         | 32            |
+| v6_9_4_PORTA  | 32         | 32            |
+| v6_9_4_PORTB  | 32         | 32            |
+| v6_9_5_PORTA  | 32         | 32            |
+| v6_9_5_PORTB  | 32         | 32            |
++---------------+------------+---------------+
+
+* TOP LEVEL CONTROL
++-----------+------------+-----------+
+| Interface | Type       | Ports     |
++-----------+------------+-----------+
+| ap_clk    | clock      | ap_clk    |
+| ap_rst_n  | reset      | ap_rst_n  |
+| interrupt | interrupt  | interrupt |
+| ap_ctrl   | ap_ctrl_hs |           |
++-----------+------------+-----------+
+
+
+================================================================
+== SW I/O Information
+================================================================
+* Top Function Arguments
++----------+-----------+----------+
+| Argument | Direction | Datatype |
++----------+-----------+----------+
+| v0       | in        | float*   |
+| v1       | in        | float*   |
+| v2       | in        | float*   |
+| v3       | in        | float*   |
+| v4       | inout     | float*   |
+| v5       | inout     | float*   |
+| v6       | inout     | float*   |
++----------+-----------+----------+
+
+* SW-to-HW Mapping
++----------+---------------+-----------+
+| Argument | HW Interface  | HW Type   |
++----------+---------------+-----------+
+| v0       | v0_0_PORTA    | interface |
+| v0       | v0_1_PORTA    | interface |
+| v0       | v0_2_PORTA    | interface |
+| v0       | v0_3_PORTA    | interface |
+| v0       | v0_4_PORTA    | interface |
+| v0       | v0_5_PORTA    | interface |
+| v0       | v0_6_PORTA    | interface |
+| v0       | v0_7_PORTA    | interface |
+| v0       | v0_8_PORTA    | interface |
+| v0       | v0_9_PORTA    | interface |
+| v0       | v0_10_PORTA   | interface |
+| v0       | v0_11_PORTA   | interface |
+| v1       | v1_0_PORTA    | interface |
+| v1       | v1_1_PORTA    | interface |
+| v1       | v1_2_PORTA    | interface |
+| v1       | v1_3_PORTA    | interface |
+| v1       | v1_4_PORTA    | interface |
+| v1       | v1_5_PORTA    | interface |
+| v1       | v1_6_PORTA    | interface |
+| v1       | v1_7_PORTA    | interface |
+| v1       | v1_8_PORTA    | interface |
+| v1       | v1_9_PORTA    | interface |
+| v2       | v2_0_0_PORTA  | interface |
+| v2       | v2_0_1_PORTA  | interface |
+| v2       | v2_1_0_PORTA  | interface |
+| v2       | v2_1_1_PORTA  | interface |
+| v2       | v2_2_0_PORTA  | interface |
+| v2       | v2_2_1_PORTA  | interface |
+| v2       | v2_3_0_PORTA  | interface |
+| v2       | v2_3_1_PORTA  | interface |
+| v2       | v2_4_0_PORTA  | interface |
+| v2       | v2_4_1_PORTA  | interface |
+| v2       | v2_5_0_PORTA  | interface |
+| v2       | v2_5_1_PORTA  | interface |
+| v2       | v2_6_0_PORTA  | interface |
+| v2       | v2_6_1_PORTA  | interface |
+| v2       | v2_7_0_PORTA  | interface |
+| v2       | v2_7_1_PORTA  | interface |
+| v2       | v2_8_0_PORTA  | interface |
+| v2       | v2_8_1_PORTA  | interface |
+| v2       | v2_9_0_PORTA  | interface |
+| v2       | v2_9_1_PORTA  | interface |
+| v3       | v3_0_0_PORTA  | interface |
+| v3       | v3_0_1_PORTA  | interface |
+| v3       | v3_0_2_PORTA  | interface |
+| v3       | v3_0_3_PORTA  | interface |
+| v3       | v3_0_4_PORTA  | interface |
+| v3       | v3_0_5_PORTA  | interface |
+| v3       | v3_1_0_PORTA  | interface |
+| v3       | v3_1_1_PORTA  | interface |
+| v3       | v3_1_2_PORTA  | interface |
+| v3       | v3_1_3_PORTA  | interface |
+| v3       | v3_1_4_PORTA  | interface |
+| v3       | v3_1_5_PORTA  | interface |
+| v4       | v4_0_0_PORTA  | interface |
+| v4       | v4_0_1_PORTA  | interface |
+| v4       | v4_0_2_PORTA  | interface |
+| v4       | v4_0_3_PORTA  | interface |
+| v4       | v4_0_4_PORTA  | interface |
+| v4       | v4_0_5_PORTA  | interface |
+| v4       | v4_1_0_PORTA  | interface |
+| v4       | v4_1_1_PORTA  | interface |
+| v4       | v4_1_2_PORTA  | interface |
+| v4       | v4_1_3_PORTA  | interface |
+| v4       | v4_1_4_PORTA  | interface |
+| v4       | v4_1_5_PORTA  | interface |
+| v4       | v4_2_0_PORTA  | interface |
+| v4       | v4_2_1_PORTA  | interface |
+| v4       | v4_2_2_PORTA  | interface |
+| v4       | v4_2_3_PORTA  | interface |
+| v4       | v4_2_4_PORTA  | interface |
+| v4       | v4_2_5_PORTA  | interface |
+| v4       | v4_3_0_PORTA  | interface |
+| v4       | v4_3_1_PORTA  | interface |
+| v4       | v4_3_2_PORTA  | interface |
+| v4       | v4_3_3_PORTA  | interface |
+| v4       | v4_3_4_PORTA  | interface |
+| v4       | v4_3_5_PORTA  | interface |
+| v4       | v4_4_0_PORTA  | interface |
+| v4       | v4_4_1_PORTA  | interface |
+| v4       | v4_4_2_PORTA  | interface |
+| v4       | v4_4_3_PORTA  | interface |
+| v4       | v4_4_4_PORTA  | interface |
+| v4       | v4_4_5_PORTA  | interface |
+| v4       | v4_5_0_PORTA  | interface |
+| v4       | v4_5_1_PORTA  | interface |
+| v4       | v4_5_2_PORTA  | interface |
+| v4       | v4_5_3_PORTA  | interface |
+| v4       | v4_5_4_PORTA  | interface |
+| v4       | v4_5_5_PORTA  | interface |
+| v4       | v4_6_0_PORTA  | interface |
+| v4       | v4_6_1_PORTA  | interface |
+| v4       | v4_6_2_PORTA  | interface |
+| v4       | v4_6_3_PORTA  | interface |
+| v4       | v4_6_4_PORTA  | interface |
+| v4       | v4_6_5_PORTA  | interface |
+| v4       | v4_7_0_PORTA  | interface |
+| v4       | v4_7_1_PORTA  | interface |
+| v4       | v4_7_2_PORTA  | interface |
+| v4       | v4_7_3_PORTA  | interface |
+| v4       | v4_7_4_PORTA  | interface |
+| v4       | v4_7_5_PORTA  | interface |
+| v4       | v4_8_0_PORTA  | interface |
+| v4       | v4_8_1_PORTA  | interface |
+| v4       | v4_8_2_PORTA  | interface |
+| v4       | v4_8_3_PORTA  | interface |
+| v4       | v4_8_4_PORTA  | interface |
+| v4       | v4_8_5_PORTA  | interface |
+| v5       | v5_0_0_PORTA  | interface |
+| v5       | v5_0_0_PORTB  | interface |
+| v5       | v5_0_1_PORTA  | interface |
+| v5       | v5_0_1_PORTB  | interface |
+| v5       | v5_0_2_PORTA  | interface |
+| v5       | v5_0_2_PORTB  | interface |
+| v5       | v5_0_3_PORTA  | interface |
+| v5       | v5_0_3_PORTB  | interface |
+| v5       | v5_0_4_PORTA  | interface |
+| v5       | v5_0_4_PORTB  | interface |
+| v5       | v5_0_5_PORTA  | interface |
+| v5       | v5_0_5_PORTB  | interface |
+| v5       | v5_0_6_PORTA  | interface |
+| v5       | v5_0_6_PORTB  | interface |
+| v5       | v5_0_7_PORTA  | interface |
+| v5       | v5_0_7_PORTB  | interface |
+| v5       | v5_0_8_PORTA  | interface |
+| v5       | v5_0_8_PORTB  | interface |
+| v5       | v5_0_9_PORTA  | interface |
+| v5       | v5_0_9_PORTB  | interface |
+| v5       | v5_1_0_PORTA  | interface |
+| v5       | v5_1_0_PORTB  | interface |
+| v5       | v5_1_1_PORTA  | interface |
+| v5       | v5_1_1_PORTB  | interface |
+| v5       | v5_1_2_PORTA  | interface |
+| v5       | v5_1_2_PORTB  | interface |
+| v5       | v5_1_3_PORTA  | interface |
+| v5       | v5_1_3_PORTB  | interface |
+| v5       | v5_1_4_PORTA  | interface |
+| v5       | v5_1_4_PORTB  | interface |
+| v5       | v5_1_5_PORTA  | interface |
+| v5       | v5_1_5_PORTB  | interface |
+| v5       | v5_1_6_PORTA  | interface |
+| v5       | v5_1_6_PORTB  | interface |
+| v5       | v5_1_7_PORTA  | interface |
+| v5       | v5_1_7_PORTB  | interface |
+| v5       | v5_1_8_PORTA  | interface |
+| v5       | v5_1_8_PORTB  | interface |
+| v5       | v5_1_9_PORTA  | interface |
+| v5       | v5_1_9_PORTB  | interface |
+| v5       | v5_2_0_PORTA  | interface |
+| v5       | v5_2_0_PORTB  | interface |
+| v5       | v5_2_1_PORTA  | interface |
+| v5       | v5_2_1_PORTB  | interface |
+| v5       | v5_2_2_PORTA  | interface |
+| v5       | v5_2_2_PORTB  | interface |
+| v5       | v5_2_3_PORTA  | interface |
+| v5       | v5_2_3_PORTB  | interface |
+| v5       | v5_2_4_PORTA  | interface |
+| v5       | v5_2_4_PORTB  | interface |
+| v5       | v5_2_5_PORTA  | interface |
+| v5       | v5_2_5_PORTB  | interface |
+| v5       | v5_2_6_PORTA  | interface |
+| v5       | v5_2_6_PORTB  | interface |
+| v5       | v5_2_7_PORTA  | interface |
+| v5       | v5_2_7_PORTB  | interface |
+| v5       | v5_2_8_PORTA  | interface |
+| v5       | v5_2_8_PORTB  | interface |
+| v5       | v5_2_9_PORTA  | interface |
+| v5       | v5_2_9_PORTB  | interface |
+| v5       | v5_3_0_PORTA  | interface |
+| v5       | v5_3_0_PORTB  | interface |
+| v5       | v5_3_1_PORTA  | interface |
+| v5       | v5_3_1_PORTB  | interface |
+| v5       | v5_3_2_PORTA  | interface |
+| v5       | v5_3_2_PORTB  | interface |
+| v5       | v5_3_3_PORTA  | interface |
+| v5       | v5_3_3_PORTB  | interface |
+| v5       | v5_3_4_PORTA  | interface |
+| v5       | v5_3_4_PORTB  | interface |
+| v5       | v5_3_5_PORTA  | interface |
+| v5       | v5_3_5_PORTB  | interface |
+| v5       | v5_3_6_PORTA  | interface |
+| v5       | v5_3_6_PORTB  | interface |
+| v5       | v5_3_7_PORTA  | interface |
+| v5       | v5_3_7_PORTB  | interface |
+| v5       | v5_3_8_PORTA  | interface |
+| v5       | v5_3_8_PORTB  | interface |
+| v5       | v5_3_9_PORTA  | interface |
+| v5       | v5_3_9_PORTB  | interface |
+| v5       | v5_4_0_PORTA  | interface |
+| v5       | v5_4_0_PORTB  | interface |
+| v5       | v5_4_1_PORTA  | interface |
+| v5       | v5_4_1_PORTB  | interface |
+| v5       | v5_4_2_PORTA  | interface |
+| v5       | v5_4_2_PORTB  | interface |
+| v5       | v5_4_3_PORTA  | interface |
+| v5       | v5_4_3_PORTB  | interface |
+| v5       | v5_4_4_PORTA  | interface |
+| v5       | v5_4_4_PORTB  | interface |
+| v5       | v5_4_5_PORTA  | interface |
+| v5       | v5_4_5_PORTB  | interface |
+| v5       | v5_4_6_PORTA  | interface |
+| v5       | v5_4_6_PORTB  | interface |
+| v5       | v5_4_7_PORTA  | interface |
+| v5       | v5_4_7_PORTB  | interface |
+| v5       | v5_4_8_PORTA  | interface |
+| v5       | v5_4_8_PORTB  | interface |
+| v5       | v5_4_9_PORTA  | interface |
+| v5       | v5_4_9_PORTB  | interface |
+| v5       | v5_5_0_PORTA  | interface |
+| v5       | v5_5_0_PORTB  | interface |
+| v5       | v5_5_1_PORTA  | interface |
+| v5       | v5_5_1_PORTB  | interface |
+| v5       | v5_5_2_PORTA  | interface |
+| v5       | v5_5_2_PORTB  | interface |
+| v5       | v5_5_3_PORTA  | interface |
+| v5       | v5_5_3_PORTB  | interface |
+| v5       | v5_5_4_PORTA  | interface |
+| v5       | v5_5_4_PORTB  | interface |
+| v5       | v5_5_5_PORTA  | interface |
+| v5       | v5_5_5_PORTB  | interface |
+| v5       | v5_5_6_PORTA  | interface |
+| v5       | v5_5_6_PORTB  | interface |
+| v5       | v5_5_7_PORTA  | interface |
+| v5       | v5_5_7_PORTB  | interface |
+| v5       | v5_5_8_PORTA  | interface |
+| v5       | v5_5_8_PORTB  | interface |
+| v5       | v5_5_9_PORTA  | interface |
+| v5       | v5_5_9_PORTB  | interface |
+| v5       | v5_6_0_PORTA  | interface |
+| v5       | v5_6_0_PORTB  | interface |
+| v5       | v5_6_1_PORTA  | interface |
+| v5       | v5_6_1_PORTB  | interface |
+| v5       | v5_6_2_PORTA  | interface |
+| v5       | v5_6_2_PORTB  | interface |
+| v5       | v5_6_3_PORTA  | interface |
+| v5       | v5_6_3_PORTB  | interface |
+| v5       | v5_6_4_PORTA  | interface |
+| v5       | v5_6_4_PORTB  | interface |
+| v5       | v5_6_5_PORTA  | interface |
+| v5       | v5_6_5_PORTB  | interface |
+| v5       | v5_6_6_PORTA  | interface |
+| v5       | v5_6_6_PORTB  | interface |
+| v5       | v5_6_7_PORTA  | interface |
+| v5       | v5_6_7_PORTB  | interface |
+| v5       | v5_6_8_PORTA  | interface |
+| v5       | v5_6_8_PORTB  | interface |
+| v5       | v5_6_9_PORTA  | interface |
+| v5       | v5_6_9_PORTB  | interface |
+| v5       | v5_7_0_PORTA  | interface |
+| v5       | v5_7_0_PORTB  | interface |
+| v5       | v5_7_1_PORTA  | interface |
+| v5       | v5_7_1_PORTB  | interface |
+| v5       | v5_7_2_PORTA  | interface |
+| v5       | v5_7_2_PORTB  | interface |
+| v5       | v5_7_3_PORTA  | interface |
+| v5       | v5_7_3_PORTB  | interface |
+| v5       | v5_7_4_PORTA  | interface |
+| v5       | v5_7_4_PORTB  | interface |
+| v5       | v5_7_5_PORTA  | interface |
+| v5       | v5_7_5_PORTB  | interface |
+| v5       | v5_7_6_PORTA  | interface |
+| v5       | v5_7_6_PORTB  | interface |
+| v5       | v5_7_7_PORTA  | interface |
+| v5       | v5_7_7_PORTB  | interface |
+| v5       | v5_7_8_PORTA  | interface |
+| v5       | v5_7_8_PORTB  | interface |
+| v5       | v5_7_9_PORTA  | interface |
+| v5       | v5_7_9_PORTB  | interface |
+| v5       | v5_8_0_PORTA  | interface |
+| v5       | v5_8_0_PORTB  | interface |
+| v5       | v5_8_1_PORTA  | interface |
+| v5       | v5_8_1_PORTB  | interface |
+| v5       | v5_8_2_PORTA  | interface |
+| v5       | v5_8_2_PORTB  | interface |
+| v5       | v5_8_3_PORTA  | interface |
+| v5       | v5_8_3_PORTB  | interface |
+| v5       | v5_8_4_PORTA  | interface |
+| v5       | v5_8_4_PORTB  | interface |
+| v5       | v5_8_5_PORTA  | interface |
+| v5       | v5_8_5_PORTB  | interface |
+| v5       | v5_8_6_PORTA  | interface |
+| v5       | v5_8_6_PORTB  | interface |
+| v5       | v5_8_7_PORTA  | interface |
+| v5       | v5_8_7_PORTB  | interface |
+| v5       | v5_8_8_PORTA  | interface |
+| v5       | v5_8_8_PORTB  | interface |
+| v5       | v5_8_9_PORTA  | interface |
+| v5       | v5_8_9_PORTB  | interface |
+| v5       | v5_9_0_PORTA  | interface |
+| v5       | v5_9_0_PORTB  | interface |
+| v5       | v5_9_1_PORTA  | interface |
+| v5       | v5_9_1_PORTB  | interface |
+| v5       | v5_9_2_PORTA  | interface |
+| v5       | v5_9_2_PORTB  | interface |
+| v5       | v5_9_3_PORTA  | interface |
+| v5       | v5_9_3_PORTB  | interface |
+| v5       | v5_9_4_PORTA  | interface |
+| v5       | v5_9_4_PORTB  | interface |
+| v5       | v5_9_5_PORTA  | interface |
+| v5       | v5_9_5_PORTB  | interface |
+| v5       | v5_9_6_PORTA  | interface |
+| v5       | v5_9_6_PORTB  | interface |
+| v5       | v5_9_7_PORTA  | interface |
+| v5       | v5_9_7_PORTB  | interface |
+| v5       | v5_9_8_PORTA  | interface |
+| v5       | v5_9_8_PORTB  | interface |
+| v5       | v5_9_9_PORTA  | interface |
+| v5       | v5_9_9_PORTB  | interface |
+| v5       | v5_10_0_PORTA | interface |
+| v5       | v5_10_0_PORTB | interface |
+| v5       | v5_10_1_PORTA | interface |
+| v5       | v5_10_1_PORTB | interface |
+| v5       | v5_10_2_PORTA | interface |
+| v5       | v5_10_2_PORTB | interface |
+| v5       | v5_10_3_PORTA | interface |
+| v5       | v5_10_3_PORTB | interface |
+| v5       | v5_10_4_PORTA | interface |
+| v5       | v5_10_4_PORTB | interface |
+| v5       | v5_10_5_PORTA | interface |
+| v5       | v5_10_5_PORTB | interface |
+| v5       | v5_10_6_PORTA | interface |
+| v5       | v5_10_6_PORTB | interface |
+| v5       | v5_10_7_PORTA | interface |
+| v5       | v5_10_7_PORTB | interface |
+| v5       | v5_10_8_PORTA | interface |
+| v5       | v5_10_8_PORTB | interface |
+| v5       | v5_10_9_PORTA | interface |
+| v5       | v5_10_9_PORTB | interface |
+| v5       | v5_11_0_PORTA | interface |
+| v5       | v5_11_0_PORTB | interface |
+| v5       | v5_11_1_PORTA | interface |
+| v5       | v5_11_1_PORTB | interface |
+| v5       | v5_11_2_PORTA | interface |
+| v5       | v5_11_2_PORTB | interface |
+| v5       | v5_11_3_PORTA | interface |
+| v5       | v5_11_3_PORTB | interface |
+| v5       | v5_11_4_PORTA | interface |
+| v5       | v5_11_4_PORTB | interface |
+| v5       | v5_11_5_PORTA | interface |
+| v5       | v5_11_5_PORTB | interface |
+| v5       | v5_11_6_PORTA | interface |
+| v5       | v5_11_6_PORTB | interface |
+| v5       | v5_11_7_PORTA | interface |
+| v5       | v5_11_7_PORTB | interface |
+| v5       | v5_11_8_PORTA | interface |
+| v5       | v5_11_8_PORTB | interface |
+| v5       | v5_11_9_PORTA | interface |
+| v5       | v5_11_9_PORTB | interface |
+| v6       | v6_0_0_PORTA  | interface |
+| v6       | v6_0_0_PORTB  | interface |
+| v6       | v6_0_1_PORTA  | interface |
+| v6       | v6_0_1_PORTB  | interface |
+| v6       | v6_0_2_PORTA  | interface |
+| v6       | v6_0_2_PORTB  | interface |
+| v6       | v6_0_3_PORTA  | interface |
+| v6       | v6_0_3_PORTB  | interface |
+| v6       | v6_0_4_PORTA  | interface |
+| v6       | v6_0_4_PORTB  | interface |
+| v6       | v6_0_5_PORTA  | interface |
+| v6       | v6_0_5_PORTB  | interface |
+| v6       | v6_1_0_PORTA  | interface |
+| v6       | v6_1_0_PORTB  | interface |
+| v6       | v6_1_1_PORTA  | interface |
+| v6       | v6_1_1_PORTB  | interface |
+| v6       | v6_1_2_PORTA  | interface |
+| v6       | v6_1_2_PORTB  | interface |
+| v6       | v6_1_3_PORTA  | interface |
+| v6       | v6_1_3_PORTB  | interface |
+| v6       | v6_1_4_PORTA  | interface |
+| v6       | v6_1_4_PORTB  | interface |
+| v6       | v6_1_5_PORTA  | interface |
+| v6       | v6_1_5_PORTB  | interface |
+| v6       | v6_2_0_PORTA  | interface |
+| v6       | v6_2_0_PORTB  | interface |
+| v6       | v6_2_1_PORTA  | interface |
+| v6       | v6_2_1_PORTB  | interface |
+| v6       | v6_2_2_PORTA  | interface |
+| v6       | v6_2_2_PORTB  | interface |
+| v6       | v6_2_3_PORTA  | interface |
+| v6       | v6_2_3_PORTB  | interface |
+| v6       | v6_2_4_PORTA  | interface |
+| v6       | v6_2_4_PORTB  | interface |
+| v6       | v6_2_5_PORTA  | interface |
+| v6       | v6_2_5_PORTB  | interface |
+| v6       | v6_3_0_PORTA  | interface |
+| v6       | v6_3_0_PORTB  | interface |
+| v6       | v6_3_1_PORTA  | interface |
+| v6       | v6_3_1_PORTB  | interface |
+| v6       | v6_3_2_PORTA  | interface |
+| v6       | v6_3_2_PORTB  | interface |
+| v6       | v6_3_3_PORTA  | interface |
+| v6       | v6_3_3_PORTB  | interface |
+| v6       | v6_3_4_PORTA  | interface |
+| v6       | v6_3_4_PORTB  | interface |
+| v6       | v6_3_5_PORTA  | interface |
+| v6       | v6_3_5_PORTB  | interface |
+| v6       | v6_4_0_PORTA  | interface |
+| v6       | v6_4_0_PORTB  | interface |
+| v6       | v6_4_1_PORTA  | interface |
+| v6       | v6_4_1_PORTB  | interface |
+| v6       | v6_4_2_PORTA  | interface |
+| v6       | v6_4_2_PORTB  | interface |
+| v6       | v6_4_3_PORTA  | interface |
+| v6       | v6_4_3_PORTB  | interface |
+| v6       | v6_4_4_PORTA  | interface |
+| v6       | v6_4_4_PORTB  | interface |
+| v6       | v6_4_5_PORTA  | interface |
+| v6       | v6_4_5_PORTB  | interface |
+| v6       | v6_5_0_PORTA  | interface |
+| v6       | v6_5_0_PORTB  | interface |
+| v6       | v6_5_1_PORTA  | interface |
+| v6       | v6_5_1_PORTB  | interface |
+| v6       | v6_5_2_PORTA  | interface |
+| v6       | v6_5_2_PORTB  | interface |
+| v6       | v6_5_3_PORTA  | interface |
+| v6       | v6_5_3_PORTB  | interface |
+| v6       | v6_5_4_PORTA  | interface |
+| v6       | v6_5_4_PORTB  | interface |
+| v6       | v6_5_5_PORTA  | interface |
+| v6       | v6_5_5_PORTB  | interface |
+| v6       | v6_6_0_PORTA  | interface |
+| v6       | v6_6_0_PORTB  | interface |
+| v6       | v6_6_1_PORTA  | interface |
+| v6       | v6_6_1_PORTB  | interface |
+| v6       | v6_6_2_PORTA  | interface |
+| v6       | v6_6_2_PORTB  | interface |
+| v6       | v6_6_3_PORTA  | interface |
+| v6       | v6_6_3_PORTB  | interface |
+| v6       | v6_6_4_PORTA  | interface |
+| v6       | v6_6_4_PORTB  | interface |
+| v6       | v6_6_5_PORTA  | interface |
+| v6       | v6_6_5_PORTB  | interface |
+| v6       | v6_7_0_PORTA  | interface |
+| v6       | v6_7_0_PORTB  | interface |
+| v6       | v6_7_1_PORTA  | interface |
+| v6       | v6_7_1_PORTB  | interface |
+| v6       | v6_7_2_PORTA  | interface |
+| v6       | v6_7_2_PORTB  | interface |
+| v6       | v6_7_3_PORTA  | interface |
+| v6       | v6_7_3_PORTB  | interface |
+| v6       | v6_7_4_PORTA  | interface |
+| v6       | v6_7_4_PORTB  | interface |
+| v6       | v6_7_5_PORTA  | interface |
+| v6       | v6_7_5_PORTB  | interface |
+| v6       | v6_8_0_PORTA  | interface |
+| v6       | v6_8_0_PORTB  | interface |
+| v6       | v6_8_1_PORTA  | interface |
+| v6       | v6_8_1_PORTB  | interface |
+| v6       | v6_8_2_PORTA  | interface |
+| v6       | v6_8_2_PORTB  | interface |
+| v6       | v6_8_3_PORTA  | interface |
+| v6       | v6_8_3_PORTB  | interface |
+| v6       | v6_8_4_PORTA  | interface |
+| v6       | v6_8_4_PORTB  | interface |
+| v6       | v6_8_5_PORTA  | interface |
+| v6       | v6_8_5_PORTB  | interface |
+| v6       | v6_9_0_PORTA  | interface |
+| v6       | v6_9_0_PORTB  | interface |
+| v6       | v6_9_1_PORTA  | interface |
+| v6       | v6_9_1_PORTB  | interface |
+| v6       | v6_9_2_PORTA  | interface |
+| v6       | v6_9_2_PORTB  | interface |
+| v6       | v6_9_3_PORTA  | interface |
+| v6       | v6_9_3_PORTB  | interface |
+| v6       | v6_9_4_PORTA  | interface |
+| v6       | v6_9_4_PORTB  | interface |
+| v6       | v6_9_5_PORTA  | interface |
+| v6       | v6_9_5_PORTB  | interface |
++----------+---------------+-----------+
+
+
+================================================================
+== Bind Op Report
+================================================================
++-------------------------------------------------------------------------+-----+--------+-------------+------+-----------+---------+
+| Name                                                                    | DSP | Pragma | Variable    | Op   | Impl      | Latency |
++-------------------------------------------------------------------------+-----+--------+-------------+------+-----------+---------+
+| + test_3mm                                                              | 623 |        |             |      |           |         |
+|  + test_3mm_Pipeline_VITIS_LOOP_60_1_VITIS_LOOP_61_2_VITIS_LOOP_62_3    | 303 |        |             |      |           |         |
+|    add_ln60_1_fu_3204_p2                                                |     |        | add_ln60_1  | add  | fabric    | 0       |
+|    add_ln60_fu_3216_p2                                                  |     |        | add_ln60    | add  | fabric    | 0       |
+|    add_ln61_fu_3299_p2                                                  |     |        | add_ln61    | add  | fabric    | 0       |
+|    mac_muladd_8ns_5ns_5ns_12_4_1_U121                                   | 1   |        | mul_ln61    | mul  | dsp_slice | 3       |
+|    mac_muladd_4ns_8ns_8ns_12_4_1_U122                                   | 1   |        | empty       | mul  | dsp_slice | 3       |
+|    mac_muladd_4ns_8ns_8ns_12_4_1_U122                                   | 1   |        | empty_415   | add  | dsp_slice | 3       |
+|    mac_muladd_4ns_5ns_5ns_9_4_1_U123                                    | 1   |        | mul_ln67    | mul  | dsp_slice | 3       |
+|    mac_muladd_8ns_5ns_5ns_12_4_1_U121                                   | 1   |        | add_ln65    | add  | dsp_slice | 3       |
+|    mac_muladd_4ns_5ns_5ns_9_4_1_U123                                    | 1   |        | add_ln67    | add  | dsp_slice | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U61                                    | 3   |        | v12         | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U1                                    | 2   |        | v14         | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U62                                    | 3   |        | v16         | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U2                                    | 2   |        | v18         | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U63                                    | 3   |        | v20         | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U3                                    | 2   |        | v22         | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U64                                    | 3   |        | v24         | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U4                                    | 2   |        | v26         | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U65                                    | 3   |        | v28         | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U5                                    | 2   |        | v30         | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U66                                    | 3   |        | v32         | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U6                                    | 2   |        | v34         | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U67                                    | 3   |        | v36         | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U7                                    | 2   |        | v38         | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U68                                    | 3   |        | v40         | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U8                                    | 2   |        | v42         | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U69                                    | 3   |        | v44         | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U9                                    | 2   |        | v46         | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U70                                    | 3   |        | v48         | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U10                                   | 2   |        | v50         | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U71                                    | 3   |        | v52         | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U11                                   | 2   |        | v54         | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U72                                    | 3   |        | v55         | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U12                                   | 2   |        | v57         | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U73                                    | 3   |        | v58         | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U13                                   | 2   |        | v60         | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U74                                    | 3   |        | v61         | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U14                                   | 2   |        | v63         | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U75                                    | 3   |        | v64         | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U15                                   | 2   |        | v66         | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U76                                    | 3   |        | v67         | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U16                                   | 2   |        | v69         | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U77                                    | 3   |        | v70         | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U17                                   | 2   |        | v72         | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U78                                    | 3   |        | v73         | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U18                                   | 2   |        | v75         | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U79                                    | 3   |        | v76         | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U19                                   | 2   |        | v78         | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U80                                    | 3   |        | v79         | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U20                                   | 2   |        | v81         | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U81                                    | 3   |        | v83         | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U21                                   | 2   |        | v85         | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U82                                    | 3   |        | v86         | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U22                                   | 2   |        | v88         | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U83                                    | 3   |        | v89         | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U23                                   | 2   |        | v91         | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U84                                    | 3   |        | v92         | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U24                                   | 2   |        | v94         | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U85                                    | 3   |        | v95         | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U25                                   | 2   |        | v97         | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U86                                    | 3   |        | v98         | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U26                                   | 2   |        | v100        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U87                                    | 3   |        | v101        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U27                                   | 2   |        | v103        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U88                                    | 3   |        | v104        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U28                                   | 2   |        | v106        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U89                                    | 3   |        | v107        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U29                                   | 2   |        | v109        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U90                                    | 3   |        | v110        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U30                                   | 2   |        | v112        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U91                                    | 3   |        | v114        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U31                                   | 2   |        | v116        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U92                                    | 3   |        | v117        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U32                                   | 2   |        | v119        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U93                                    | 3   |        | v120        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U33                                   | 2   |        | v122        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U94                                    | 3   |        | v123        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U34                                   | 2   |        | v125        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U95                                    | 3   |        | v126        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U35                                   | 2   |        | v128        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U96                                    | 3   |        | v129        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U36                                   | 2   |        | v131        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U97                                    | 3   |        | v132        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U37                                   | 2   |        | v134        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U98                                    | 3   |        | v135        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U38                                   | 2   |        | v137        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U99                                    | 3   |        | v138        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U39                                   | 2   |        | v140        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U100                                   | 3   |        | v141        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U40                                   | 2   |        | v143        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U101                                   | 3   |        | v145        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U41                                   | 2   |        | v147        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U102                                   | 3   |        | v148        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U42                                   | 2   |        | v150        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U103                                   | 3   |        | v151        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U43                                   | 2   |        | v153        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U104                                   | 3   |        | v154        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U44                                   | 2   |        | v156        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U105                                   | 3   |        | v157        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U45                                   | 2   |        | v159        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U106                                   | 3   |        | v160        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U46                                   | 2   |        | v162        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U107                                   | 3   |        | v163        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U47                                   | 2   |        | v165        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U108                                   | 3   |        | v166        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U48                                   | 2   |        | v168        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U109                                   | 3   |        | v169        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U49                                   | 2   |        | v171        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U110                                   | 3   |        | v172        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U50                                   | 2   |        | v174        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U111                                   | 3   |        | v176        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U51                                   | 2   |        | v178        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U112                                   | 3   |        | v179        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U52                                   | 2   |        | v181        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U113                                   | 3   |        | v182        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U53                                   | 2   |        | v184        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U114                                   | 3   |        | v185        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U54                                   | 2   |        | v187        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U115                                   | 3   |        | v188        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U55                                   | 2   |        | v190        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U116                                   | 3   |        | v191        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U56                                   | 2   |        | v193        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U117                                   | 3   |        | v194        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U57                                   | 2   |        | v196        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U118                                   | 3   |        | v197        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U58                                   | 2   |        | v199        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U119                                   | 3   |        | v200        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U59                                   | 2   |        | v202        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U120                                   | 3   |        | v203        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U60                                   | 2   |        | v205        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U61                                    | 3   |        | v207        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U1                                    | 2   |        | v209        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U62                                    | 3   |        | v210        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U2                                    | 2   |        | v212        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U63                                    | 3   |        | v213        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U3                                    | 2   |        | v215        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U64                                    | 3   |        | v216        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U4                                    | 2   |        | v218        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U65                                    | 3   |        | v219        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U5                                    | 2   |        | v221        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U66                                    | 3   |        | v222        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U6                                    | 2   |        | v224        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U67                                    | 3   |        | v225        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U7                                    | 2   |        | v227        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U68                                    | 3   |        | v228        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U8                                    | 2   |        | v230        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U69                                    | 3   |        | v231        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U9                                    | 2   |        | v233        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U70                                    | 3   |        | v234        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U10                                   | 2   |        | v236        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U71                                    | 3   |        | v238        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U11                                   | 2   |        | v240        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U72                                    | 3   |        | v241        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U12                                   | 2   |        | v243        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U73                                    | 3   |        | v244        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U13                                   | 2   |        | v246        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U74                                    | 3   |        | v247        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U14                                   | 2   |        | v249        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U75                                    | 3   |        | v250        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U15                                   | 2   |        | v252        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U76                                    | 3   |        | v253        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U16                                   | 2   |        | v255        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U77                                    | 3   |        | v256        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U17                                   | 2   |        | v258        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U78                                    | 3   |        | v259        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U18                                   | 2   |        | v261        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U79                                    | 3   |        | v262        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U19                                   | 2   |        | v264        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U80                                    | 3   |        | v265        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U20                                   | 2   |        | v267        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U81                                    | 3   |        | v269        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U21                                   | 2   |        | v271        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U82                                    | 3   |        | v272        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U22                                   | 2   |        | v274        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U83                                    | 3   |        | v275        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U23                                   | 2   |        | v277        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U84                                    | 3   |        | v278        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U24                                   | 2   |        | v280        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U85                                    | 3   |        | v281        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U25                                   | 2   |        | v283        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U86                                    | 3   |        | v284        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U26                                   | 2   |        | v286        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U87                                    | 3   |        | v287        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U27                                   | 2   |        | v289        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U88                                    | 3   |        | v290        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U28                                   | 2   |        | v292        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U89                                    | 3   |        | v293        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U29                                   | 2   |        | v295        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U90                                    | 3   |        | v296        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U30                                   | 2   |        | v298        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U91                                    | 3   |        | v300        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U31                                   | 2   |        | v302        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U92                                    | 3   |        | v303        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U32                                   | 2   |        | v305        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U93                                    | 3   |        | v306        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U33                                   | 2   |        | v308        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U94                                    | 3   |        | v309        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U34                                   | 2   |        | v311        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U95                                    | 3   |        | v312        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U35                                   | 2   |        | v314        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U96                                    | 3   |        | v315        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U36                                   | 2   |        | v317        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U97                                    | 3   |        | v318        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U37                                   | 2   |        | v320        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U98                                    | 3   |        | v321        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U38                                   | 2   |        | v323        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U99                                    | 3   |        | v324        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U39                                   | 2   |        | v326        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U100                                   | 3   |        | v327        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U40                                   | 2   |        | v329        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U101                                   | 3   |        | v331        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U41                                   | 2   |        | v333        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U102                                   | 3   |        | v334        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U42                                   | 2   |        | v336        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U103                                   | 3   |        | v337        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U43                                   | 2   |        | v339        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U104                                   | 3   |        | v340        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U44                                   | 2   |        | v342        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U105                                   | 3   |        | v343        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U45                                   | 2   |        | v345        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U106                                   | 3   |        | v346        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U46                                   | 2   |        | v348        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U107                                   | 3   |        | v349        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U47                                   | 2   |        | v351        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U108                                   | 3   |        | v352        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U48                                   | 2   |        | v354        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U109                                   | 3   |        | v355        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U49                                   | 2   |        | v357        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U110                                   | 3   |        | v358        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U50                                   | 2   |        | v360        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U111                                   | 3   |        | v362        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U51                                   | 2   |        | v364        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U112                                   | 3   |        | v365        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U52                                   | 2   |        | v367        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U113                                   | 3   |        | v368        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U53                                   | 2   |        | v370        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U114                                   | 3   |        | v371        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U54                                   | 2   |        | v373        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U115                                   | 3   |        | v374        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U55                                   | 2   |        | v376        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U116                                   | 3   |        | v377        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U56                                   | 2   |        | v379        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U117                                   | 3   |        | v380        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U57                                   | 2   |        | v382        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U118                                   | 3   |        | v383        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U58                                   | 2   |        | v385        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U119                                   | 3   |        | v386        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U59                                   | 2   |        | v388        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U120                                   | 3   |        | v389        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U60                                   | 2   |        | v391        | fadd | fulldsp   | 6       |
+|    add_ln62_fu_3334_p2                                                  |     |        | add_ln62    | add  | fabric    | 0       |
+|    add_ln61_1_fu_3240_p2                                                |     |        | add_ln61_1  | add  | fabric    | 0       |
+|  + test_3mm_Pipeline_VITIS_LOOP_569_4_VITIS_LOOP_570_5_VITIS_LOOP_571_6 | 33  |        |             |      |           |         |
+|    add_ln569_1_fu_2214_p2                                               |     |        | add_ln569_1 | add  | fabric    | 0       |
+|    add_ln569_fu_2226_p2                                                 |     |        | add_ln569   | add  | fabric    | 0       |
+|    add_ln570_fu_2309_p2                                                 |     |        | add_ln570   | add  | fabric    | 0       |
+|    mac_muladd_7ns_6ns_6ns_12_4_1_U249                                   | 1   |        | mul_ln570   | mul  | dsp_slice | 3       |
+|    mac_muladd_5ns_7ns_7ns_12_4_1_U250                                   | 1   |        | empty       | mul  | dsp_slice | 3       |
+|    mac_muladd_5ns_7ns_7ns_12_4_1_U250                                   | 1   |        | empty_416   | add  | dsp_slice | 3       |
+|    mac_muladd_5ns_6ns_6ns_10_4_1_U251                                   | 1   |        | mul_ln653   | mul  | dsp_slice | 3       |
+|    mac_muladd_7ns_6ns_6ns_12_4_1_U249                                   | 1   |        | add_ln574   | add  | dsp_slice | 3       |
+|    mac_muladd_5ns_6ns_6ns_10_4_1_U251                                   | 1   |        | add_ln653   | add  | dsp_slice | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U243                                   | 3   |        | v465        | fmul | maxdsp    | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U244                                   | 3   |        | v466        | fmul | maxdsp    | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U245                                   | 3   |        | v467        | fmul | maxdsp    | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U246                                   | 3   |        | v468        | fmul | maxdsp    | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U247                                   | 3   |        | v469        | fmul | maxdsp    | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U248                                   | 3   |        | v470        | fmul | maxdsp    | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U243                                   | 3   |        | v703        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U183                                  | 2   |        | tmp55       | fadd | fulldsp   | 6       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U183                                  | 2   |        | v706        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U244                                   | 3   |        | v707        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U184                                  | 2   |        | tmp56       | fadd | fulldsp   | 6       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U184                                  | 2   |        | v710        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U245                                   | 3   |        | v711        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U185                                  | 2   |        | tmp57       | fadd | fulldsp   | 6       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U185                                  | 2   |        | v714        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U246                                   | 3   |        | v715        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U186                                  | 2   |        | tmp58       | fadd | fulldsp   | 6       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U186                                  | 2   |        | v718        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U247                                   | 3   |        | v719        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U187                                  | 2   |        | tmp59       | fadd | fulldsp   | 6       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U187                                  | 2   |        | v722        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U248                                   | 3   |        | v723        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U188                                  | 2   |        | tmp60       | fadd | fulldsp   | 6       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U188                                  | 2   |        | v726        | fadd | fulldsp   | 6       |
+|    add_ln571_fu_2344_p2                                                 |     |        | add_ln571   | add  | fabric    | 0       |
+|    add_ln570_1_fu_2250_p2                                               |     |        | add_ln570_1 | add  | fabric    | 0       |
+|  + test_3mm_Pipeline_VITIS_LOOP_968_7_VITIS_LOOP_969_8_VITIS_LOOP_970_9 | 17  |        |             |      |           |         |
+|    mul_7ns_9ns_15_1_1_U363                                              |     |        | mul8        | mul  | auto      | 0       |
+|    empty_fu_6560_p2                                                     |     |        | empty       | add  | fabric    | 0       |
+|    empty_13_fu_6815_p2                                                  |     |        | empty_13    | add  | fabric    | 0       |
+|    empty_14_fu_6820_p2                                                  |     |        | empty_14    | add  | fabric    | 0       |
+|    empty_16_fu_6578_p2                                                  |     |        | empty_16    | sub  | fabric    | 0       |
+|    mac_muladd_4ns_5ns_5ns_9_4_1_U478                                    | 1   |        | empty_17    | mul  | dsp_slice | 3       |
+|    mac_muladd_4ns_5ns_5ns_9_4_1_U478                                    | 1   |        | empty_18    | add  | dsp_slice | 3       |
+|    mul_8ns_10ns_17_1_1_U366                                             |     |        | mul5        | mul  | auto      | 0       |
+|    mac_muladd_5ns_5ns_5ns_9_4_1_U483                                    | 1   |        | empty_19    | mul  | dsp_slice | 3       |
+|    mac_muladd_5ns_5ns_5ns_9_4_1_U483                                    | 1   |        | empty_20    | add  | dsp_slice | 3       |
+|    mul_8ns_10ns_17_1_1_U367                                             |     |        | mul         | mul  | auto      | 0       |
+|    mac_muladd_5ns_5ns_5ns_9_4_1_U484                                    | 1   |        | empty_21    | mul  | dsp_slice | 3       |
+|    mac_muladd_5ns_5ns_5ns_9_4_1_U484                                    | 1   |        | empty_22    | add  | dsp_slice | 3       |
+|    add_ln968_1_fu_6604_p2                                               |     |        | add_ln968_1 | add  | fabric    | 0       |
+|    add_ln968_fu_6616_p2                                                 |     |        | add_ln968   | add  | fabric    | 0       |
+|    mul_7ns_9ns_15_1_1_U364                                              |     |        | mul90       | mul  | auto      | 0       |
+|    mac_muladd_5ns_6ns_6ns_10_4_1_U479                                   | 1   |        | mul_ln969   | mul  | dsp_slice | 3       |
+|    add_ln969_fu_6682_p2                                                 |     |        | add_ln969   | add  | fabric    | 0       |
+|    p_mid1_fu_6718_p2                                                    |     |        | p_mid1      | add  | fabric    | 0       |
+|    p_mid1102_fu_6892_p2                                                 |     |        | p_mid1102   | add  | fabric    | 0       |
+|    p_mid1104_fu_6897_p2                                                 |     |        | p_mid1104   | add  | fabric    | 0       |
+|    p_mid1106_fu_6736_p2                                                 |     |        | p_mid1106   | sub  | fabric    | 0       |
+|    mac_muladd_4ns_5ns_5ns_9_4_1_U480                                    | 1   |        | empty_24    | mul  | dsp_slice | 3       |
+|    mac_muladd_4ns_5ns_5ns_9_4_1_U480                                    | 1   |        | empty_25    | add  | dsp_slice | 3       |
+|    mac_muladd_4ns_5ns_5ns_9_4_1_U481                                    | 1   |        | empty_26    | mul  | dsp_slice | 3       |
+|    mac_muladd_4ns_5ns_5ns_9_4_1_U481                                    | 1   |        | empty_27    | add  | dsp_slice | 3       |
+|    mul_8ns_10ns_17_1_1_U368                                             |     |        | mul31       | mul  | auto      | 0       |
+|    mac_muladd_5ns_5ns_5ns_9_4_1_U485                                    | 1   |        | empty_28    | mul  | dsp_slice | 3       |
+|    mac_muladd_5ns_5ns_5ns_9_4_1_U485                                    | 1   |        | empty_29    | add  | dsp_slice | 3       |
+|    mac_muladd_5ns_5ns_5ns_9_4_1_U486                                    | 1   |        | empty_30    | mul  | dsp_slice | 3       |
+|    mac_muladd_5ns_5ns_5ns_9_4_1_U486                                    | 1   |        | empty_31    | add  | dsp_slice | 3       |
+|    mul_8ns_10ns_17_1_1_U369                                             |     |        | mul28       | mul  | auto      | 0       |
+|    mac_muladd_5ns_5ns_5ns_9_4_1_U487                                    | 1   |        | empty_32    | mul  | dsp_slice | 3       |
+|    mac_muladd_5ns_5ns_5ns_9_4_1_U487                                    | 1   |        | empty_33    | add  | dsp_slice | 3       |
+|    mac_muladd_5ns_5ns_5ns_9_4_1_U488                                    | 1   |        | empty_34    | mul  | dsp_slice | 3       |
+|    mac_muladd_5ns_5ns_5ns_9_4_1_U488                                    | 1   |        | empty_35    | add  | dsp_slice | 3       |
+|    mac_muladd_5ns_6ns_6ns_10_4_1_U482                                   | 1   |        | mul_ln969_1 | mul  | dsp_slice | 3       |
+|    empty_37_fu_7108_p2                                                  |     |        | empty_37    | add  | fabric    | 0       |
+|    empty_38_fu_7113_p2                                                  |     |        | empty_38    | add  | fabric    | 0       |
+|    empty_39_fu_7005_p2                                                  |     |        | empty_39    | add  | fabric    | 0       |
+|    empty_40_fu_7010_p2                                                  |     |        | empty_40    | add  | fabric    | 0       |
+|    empty_41_fu_7015_p2                                                  |     |        | empty_41    | add  | fabric    | 0       |
+|    empty_42_fu_7020_p2                                                  |     |        | empty_42    | add  | fabric    | 0       |
+|    mul_8ns_10ns_17_1_1_U370                                             |     |        | mul25       | mul  | auto      | 0       |
+|    mac_muladd_5ns_5ns_5ns_9_4_1_U489                                    | 1   |        | empty_103   | mul  | dsp_slice | 3       |
+|    mac_muladd_5ns_5ns_5ns_9_4_1_U489                                    | 1   |        | empty_104   | add  | dsp_slice | 3       |
+|    mul_8ns_10ns_17_1_1_U371                                             |     |        | mul22       | mul  | auto      | 0       |
+|    mac_muladd_5ns_5ns_5ns_9_4_1_U490                                    | 1   |        | empty_125   | mul  | dsp_slice | 3       |
+|    mac_muladd_5ns_5ns_5ns_9_4_1_U490                                    | 1   |        | empty_126   | add  | dsp_slice | 3       |
+|    mul_8ns_10ns_17_1_1_U372                                             |     |        | mul19       | mul  | auto      | 0       |
+|    mac_muladd_5ns_5ns_5ns_9_4_1_U491                                    | 1   |        | empty_147   | mul  | dsp_slice | 3       |
+|    mac_muladd_5ns_5ns_5ns_9_4_1_U491                                    | 1   |        | empty_148   | add  | dsp_slice | 3       |
+|    mul_8ns_10ns_17_1_1_U373                                             |     |        | mul16       | mul  | auto      | 0       |
+|    mac_muladd_5ns_5ns_5ns_9_4_1_U492                                    | 1   |        | empty_169   | mul  | dsp_slice | 3       |
+|    mac_muladd_5ns_5ns_5ns_9_4_1_U492                                    | 1   |        | empty_170   | add  | dsp_slice | 3       |
+|    mul_8ns_10ns_17_1_1_U374                                             |     |        | mul13       | mul  | auto      | 0       |
+|    mac_muladd_5ns_5ns_5ns_9_4_1_U493                                    | 1   |        | empty_191   | mul  | dsp_slice | 3       |
+|    mac_muladd_5ns_5ns_5ns_9_4_1_U493                                    | 1   |        | empty_192   | add  | dsp_slice | 3       |
+|    mul_8ns_10ns_17_1_1_U375                                             |     |        | mul11       | mul  | auto      | 0       |
+|    mac_muladd_5ns_5ns_5ns_9_4_1_U494                                    | 1   |        | empty_213   | mul  | dsp_slice | 3       |
+|    mac_muladd_5ns_5ns_5ns_9_4_1_U494                                    | 1   |        | empty_214   | add  | dsp_slice | 3       |
+|    mac_muladd_5ns_6ns_6ns_10_4_1_U482                                   | 1   |        | add_ln1045  | add  | dsp_slice | 3       |
+|    mac_muladd_5ns_6ns_6ns_10_4_1_U479                                   | 1   |        | add_ln973   | add  | dsp_slice | 3       |
+|    add_ln970_fu_6770_p2                                                 |     |        | add_ln970   | add  | fabric    | 0       |
+|    add_ln969_1_fu_6776_p2                                               |     |        | add_ln969_1 | add  | fabric    | 0       |
++-------------------------------------------------------------------------+-----+--------+-------------+------+-----------+---------+
+
+
+================================================================
+== Storage Report
+================================================================
++----------------+-----------+-----------+------+------+--------+----------+------+---------+------------------+
+| Name           | Usage     | Type      | BRAM | URAM | Pragma | Variable | Impl | Latency | Bitwidth, Depth, |
+|                |           |           |      |      |        |          |      |         | Banks            |
++----------------+-----------+-----------+------+------+--------+----------+------+---------+------------------+
+| + test_3mm     |           |           | 0    | 0    |        |          |      |         |                  |
+|   ctrl_s_axi_U | interface | s_axilite |      |      |        |          |      |         |                  |
++----------------+-----------+-----------+------+------+--------+----------+------+---------+------------------+
+
+
+================================================================
+== Pragma Report
+================================================================
+* Valid Pragma Syntax
++-----------------+------------------------------------+--------------------------------+
+| Type            | Options                            | Location                       |
++-----------------+------------------------------------+--------------------------------+
+| interface       | s_axilite port=return bundle=ctrl  | 3mm.cpp:33 in test_3mm, return |
+| interface       | bram port=v0                       | 3mm.cpp:34 in test_3mm, v0     |
+| array_partition | variable=v0 cyclic factor=12 dim=1 | 3mm.cpp:35 in test_3mm, v0     |
+| interface       | bram port=v1                       | 3mm.cpp:37 in test_3mm, v1     |
+| array_partition | variable=v1 cyclic factor=10 dim=2 | 3mm.cpp:38 in test_3mm, v1     |
+| interface       | bram port=v2                       | 3mm.cpp:40 in test_3mm, v2     |
+| array_partition | variable=v2 cyclic factor=10 dim=1 | 3mm.cpp:41 in test_3mm, v2     |
+| array_partition | variable=v2 cyclic factor=2 dim=2  | 3mm.cpp:42 in test_3mm, v2     |
+| interface       | bram port=v3                       | 3mm.cpp:44 in test_3mm, v3     |
+| array_partition | variable=v3 cyclic factor=2 dim=1  | 3mm.cpp:45 in test_3mm, v3     |
+| array_partition | variable=v3 cyclic factor=6 dim=2  | 3mm.cpp:46 in test_3mm, v3     |
+| interface       | bram port=v4                       | 3mm.cpp:48 in test_3mm, v4     |
+| array_partition | variable=v4 cyclic factor=9 dim=1  | 3mm.cpp:49 in test_3mm, v4     |
+| array_partition | variable=v4 cyclic factor=6 dim=2  | 3mm.cpp:50 in test_3mm, v4     |
+| interface       | bram port=v5                       | 3mm.cpp:52 in test_3mm, v5     |
+| array_partition | variable=v5 cyclic factor=12 dim=1 | 3mm.cpp:53 in test_3mm, v5     |
+| array_partition | variable=v5 cyclic factor=10 dim=2 | 3mm.cpp:54 in test_3mm, v5     |
+| interface       | bram port=v6                       | 3mm.cpp:56 in test_3mm, v6     |
+| array_partition | variable=v6 cyclic factor=10 dim=1 | 3mm.cpp:57 in test_3mm, v6     |
+| array_partition | variable=v6 cyclic factor=6 dim=2  | 3mm.cpp:58 in test_3mm, v6     |
+| pipeline        | II=2                               | 3mm.cpp:63 in test_3mm         |
+| pipeline        | II=2                               | 3mm.cpp:572 in test_3mm        |
+| pipeline        | II=2                               | 3mm.cpp:971 in test_3mm        |
++-----------------+------------------------------------+--------------------------------+
+
+

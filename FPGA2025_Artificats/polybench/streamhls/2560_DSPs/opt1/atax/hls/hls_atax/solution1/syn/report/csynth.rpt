@@ -1,0 +1,195 @@
+
+
+================================================================
+== Synthesis Summary Report of 'forward'
+================================================================
++ General Information: 
+    * Date:           Thu Oct  3 12:33:17 2024
+    * Version:        2023.2 (Build 4023990 on Oct 11 2023)
+    * Project:        hls_atax
+    * Solution:       solution1 (Vivado IP Flow Target)
+    * Product family: virtexuplusHBM
+    * Target device:  xcu280-fsvh2892-2L-e
+    
+
++ Performance & Resource Estimates: 
+    
+    PS: '+' for module; 'o' for loop; '*' for dataflow
+    +-----------------+--------+-------+---------+-----------+----------+---------+--------+----------+-----------+---------+------------+------------+-----+
+    |     Modules     |  Issue |       | Latency |  Latency  | Iteration|         |  Trip  |          |           |         |            |            |     |
+    |     & Loops     |  Type  | Slack | (cycles)|    (ns)   |  Latency | Interval|  Count | Pipelined|   BRAM    |   DSP   |     FF     |     LUT    | URAM|
+    +-----------------+--------+-------+---------+-----------+----------+---------+--------+----------+-----------+---------+------------+------------+-----+
+    |+ forward*       |  Timing|  -0.27|   799519|  2.662e+06|         -|   639612|       -|  dataflow|  630 (15%)|  8 (~0%)|  2262 (~0%)|  2597 (~0%)|    -|
+    | + node3         |  Timing|  -0.27|   639611|  2.130e+06|         -|   639611|       -|        no|    1 (~0%)|  3 (~0%)|   933 (~0%)|  1025 (~0%)|    -|
+    |  o loop5_loop6  |      II|   2.43|   639609|  2.130e+06|        14|        4|  159900|       yes|          -|        -|           -|           -|    -|
+    | + node2         |  Timing|  -0.08|   159906|  5.325e+05|         -|   159906|       -|        no|          -|  2 (~0%)|   172 (~0%)|   226 (~0%)|    -|
+    |  o loop3_loop4  |       -|   2.43|   159904|  5.325e+05|         6|        1|  159900|       yes|          -|        -|           -|           -|    -|
+    | + node1         |  Timing|  -0.27|   639611|  2.130e+06|         -|   639611|       -|        no|    2 (~0%)|  3 (~0%)|   944 (~0%)|  1077 (~0%)|    -|
+    |  o loop1_loop2  |      II|   2.43|   639609|  2.130e+06|        14|        4|  159900|       yes|          -|        -|           -|           -|    -|
+    | + node0         |       -|   0.04|      412|  1.372e+03|         -|      412|       -|        no|          -|        -|    21 (~0%)|    83 (~0%)|    -|
+    |  o loop0        |       -|   2.43|      410|  1.365e+03|         2|        1|     410|       yes|          -|        -|           -|           -|    -|
+    +-----------------+--------+-------+---------+-----------+----------+---------+--------+----------+-----------+---------+------------+------------+-----+
+
+
+================================================================
+== HW Interfaces
+================================================================
+* AP_MEMORY
++--------------+-----------+----------+
+| Port         | Direction | Bitwidth |
++--------------+-----------+----------+
+| v37_address0 | out       | 18       |
+| v37_address1 | out       | 18       |
+| v37_d0       | out       | 32       |
+| v37_d1       | out       | 32       |
+| v37_q0       | in        | 32       |
+| v37_q1       | in        | 32       |
+| v38_address0 | out       | 9        |
+| v38_address1 | out       | 9        |
+| v38_d0       | out       | 32       |
+| v38_d1       | out       | 32       |
+| v38_q0       | in        | 32       |
+| v38_q1       | in        | 32       |
+| v39_address0 | out       | 9        |
+| v39_address1 | out       | 9        |
+| v39_d0       | out       | 32       |
+| v39_d1       | out       | 32       |
+| v39_q0       | in        | 32       |
+| v39_q1       | in        | 32       |
++--------------+-----------+----------+
+
+* TOP LEVEL CONTROL
++-----------+------------+-----------------------------------+
+| Interface | Type       | Ports                             |
++-----------+------------+-----------------------------------+
+| ap_clk    | clock      | ap_clk                            |
+| ap_rst    | reset      | ap_rst                            |
+| ap_ctrl   | ap_ctrl_hs | ap_done ap_idle ap_ready ap_start |
++-----------+------------+-----------------------------------+
+
+
+================================================================
+== SW I/O Information
+================================================================
+* Top Function Arguments
++----------+-----------+----------+
+| Argument | Direction | Datatype |
++----------+-----------+----------+
+| v37      | in        | float*   |
+| v38      | in        | float*   |
+| v39      | out       | float*   |
++----------+-----------+----------+
+
+* SW-to-HW Mapping
++----------+--------------+---------+----------+
+| Argument | HW Interface | HW Type | HW Usage |
++----------+--------------+---------+----------+
+| v37      | v37_address0 | port    | offset   |
+| v37      | v37_ce0      | port    |          |
+| v37      | v37_d0       | port    |          |
+| v37      | v37_q0       | port    |          |
+| v37      | v37_we0      | port    |          |
+| v37      | v37_address1 | port    | offset   |
+| v37      | v37_ce1      | port    |          |
+| v37      | v37_d1       | port    |          |
+| v37      | v37_q1       | port    |          |
+| v37      | v37_we1      | port    |          |
+| v38      | v38_address0 | port    | offset   |
+| v38      | v38_ce0      | port    |          |
+| v38      | v38_d0       | port    |          |
+| v38      | v38_q0       | port    |          |
+| v38      | v38_we0      | port    |          |
+| v38      | v38_address1 | port    | offset   |
+| v38      | v38_ce1      | port    |          |
+| v38      | v38_d1       | port    |          |
+| v38      | v38_q1       | port    |          |
+| v38      | v38_we1      | port    |          |
+| v39      | v39_address0 | port    | offset   |
+| v39      | v39_ce0      | port    |          |
+| v39      | v39_d0       | port    |          |
+| v39      | v39_q0       | port    |          |
+| v39      | v39_we0      | port    |          |
+| v39      | v39_address1 | port    | offset   |
+| v39      | v39_ce1      | port    |          |
+| v39      | v39_d1       | port    |          |
+| v39      | v39_q1       | port    |          |
+| v39      | v39_we1      | port    |          |
++----------+--------------+---------+----------+
+
+
+================================================================
+== Bind Op Report
+================================================================
++--------------------------------------+-----+--------+------------+------+-----------+---------+
+| Name                                 | DSP | Pragma | Variable   | Op   | Impl      | Latency |
++--------------------------------------+-----+--------+------------+------+-----------+---------+
+| + forward                            | 8   |        |            |      |           |         |
+|  + node3                             | 3   |        |            |      |           |         |
+|    add_ln86_1_fu_171_p2              |     |        | add_ln86_1 | add  | fabric    | 0       |
+|    add_ln86_fu_183_p2                |     |        | add_ln86   | add  | fabric    | 0       |
+|    mul_9ns_10ns_18_1_1_U3            |     |        | mul_ln90   | mul  | auto      | 0       |
+|    add_ln90_fu_293_p2                |     |        | add_ln90   | add  | fabric    | 0       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U2  | 3   |        | v34        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_5_no_dsp_1_U1   |     |        | v35        | fadd | fabric    | 4       |
+|    add_ln87_fu_251_p2                |     |        | add_ln87   | add  | fabric    | 0       |
+|  + node2                             | 2   |        |            |      |           |         |
+|    add_ln68_1_fu_116_p2              |     |        | add_ln68_1 | add  | fabric    | 0       |
+|    add_ln68_fu_128_p2                |     |        | add_ln68   | add  | fabric    | 0       |
+|    mac_muladd_9ns_9ns_9ns_18_4_1_U11 | 1   |        | mul_ln72   | mul  | dsp_slice | 3       |
+|    mac_muladd_9ns_9ns_9ns_18_4_1_U11 | 1   |        | add_ln72   | add  | dsp_slice | 3       |
+|    mac_muladd_9ns_9ns_9ns_18_4_1_U12 | 1   |        | mul_ln73   | mul  | dsp_slice | 3       |
+|    mac_muladd_9ns_9ns_9ns_18_4_1_U12 | 1   |        | add_ln73   | add  | dsp_slice | 3       |
+|    add_ln69_fu_160_p2                |     |        | add_ln69   | add  | fabric    | 0       |
+|  + node1                             | 3   |        |            |      |           |         |
+|    add_ln38_1_fu_181_p2              |     |        | add_ln38_1 | add  | fabric    | 0       |
+|    add_ln38_fu_193_p2                |     |        | add_ln38   | add  | fabric    | 0       |
+|    mul_9ns_10ns_18_1_1_U18           |     |        | mul_ln42   | mul  | auto      | 0       |
+|    add_ln42_fu_299_p2                |     |        | add_ln42   | add  | fabric    | 0       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U17 | 3   |        | v16        | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_5_no_dsp_1_U16  |     |        | v17        | fadd | fabric    | 4       |
+|    add_ln39_fu_265_p2                |     |        | add_ln39   | add  | fabric    | 0       |
+|  + node0                             | 0   |        |            |      |           |         |
+|    add_ln21_fu_76_p2                 |     |        | add_ln21   | add  | fabric    | 0       |
++--------------------------------------+-----+--------+------------+------+-----------+---------+
+
+
+================================================================
+== Storage Report
+================================================================
++-----------+----------------+--------+------+------+--------+----------+--------+---------+------------------+
+| Name      | Usage          | Type   | BRAM | URAM | Pragma | Variable | Impl   | Latency | Bitwidth, Depth, |
+|           |                |        |      |      |        |          |        |         | Banks            |
++-----------+----------------+--------+------+------+--------+----------+--------+---------+------------------+
+| + forward |                |        | 630  | 0    |        |          |        |         |                  |
+|   v42_U   | fifo channel   | stream | 1    |      |        | v42      | memory | 0       | 32, 390, 1       |
+|   v41_U   | ram_1p channel | pipo   | 625  |      |        | v41      | auto   | 1       | 32, 159900, 2    |
+|   v40_U   | fifo channel   | stream | 1    |      |        | v40      | memory | 0       | 32, 410, 1       |
+|  + node3  |                |        | 1    | 0    |        |          |        |         |                  |
+|    v28_U  | ram_1p array   |        | 1    |      |        | v28      | auto   | 1       | 32, 390, 1       |
+|  + node1  |                |        | 2    | 0    |        |          |        |         |                  |
+|    v8_U   | ram_1p array   |        | 1    |      |        | v8       | auto   | 1       | 32, 410, 1       |
+|    v9_U   | ram_1p array   |        | 1    |      |        | v9       | auto   | 1       | 32, 390, 1       |
++-----------+----------------+--------+------+------+--------+----------+--------+---------+------------------+
+
+
+================================================================
+== Pragma Report
+================================================================
+* Valid Pragma Syntax
++--------------+------------------------+----------------------------------+
+| Type         | Options                | Location                         |
++--------------+------------------------+----------------------------------+
+| pipeline     | II=1                   | src/atax.cpp:22 in node0         |
+| loop_flatten |                        | src/atax.cpp:23 in node0         |
+| pipeline     | II=1                   | src/atax.cpp:40 in node1         |
+| loop_flatten |                        | src/atax.cpp:41 in node1         |
+| pipeline     | II=1                   | src/atax.cpp:70 in node2         |
+| loop_flatten |                        | src/atax.cpp:71 in node2         |
+| pipeline     | II=1                   | src/atax.cpp:88 in node3         |
+| loop_flatten |                        | src/atax.cpp:89 in node3         |
+| dataflow     |                        | src/atax.cpp:113 in forward      |
+| stream       | variable=v40 depth=410 | src/atax.cpp:115 in forward, v40 |
+| stream       | variable=v42 depth=390 | src/atax.cpp:118 in forward, v42 |
++--------------+------------------------+----------------------------------+
+
+

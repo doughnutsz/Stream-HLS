@@ -1,0 +1,69 @@
+================================================================
+== Design Size Report
+================================================================
+
+* Total Instructions per Compilation Phase
++---------------+-----------------------------+--------------+----------------------------------------------------------------------------------------+
+| Phase         | Step                        | Instructions | Description                                                                            |
++---------------+-----------------------------+--------------+----------------------------------------------------------------------------------------+
+| Compile/Link  |                             |   2,527      | After all functions are compiled and linked into a single design                       |
+|               |                             |              |                                                                                        |
+| Unroll/Inline |                             |              | After user unroll and inline pragmas are applied                                       |
+|               | (1) unroll                  |  26,597      | user unroll pragmas are applied                                                        |
+|               | (2) simplification          |  10,221      | simplification of applied user unroll pragmas                                          |
+|               | (3) inline                  |   9,828      | user inline pragmas are applied                                                        |
+|               | (4) simplification          |   9,477      | simplification of applied user inline pragmas                                          |
+|               |                             |              |                                                                                        |
+| Array/Struct  |                             |              | After user array partition and struct aggregate/disaggregate pragmas are applied       |
+|               | (1) array partition         |   9,603      | user array partition pragmas are applied                                               |
+|               | (2) simplification          |   9,603      | simplification of applied user array partition & struct aggregate/disaggregate pragmas |
+|               | (3) aggregate/disaggregate  |   9,603      | user struct aggregate/disaggregate pragmas are applied                                 |
+|               | (4) array reshape           |   9,603      | apply array reshape pragmas                                                            |
+|               | (5) access patterns         |   9,623      | array access pattern optmizations                                                      |
+|               |                             |              |                                                                                        |
+| Performance   |                             |              | After transformations are applied to meet performance pragma targets                   |
+|               | (1) loop simplification     |   9,603      | loop and instruction simplification                                                    |
+|               | (2) parallelization         |   9,603      | loops are unrolled or pipelined to meet performance targets                            |
+|               | (3) array partition         | 176,978 *    | arrays are partitioned to meet performance targets                                     |
+|               | (4) simplification          |  16,977      | simplification of design after performance transformations                             |
+|               |                             |              |                                                                                        |
+| HW Transforms |                             |              | After hardware transfomations                                                          |
+|               | (1) lowering                |  18,113      | initial conversion to HW specific instructions                                         |
+|               | (2) optimizations           |  17,646      | high level synthesis optimizations                                                     |
++---------------+-----------------------------+--------------+----------------------------------------------------------------------------------------+
+    * - Exceeded design size warning message threshold
+
+* Instructions per Function for each Compilation Phase
++-----------+---------------------+--------------+---------------+--------------+-------------+---------------+
+| Function  | Location            | Compile/Link | Unroll/Inline | Array/Struct | Performance | HW Transforms |
++-----------+---------------------+--------------+---------------+--------------+-------------+---------------+
+| + forward | Autoencoder.cpp:576 | 2,527        | 9,477         | 9,623        | 16,977      | 17,646        |
+|    node18 | Autoencoder.cpp:557 |   61         |  547          |  419         |   419       |   683         |
+|    node17 | Autoencoder.cpp:515 |  172         | 1,580         | 1,102        | 2,066       | 2,464         |
+|    node16 | Autoencoder.cpp:490 |   80         |   91          |   75         |    75       |   139         |
+|    node15 | Autoencoder.cpp:471 |   61         |  283          |  219         |   219       |   355         |
+|    node14 | Autoencoder.cpp:424 |  207         |  896          |  698         | 1,198       | 1,421         |
+|    node13 | Autoencoder.cpp:399 |   80         |   91          |   75         |    75       |   139         |
+|    node12 | Autoencoder.cpp:380 |   55         |  151          |  151         |   225       |   255         |
+|    node11 | Autoencoder.cpp:333 |  199         |  432          |  406         |   682       |   705         |
+|    node10 | Autoencoder.cpp:311 |   75         |   43          |   35         |    35       |    71         |
+|    node9  | Autoencoder.cpp:292 |   55         |  151          |  151         |   225       |   255         |
+|    node8  | Autoencoder.cpp:245 |  199         |  432          |  414         |   662       |   693         |
+|    node7  | Autoencoder.cpp:220 |   80         |   91          |   75         |    75       |   139         |
+|    node6  | Autoencoder.cpp:201 |   55         |  547          |  547         |   825       |   939         |
+|    node5  | Autoencoder.cpp:154 |  199         | 1,544         | 1,355        | 2,414       | 2,446         |
+|    node4  | Autoencoder.cpp:129 |   80         |  171          |  139         |   139       |   259         |
+|    node3  | Autoencoder.cpp:110 |   55         |  547          |  547         |   825       |   939         |
+|    node2  | Autoencoder.cpp:63  |  199         | 1,513         | 1,293        | 2,352       | 2,391         |
+|    node1  | Autoencoder.cpp:36  |   81         |  107          |   91         |    91       |   155         |
+|    node0  | Autoencoder.cpp:17  |   62         |   51          |   43         |    43       |    67         |
++-----------+---------------------+--------------+---------------+--------------+-------------+---------------+
+
+* Design Size Message Settings
++---------------------------------------------+--------+------------------------------------------------------------------+
+| Message Setting                             | Value  | Description                                                      |
++---------------------------------------------+--------+------------------------------------------------------------------+
+| config_compile -design_size_maximum_warning | 100000 | Show a warning when total design instructions exceeds this value |
++---------------------------------------------+--------+------------------------------------------------------------------+
+
+

@@ -1,0 +1,1 @@
+g++ -o test test.cpp -I/home/suhail/Projects/HLS-MLIR/extern/barnivok/build/include -L/home/suhail/Projects/HLS-MLIR/extern/barnivok/build/lib -lpet -lisl -lbarvinok -lpolylibgmp -lgmp -lntl -lpthread

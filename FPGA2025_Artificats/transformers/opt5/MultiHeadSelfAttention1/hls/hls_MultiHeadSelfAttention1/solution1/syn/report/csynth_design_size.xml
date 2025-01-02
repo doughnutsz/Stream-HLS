@@ -1,0 +1,78 @@
+<design_size title="Design Size Report">
+    <item name="Total Instructions per Compilation Phase">
+        <table>
+            <keys size="4">Phase, Step, Instructions, Description</keys>
+            <column name="Compile/Link">,   6885, After all functions are compiled and linked into a single design</column>
+            <column name="">, , </column>
+            <column name="Unroll/Inline">, , After user unroll and inline pragmas are applied</column>
+            <column name="">(1) unroll,  37027, user unroll pragmas are applied</column>
+            <column name="">(2) simplification,  15760, simplification of applied user unroll pragmas</column>
+            <column name="">(3) inline,  15574, user inline pragmas are applied</column>
+            <column name="">(4) simplification,  11140, simplification of applied user inline pragmas</column>
+            <column name="">, , </column>
+            <column name="Array/Struct">, , After user array partition and struct aggregate/disaggregate pragmas are applied</column>
+            <column name="">(1) array partition,  88824, user array partition pragmas are applied</column>
+            <column name="">(2) simplification,  19415, simplification of applied user array partition &amp; struct aggregate/disaggregate pragmas</column>
+            <column name="">(3) aggregate/disaggregate ,  19415, user struct aggregate/disaggregate pragmas are applied</column>
+            <column name="">(4) array reshape,  19415, apply array reshape pragmas</column>
+            <column name="">(5) access patterns,  19429, array access pattern optmizations</column>
+            <column name="">, , </column>
+            <column name="Performance">, , After transformations are applied to meet performance pragma targets</column>
+            <column name="">(1) loop simplification,  19199, loop and instruction simplification</column>
+            <column name="">(2) parallelization,  81317, loops are unrolled or pipelined to meet performance targets</column>
+            <column name="">(3) array partition,  81317, arrays are partitioned to meet performance targets</column>
+            <column name="">(4) simplification,  80807, simplification of design after performance transformations</column>
+            <column name="">, , </column>
+            <column name="HW Transforms">, , After hardware transfomations</column>
+            <column name="">(1) lowering,  89039, initial conversion to HW specific instructions</column>
+            <column name="">(2) optimizations, 103258 *, high level synthesis optimizations</column>
+        </table>
+    </item>
+    <item name="Instructions per Function for each Compilation Phase">
+        <hiertable>
+            <header size="7" col0="Function" col1="Location" col2="Compile/Link" col3="Unroll/Inline" col4="Array/Struct" col5="Performance" col6="HW Transforms"/>
+            <rows>
+                <row id="0" col0="forward" col1="MultiHeadSelfAttention1.cpp:940" col2="6885" col3="11140" col4="19429" col5="80807" col6="103258" col6_note="*">
+                    <row id="9" col0="node25" col1="MultiHeadSelfAttention1.cpp:914" col2="82" col3="81" col4="51" col5="51" col6="107"/>
+                    <row id="1" col0="node24" col1="MultiHeadSelfAttention1.cpp:892" col2="63" col3="151" col4="107" col5="107" col6="179"/>
+                    <row id="28" col0="node23" col1="MultiHeadSelfAttention1.cpp:836" col2="220" col3="670" col4="994" col5="962" col6="1141"/>
+                    <row id="25" col0="node22" col1="MultiHeadSelfAttention1.cpp:809" col2="72" col3="117" col4="123" col5="123" col6="187"/>
+                    <row id="22" col0="node21" col1="MultiHeadSelfAttention1.cpp:787" col2="63" col3="151" col4="107" col5="107" col6="179"/>
+                    <row id="18" col0="node20" col1="MultiHeadSelfAttention1.cpp:731" col2="220" col3="700" col4="901" col5="895" col6="1074"/>
+                    <row id="8" col0="node19" col1="MultiHeadSelfAttention1.cpp:704" col2="72" col3="117" col4="123" col5="123" col6="187"/>
+                    <row id="4" col0="node18" col1="MultiHeadSelfAttention1.cpp:682" col2="63" col3="151" col4="107" col5="107" col6="179"/>
+                    <row id="33" col0="node17" col1="MultiHeadSelfAttention1.cpp:626" col2="220" col3="700" col4="901" col5="895" col6="1074"/>
+                    <row id="30" col0="node16" col1="MultiHeadSelfAttention1.cpp:599" col2="72" col3="117" col4="123" col5="123" col6="187"/>
+                    <row id="32" col0="node15" col1="MultiHeadSelfAttention1.cpp:569" col2="86" col3="157" col4="451" col5="451" col6="459"/>
+                    <row id="2" col0="node14" col1="MultiHeadSelfAttention1.cpp:539" col2="86" col3="157" col4="451" col5="451" col6="459"/>
+                    <row id="7" col0="node13" col1="MultiHeadSelfAttention1.cpp:468" col2="273" col3="968" col4="1501" col5="4721" col6="4760"/>
+                    <row id="11" col0="node12" col1="MultiHeadSelfAttention1.cpp:441" col2="103" col3="235" col4="139" col5="139" col6="402"/>
+                    <row id="14" col0="node11" col1="MultiHeadSelfAttention1.cpp:404" col2="3016" col3="1956" col4="1767" col5="50294" col6="53386">
+                        <row id="34" col0="generic_fmax&lt;float&gt;" col1="hls_fmax.h:19" col2="" col3="1664" col3_disp="1,664 (32 calls)" col4="1504" col4_disp="1,504 (32 calls)" col5="48128" col5_disp="48,128 (1024 calls)" col6="48128" col6_disp="48,128 (1024 calls)"/>
+                    </row>
+                    <row id="10" col0="node10" col1="MultiHeadSelfAttention1.cpp:367" col2="153" col3="386" col4="336" col5="5238" col6="13450"/>
+                    <row id="12" col0="node9" col1="MultiHeadSelfAttention1.cpp:330" col2="144" col3="300" col4="263" col5="2166" col6="5258"/>
+                    <row id="29" col0="node8" col1="MultiHeadSelfAttention1.cpp:296" col2="139" col3="290" col4="272" col5="3190" col6="9354"/>
+                    <row id="24" col0="node7" col1="MultiHeadSelfAttention1.cpp:266" col2="86" col3="157" col4="451" col5="451" col6="459"/>
+                    <row id="27" col0="node6" col1="MultiHeadSelfAttention1.cpp:195" col2="275" col3="968" col4="1689" col5="1657" col6="1764"/>
+                    <row id="20" col0="node5" col1="MultiHeadSelfAttention1.cpp:164" col2="87" col3="156" col4="469" col5="469" col6="480"/>
+                    <row id="13" col0="node4" col1="MultiHeadSelfAttention1.cpp:141" col2="68" col3="92" col4="118" col5="118" col6="174"/>
+                    <row id="3" col0="node3" col1="MultiHeadSelfAttention1.cpp:119" col2="63" col3="85" col4="59" col5="59" col6="99"/>
+                    <row id="31" col0="node2" col1="MultiHeadSelfAttention1.cpp:63" col2="220" col3="1256" col4="1557" col5="1541" col6="1840"/>
+                    <row id="26" col0="node1" col1="MultiHeadSelfAttention1.cpp:39" col2="76" col3="355" col4="219" col5="219" col6="619"/>
+                    <row id="23" col0="node0" col1="MultiHeadSelfAttention1.cpp:17" col2="66" col3="283" col4="331" col5="331" col6="531"/>
+                </row>
+            </rows>
+            <notes>
+                <note name="*" desc="Exceeded design size warning message threshold"/>
+            </notes>
+        </hiertable>
+    </item>
+    <item name="Design Size Message Settings">
+        <table>
+            <keys size="3">Message Setting, Value, Description</keys>
+            <column name="config_compile -design_size_maximum_warning">100000, Show a warning when total design instructions exceeds this value</column>
+        </table>
+    </item>
+</design_size>
+

@@ -1,0 +1,830 @@
+
+
+================================================================
+== Synthesis Summary Report of 'test_bicg'
+================================================================
++ General Information: 
+    * Date:           Fri Sep 20 17:16:13 2024
+    * Version:        2023.2 (Build 4023990 on Oct 11 2023)
+    * Project:        bicg.prj
+    * Solution:       solution1 (Vivado IP Flow Target)
+    * Product family: virtexuplusHBM
+    * Target device:  xcu280-fsvh2892-2L-e
+    
+
++ Performance & Resource Estimates: 
+    
+    PS: '+' for module; 'o' for loop; '*' for dataflow
+    +------------------------------------+--------+-------+---------+-----------+----------+---------+------+----------+------+----------+------------+-------------+-----+
+    |               Modules              |  Issue |       | Latency |  Latency  | Iteration|         | Trip |          |      |          |            |             |     |
+    |               & Loops              |  Type  | Slack | (cycles)|    (ns)   |  Latency | Interval| Count| Pipelined| BRAM |    DSP   |     FF     |     LUT     | URAM|
+    +------------------------------------+--------+-------+---------+-----------+----------+---------+------+----------+------+----------+------------+-------------+-----+
+    |+ test_bicg                         |  Timing|  -0.37|    14434|  4.807e+04|         -|    14435|     -|        no|     -|  116 (1%)|  31841 (1%)|  12645 (~0%)|    -|
+    | o VITIS_LOOP_48_1_VITIS_LOOP_49_2  |       -|   2.43|    14432|  4.806e+04|        51|        9|  1599|       yes|     -|         -|           -|            -|    -|
+    +------------------------------------+--------+-------+---------+-----------+----------+---------+------+----------+------+----------+------------+-------------+-----+
+
+
+================================================================
+== HW Interfaces
+================================================================
+* S_AXILITE Interfaces
++------------+------------+---------------+
+| Interface  | Data Width | Address Width |
++------------+------------+---------------+
+| s_axi_ctrl | 32         | 4             |
++------------+------------+---------------+
+
+* S_AXILITE Registers
++------------+----------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+| Interface  | Register | Offset | Width | Access | Description                      | Bit Fields                                                           |
++------------+----------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+| s_axi_ctrl | CTRL     | 0x00   | 32    | RW     | Control signals                  | 0=AP_START 1=AP_DONE 2=AP_IDLE 3=AP_READY 7=AUTO_RESTART 9=INTERRUPT |
+| s_axi_ctrl | GIER     | 0x04   | 32    | RW     | Global Interrupt Enable Register | 0=Enable                                                             |
+| s_axi_ctrl | IP_IER   | 0x08   | 32    | RW     | IP Interrupt Enable Register     | 0=CHAN0_INT_EN 1=CHAN1_INT_EN                                        |
+| s_axi_ctrl | IP_ISR   | 0x0c   | 32    | RW     | IP Interrupt Status Register     | 0=CHAN0_INT_ST 1=CHAN1_INT_ST                                        |
++------------+----------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+
+* BRAM
++--------------+------------+---------------+
+| Interface    | Data Width | Address Width |
++--------------+------------+---------------+
+| v0_0_0_PORTA | 32         | 32            |
+| v0_0_1_PORTA | 32         | 32            |
+| v0_0_2_PORTA | 32         | 32            |
+| v0_0_3_PORTA | 32         | 32            |
+| v0_0_4_PORTA | 32         | 32            |
+| v0_0_5_PORTA | 32         | 32            |
+| v0_0_6_PORTA | 32         | 32            |
+| v0_0_7_PORTA | 32         | 32            |
+| v0_0_8_PORTA | 32         | 32            |
+| v0_0_9_PORTA | 32         | 32            |
+| v0_1_0_PORTA | 32         | 32            |
+| v0_1_1_PORTA | 32         | 32            |
+| v0_1_2_PORTA | 32         | 32            |
+| v0_1_3_PORTA | 32         | 32            |
+| v0_1_4_PORTA | 32         | 32            |
+| v0_1_5_PORTA | 32         | 32            |
+| v0_1_6_PORTA | 32         | 32            |
+| v0_1_7_PORTA | 32         | 32            |
+| v0_1_8_PORTA | 32         | 32            |
+| v0_1_9_PORTA | 32         | 32            |
+| v0_2_0_PORTA | 32         | 32            |
+| v0_2_1_PORTA | 32         | 32            |
+| v0_2_2_PORTA | 32         | 32            |
+| v0_2_3_PORTA | 32         | 32            |
+| v0_2_4_PORTA | 32         | 32            |
+| v0_2_5_PORTA | 32         | 32            |
+| v0_2_6_PORTA | 32         | 32            |
+| v0_2_7_PORTA | 32         | 32            |
+| v0_2_8_PORTA | 32         | 32            |
+| v0_2_9_PORTA | 32         | 32            |
+| v0_3_0_PORTA | 32         | 32            |
+| v0_3_1_PORTA | 32         | 32            |
+| v0_3_2_PORTA | 32         | 32            |
+| v0_3_3_PORTA | 32         | 32            |
+| v0_3_4_PORTA | 32         | 32            |
+| v0_3_5_PORTA | 32         | 32            |
+| v0_3_6_PORTA | 32         | 32            |
+| v0_3_7_PORTA | 32         | 32            |
+| v0_3_8_PORTA | 32         | 32            |
+| v0_3_9_PORTA | 32         | 32            |
+| v0_4_0_PORTA | 32         | 32            |
+| v0_4_1_PORTA | 32         | 32            |
+| v0_4_2_PORTA | 32         | 32            |
+| v0_4_3_PORTA | 32         | 32            |
+| v0_4_4_PORTA | 32         | 32            |
+| v0_4_5_PORTA | 32         | 32            |
+| v0_4_6_PORTA | 32         | 32            |
+| v0_4_7_PORTA | 32         | 32            |
+| v0_4_8_PORTA | 32         | 32            |
+| v0_4_9_PORTA | 32         | 32            |
+| v0_5_0_PORTA | 32         | 32            |
+| v0_5_1_PORTA | 32         | 32            |
+| v0_5_2_PORTA | 32         | 32            |
+| v0_5_3_PORTA | 32         | 32            |
+| v0_5_4_PORTA | 32         | 32            |
+| v0_5_5_PORTA | 32         | 32            |
+| v0_5_6_PORTA | 32         | 32            |
+| v0_5_7_PORTA | 32         | 32            |
+| v0_5_8_PORTA | 32         | 32            |
+| v0_5_9_PORTA | 32         | 32            |
+| v0_6_0_PORTA | 32         | 32            |
+| v0_6_1_PORTA | 32         | 32            |
+| v0_6_2_PORTA | 32         | 32            |
+| v0_6_3_PORTA | 32         | 32            |
+| v0_6_4_PORTA | 32         | 32            |
+| v0_6_5_PORTA | 32         | 32            |
+| v0_6_6_PORTA | 32         | 32            |
+| v0_6_7_PORTA | 32         | 32            |
+| v0_6_8_PORTA | 32         | 32            |
+| v0_6_9_PORTA | 32         | 32            |
+| v0_7_0_PORTA | 32         | 32            |
+| v0_7_1_PORTA | 32         | 32            |
+| v0_7_2_PORTA | 32         | 32            |
+| v0_7_3_PORTA | 32         | 32            |
+| v0_7_4_PORTA | 32         | 32            |
+| v0_7_5_PORTA | 32         | 32            |
+| v0_7_6_PORTA | 32         | 32            |
+| v0_7_7_PORTA | 32         | 32            |
+| v0_7_8_PORTA | 32         | 32            |
+| v0_7_9_PORTA | 32         | 32            |
+| v0_8_0_PORTA | 32         | 32            |
+| v0_8_1_PORTA | 32         | 32            |
+| v0_8_2_PORTA | 32         | 32            |
+| v0_8_3_PORTA | 32         | 32            |
+| v0_8_4_PORTA | 32         | 32            |
+| v0_8_5_PORTA | 32         | 32            |
+| v0_8_6_PORTA | 32         | 32            |
+| v0_8_7_PORTA | 32         | 32            |
+| v0_8_8_PORTA | 32         | 32            |
+| v0_8_9_PORTA | 32         | 32            |
+| v0_9_0_PORTA | 32         | 32            |
+| v0_9_1_PORTA | 32         | 32            |
+| v0_9_2_PORTA | 32         | 32            |
+| v0_9_3_PORTA | 32         | 32            |
+| v0_9_4_PORTA | 32         | 32            |
+| v0_9_5_PORTA | 32         | 32            |
+| v0_9_6_PORTA | 32         | 32            |
+| v0_9_7_PORTA | 32         | 32            |
+| v0_9_8_PORTA | 32         | 32            |
+| v0_9_9_PORTA | 32         | 32            |
+| v1_0_PORTA   | 32         | 32            |
+| v1_1_PORTA   | 32         | 32            |
+| v1_2_PORTA   | 32         | 32            |
+| v1_3_PORTA   | 32         | 32            |
+| v1_4_PORTA   | 32         | 32            |
+| v1_5_PORTA   | 32         | 32            |
+| v1_6_PORTA   | 32         | 32            |
+| v1_7_PORTA   | 32         | 32            |
+| v1_8_PORTA   | 32         | 32            |
+| v1_9_PORTA   | 32         | 32            |
+| v2_0_PORTA   | 32         | 32            |
+| v2_1_PORTA   | 32         | 32            |
+| v2_2_PORTA   | 32         | 32            |
+| v2_3_PORTA   | 32         | 32            |
+| v2_4_PORTA   | 32         | 32            |
+| v2_5_PORTA   | 32         | 32            |
+| v2_6_PORTA   | 32         | 32            |
+| v2_7_PORTA   | 32         | 32            |
+| v2_8_PORTA   | 32         | 32            |
+| v2_9_PORTA   | 32         | 32            |
+| v3_0_PORTA   | 32         | 32            |
+| v3_1_PORTA   | 32         | 32            |
+| v3_2_PORTA   | 32         | 32            |
+| v3_3_PORTA   | 32         | 32            |
+| v3_4_PORTA   | 32         | 32            |
+| v3_5_PORTA   | 32         | 32            |
+| v3_6_PORTA   | 32         | 32            |
+| v3_7_PORTA   | 32         | 32            |
+| v3_8_PORTA   | 32         | 32            |
+| v3_9_PORTA   | 32         | 32            |
+| v4_0_PORTA   | 32         | 32            |
+| v4_0_PORTB   | 32         | 32            |
+| v4_1_PORTA   | 32         | 32            |
+| v4_1_PORTB   | 32         | 32            |
+| v4_2_PORTA   | 32         | 32            |
+| v4_2_PORTB   | 32         | 32            |
+| v4_3_PORTA   | 32         | 32            |
+| v4_3_PORTB   | 32         | 32            |
+| v4_4_PORTA   | 32         | 32            |
+| v4_4_PORTB   | 32         | 32            |
+| v4_5_PORTA   | 32         | 32            |
+| v4_5_PORTB   | 32         | 32            |
+| v4_6_PORTA   | 32         | 32            |
+| v4_6_PORTB   | 32         | 32            |
+| v4_7_PORTA   | 32         | 32            |
+| v4_7_PORTB   | 32         | 32            |
+| v4_8_PORTA   | 32         | 32            |
+| v4_9_PORTA   | 32         | 32            |
++--------------+------------+---------------+
+
+* TOP LEVEL CONTROL
++-----------+------------+-----------+
+| Interface | Type       | Ports     |
++-----------+------------+-----------+
+| ap_clk    | clock      | ap_clk    |
+| ap_rst_n  | reset      | ap_rst_n  |
+| interrupt | interrupt  | interrupt |
+| ap_ctrl   | ap_ctrl_hs |           |
++-----------+------------+-----------+
+
+
+================================================================
+== SW I/O Information
+================================================================
+* Top Function Arguments
++----------+-----------+----------+
+| Argument | Direction | Datatype |
++----------+-----------+----------+
+| v0       | in        | float*   |
+| v1       | in        | float*   |
+| v2       | in        | float*   |
+| v3       | inout     | float*   |
+| v4       | inout     | float*   |
++----------+-----------+----------+
+
+* SW-to-HW Mapping
++----------+--------------+-----------+
+| Argument | HW Interface | HW Type   |
++----------+--------------+-----------+
+| v0       | v0_0_0_PORTA | interface |
+| v0       | v0_0_1_PORTA | interface |
+| v0       | v0_0_2_PORTA | interface |
+| v0       | v0_0_3_PORTA | interface |
+| v0       | v0_0_4_PORTA | interface |
+| v0       | v0_0_5_PORTA | interface |
+| v0       | v0_0_6_PORTA | interface |
+| v0       | v0_0_7_PORTA | interface |
+| v0       | v0_0_8_PORTA | interface |
+| v0       | v0_0_9_PORTA | interface |
+| v0       | v0_1_0_PORTA | interface |
+| v0       | v0_1_1_PORTA | interface |
+| v0       | v0_1_2_PORTA | interface |
+| v0       | v0_1_3_PORTA | interface |
+| v0       | v0_1_4_PORTA | interface |
+| v0       | v0_1_5_PORTA | interface |
+| v0       | v0_1_6_PORTA | interface |
+| v0       | v0_1_7_PORTA | interface |
+| v0       | v0_1_8_PORTA | interface |
+| v0       | v0_1_9_PORTA | interface |
+| v0       | v0_2_0_PORTA | interface |
+| v0       | v0_2_1_PORTA | interface |
+| v0       | v0_2_2_PORTA | interface |
+| v0       | v0_2_3_PORTA | interface |
+| v0       | v0_2_4_PORTA | interface |
+| v0       | v0_2_5_PORTA | interface |
+| v0       | v0_2_6_PORTA | interface |
+| v0       | v0_2_7_PORTA | interface |
+| v0       | v0_2_8_PORTA | interface |
+| v0       | v0_2_9_PORTA | interface |
+| v0       | v0_3_0_PORTA | interface |
+| v0       | v0_3_1_PORTA | interface |
+| v0       | v0_3_2_PORTA | interface |
+| v0       | v0_3_3_PORTA | interface |
+| v0       | v0_3_4_PORTA | interface |
+| v0       | v0_3_5_PORTA | interface |
+| v0       | v0_3_6_PORTA | interface |
+| v0       | v0_3_7_PORTA | interface |
+| v0       | v0_3_8_PORTA | interface |
+| v0       | v0_3_9_PORTA | interface |
+| v0       | v0_4_0_PORTA | interface |
+| v0       | v0_4_1_PORTA | interface |
+| v0       | v0_4_2_PORTA | interface |
+| v0       | v0_4_3_PORTA | interface |
+| v0       | v0_4_4_PORTA | interface |
+| v0       | v0_4_5_PORTA | interface |
+| v0       | v0_4_6_PORTA | interface |
+| v0       | v0_4_7_PORTA | interface |
+| v0       | v0_4_8_PORTA | interface |
+| v0       | v0_4_9_PORTA | interface |
+| v0       | v0_5_0_PORTA | interface |
+| v0       | v0_5_1_PORTA | interface |
+| v0       | v0_5_2_PORTA | interface |
+| v0       | v0_5_3_PORTA | interface |
+| v0       | v0_5_4_PORTA | interface |
+| v0       | v0_5_5_PORTA | interface |
+| v0       | v0_5_6_PORTA | interface |
+| v0       | v0_5_7_PORTA | interface |
+| v0       | v0_5_8_PORTA | interface |
+| v0       | v0_5_9_PORTA | interface |
+| v0       | v0_6_0_PORTA | interface |
+| v0       | v0_6_1_PORTA | interface |
+| v0       | v0_6_2_PORTA | interface |
+| v0       | v0_6_3_PORTA | interface |
+| v0       | v0_6_4_PORTA | interface |
+| v0       | v0_6_5_PORTA | interface |
+| v0       | v0_6_6_PORTA | interface |
+| v0       | v0_6_7_PORTA | interface |
+| v0       | v0_6_8_PORTA | interface |
+| v0       | v0_6_9_PORTA | interface |
+| v0       | v0_7_0_PORTA | interface |
+| v0       | v0_7_1_PORTA | interface |
+| v0       | v0_7_2_PORTA | interface |
+| v0       | v0_7_3_PORTA | interface |
+| v0       | v0_7_4_PORTA | interface |
+| v0       | v0_7_5_PORTA | interface |
+| v0       | v0_7_6_PORTA | interface |
+| v0       | v0_7_7_PORTA | interface |
+| v0       | v0_7_8_PORTA | interface |
+| v0       | v0_7_9_PORTA | interface |
+| v0       | v0_8_0_PORTA | interface |
+| v0       | v0_8_1_PORTA | interface |
+| v0       | v0_8_2_PORTA | interface |
+| v0       | v0_8_3_PORTA | interface |
+| v0       | v0_8_4_PORTA | interface |
+| v0       | v0_8_5_PORTA | interface |
+| v0       | v0_8_6_PORTA | interface |
+| v0       | v0_8_7_PORTA | interface |
+| v0       | v0_8_8_PORTA | interface |
+| v0       | v0_8_9_PORTA | interface |
+| v0       | v0_9_0_PORTA | interface |
+| v0       | v0_9_1_PORTA | interface |
+| v0       | v0_9_2_PORTA | interface |
+| v0       | v0_9_3_PORTA | interface |
+| v0       | v0_9_4_PORTA | interface |
+| v0       | v0_9_5_PORTA | interface |
+| v0       | v0_9_6_PORTA | interface |
+| v0       | v0_9_7_PORTA | interface |
+| v0       | v0_9_8_PORTA | interface |
+| v0       | v0_9_9_PORTA | interface |
+| v1       | v1_0_PORTA   | interface |
+| v1       | v1_1_PORTA   | interface |
+| v1       | v1_2_PORTA   | interface |
+| v1       | v1_3_PORTA   | interface |
+| v1       | v1_4_PORTA   | interface |
+| v1       | v1_5_PORTA   | interface |
+| v1       | v1_6_PORTA   | interface |
+| v1       | v1_7_PORTA   | interface |
+| v1       | v1_8_PORTA   | interface |
+| v1       | v1_9_PORTA   | interface |
+| v2       | v2_0_PORTA   | interface |
+| v2       | v2_1_PORTA   | interface |
+| v2       | v2_2_PORTA   | interface |
+| v2       | v2_3_PORTA   | interface |
+| v2       | v2_4_PORTA   | interface |
+| v2       | v2_5_PORTA   | interface |
+| v2       | v2_6_PORTA   | interface |
+| v2       | v2_7_PORTA   | interface |
+| v2       | v2_8_PORTA   | interface |
+| v2       | v2_9_PORTA   | interface |
+| v3       | v3_0_PORTA   | interface |
+| v3       | v3_1_PORTA   | interface |
+| v3       | v3_2_PORTA   | interface |
+| v3       | v3_3_PORTA   | interface |
+| v3       | v3_4_PORTA   | interface |
+| v3       | v3_5_PORTA   | interface |
+| v3       | v3_6_PORTA   | interface |
+| v3       | v3_7_PORTA   | interface |
+| v3       | v3_8_PORTA   | interface |
+| v3       | v3_9_PORTA   | interface |
+| v4       | v4_0_PORTA   | interface |
+| v4       | v4_0_PORTB   | interface |
+| v4       | v4_1_PORTA   | interface |
+| v4       | v4_1_PORTB   | interface |
+| v4       | v4_2_PORTA   | interface |
+| v4       | v4_2_PORTB   | interface |
+| v4       | v4_3_PORTA   | interface |
+| v4       | v4_3_PORTB   | interface |
+| v4       | v4_4_PORTA   | interface |
+| v4       | v4_4_PORTB   | interface |
+| v4       | v4_5_PORTA   | interface |
+| v4       | v4_5_PORTB   | interface |
+| v4       | v4_6_PORTA   | interface |
+| v4       | v4_6_PORTB   | interface |
+| v4       | v4_7_PORTA   | interface |
+| v4       | v4_7_PORTB   | interface |
+| v4       | v4_8_PORTA   | interface |
+| v4       | v4_9_PORTA   | interface |
++----------+--------------+-----------+
+
+
+================================================================
+== Bind Op Report
+================================================================
++--------------------------------------+-----+--------+------------+------+-----------+---------+
+| Name                                 | DSP | Pragma | Variable   | Op   | Impl      | Latency |
++--------------------------------------+-----+--------+------------+------+-----------+---------+
+| + test_bicg                          | 116 |        |            |      |           |         |
+|   add_ln48_1_fu_2527_p2              |     |        | add_ln48_1 | add  | fabric    | 0       |
+|   add_ln48_fu_2539_p2                |     |        | add_ln48   | add  | fabric    | 0       |
+|   mac_muladd_6ns_6ns_6ns_11_4_1_U47  | 1   |        | mul_ln51   | mul  | dsp_slice | 3       |
+|   mac_muladd_6ns_6ns_6ns_11_4_1_U47  | 1   |        | add_ln51   | add  | dsp_slice | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U24  | 3   |        | v9         | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U24  | 3   |        | v11        | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U25  | 3   |        | v14        | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U25  | 3   |        | v16        | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U24  | 3   |        | v19        | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U26  | 3   |        | v21        | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U26  | 3   |        | v24        | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U27  | 3   |        | v26        | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U25  | 3   |        | v29        | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U28  | 3   |        | v31        | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U27  | 3   |        | v34        | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U29  | 3   |        | v36        | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U28  | 3   |        | v39        | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U30  | 3   |        | v41        | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U26  | 3   |        | v44        | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U31  | 3   |        | v46        | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U29  | 3   |        | v49        | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U32  | 3   |        | v51        | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U27  | 3   |        | v54        | fmul | maxdsp    | 3       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U1  | 2   |        | tmp1       | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U2  | 2   |        | tmp5       | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U1  | 2   |        | tmp7       | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U2  | 2   |        | tmp3       | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U1  | 2   |        | tmp6       | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U2  | 2   |        | tmp2       | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U16 | 2   |        | tmp4       | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U17 | 2   |        | tmp        | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U15 | 2   |        | tmp_1      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U16 | 2   |        | v57        | fadd | fulldsp   | 6       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U33  | 3   |        | v58        | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U24  | 3   |        | v60        | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U34  | 3   |        | v62        | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U25  | 3   |        | v65        | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U24  | 3   |        | v67        | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U26  | 3   |        | v70        | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U25  | 3   |        | v72        | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U28  | 3   |        | v75        | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U26  | 3   |        | v77        | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U29  | 3   |        | v80        | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U27  | 3   |        | v82        | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U27  | 3   |        | v85        | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U28  | 3   |        | v87        | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U28  | 3   |        | v90        | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U29  | 3   |        | v92        | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U29  | 3   |        | v95        | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U30  | 3   |        | v97        | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U30  | 3   |        | v100       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U31  | 3   |        | v102       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U31  | 3   |        | v105       | fmul | maxdsp    | 3       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U1  | 2   |        | tmp9       | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U3  | 2   |        | tmp11      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U3  | 2   |        | tmp10      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U18 | 2   |        | tmp8       | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U2  | 2   |        | tmp13      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U4  | 2   |        | tmp15      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U4  | 2   |        | tmp14      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U19 | 2   |        | tmp12      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U16 | 2   |        | tmp_s      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U17 | 2   |        | v108       | fadd | fulldsp   | 6       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U32  | 3   |        | v109       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U30  | 3   |        | v112       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U33  | 3   |        | v114       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U31  | 3   |        | v117       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U34  | 3   |        | v119       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U32  | 3   |        | v122       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U35  | 3   |        | v124       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U32  | 3   |        | v127       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U36  | 3   |        | v129       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U33  | 3   |        | v132       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U37  | 3   |        | v134       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U33  | 3   |        | v137       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U38  | 3   |        | v139       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U34  | 3   |        | v142       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U39  | 3   |        | v144       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U35  | 3   |        | v147       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U40  | 3   |        | v149       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U34  | 3   |        | v152       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U41  | 3   |        | v154       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U35  | 3   |        | v157       | fmul | maxdsp    | 3       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U3  | 2   |        | tmp17      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U5  | 2   |        | tmp19      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U5  | 2   |        | tmp18      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U20 | 2   |        | tmp16      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U4  | 2   |        | tmp21      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U6  | 2   |        | tmp23      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U6  | 2   |        | tmp22      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U21 | 2   |        | tmp20      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U17 | 2   |        | tmp_2      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U18 | 2   |        | v160       | fadd | fulldsp   | 6       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U42  | 3   |        | v161       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U36  | 3   |        | v164       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U37  | 3   |        | v166       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U38  | 3   |        | v169       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U39  | 3   |        | v171       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U40  | 3   |        | v174       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U41  | 3   |        | v176       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U36  | 3   |        | v179       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U42  | 3   |        | v181       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U37  | 3   |        | v184       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U43  | 3   |        | v186       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U44  | 3   |        | v189       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U45  | 3   |        | v191       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U46  | 3   |        | v194       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U24  | 3   |        | v196       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U25  | 3   |        | v199       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U26  | 3   |        | v201       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U38  | 3   |        | v204       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U27  | 3   |        | v206       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U39  | 3   |        | v209       | fmul | maxdsp    | 3       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U5  | 2   |        | tmp25      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U7  | 2   |        | tmp27      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U7  | 2   |        | tmp26      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U22 | 2   |        | tmp24      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U6  | 2   |        | tmp29      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U8  | 2   |        | tmp31      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U8  | 2   |        | tmp30      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U23 | 2   |        | tmp28      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U18 | 2   |        | tmp_3      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U19 | 2   |        | v212       | fadd | fulldsp   | 6       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U28  | 3   |        | v213       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U29  | 3   |        | v216       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U30  | 3   |        | v218       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U31  | 3   |        | v221       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U32  | 3   |        | v223       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U33  | 3   |        | v226       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U34  | 3   |        | v228       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U40  | 3   |        | v231       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U35  | 3   |        | v233       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U41  | 3   |        | v236       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U36  | 3   |        | v238       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U37  | 3   |        | v241       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U38  | 3   |        | v243       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U39  | 3   |        | v246       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U40  | 3   |        | v248       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U41  | 3   |        | v251       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U42  | 3   |        | v253       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U42  | 3   |        | v256       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U43  | 3   |        | v258       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U43  | 3   |        | v261       | fmul | maxdsp    | 3       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U1  | 2   |        | tmp33      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U9  | 2   |        | tmp35      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U9  | 2   |        | tmp34      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U11 | 2   |        | tmp32      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U2  | 2   |        | tmp37      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U10 | 2   |        | tmp39      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U10 | 2   |        | tmp38      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U12 | 2   |        | tmp36      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U19 | 2   |        | tmp_4      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U20 | 2   |        | v264       | fadd | fulldsp   | 6       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U44  | 3   |        | v265       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U45  | 3   |        | v268       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U43  | 3   |        | v270       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U46  | 3   |        | v273       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U44  | 3   |        | v275       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U24  | 3   |        | v278       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U45  | 3   |        | v280       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U44  | 3   |        | v283       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U46  | 3   |        | v285       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U45  | 3   |        | v288       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U24  | 3   |        | v290       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U25  | 3   |        | v293       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U25  | 3   |        | v295       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U26  | 3   |        | v298       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U26  | 3   |        | v300       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U27  | 3   |        | v303       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U27  | 3   |        | v305       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U46  | 3   |        | v308       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U28  | 3   |        | v310       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U30  | 3   |        | v313       | fmul | maxdsp    | 3       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U3  | 2   |        | tmp41      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U11 | 2   |        | tmp43      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U11 | 2   |        | tmp42      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U13 | 2   |        | tmp40      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U1  | 2   |        | tmp45      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U3  | 2   |        | tmp47      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U1  | 2   |        | tmp46      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U14 | 2   |        | tmp44      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U20 | 2   |        | tmp_5      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U21 | 2   |        | v316       | fadd | fulldsp   | 6       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U29  | 3   |        | v317       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U28  | 3   |        | v320       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U29  | 3   |        | v322       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U30  | 3   |        | v325       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U31  | 3   |        | v327       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U32  | 3   |        | v330       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U33  | 3   |        | v332       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U31  | 3   |        | v335       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U34  | 3   |        | v337       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U32  | 3   |        | v340       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U35  | 3   |        | v342       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U36  | 3   |        | v345       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U37  | 3   |        | v347       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U38  | 3   |        | v350       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U39  | 3   |        | v352       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U40  | 3   |        | v355       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U41  | 3   |        | v357       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U33  | 3   |        | v360       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U42  | 3   |        | v362       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U34  | 3   |        | v365       | fmul | maxdsp    | 3       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U2  | 2   |        | tmp49      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U4  | 2   |        | tmp51      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U2  | 2   |        | tmp50      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U15 | 2   |        | tmp48      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U3  | 2   |        | tmp53      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U5  | 2   |        | tmp55      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U3  | 2   |        | tmp54      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U16 | 2   |        | tmp52      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U21 | 2   |        | tmp_6      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U22 | 2   |        | v368       | fadd | fulldsp   | 6       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U43  | 3   |        | v369       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U44  | 3   |        | v372       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U45  | 3   |        | v374       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U46  | 3   |        | v377       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U24  | 3   |        | v379       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U25  | 3   |        | v382       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U26  | 3   |        | v384       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U35  | 3   |        | v387       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U27  | 3   |        | v389       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U36  | 3   |        | v392       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U28  | 3   |        | v394       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U29  | 3   |        | v397       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U30  | 3   |        | v399       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U31  | 3   |        | v402       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U32  | 3   |        | v404       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U33  | 3   |        | v407       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U34  | 3   |        | v409       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U37  | 3   |        | v412       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U35  | 3   |        | v414       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U38  | 3   |        | v417       | fmul | maxdsp    | 3       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U4  | 2   |        | tmp57      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U6  | 2   |        | tmp59      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U4  | 2   |        | tmp58      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U17 | 2   |        | tmp56      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U1  | 2   |        | tmp61      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U7  | 2   |        | tmp63      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U5  | 2   |        | tmp62      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U18 | 2   |        | tmp60      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U22 | 2   |        | tmp_7      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U23 | 2   |        | v420       | fadd | fulldsp   | 6       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U36  | 3   |        | v421       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U37  | 3   |        | v424       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U30  | 3   |        | v426       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U38  | 3   |        | v429       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U31  | 3   |        | v431       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U39  | 3   |        | v434       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U32  | 3   |        | v436       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U39  | 3   |        | v439       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U33  | 3   |        | v441       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U40  | 3   |        | v444       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U34  | 3   |        | v446       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U40  | 3   |        | v449       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U35  | 3   |        | v451       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U41  | 3   |        | v454       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U36  | 3   |        | v456       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U42  | 3   |        | v459       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U37  | 3   |        | v461       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U41  | 3   |        | v464       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U38  | 3   |        | v466       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U42  | 3   |        | v469       | fmul | maxdsp    | 3       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U2  | 2   |        | tmp65      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U8  | 2   |        | tmp67      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U6  | 2   |        | tmp66      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U19 | 2   |        | tmp64      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U3  | 2   |        | tmp69      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U9  | 2   |        | tmp71      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U7  | 2   |        | tmp70      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U20 | 2   |        | tmp68      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U23 | 2   |        | tmp_8      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U21 | 2   |        | v472       | fadd | fulldsp   | 6       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U39  | 3   |        | v473       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U43  | 3   |        | v476       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U44  | 3   |        | v478       | fmul | maxdsp    | 3       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U1  | 2   |        | tmp73      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U4  | 2   |        | tmp75      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U12 | 2   |        | tmp74      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U10 | 2   |        | tmp72      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U5  | 2   |        | tmp78      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U7  | 2   |        | tmp77      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U4  | 2   |        | tmp80      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U14 | 2   |        | tmp79      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U22 | 2   |        | tmp76      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U20 | 2   |        | v481       | fadd | fulldsp   | 6       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U45  | 3   |        | v483       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U46  | 3   |        | v485       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U35  | 3   |        | v490       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U36  | 3   |        | v492       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U43  | 3   |        | v497       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U37  | 3   |        | v499       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U44  | 3   |        | v504       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U38  | 3   |        | v506       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U39  | 3   |        | v511       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U40  | 3   |        | v513       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U41  | 3   |        | v518       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U42  | 3   |        | v520       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U43  | 3   |        | v525       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U44  | 3   |        | v527       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U45  | 3   |        | v532       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U45  | 3   |        | v534       | fmul | maxdsp    | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U46  | 3   |        | v539       | fmul | maxdsp    | 3       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U5  | 2   |        | tmp82      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U10 | 2   |        | tmp84      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U8  | 2   |        | tmp83      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U21 | 2   |        | tmp81      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U2  | 2   |        | tmp86      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U11 | 2   |        | tmp88      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U9  | 2   |        | tmp87      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U22 | 2   |        | tmp85      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U23 | 2   |        | tmp_9      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U22 | 2   |        | v542       | fadd | fulldsp   | 6       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U46  | 3   |        | v543       | fmul | maxdsp    | 3       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U12 | 2   |        | tmp90      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U5  | 2   |        | tmp92      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U13 | 2   |        | tmp91      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U11 | 2   |        | tmp89      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U6  | 2   |        | tmp95      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U15 | 2   |        | tmp94      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U7  | 2   |        | tmp97      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U16 | 2   |        | tmp96      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U23 | 2   |        | tmp93      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U21 | 2   |        | v488       | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U13 | 2   |        | tmp99      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U6  | 2   |        | tmp101     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U14 | 2   |        | tmp100     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U12 | 2   |        | tmp98      | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U8  | 2   |        | tmp104     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U17 | 2   |        | tmp103     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U3  | 2   |        | tmp106     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U6  | 2   |        | tmp105     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U8  | 2   |        | tmp102     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U12 | 2   |        | v495       | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U14 | 2   |        | tmp108     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U7  | 2   |        | tmp110     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U15 | 2   |        | tmp109     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U13 | 2   |        | tmp107     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U9  | 2   |        | tmp113     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U18 | 2   |        | tmp112     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U4  | 2   |        | tmp115     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U7  | 2   |        | tmp114     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U9  | 2   |        | tmp111     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U13 | 2   |        | v502       | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U15 | 2   |        | tmp117     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U8  | 2   |        | tmp119     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U16 | 2   |        | tmp118     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U14 | 2   |        | tmp116     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U10 | 2   |        | tmp122     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U19 | 2   |        | tmp121     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U5  | 2   |        | tmp124     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U8  | 2   |        | tmp123     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U10 | 2   |        | tmp120     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U14 | 2   |        | v509       | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U16 | 2   |        | tmp126     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U9  | 2   |        | tmp128     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U17 | 2   |        | tmp127     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U15 | 2   |        | tmp125     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U11 | 2   |        | tmp131     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U20 | 2   |        | tmp130     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U6  | 2   |        | tmp133     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U9  | 2   |        | tmp132     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U11 | 2   |        | tmp129     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U15 | 2   |        | v516       | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U17 | 2   |        | tmp135     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U10 | 2   |        | tmp137     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U18 | 2   |        | tmp136     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U16 | 2   |        | tmp134     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U12 | 2   |        | tmp140     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U21 | 2   |        | tmp139     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U7  | 2   |        | tmp142     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U10 | 2   |        | tmp141     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U12 | 2   |        | tmp138     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U16 | 2   |        | v523       | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U18 | 2   |        | tmp144     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U11 | 2   |        | tmp146     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U19 | 2   |        | tmp145     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U17 | 2   |        | tmp143     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U13 | 2   |        | tmp149     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U22 | 2   |        | tmp148     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U8  | 2   |        | tmp151     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U11 | 2   |        | tmp150     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U13 | 2   |        | tmp147     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U17 | 2   |        | v530       | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U19 | 2   |        | tmp153     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U12 | 2   |        | tmp155     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U20 | 2   |        | tmp154     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U18 | 2   |        | tmp152     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U14 | 2   |        | tmp158     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U23 | 2   |        | tmp157     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U9  | 2   |        | tmp160     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U12 | 2   |        | tmp159     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U14 | 2   |        | tmp156     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U18 | 2   |        | v537       | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U20 | 2   |        | tmp162     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U13 | 2   |        | tmp164     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U21 | 2   |        | tmp163     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U19 | 2   |        | tmp161     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U15 | 2   |        | tmp167     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U13 | 2   |        | tmp166     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U10 | 2   |        | tmp169     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U14 | 2   |        | tmp168     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U15 | 2   |        | tmp165     | fadd | fulldsp   | 6       |
+|   fadd_32ns_32ns_32_7_full_dsp_1_U19 | 2   |        | v546       | fadd | fulldsp   | 6       |
+|   add_ln49_fu_2610_p2                |     |        | add_ln49   | add  | fabric    | 0       |
++--------------------------------------+-----+--------+------------+------+-----------+---------+
+
+
+================================================================
+== Storage Report
+================================================================
++----------------+-----------+-----------+------+------+--------+----------+------+---------+------------------+
+| Name           | Usage     | Type      | BRAM | URAM | Pragma | Variable | Impl | Latency | Bitwidth, Depth, |
+|                |           |           |      |      |        |          |      |         | Banks            |
++----------------+-----------+-----------+------+------+--------+----------+------+---------+------------------+
+| + test_bicg    |           |           | 0    | 0    |        |          |      |         |                  |
+|   ctrl_s_axi_U | interface | s_axilite |      |      |        |          |      |         |                  |
++----------------+-----------+-----------+------+------+--------+----------+------+---------+------------------+
+
+
+================================================================
+== Pragma Report
+================================================================
+* Valid Pragma Syntax
++-----------------+------------------------------------+----------------------------------+
+| Type            | Options                            | Location                         |
++-----------------+------------------------------------+----------------------------------+
+| interface       | s_axilite port=return bundle=ctrl  | bicg.cpp:31 in test_bicg, return |
+| interface       | bram port=v0                       | bicg.cpp:32 in test_bicg, v0     |
+| array_partition | variable=v0 cyclic factor=10 dim=1 | bicg.cpp:33 in test_bicg, v0     |
+| array_partition | variable=v0 cyclic factor=10 dim=2 | bicg.cpp:34 in test_bicg, v0     |
+| interface       | bram port=v1                       | bicg.cpp:36 in test_bicg, v1     |
+| array_partition | variable=v1 cyclic factor=10 dim=1 | bicg.cpp:37 in test_bicg, v1     |
+| interface       | bram port=v2                       | bicg.cpp:39 in test_bicg, v2     |
+| array_partition | variable=v2 cyclic factor=10 dim=1 | bicg.cpp:40 in test_bicg, v2     |
+| interface       | bram port=v3                       | bicg.cpp:42 in test_bicg, v3     |
+| array_partition | variable=v3 cyclic factor=10 dim=1 | bicg.cpp:43 in test_bicg, v3     |
+| interface       | bram port=v4                       | bicg.cpp:45 in test_bicg, v4     |
+| array_partition | variable=v4 cyclic factor=10 dim=1 | bicg.cpp:46 in test_bicg, v4     |
+| pipeline        | II=9                               | bicg.cpp:50 in test_bicg         |
++-----------------+------------------------------------+----------------------------------+
+
+

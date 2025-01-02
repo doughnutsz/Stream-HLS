@@ -1,0 +1,289 @@
+
+
+================================================================
+== Synthesis Summary Report of 'test_gesummv'
+================================================================
++ General Information: 
+    * Date:           Mon Oct  7 12:26:38 2024
+    * Version:        2023.2 (Build 4023990 on Oct 11 2023)
+    * Project:        gesummv.prj
+    * Solution:       solution1 (Vivado IP Flow Target)
+    * Product family: virtexuplusHBM
+    * Target device:  xcu280-fsvh2892-2L-e
+    
+
++ Performance & Resource Estimates: 
+    
+    PS: '+' for module; 'o' for loop; '*' for dataflow
+    +----------------------------------------------------------+--------+-------+---------+-----------+----------+---------+------+----------+------+----------+-------------+------------+-----+
+    |                          Modules                         |  Issue |       | Latency |  Latency  | Iteration|         | Trip |          |      |          |             |            |     |
+    |                          & Loops                         |  Type  | Slack | (cycles)|    (ns)   |  Latency | Interval| Count| Pipelined| BRAM |    DSP   |      FF     |     LUT    | URAM|
+    +----------------------------------------------------------+--------+-------+---------+-----------+----------+---------+------+----------+------+----------+-------------+------------+-----+
+    |+ test_gesummv                                            |  Timing|  -0.05|     6545|  2.179e+04|         -|     6546|     -|        no|     -|  101 (1%)|  13352 (~0%)|  7600 (~0%)|    -|
+    | + test_gesummv_Pipeline_VITIS_LOOP_58_1_VITIS_LOOP_59_2  |  Timing|  -0.05|     6274|  2.089e+04|         -|     6274|     -|        no|     -|   93 (1%)|  11920 (~0%)|  5830 (~0%)|    -|
+    |  o VITIS_LOOP_58_1_VITIS_LOOP_59_2                       |       -|   2.43|     6272|  2.089e+04|        24|        1|  6250|       yes|     -|         -|            -|           -|    -|
+    | + test_gesummv_Pipeline_VITIS_LOOP_165_3                 |       -|   0.09|      268|    892.440|         -|      268|     -|        no|     -|         -|    646 (~0%)|   446 (~0%)|    -|
+    |  o VITIS_LOOP_165_3                                      |       -|   2.43|      266|    885.780|        18|        1|   250|       yes|     -|         -|            -|           -|    -|
+    +----------------------------------------------------------+--------+-------+---------+-----------+----------+---------+------+----------+------+----------+-------------+------------+-----+
+
+
+================================================================
+== HW Interfaces
+================================================================
+* S_AXILITE Interfaces
++------------+------------+---------------+--------+----------+
+| Interface  | Data Width | Address Width | Offset | Register |
++------------+------------+---------------+--------+----------+
+| s_axi_ctrl | 32         | 5             | 16     | 0        |
++------------+------------+---------------+--------+----------+
+
+* S_AXILITE Registers
++------------+----------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+| Interface  | Register | Offset | Width | Access | Description                      | Bit Fields                                                           |
++------------+----------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+| s_axi_ctrl | CTRL     | 0x00   | 32    | RW     | Control signals                  | 0=AP_START 1=AP_DONE 2=AP_IDLE 3=AP_READY 7=AUTO_RESTART 9=INTERRUPT |
+| s_axi_ctrl | GIER     | 0x04   | 32    | RW     | Global Interrupt Enable Register | 0=Enable                                                             |
+| s_axi_ctrl | IP_IER   | 0x08   | 32    | RW     | IP Interrupt Enable Register     | 0=CHAN0_INT_EN 1=CHAN1_INT_EN                                        |
+| s_axi_ctrl | IP_ISR   | 0x0c   | 32    | RW     | IP Interrupt Status Register     | 0=CHAN0_INT_ST 1=CHAN1_INT_ST                                        |
+| s_axi_ctrl | v0       | 0x10   | 32    | W      | Data signal of v0                |                                                                      |
+| s_axi_ctrl | v1       | 0x18   | 32    | W      | Data signal of v1                |                                                                      |
++------------+----------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+
+* BRAM
++--------------+------------+---------------+
+| Interface    | Data Width | Address Width |
++--------------+------------+---------------+
+| v2_0_0_PORTA | 32         | 32            |
+| v2_0_1_PORTA | 32         | 32            |
+| v2_1_0_PORTA | 32         | 32            |
+| v2_1_1_PORTA | 32         | 32            |
+| v2_2_0_PORTA | 32         | 32            |
+| v2_2_1_PORTA | 32         | 32            |
+| v2_3_0_PORTA | 32         | 32            |
+| v2_3_1_PORTA | 32         | 32            |
+| v2_4_0_PORTA | 32         | 32            |
+| v2_4_1_PORTA | 32         | 32            |
+| v3_0_0_PORTA | 32         | 32            |
+| v3_0_1_PORTA | 32         | 32            |
+| v3_1_0_PORTA | 32         | 32            |
+| v3_1_1_PORTA | 32         | 32            |
+| v3_2_0_PORTA | 32         | 32            |
+| v3_2_1_PORTA | 32         | 32            |
+| v3_3_0_PORTA | 32         | 32            |
+| v3_3_1_PORTA | 32         | 32            |
+| v3_4_0_PORTA | 32         | 32            |
+| v3_4_1_PORTA | 32         | 32            |
+| v4_0_PORTA   | 32         | 32            |
+| v4_0_PORTB   | 32         | 32            |
+| v4_1_PORTA   | 32         | 32            |
+| v4_1_PORTB   | 32         | 32            |
+| v4_2_PORTA   | 32         | 32            |
+| v4_2_PORTB   | 32         | 32            |
+| v4_3_PORTA   | 32         | 32            |
+| v4_3_PORTB   | 32         | 32            |
+| v4_4_PORTA   | 32         | 32            |
+| v4_4_PORTB   | 32         | 32            |
+| v5_0_PORTA   | 32         | 32            |
+| v5_1_PORTA   | 32         | 32            |
+| v6_0_PORTA   | 32         | 32            |
+| v6_0_PORTB   | 32         | 32            |
+| v6_1_PORTA   | 32         | 32            |
+| v6_1_PORTB   | 32         | 32            |
+| v6_2_PORTA   | 32         | 32            |
+| v6_2_PORTB   | 32         | 32            |
+| v6_3_PORTA   | 32         | 32            |
+| v6_3_PORTB   | 32         | 32            |
+| v6_4_PORTA   | 32         | 32            |
+| v6_4_PORTB   | 32         | 32            |
++--------------+------------+---------------+
+
+* TOP LEVEL CONTROL
++-----------+------------+-----------+
+| Interface | Type       | Ports     |
++-----------+------------+-----------+
+| ap_clk    | clock      | ap_clk    |
+| ap_rst_n  | reset      | ap_rst_n  |
+| interrupt | interrupt  | interrupt |
+| ap_ctrl   | ap_ctrl_hs |           |
++-----------+------------+-----------+
+
+
+================================================================
+== SW I/O Information
+================================================================
+* Top Function Arguments
++----------+-----------+----------+
+| Argument | Direction | Datatype |
++----------+-----------+----------+
+| v0       | in        | float    |
+| v1       | in        | float    |
+| v2       | in        | float*   |
+| v3       | in        | float*   |
+| v4       | inout     | float*   |
+| v5       | in        | float*   |
+| v6       | inout     | float*   |
++----------+-----------+----------+
+
+* SW-to-HW Mapping
++----------+--------------+-----------+------------------------------+
+| Argument | HW Interface | HW Type   | HW Info                      |
++----------+--------------+-----------+------------------------------+
+| v0       | s_axi_ctrl   | register  | name=v0 offset=0x10 range=32 |
+| v1       | s_axi_ctrl   | register  | name=v1 offset=0x18 range=32 |
+| v2       | v2_0_0_PORTA | interface |                              |
+| v2       | v2_0_1_PORTA | interface |                              |
+| v2       | v2_1_0_PORTA | interface |                              |
+| v2       | v2_1_1_PORTA | interface |                              |
+| v2       | v2_2_0_PORTA | interface |                              |
+| v2       | v2_2_1_PORTA | interface |                              |
+| v2       | v2_3_0_PORTA | interface |                              |
+| v2       | v2_3_1_PORTA | interface |                              |
+| v2       | v2_4_0_PORTA | interface |                              |
+| v2       | v2_4_1_PORTA | interface |                              |
+| v3       | v3_0_0_PORTA | interface |                              |
+| v3       | v3_0_1_PORTA | interface |                              |
+| v3       | v3_1_0_PORTA | interface |                              |
+| v3       | v3_1_1_PORTA | interface |                              |
+| v3       | v3_2_0_PORTA | interface |                              |
+| v3       | v3_2_1_PORTA | interface |                              |
+| v3       | v3_3_0_PORTA | interface |                              |
+| v3       | v3_3_1_PORTA | interface |                              |
+| v3       | v3_4_0_PORTA | interface |                              |
+| v3       | v3_4_1_PORTA | interface |                              |
+| v4       | v4_0_PORTA   | interface |                              |
+| v4       | v4_0_PORTB   | interface |                              |
+| v4       | v4_1_PORTA   | interface |                              |
+| v4       | v4_1_PORTB   | interface |                              |
+| v4       | v4_2_PORTA   | interface |                              |
+| v4       | v4_2_PORTB   | interface |                              |
+| v4       | v4_3_PORTA   | interface |                              |
+| v4       | v4_3_PORTB   | interface |                              |
+| v4       | v4_4_PORTA   | interface |                              |
+| v4       | v4_4_PORTB   | interface |                              |
+| v5       | v5_0_PORTA   | interface |                              |
+| v5       | v5_1_PORTA   | interface |                              |
+| v6       | v6_0_PORTA   | interface |                              |
+| v6       | v6_0_PORTB   | interface |                              |
+| v6       | v6_1_PORTA   | interface |                              |
+| v6       | v6_1_PORTB   | interface |                              |
+| v6       | v6_2_PORTA   | interface |                              |
+| v6       | v6_2_PORTB   | interface |                              |
+| v6       | v6_3_PORTA   | interface |                              |
+| v6       | v6_3_PORTB   | interface |                              |
+| v6       | v6_4_PORTA   | interface |                              |
+| v6       | v6_4_PORTB   | interface |                              |
++----------+--------------+-----------+------------------------------+
+
+
+================================================================
+== Bind Op Report
+================================================================
++----------------------------------------------------------+-----+--------+-------------+------+-----------+---------+
+| Name                                                     | DSP | Pragma | Variable    | Op   | Impl      | Latency |
++----------------------------------------------------------+-----+--------+-------------+------+-----------+---------+
+| + test_gesummv                                           | 101 |        |             |      |           |         |
+|  + test_gesummv_Pipeline_VITIS_LOOP_58_1_VITIS_LOOP_59_2 | 93  |        |             |      |           |         |
+|    add_ln58_1_fu_758_p2                                  |     |        | add_ln58_1  | add  | fabric    | 0       |
+|    add_ln58_fu_804_p2                                    |     |        | add_ln58    | add  | fabric    | 0       |
+|    mac_muladd_6ns_7ns_7ns_13_4_1_U41                     | 1   |        | mul_ln61    | mul  | dsp_slice | 3       |
+|    mac_muladd_6ns_7ns_7ns_13_4_1_U41                     | 1   |        | add_ln61    | add  | dsp_slice | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U31                     | 3   |        | v11         | fmul | maxdsp    | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U32                     | 3   |        | v15         | fmul | maxdsp    | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U33                     | 3   |        | v19         | fmul | maxdsp    | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U34                     | 3   |        | v23         | fmul | maxdsp    | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U35                     | 3   |        | v27         | fmul | maxdsp    | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U36                     | 3   |        | v31         | fmul | maxdsp    | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U37                     | 3   |        | v35         | fmul | maxdsp    | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U38                     | 3   |        | v39         | fmul | maxdsp    | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U39                     | 3   |        | v43         | fmul | maxdsp    | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U40                     | 3   |        | v47         | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U11                    | 2   |        | v54         | fadd | fulldsp   | 6       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U2                     | 2   |        | tmp1        | fadd | fulldsp   | 6       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U12                    | 2   |        | v58         | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U23                     | 3   |        | v60         | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U3                     | 2   |        | tmp2        | fadd | fulldsp   | 6       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U13                    | 2   |        | v62         | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U24                     | 3   |        | v64         | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U4                     | 2   |        | tmp3        | fadd | fulldsp   | 6       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U14                    | 2   |        | v66         | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U25                     | 3   |        | v68         | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U5                     | 2   |        | tmp4        | fadd | fulldsp   | 6       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U15                    | 2   |        | v70         | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U26                     | 3   |        | v72         | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U6                     | 2   |        | tmp5        | fadd | fulldsp   | 6       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U16                    | 2   |        | v74         | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U27                     | 3   |        | v76         | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U7                     | 2   |        | tmp6        | fadd | fulldsp   | 6       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U17                    | 2   |        | v78         | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U28                     | 3   |        | v80         | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U8                     | 2   |        | tmp7        | fadd | fulldsp   | 6       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U18                    | 2   |        | v82         | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U29                     | 3   |        | v84         | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U9                     | 2   |        | tmp8        | fadd | fulldsp   | 6       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U19                    | 2   |        | v86         | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U30                     | 3   |        | v88         | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U10                    | 2   |        | tmp9        | fadd | fulldsp   | 6       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U20                    | 2   |        | v90         | fadd | fulldsp   | 6       |
+|    add_ln59_fu_785_p2                                    |     |        | add_ln59    | add  | fabric    | 0       |
+|  + test_gesummv_Pipeline_VITIS_LOOP_165_3                | 0   |        |             |      |           |         |
+|    add_ln165_fu_287_p2                                   |     |        | add_ln165   | add  | fabric    | 0       |
+|    add_ln165_1_fu_296_p2                                 |     |        | add_ln165_1 | add  | fabric    | 0       |
+|    add_ln165_2_fu_391_p2                                 |     |        | add_ln165_2 | add  | fabric    | 0       |
++----------------------------------------------------------+-----+--------+-------------+------+-----------+---------+
+
+
+================================================================
+== Storage Report
+================================================================
++----------------+-----------+-----------+------+------+--------+----------+------+---------+------------------+
+| Name           | Usage     | Type      | BRAM | URAM | Pragma | Variable | Impl | Latency | Bitwidth, Depth, |
+|                |           |           |      |      |        |          |      |         | Banks            |
++----------------+-----------+-----------+------+------+--------+----------+------+---------+------------------+
+| + test_gesummv |           |           | 0    | 0    |        |          |      |         |                  |
+|   ctrl_s_axi_U | interface | s_axilite |      |      |        |          |      |         |                  |
++----------------+-----------+-----------+------+------+--------+----------+------+---------+------------------+
+
+
+================================================================
+== Pragma Report
+================================================================
+* Pragmas with Warnings
++----------+-------------------------------+------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+
+| Type     | Options                       | Location                           | Messages                                                                                                                         |
++----------+-------------------------------+------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+
+| resource | variable=v2 core=ram_s2p_bram | gesummv.cpp:43 in test_gesummv, v2 | 'Resource pragma' is deprecated, use 'bind_op/bind_storage pragma' instead                                                       |
+|          |                               |                                    | The resource pragma (bind_storage) on top-level function argument, in 'call' is unsupported, please use INTERFACE pragma instead |
+| resource | variable=v3 core=ram_s2p_bram | gesummv.cpp:47 in test_gesummv, v3 | 'Resource pragma' is deprecated, use 'bind_op/bind_storage pragma' instead                                                       |
+|          |                               |                                    | The resource pragma (bind_storage) on top-level function argument, in 'call' is unsupported, please use INTERFACE pragma instead |
+| resource | variable=v4 core=ram_s2p_bram | gesummv.cpp:50 in test_gesummv, v4 | 'Resource pragma' is deprecated, use 'bind_op/bind_storage pragma' instead                                                       |
+|          |                               |                                    | The resource pragma (bind_storage) on top-level function argument, in 'call' is unsupported, please use INTERFACE pragma instead |
+| resource | variable=v5 core=ram_s2p_bram | gesummv.cpp:53 in test_gesummv, v5 | 'Resource pragma' is deprecated, use 'bind_op/bind_storage pragma' instead                                                       |
+|          |                               |                                    | The resource pragma (bind_storage) on top-level function argument, in 'call' is unsupported, please use INTERFACE pragma instead |
+| resource | variable=v6 core=ram_s2p_bram | gesummv.cpp:56 in test_gesummv, v6 | 'Resource pragma' is deprecated, use 'bind_op/bind_storage pragma' instead                                                       |
+|          |                               |                                    | The resource pragma (bind_storage) on top-level function argument, in 'call' is unsupported, please use INTERFACE pragma instead |
++----------+-------------------------------+------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+
+
+* Valid Pragma Syntax
++-----------------+-----------------------------------+----------------------------------------+
+| Type            | Options                           | Location                               |
++-----------------+-----------------------------------+----------------------------------------+
+| interface       | s_axilite port=return bundle=ctrl | gesummv.cpp:32 in test_gesummv, return |
+| interface       | s_axilite port=v0 bundle=ctrl     | gesummv.cpp:33 in test_gesummv, v0     |
+| interface       | s_axilite port=v1 bundle=ctrl     | gesummv.cpp:34 in test_gesummv, v1     |
+| interface       | bram port=v2                      | gesummv.cpp:35 in test_gesummv, v2     |
+| interface       | bram port=v3                      | gesummv.cpp:36 in test_gesummv, v3     |
+| interface       | bram port=v4                      | gesummv.cpp:37 in test_gesummv, v4     |
+| interface       | bram port=v5                      | gesummv.cpp:38 in test_gesummv, v5     |
+| interface       | bram port=v6                      | gesummv.cpp:39 in test_gesummv, v6     |
+| array_partition | variable=v2 cyclic factor=5 dim=1 | gesummv.cpp:41 in test_gesummv, v2     |
+| array_partition | variable=v2 cyclic factor=2 dim=2 | gesummv.cpp:42 in test_gesummv, v2     |
+| array_partition | variable=v3 cyclic factor=5 dim=1 | gesummv.cpp:45 in test_gesummv, v3     |
+| array_partition | variable=v3 cyclic factor=2 dim=2 | gesummv.cpp:46 in test_gesummv, v3     |
+| array_partition | variable=v4 cyclic factor=5 dim=1 | gesummv.cpp:49 in test_gesummv, v4     |
+| array_partition | variable=v5 cyclic factor=2 dim=1 | gesummv.cpp:52 in test_gesummv, v5     |
+| array_partition | variable=v6 cyclic factor=5 dim=1 | gesummv.cpp:55 in test_gesummv, v6     |
+| pipeline        | II=1                              | gesummv.cpp:60 in test_gesummv         |
+| pipeline        | II=1                              | gesummv.cpp:166 in test_gesummv        |
++-----------------+-----------------------------------+----------------------------------------+
+
+

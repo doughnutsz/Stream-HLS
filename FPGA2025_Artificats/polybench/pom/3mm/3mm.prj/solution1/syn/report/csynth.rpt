@@ -1,0 +1,331 @@
+
+
+================================================================
+== Synthesis Summary Report of 'test_3mm'
+================================================================
++ General Information: 
+    * Date:           Mon Oct  7 12:26:39 2024
+    * Version:        2023.2 (Build 4023990 on Oct 11 2023)
+    * Project:        3mm.prj
+    * Solution:       solution1 (Vivado IP Flow Target)
+    * Product family: virtexuplusHBM
+    * Target device:  xcu280-fsvh2892-2L-e
+    
+
++ Performance & Resource Estimates: 
+    
+    PS: '+' for module; 'o' for loop; '*' for dataflow
+    +----------------------------------------------------------------------------+--------+-------+---------+-----------+----------+---------+---------+----------+------+----------+-------------+------------+-----+
+    |                                   Modules                                  |  Issue |       | Latency |  Latency  | Iteration|         |   Trip  |          |      |          |             |            |     |
+    |                                   & Loops                                  |  Type  | Slack | (cycles)|    (ns)   |  Latency | Interval|  Count  | Pipelined| BRAM |    DSP   |      FF     |     LUT    | URAM|
+    +----------------------------------------------------------------------------+--------+-------+---------+-----------+----------+---------+---------+----------+------+----------+-------------+------------+-----+
+    |+ test_3mm                                                                  |  Timing|  -0.06|  2034959|  6.776e+06|         -|  2034960|        -|        no|     -|   92 (1%)|  12638 (~0%)|  8483 (~0%)|    -|
+    | + test_3mm_Pipeline_VITIS_LOOP_71_1_VITIS_LOOP_72_2                        |  Timing|  -0.06|     8554|  2.848e+04|         -|     8554|        -|        no|     -|   1 (~0%)|     49 (~0%)|   208 (~0%)|    -|
+    |  o VITIS_LOOP_71_1_VITIS_LOOP_72_2                                         |       -|   2.43|     8552|  2.848e+04|         4|        1|     8550|       yes|     -|         -|            -|           -|    -|
+    | + test_3mm_Pipeline_VITIS_LOOP_127_6_VITIS_LOOP_128_7                      |  Timing|  -0.06|    39904|  1.329e+05|         -|    39904|        -|        no|     -|   1 (~0%)|    183 (~0%)|   281 (~0%)|    -|
+    |  o VITIS_LOOP_127_6_VITIS_LOOP_128_7                                       |       -|   2.43|    39902|  1.329e+05|         4|        1|    39900|       yes|     -|         -|            -|           -|    -|
+    | + test_3mm_Pipeline_VITIS_LOOP_180_11_VITIS_LOOP_181_12                    |  Timing|  -0.06|    37804|  1.259e+05|         -|    37804|        -|        no|     -|   1 (~0%)|    183 (~0%)|   281 (~0%)|    -|
+    |  o VITIS_LOOP_180_11_VITIS_LOOP_181_12                                     |       -|   2.43|    37802|  1.259e+05|         4|        1|    37800|       yes|     -|         -|            -|           -|    -|
+    | + test_3mm_Pipeline_VITIS_LOOP_80_3_VITIS_LOOP_81_4_VITIS_LOOP_82_5        |       -|   0.09|   855025|  2.847e+06|         -|   855025|        -|        no|     -|  43 (~0%)|   5264 (~0%)|  2742 (~0%)|    -|
+    |  o VITIS_LOOP_80_3_VITIS_LOOP_81_4_VITIS_LOOP_82_5                         |       -|   2.43|   855023|  2.847e+06|        25|        1|   855000|       yes|     -|         -|            -|           -|    -|
+    | + test_3mm_Pipeline_VITIS_LOOP_133_8_VITIS_LOOP_134_9_VITIS_LOOP_135_10    |       -|   0.09|  1097275|  3.654e+06|         -|  1097275|        -|        no|     -|   3 (~0%)|   1577 (~0%)|   536 (~0%)|    -|
+    |  o VITIS_LOOP_133_8_VITIS_LOOP_134_9_VITIS_LOOP_135_10                     |       -|   2.43|  1097273|  3.654e+06|        25|        1|  1097250|       yes|     -|         -|            -|           -|    -|
+    | + test_3mm_Pipeline_VITIS_LOOP_186_13_VITIS_LOOP_187_14_VITIS_LOOP_188_15  |       -|   0.09|   897775|  2.990e+06|         -|   897775|        -|        no|     -|   3 (~0%)|   1576 (~0%)|   534 (~0%)|    -|
+    |  o VITIS_LOOP_186_13_VITIS_LOOP_187_14_VITIS_LOOP_188_15                   |       -|   2.43|   897773|  2.990e+06|        25|        1|   897750|       yes|     -|         -|            -|           -|    -|
+    +----------------------------------------------------------------------------+--------+-------+---------+-----------+----------+---------+---------+----------+------+----------+-------------+------------+-----+
+
+
+================================================================
+== HW Interfaces
+================================================================
+* S_AXILITE Interfaces
++------------+------------+---------------+--------+----------+
+| Interface  | Data Width | Address Width | Offset | Register |
++------------+------------+---------------+--------+----------+
+| s_axi_ctrl | 32         | 5             | 16     | 0        |
++------------+------------+---------------+--------+----------+
+
+* S_AXILITE Registers
++------------+----------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+| Interface  | Register | Offset | Width | Access | Description                      | Bit Fields                                                           |
++------------+----------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+| s_axi_ctrl | CTRL     | 0x00   | 32    | RW     | Control signals                  | 0=AP_START 1=AP_DONE 2=AP_IDLE 3=AP_READY 7=AUTO_RESTART 9=INTERRUPT |
+| s_axi_ctrl | GIER     | 0x04   | 32    | RW     | Global Interrupt Enable Register | 0=Enable                                                             |
+| s_axi_ctrl | IP_IER   | 0x08   | 32    | RW     | IP Interrupt Enable Register     | 0=CHAN0_INT_EN 1=CHAN1_INT_EN                                        |
+| s_axi_ctrl | IP_ISR   | 0x0c   | 32    | RW     | IP Interrupt Status Register     | 0=CHAN0_INT_ST 1=CHAN1_INT_ST                                        |
+| s_axi_ctrl | v0       | 0x10   | 32    | W      | Data signal of v0                |                                                                      |
++------------+----------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+
+* BRAM
++--------------+------------+---------------+
+| Interface    | Data Width | Address Width |
++--------------+------------+---------------+
+| v1_0_0_PORTA | 32         | 32            |
+| v1_0_1_PORTA | 32         | 32            |
+| v1_1_0_PORTA | 32         | 32            |
+| v1_1_1_PORTA | 32         | 32            |
+| v2_0_0_PORTA | 32         | 32            |
+| v2_0_1_PORTA | 32         | 32            |
+| v2_1_0_PORTA | 32         | 32            |
+| v2_1_1_PORTA | 32         | 32            |
+| v3_0_0_PORTA | 32         | 32            |
+| v3_0_1_PORTA | 32         | 32            |
+| v3_1_0_PORTA | 32         | 32            |
+| v3_1_1_PORTA | 32         | 32            |
+| v4_0_0_PORTA | 32         | 32            |
+| v4_0_1_PORTA | 32         | 32            |
+| v4_1_0_PORTA | 32         | 32            |
+| v4_1_1_PORTA | 32         | 32            |
+| v5_0_0_PORTA | 32         | 32            |
+| v5_0_0_PORTB | 32         | 32            |
+| v5_0_1_PORTA | 32         | 32            |
+| v5_0_1_PORTB | 32         | 32            |
+| v5_1_0_PORTA | 32         | 32            |
+| v5_1_0_PORTB | 32         | 32            |
+| v5_1_1_PORTA | 32         | 32            |
+| v5_1_1_PORTB | 32         | 32            |
+| v6_0_0_PORTA | 32         | 32            |
+| v6_0_0_PORTB | 32         | 32            |
+| v6_0_1_PORTA | 32         | 32            |
+| v6_0_1_PORTB | 32         | 32            |
+| v6_1_0_PORTA | 32         | 32            |
+| v6_1_0_PORTB | 32         | 32            |
+| v6_1_1_PORTA | 32         | 32            |
+| v6_1_1_PORTB | 32         | 32            |
+| v7_0_0_PORTA | 32         | 32            |
+| v7_0_0_PORTB | 32         | 32            |
+| v7_0_1_PORTA | 32         | 32            |
+| v7_0_1_PORTB | 32         | 32            |
+| v7_1_0_PORTA | 32         | 32            |
+| v7_1_0_PORTB | 32         | 32            |
+| v7_1_1_PORTA | 32         | 32            |
+| v7_1_1_PORTB | 32         | 32            |
++--------------+------------+---------------+
+
+* TOP LEVEL CONTROL
++-----------+------------+-----------+
+| Interface | Type       | Ports     |
++-----------+------------+-----------+
+| ap_clk    | clock      | ap_clk    |
+| ap_rst_n  | reset      | ap_rst_n  |
+| interrupt | interrupt  | interrupt |
+| ap_ctrl   | ap_ctrl_hs |           |
++-----------+------------+-----------+
+
+
+================================================================
+== SW I/O Information
+================================================================
+* Top Function Arguments
++----------+-----------+----------+
+| Argument | Direction | Datatype |
++----------+-----------+----------+
+| v0       | in        | float    |
+| v1       | in        | float*   |
+| v2       | in        | float*   |
+| v3       | in        | float*   |
+| v4       | in        | float*   |
+| v5       | inout     | float*   |
+| v6       | inout     | float*   |
+| v7       | inout     | float*   |
++----------+-----------+----------+
+
+* SW-to-HW Mapping
++----------+--------------+-----------+------------------------------+
+| Argument | HW Interface | HW Type   | HW Info                      |
++----------+--------------+-----------+------------------------------+
+| v0       | s_axi_ctrl   | register  | name=v0 offset=0x10 range=32 |
+| v1       | v1_0_0_PORTA | interface |                              |
+| v1       | v1_0_1_PORTA | interface |                              |
+| v1       | v1_1_0_PORTA | interface |                              |
+| v1       | v1_1_1_PORTA | interface |                              |
+| v2       | v2_0_0_PORTA | interface |                              |
+| v2       | v2_0_1_PORTA | interface |                              |
+| v2       | v2_1_0_PORTA | interface |                              |
+| v2       | v2_1_1_PORTA | interface |                              |
+| v3       | v3_0_0_PORTA | interface |                              |
+| v3       | v3_0_1_PORTA | interface |                              |
+| v3       | v3_1_0_PORTA | interface |                              |
+| v3       | v3_1_1_PORTA | interface |                              |
+| v4       | v4_0_0_PORTA | interface |                              |
+| v4       | v4_0_1_PORTA | interface |                              |
+| v4       | v4_1_0_PORTA | interface |                              |
+| v4       | v4_1_1_PORTA | interface |                              |
+| v5       | v5_0_0_PORTA | interface |                              |
+| v5       | v5_0_0_PORTB | interface |                              |
+| v5       | v5_0_1_PORTA | interface |                              |
+| v5       | v5_0_1_PORTB | interface |                              |
+| v5       | v5_1_0_PORTA | interface |                              |
+| v5       | v5_1_0_PORTB | interface |                              |
+| v5       | v5_1_1_PORTA | interface |                              |
+| v5       | v5_1_1_PORTB | interface |                              |
+| v6       | v6_0_0_PORTA | interface |                              |
+| v6       | v6_0_0_PORTB | interface |                              |
+| v6       | v6_0_1_PORTA | interface |                              |
+| v6       | v6_0_1_PORTB | interface |                              |
+| v6       | v6_1_0_PORTA | interface |                              |
+| v6       | v6_1_0_PORTB | interface |                              |
+| v6       | v6_1_1_PORTA | interface |                              |
+| v6       | v6_1_1_PORTB | interface |                              |
+| v7       | v7_0_0_PORTA | interface |                              |
+| v7       | v7_0_0_PORTB | interface |                              |
+| v7       | v7_0_1_PORTA | interface |                              |
+| v7       | v7_0_1_PORTB | interface |                              |
+| v7       | v7_1_0_PORTA | interface |                              |
+| v7       | v7_1_0_PORTB | interface |                              |
+| v7       | v7_1_1_PORTA | interface |                              |
+| v7       | v7_1_1_PORTB | interface |                              |
++----------+--------------+-----------+------------------------------+
+
+
+================================================================
+== Bind Op Report
+================================================================
++----------------------------------------------------------------------------+-----+--------+-------------+------+-----------+---------+
+| Name                                                                       | DSP | Pragma | Variable    | Op   | Impl      | Latency |
++----------------------------------------------------------------------------+-----+--------+-------------+------+-----------+---------+
+| + test_3mm                                                                 | 92  |        |             |      |           |         |
+|  + test_3mm_Pipeline_VITIS_LOOP_71_1_VITIS_LOOP_72_2                       | 1   |        |             |      |           |         |
+|    add_ln71_1_fu_144_p2                                                    |     |        | add_ln71_1  | add  | fabric    | 0       |
+|    add_ln71_fu_156_p2                                                      |     |        | add_ln71    | add  | fabric    | 0       |
+|    mac_muladd_7ns_7ns_7ns_14_4_1_U1                                        | 1   |        | mul_ln74    | mul  | dsp_slice | 3       |
+|    mac_muladd_7ns_7ns_7ns_14_4_1_U1                                        | 1   |        | add_ln74    | add  | dsp_slice | 3       |
+|    add_ln72_fu_188_p2                                                      |     |        | add_ln72    | add  | fabric    | 0       |
+|  + test_3mm_Pipeline_VITIS_LOOP_127_6_VITIS_LOOP_128_7                     | 1   |        |             |      |           |         |
+|    add_ln127_1_fu_148_p2                                                   |     |        | add_ln127_1 | add  | fabric    | 0       |
+|    add_ln127_fu_160_p2                                                     |     |        | add_ln127   | add  | fabric    | 0       |
+|    mac_muladd_7ns_7ns_7ns_14_4_1_U25                                       | 1   |        | mul_ln130   | mul  | dsp_slice | 3       |
+|    mac_muladd_7ns_7ns_7ns_14_4_1_U25                                       | 1   |        | add_ln130   | add  | dsp_slice | 3       |
+|    add_ln128_fu_220_p2                                                     |     |        | add_ln128   | add  | fabric    | 0       |
+|  + test_3mm_Pipeline_VITIS_LOOP_180_11_VITIS_LOOP_181_12                   | 1   |        |             |      |           |         |
+|    add_ln180_1_fu_148_p2                                                   |     |        | add_ln180_1 | add  | fabric    | 0       |
+|    add_ln180_fu_160_p2                                                     |     |        | add_ln180   | add  | fabric    | 0       |
+|    mac_muladd_7ns_7ns_7ns_14_4_1_U46                                       | 1   |        | mul_ln183   | mul  | dsp_slice | 3       |
+|    mac_muladd_7ns_7ns_7ns_14_4_1_U46                                       | 1   |        | add_ln183   | add  | dsp_slice | 3       |
+|    add_ln181_fu_220_p2                                                     |     |        | add_ln181   | add  | fabric    | 0       |
+|  + test_3mm_Pipeline_VITIS_LOOP_80_3_VITIS_LOOP_81_4_VITIS_LOOP_82_5       | 43  |        |             |      |           |         |
+|    add_ln80_1_fu_362_p2                                                    |     |        | add_ln80_1  | add  | fabric    | 0       |
+|    add_ln80_fu_410_p2                                                      |     |        | add_ln80    | add  | fabric    | 0       |
+|    add_ln81_fu_447_p2                                                      |     |        | add_ln81    | add  | fabric    | 0       |
+|    mac_muladd_7ns_7ns_7ns_14_4_1_U20                                       | 1   |        | mul_ln85    | mul  | dsp_slice | 3       |
+|    mac_muladd_7ns_7ns_7ns_14_4_1_U21                                       | 1   |        | empty       | mul  | dsp_slice | 3       |
+|    mac_muladd_7ns_7ns_7ns_14_4_1_U21                                       | 1   |        | empty_11    | add  | dsp_slice | 3       |
+|    mac_muladd_7ns_7ns_7ns_14_4_1_U22                                       | 1   |        | mul_ln87    | mul  | dsp_slice | 3       |
+|    mac_muladd_7ns_7ns_7ns_14_4_1_U20                                       | 1   |        | add_ln85    | add  | dsp_slice | 3       |
+|    mac_muladd_7ns_7ns_7ns_14_4_1_U22                                       | 1   |        | add_ln87    | add  | dsp_slice | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U16                                       | 3   |        | v15         | fmul | maxdsp    | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U17                                       | 3   |        | v19         | fmul | maxdsp    | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U18                                       | 3   |        | v23         | fmul | maxdsp    | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U19                                       | 3   |        | v26         | fmul | maxdsp    | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U12                                       | 3   |        | v31         | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U4                                       | 2   |        | tmp         | fadd | fulldsp   | 6       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U8                                       | 2   |        | v33         | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U13                                       | 3   |        | v35         | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U5                                       | 2   |        | tmp1        | fadd | fulldsp   | 6       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U9                                       | 2   |        | v37         | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U14                                       | 3   |        | v39         | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U6                                       | 2   |        | tmp2        | fadd | fulldsp   | 6       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U10                                      | 2   |        | v41         | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U15                                       | 3   |        | v42         | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U7                                       | 2   |        | tmp3        | fadd | fulldsp   | 6       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U11                                      | 2   |        | v44         | fadd | fulldsp   | 6       |
+|    add_ln82_fu_482_p2                                                      |     |        | add_ln82    | add  | fabric    | 0       |
+|    add_ln81_1_fu_377_p2                                                    |     |        | add_ln81_1  | add  | fabric    | 0       |
+|  + test_3mm_Pipeline_VITIS_LOOP_133_8_VITIS_LOOP_134_9_VITIS_LOOP_135_10   | 3   |        |             |      |           |         |
+|    add_ln133_1_fu_362_p2                                                   |     |        | add_ln133_1 | add  | fabric    | 0       |
+|    add_ln133_fu_410_p2                                                     |     |        | add_ln133   | add  | fabric    | 0       |
+|    add_ln134_fu_447_p2                                                     |     |        | add_ln134   | add  | fabric    | 0       |
+|    mac_muladd_7ns_7ns_7ns_14_4_1_U43                                       | 1   |        | mul_ln138   | mul  | dsp_slice | 3       |
+|    mac_muladd_7ns_7ns_7ns_14_4_1_U44                                       | 1   |        | empty       | mul  | dsp_slice | 3       |
+|    mac_muladd_7ns_7ns_7ns_14_4_1_U44                                       | 1   |        | empty_13    | add  | dsp_slice | 3       |
+|    mac_muladd_7ns_7ns_7ns_14_4_1_U45                                       | 1   |        | mul_ln140   | mul  | dsp_slice | 3       |
+|    mac_muladd_7ns_7ns_7ns_14_4_1_U43                                       | 1   |        | add_ln138   | add  | dsp_slice | 3       |
+|    mac_muladd_7ns_7ns_7ns_14_4_1_U45                                       | 1   |        | add_ln140   | add  | dsp_slice | 3       |
+|    add_ln135_fu_482_p2                                                     |     |        | add_ln135   | add  | fabric    | 0       |
+|    add_ln134_1_fu_377_p2                                                   |     |        | add_ln134_1 | add  | fabric    | 0       |
+|  + test_3mm_Pipeline_VITIS_LOOP_186_13_VITIS_LOOP_187_14_VITIS_LOOP_188_15 | 3   |        |             |      |           |         |
+|    add_ln186_1_fu_362_p2                                                   |     |        | add_ln186_1 | add  | fabric    | 0       |
+|    add_ln186_fu_410_p2                                                     |     |        | add_ln186   | add  | fabric    | 0       |
+|    add_ln187_fu_447_p2                                                     |     |        | add_ln187   | add  | fabric    | 0       |
+|    mac_muladd_7ns_7ns_7ns_14_4_1_U64                                       | 1   |        | mul_ln191   | mul  | dsp_slice | 3       |
+|    mac_muladd_7ns_7ns_7ns_14_4_1_U65                                       | 1   |        | empty       | mul  | dsp_slice | 3       |
+|    mac_muladd_7ns_7ns_7ns_14_4_1_U65                                       | 1   |        | empty_12    | add  | dsp_slice | 3       |
+|    mac_muladd_7ns_7ns_7ns_14_4_1_U66                                       | 1   |        | mul_ln193   | mul  | dsp_slice | 3       |
+|    mac_muladd_7ns_7ns_7ns_14_4_1_U64                                       | 1   |        | add_ln191   | add  | dsp_slice | 3       |
+|    mac_muladd_7ns_7ns_7ns_14_4_1_U66                                       | 1   |        | add_ln193   | add  | dsp_slice | 3       |
+|    add_ln188_fu_482_p2                                                     |     |        | add_ln188   | add  | fabric    | 0       |
+|    add_ln187_1_fu_377_p2                                                   |     |        | add_ln187_1 | add  | fabric    | 0       |
++----------------------------------------------------------------------------+-----+--------+-------------+------+-----------+---------+
+
+
+================================================================
+== Storage Report
+================================================================
++----------------+-----------+-----------+------+------+--------+----------+------+---------+------------------+
+| Name           | Usage     | Type      | BRAM | URAM | Pragma | Variable | Impl | Latency | Bitwidth, Depth, |
+|                |           |           |      |      |        |          |      |         | Banks            |
++----------------+-----------+-----------+------+------+--------+----------+------+---------+------------------+
+| + test_3mm     |           |           | 0    | 0    |        |          |      |         |                  |
+|   ctrl_s_axi_U | interface | s_axilite |      |      |        |          |      |         |                  |
++----------------+-----------+-----------+------+------+--------+----------+------+---------+------------------+
+
+
+================================================================
+== Pragma Report
+================================================================
+* Pragmas with Warnings
++----------+-------------------------------+----------------------------+----------------------------------------------------------------------------------------------------------------------------------+
+| Type     | Options                       | Location                   | Messages                                                                                                                         |
++----------+-------------------------------+----------------------------+----------------------------------------------------------------------------------------------------------------------------------+
+| resource | variable=v1 core=ram_s2p_bram | 3mm.cpp:45 in test_3mm, v1 | 'Resource pragma' is deprecated, use 'bind_op/bind_storage pragma' instead                                                       |
+|          |                               |                            | The resource pragma (bind_storage) on top-level function argument, in 'call' is unsupported, please use INTERFACE pragma instead |
+| resource | variable=v2 core=ram_s2p_bram | 3mm.cpp:49 in test_3mm, v2 | 'Resource pragma' is deprecated, use 'bind_op/bind_storage pragma' instead                                                       |
+|          |                               |                            | The resource pragma (bind_storage) on top-level function argument, in 'call' is unsupported, please use INTERFACE pragma instead |
+| resource | variable=v3 core=ram_s2p_bram | 3mm.cpp:53 in test_3mm, v3 | 'Resource pragma' is deprecated, use 'bind_op/bind_storage pragma' instead                                                       |
+|          |                               |                            | The resource pragma (bind_storage) on top-level function argument, in 'call' is unsupported, please use INTERFACE pragma instead |
+| resource | variable=v4 core=ram_s2p_bram | 3mm.cpp:57 in test_3mm, v4 | 'Resource pragma' is deprecated, use 'bind_op/bind_storage pragma' instead                                                       |
+|          |                               |                            | The resource pragma (bind_storage) on top-level function argument, in 'call' is unsupported, please use INTERFACE pragma instead |
+| resource | variable=v5 core=ram_s2p_bram | 3mm.cpp:61 in test_3mm, v5 | 'Resource pragma' is deprecated, use 'bind_op/bind_storage pragma' instead                                                       |
+|          |                               |                            | The resource pragma (bind_storage) on top-level function argument, in 'call' is unsupported, please use INTERFACE pragma instead |
+| resource | variable=v6 core=ram_s2p_bram | 3mm.cpp:65 in test_3mm, v6 | 'Resource pragma' is deprecated, use 'bind_op/bind_storage pragma' instead                                                       |
+|          |                               |                            | The resource pragma (bind_storage) on top-level function argument, in 'call' is unsupported, please use INTERFACE pragma instead |
+| resource | variable=v7 core=ram_s2p_bram | 3mm.cpp:69 in test_3mm, v7 | 'Resource pragma' is deprecated, use 'bind_op/bind_storage pragma' instead                                                       |
+|          |                               |                            | The resource pragma (bind_storage) on top-level function argument, in 'call' is unsupported, please use INTERFACE pragma instead |
++----------+-------------------------------+----------------------------+----------------------------------------------------------------------------------------------------------------------------------+
+
+* Valid Pragma Syntax
++-----------------+-----------------------------------+--------------------------------+
+| Type            | Options                           | Location                       |
++-----------------+-----------------------------------+--------------------------------+
+| interface       | s_axilite port=return bundle=ctrl | 3mm.cpp:33 in test_3mm, return |
+| interface       | s_axilite port=v0 bundle=ctrl     | 3mm.cpp:34 in test_3mm, v0     |
+| interface       | bram port=v1                      | 3mm.cpp:35 in test_3mm, v1     |
+| interface       | bram port=v2                      | 3mm.cpp:36 in test_3mm, v2     |
+| interface       | bram port=v3                      | 3mm.cpp:37 in test_3mm, v3     |
+| interface       | bram port=v4                      | 3mm.cpp:38 in test_3mm, v4     |
+| interface       | bram port=v5                      | 3mm.cpp:39 in test_3mm, v5     |
+| interface       | bram port=v6                      | 3mm.cpp:40 in test_3mm, v6     |
+| interface       | bram port=v7                      | 3mm.cpp:41 in test_3mm, v7     |
+| array_partition | variable=v1 cyclic factor=2 dim=1 | 3mm.cpp:43 in test_3mm, v1     |
+| array_partition | variable=v1 cyclic factor=2 dim=2 | 3mm.cpp:44 in test_3mm, v1     |
+| array_partition | variable=v2 cyclic factor=2 dim=1 | 3mm.cpp:47 in test_3mm, v2     |
+| array_partition | variable=v2 cyclic factor=2 dim=2 | 3mm.cpp:48 in test_3mm, v2     |
+| array_partition | variable=v3 cyclic factor=2 dim=1 | 3mm.cpp:51 in test_3mm, v3     |
+| array_partition | variable=v3 cyclic factor=2 dim=2 | 3mm.cpp:52 in test_3mm, v3     |
+| array_partition | variable=v4 cyclic factor=2 dim=1 | 3mm.cpp:55 in test_3mm, v4     |
+| array_partition | variable=v4 cyclic factor=2 dim=2 | 3mm.cpp:56 in test_3mm, v4     |
+| array_partition | variable=v5 cyclic factor=2 dim=1 | 3mm.cpp:59 in test_3mm, v5     |
+| array_partition | variable=v5 cyclic factor=2 dim=2 | 3mm.cpp:60 in test_3mm, v5     |
+| array_partition | variable=v6 cyclic factor=2 dim=1 | 3mm.cpp:63 in test_3mm, v6     |
+| array_partition | variable=v6 cyclic factor=2 dim=2 | 3mm.cpp:64 in test_3mm, v6     |
+| array_partition | variable=v7 cyclic factor=2 dim=1 | 3mm.cpp:67 in test_3mm, v7     |
+| array_partition | variable=v7 cyclic factor=2 dim=2 | 3mm.cpp:68 in test_3mm, v7     |
+| pipeline        | II=1                              | 3mm.cpp:73 in test_3mm         |
+| pipeline        | II=1                              | 3mm.cpp:83 in test_3mm         |
+| pipeline        | II=1                              | 3mm.cpp:129 in test_3mm        |
+| pipeline        | II=1                              | 3mm.cpp:136 in test_3mm        |
+| pipeline        | II=1                              | 3mm.cpp:182 in test_3mm        |
+| pipeline        | II=1                              | 3mm.cpp:189 in test_3mm        |
++-----------------+-----------------------------------+--------------------------------+
+
+

@@ -1,0 +1,394 @@
+
+
+================================================================
+== Vitis HLS Report for 'node0'
+================================================================
+* Date:           Mon Oct  7 19:50:49 2024
+
+* Version:        2023.2 (Build 4023990 on Oct 11 2023)
+* Project:        hls_mvt
+* Solution:       solution1 (Vivado IP Flow Target)
+* Product family: virtexuplusHBM
+* Target device:  xcu280-fsvh2892-2L-e
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  |  3.33 ns|  1.914 ns|     0.90 ns|
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+-----------+-----------+-----+-----+---------+
+    |  Latency (cycles) |   Latency (absolute)  |  Interval | Pipeline|
+    |   min   |   max   |    min    |    max    | min | max |   Type  |
+    +---------+---------+-----------+-----------+-----+-----+---------+
+    |       18|       18|  59.940 ns|  59.940 ns|   18|   18|       no|
+    +---------+---------+-----------+-----------+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +----------+---------+---------+----------+-----------+-----------+------+----------+
+        |          |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
+        | Loop Name|   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
+        +----------+---------+---------+----------+-----------+-----------+------+----------+
+        |- loop0   |       16|       16|         2|          1|          1|    16|       yes|
+        +----------+---------+---------+----------+-----------+-----------+------+----------+
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++---------------------+---------+------+---------+---------+-----+
+|         Name        | BRAM_18K|  DSP |    FF   |   LUT   | URAM|
++---------------------+---------+------+---------+---------+-----+
+|DSP                  |        -|     -|        -|        -|    -|
+|Expression           |        -|     -|        0|       33|    -|
+|FIFO                 |        -|     -|        -|        -|    -|
+|Instance             |        -|     -|        -|        -|    -|
+|Memory               |        -|     -|        -|        -|    -|
+|Multiplexer          |        -|     -|        -|      261|    -|
+|Register             |        -|     -|       13|        -|    -|
++---------------------+---------+------+---------+---------+-----+
+|Total                |        0|     0|       13|      294|    0|
++---------------------+---------+------+---------+---------+-----+
+|Available SLR        |     1344|  3008|   869120|   434560|  320|
++---------------------+---------+------+---------+---------+-----+
+|Utilization SLR (%)  |        0|     0|       ~0|       ~0|    0|
++---------------------+---------+------+---------+---------+-----+
+|Available            |     4032|  9024|  2607360|  1303680|  960|
++---------------------+---------+------+---------+---------+-----+
+|Utilization (%)      |        0|     0|       ~0|       ~0|    0|
++---------------------+---------+------+---------+---------+-----+
+
++ Detail: 
+    * Instance: 
+    N/A
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +----------------------------------+----------+----+---+----+------------+------------+
+    |           Variable Name          | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +----------------------------------+----------+----+---+----+------------+------------+
+    |add_ln23_fu_652_p2                |         +|   0|  0|  12|           5|           1|
+    |ap_condition_500                  |       and|   0|  0|   2|           1|           1|
+    |icmp_ln23_fu_646_p2               |      icmp|   0|  0|  13|           5|           6|
+    |ap_block_pp0_stage0_11001         |        or|   0|  0|   2|           1|           1|
+    |ap_block_state2_pp0_stage0_iter1  |        or|   0|  0|   2|           1|           1|
+    |ap_enable_pp0                     |       xor|   0|  0|   2|           1|           2|
+    +----------------------------------+----------+----+---+----+------------+------------+
+    |Total                             |          |   0|  0|  33|          14|          12|
+    +----------------------------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    +-------------------------+----+-----------+-----+-----------+
+    |           Name          | LUT| Input Size| Bits| Total Bits|
+    +-------------------------+----+-----------+-----+-----------+
+    |ap_done_int              |   9|          2|    1|          2|
+    |ap_enable_reg_pp0_iter1  |   9|          2|    1|          2|
+    |ap_sig_allocacmp_v2_1    |   9|          2|    5|         10|
+    |v2_fu_134                |   9|          2|    5|         10|
+    |v53_0_blk_n              |   9|          2|    1|          2|
+    |v53_10_blk_n             |   9|          2|    1|          2|
+    |v53_11_blk_n             |   9|          2|    1|          2|
+    |v53_12_blk_n             |   9|          2|    1|          2|
+    |v53_13_blk_n             |   9|          2|    1|          2|
+    |v53_14_blk_n             |   9|          2|    1|          2|
+    |v53_15_blk_n             |   9|          2|    1|          2|
+    |v53_16_blk_n             |   9|          2|    1|          2|
+    |v53_17_blk_n             |   9|          2|    1|          2|
+    |v53_18_blk_n             |   9|          2|    1|          2|
+    |v53_19_blk_n             |   9|          2|    1|          2|
+    |v53_1_blk_n              |   9|          2|    1|          2|
+    |v53_20_blk_n             |   9|          2|    1|          2|
+    |v53_21_blk_n             |   9|          2|    1|          2|
+    |v53_22_blk_n             |   9|          2|    1|          2|
+    |v53_23_blk_n             |   9|          2|    1|          2|
+    |v53_24_blk_n             |   9|          2|    1|          2|
+    |v53_2_blk_n              |   9|          2|    1|          2|
+    |v53_3_blk_n              |   9|          2|    1|          2|
+    |v53_4_blk_n              |   9|          2|    1|          2|
+    |v53_5_blk_n              |   9|          2|    1|          2|
+    |v53_6_blk_n              |   9|          2|    1|          2|
+    |v53_7_blk_n              |   9|          2|    1|          2|
+    |v53_8_blk_n              |   9|          2|    1|          2|
+    |v53_9_blk_n              |   9|          2|    1|          2|
+    +-------------------------+----+-----------+-----+-----------+
+    |Total                    | 261|         58|   37|         74|
+    +-------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +-------------------------+---+----+-----+-----------+
+    |           Name          | FF| LUT| Bits| Const Bits|
+    +-------------------------+---+----+-----+-----------+
+    |ap_CS_fsm                |  1|   0|    1|          0|
+    |ap_done_reg              |  1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter1  |  1|   0|    1|          0|
+    |v2_1_reg_698             |  5|   0|    5|          0|
+    |v2_fu_134                |  5|   0|    5|          0|
+    +-------------------------+---+----+-----+-----------+
+    |Total                    | 13|   0|   13|          0|
+    +-------------------------+---+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++-----------------------+-----+-----+------------+--------------+--------------+
+|       RTL Ports       | Dir | Bits|  Protocol  | Source Object|    C Type    |
++-----------------------+-----+-----+------------+--------------+--------------+
+|ap_clk                 |   in|    1|  ap_ctrl_hs|         node0|  return value|
+|ap_rst                 |   in|    1|  ap_ctrl_hs|         node0|  return value|
+|ap_start               |   in|    1|  ap_ctrl_hs|         node0|  return value|
+|ap_done                |  out|    1|  ap_ctrl_hs|         node0|  return value|
+|ap_continue            |   in|    1|  ap_ctrl_hs|         node0|  return value|
+|ap_idle                |  out|    1|  ap_ctrl_hs|         node0|  return value|
+|ap_ready               |  out|    1|  ap_ctrl_hs|         node0|  return value|
+|v53_0_dout             |   in|   32|     ap_fifo|         v53_0|       pointer|
+|v53_0_num_data_valid   |   in|    5|     ap_fifo|         v53_0|       pointer|
+|v53_0_fifo_cap         |   in|    5|     ap_fifo|         v53_0|       pointer|
+|v53_0_empty_n          |   in|    1|     ap_fifo|         v53_0|       pointer|
+|v53_0_read             |  out|    1|     ap_fifo|         v53_0|       pointer|
+|v53_1_dout             |   in|   32|     ap_fifo|         v53_1|       pointer|
+|v53_1_num_data_valid   |   in|    5|     ap_fifo|         v53_1|       pointer|
+|v53_1_fifo_cap         |   in|    5|     ap_fifo|         v53_1|       pointer|
+|v53_1_empty_n          |   in|    1|     ap_fifo|         v53_1|       pointer|
+|v53_1_read             |  out|    1|     ap_fifo|         v53_1|       pointer|
+|v53_2_dout             |   in|   32|     ap_fifo|         v53_2|       pointer|
+|v53_2_num_data_valid   |   in|    5|     ap_fifo|         v53_2|       pointer|
+|v53_2_fifo_cap         |   in|    5|     ap_fifo|         v53_2|       pointer|
+|v53_2_empty_n          |   in|    1|     ap_fifo|         v53_2|       pointer|
+|v53_2_read             |  out|    1|     ap_fifo|         v53_2|       pointer|
+|v53_3_dout             |   in|   32|     ap_fifo|         v53_3|       pointer|
+|v53_3_num_data_valid   |   in|    5|     ap_fifo|         v53_3|       pointer|
+|v53_3_fifo_cap         |   in|    5|     ap_fifo|         v53_3|       pointer|
+|v53_3_empty_n          |   in|    1|     ap_fifo|         v53_3|       pointer|
+|v53_3_read             |  out|    1|     ap_fifo|         v53_3|       pointer|
+|v53_4_dout             |   in|   32|     ap_fifo|         v53_4|       pointer|
+|v53_4_num_data_valid   |   in|    5|     ap_fifo|         v53_4|       pointer|
+|v53_4_fifo_cap         |   in|    5|     ap_fifo|         v53_4|       pointer|
+|v53_4_empty_n          |   in|    1|     ap_fifo|         v53_4|       pointer|
+|v53_4_read             |  out|    1|     ap_fifo|         v53_4|       pointer|
+|v53_5_dout             |   in|   32|     ap_fifo|         v53_5|       pointer|
+|v53_5_num_data_valid   |   in|    5|     ap_fifo|         v53_5|       pointer|
+|v53_5_fifo_cap         |   in|    5|     ap_fifo|         v53_5|       pointer|
+|v53_5_empty_n          |   in|    1|     ap_fifo|         v53_5|       pointer|
+|v53_5_read             |  out|    1|     ap_fifo|         v53_5|       pointer|
+|v53_6_dout             |   in|   32|     ap_fifo|         v53_6|       pointer|
+|v53_6_num_data_valid   |   in|    5|     ap_fifo|         v53_6|       pointer|
+|v53_6_fifo_cap         |   in|    5|     ap_fifo|         v53_6|       pointer|
+|v53_6_empty_n          |   in|    1|     ap_fifo|         v53_6|       pointer|
+|v53_6_read             |  out|    1|     ap_fifo|         v53_6|       pointer|
+|v53_7_dout             |   in|   32|     ap_fifo|         v53_7|       pointer|
+|v53_7_num_data_valid   |   in|    5|     ap_fifo|         v53_7|       pointer|
+|v53_7_fifo_cap         |   in|    5|     ap_fifo|         v53_7|       pointer|
+|v53_7_empty_n          |   in|    1|     ap_fifo|         v53_7|       pointer|
+|v53_7_read             |  out|    1|     ap_fifo|         v53_7|       pointer|
+|v53_8_dout             |   in|   32|     ap_fifo|         v53_8|       pointer|
+|v53_8_num_data_valid   |   in|    5|     ap_fifo|         v53_8|       pointer|
+|v53_8_fifo_cap         |   in|    5|     ap_fifo|         v53_8|       pointer|
+|v53_8_empty_n          |   in|    1|     ap_fifo|         v53_8|       pointer|
+|v53_8_read             |  out|    1|     ap_fifo|         v53_8|       pointer|
+|v53_9_dout             |   in|   32|     ap_fifo|         v53_9|       pointer|
+|v53_9_num_data_valid   |   in|    5|     ap_fifo|         v53_9|       pointer|
+|v53_9_fifo_cap         |   in|    5|     ap_fifo|         v53_9|       pointer|
+|v53_9_empty_n          |   in|    1|     ap_fifo|         v53_9|       pointer|
+|v53_9_read             |  out|    1|     ap_fifo|         v53_9|       pointer|
+|v53_10_dout            |   in|   32|     ap_fifo|        v53_10|       pointer|
+|v53_10_num_data_valid  |   in|    5|     ap_fifo|        v53_10|       pointer|
+|v53_10_fifo_cap        |   in|    5|     ap_fifo|        v53_10|       pointer|
+|v53_10_empty_n         |   in|    1|     ap_fifo|        v53_10|       pointer|
+|v53_10_read            |  out|    1|     ap_fifo|        v53_10|       pointer|
+|v53_11_dout            |   in|   32|     ap_fifo|        v53_11|       pointer|
+|v53_11_num_data_valid  |   in|    5|     ap_fifo|        v53_11|       pointer|
+|v53_11_fifo_cap        |   in|    5|     ap_fifo|        v53_11|       pointer|
+|v53_11_empty_n         |   in|    1|     ap_fifo|        v53_11|       pointer|
+|v53_11_read            |  out|    1|     ap_fifo|        v53_11|       pointer|
+|v53_12_dout            |   in|   32|     ap_fifo|        v53_12|       pointer|
+|v53_12_num_data_valid  |   in|    5|     ap_fifo|        v53_12|       pointer|
+|v53_12_fifo_cap        |   in|    5|     ap_fifo|        v53_12|       pointer|
+|v53_12_empty_n         |   in|    1|     ap_fifo|        v53_12|       pointer|
+|v53_12_read            |  out|    1|     ap_fifo|        v53_12|       pointer|
+|v53_13_dout            |   in|   32|     ap_fifo|        v53_13|       pointer|
+|v53_13_num_data_valid  |   in|    5|     ap_fifo|        v53_13|       pointer|
+|v53_13_fifo_cap        |   in|    5|     ap_fifo|        v53_13|       pointer|
+|v53_13_empty_n         |   in|    1|     ap_fifo|        v53_13|       pointer|
+|v53_13_read            |  out|    1|     ap_fifo|        v53_13|       pointer|
+|v53_14_dout            |   in|   32|     ap_fifo|        v53_14|       pointer|
+|v53_14_num_data_valid  |   in|    5|     ap_fifo|        v53_14|       pointer|
+|v53_14_fifo_cap        |   in|    5|     ap_fifo|        v53_14|       pointer|
+|v53_14_empty_n         |   in|    1|     ap_fifo|        v53_14|       pointer|
+|v53_14_read            |  out|    1|     ap_fifo|        v53_14|       pointer|
+|v53_15_dout            |   in|   32|     ap_fifo|        v53_15|       pointer|
+|v53_15_num_data_valid  |   in|    5|     ap_fifo|        v53_15|       pointer|
+|v53_15_fifo_cap        |   in|    5|     ap_fifo|        v53_15|       pointer|
+|v53_15_empty_n         |   in|    1|     ap_fifo|        v53_15|       pointer|
+|v53_15_read            |  out|    1|     ap_fifo|        v53_15|       pointer|
+|v53_16_dout            |   in|   32|     ap_fifo|        v53_16|       pointer|
+|v53_16_num_data_valid  |   in|    5|     ap_fifo|        v53_16|       pointer|
+|v53_16_fifo_cap        |   in|    5|     ap_fifo|        v53_16|       pointer|
+|v53_16_empty_n         |   in|    1|     ap_fifo|        v53_16|       pointer|
+|v53_16_read            |  out|    1|     ap_fifo|        v53_16|       pointer|
+|v53_17_dout            |   in|   32|     ap_fifo|        v53_17|       pointer|
+|v53_17_num_data_valid  |   in|    5|     ap_fifo|        v53_17|       pointer|
+|v53_17_fifo_cap        |   in|    5|     ap_fifo|        v53_17|       pointer|
+|v53_17_empty_n         |   in|    1|     ap_fifo|        v53_17|       pointer|
+|v53_17_read            |  out|    1|     ap_fifo|        v53_17|       pointer|
+|v53_18_dout            |   in|   32|     ap_fifo|        v53_18|       pointer|
+|v53_18_num_data_valid  |   in|    5|     ap_fifo|        v53_18|       pointer|
+|v53_18_fifo_cap        |   in|    5|     ap_fifo|        v53_18|       pointer|
+|v53_18_empty_n         |   in|    1|     ap_fifo|        v53_18|       pointer|
+|v53_18_read            |  out|    1|     ap_fifo|        v53_18|       pointer|
+|v53_19_dout            |   in|   32|     ap_fifo|        v53_19|       pointer|
+|v53_19_num_data_valid  |   in|    5|     ap_fifo|        v53_19|       pointer|
+|v53_19_fifo_cap        |   in|    5|     ap_fifo|        v53_19|       pointer|
+|v53_19_empty_n         |   in|    1|     ap_fifo|        v53_19|       pointer|
+|v53_19_read            |  out|    1|     ap_fifo|        v53_19|       pointer|
+|v53_20_dout            |   in|   32|     ap_fifo|        v53_20|       pointer|
+|v53_20_num_data_valid  |   in|    5|     ap_fifo|        v53_20|       pointer|
+|v53_20_fifo_cap        |   in|    5|     ap_fifo|        v53_20|       pointer|
+|v53_20_empty_n         |   in|    1|     ap_fifo|        v53_20|       pointer|
+|v53_20_read            |  out|    1|     ap_fifo|        v53_20|       pointer|
+|v53_21_dout            |   in|   32|     ap_fifo|        v53_21|       pointer|
+|v53_21_num_data_valid  |   in|    5|     ap_fifo|        v53_21|       pointer|
+|v53_21_fifo_cap        |   in|    5|     ap_fifo|        v53_21|       pointer|
+|v53_21_empty_n         |   in|    1|     ap_fifo|        v53_21|       pointer|
+|v53_21_read            |  out|    1|     ap_fifo|        v53_21|       pointer|
+|v53_22_dout            |   in|   32|     ap_fifo|        v53_22|       pointer|
+|v53_22_num_data_valid  |   in|    5|     ap_fifo|        v53_22|       pointer|
+|v53_22_fifo_cap        |   in|    5|     ap_fifo|        v53_22|       pointer|
+|v53_22_empty_n         |   in|    1|     ap_fifo|        v53_22|       pointer|
+|v53_22_read            |  out|    1|     ap_fifo|        v53_22|       pointer|
+|v53_23_dout            |   in|   32|     ap_fifo|        v53_23|       pointer|
+|v53_23_num_data_valid  |   in|    5|     ap_fifo|        v53_23|       pointer|
+|v53_23_fifo_cap        |   in|    5|     ap_fifo|        v53_23|       pointer|
+|v53_23_empty_n         |   in|    1|     ap_fifo|        v53_23|       pointer|
+|v53_23_read            |  out|    1|     ap_fifo|        v53_23|       pointer|
+|v53_24_dout            |   in|   32|     ap_fifo|        v53_24|       pointer|
+|v53_24_num_data_valid  |   in|    5|     ap_fifo|        v53_24|       pointer|
+|v53_24_fifo_cap        |   in|    5|     ap_fifo|        v53_24|       pointer|
+|v53_24_empty_n         |   in|    1|     ap_fifo|        v53_24|       pointer|
+|v53_24_read            |  out|    1|     ap_fifo|        v53_24|       pointer|
+|v52_0_address0         |  out|    4|   ap_memory|         v52_0|         array|
+|v52_0_ce0              |  out|    1|   ap_memory|         v52_0|         array|
+|v52_0_we0              |  out|    1|   ap_memory|         v52_0|         array|
+|v52_0_d0               |  out|   32|   ap_memory|         v52_0|         array|
+|v52_1_address0         |  out|    4|   ap_memory|         v52_1|         array|
+|v52_1_ce0              |  out|    1|   ap_memory|         v52_1|         array|
+|v52_1_we0              |  out|    1|   ap_memory|         v52_1|         array|
+|v52_1_d0               |  out|   32|   ap_memory|         v52_1|         array|
+|v52_2_address0         |  out|    4|   ap_memory|         v52_2|         array|
+|v52_2_ce0              |  out|    1|   ap_memory|         v52_2|         array|
+|v52_2_we0              |  out|    1|   ap_memory|         v52_2|         array|
+|v52_2_d0               |  out|   32|   ap_memory|         v52_2|         array|
+|v52_3_address0         |  out|    4|   ap_memory|         v52_3|         array|
+|v52_3_ce0              |  out|    1|   ap_memory|         v52_3|         array|
+|v52_3_we0              |  out|    1|   ap_memory|         v52_3|         array|
+|v52_3_d0               |  out|   32|   ap_memory|         v52_3|         array|
+|v52_4_address0         |  out|    4|   ap_memory|         v52_4|         array|
+|v52_4_ce0              |  out|    1|   ap_memory|         v52_4|         array|
+|v52_4_we0              |  out|    1|   ap_memory|         v52_4|         array|
+|v52_4_d0               |  out|   32|   ap_memory|         v52_4|         array|
+|v52_5_address0         |  out|    4|   ap_memory|         v52_5|         array|
+|v52_5_ce0              |  out|    1|   ap_memory|         v52_5|         array|
+|v52_5_we0              |  out|    1|   ap_memory|         v52_5|         array|
+|v52_5_d0               |  out|   32|   ap_memory|         v52_5|         array|
+|v52_6_address0         |  out|    4|   ap_memory|         v52_6|         array|
+|v52_6_ce0              |  out|    1|   ap_memory|         v52_6|         array|
+|v52_6_we0              |  out|    1|   ap_memory|         v52_6|         array|
+|v52_6_d0               |  out|   32|   ap_memory|         v52_6|         array|
+|v52_7_address0         |  out|    4|   ap_memory|         v52_7|         array|
+|v52_7_ce0              |  out|    1|   ap_memory|         v52_7|         array|
+|v52_7_we0              |  out|    1|   ap_memory|         v52_7|         array|
+|v52_7_d0               |  out|   32|   ap_memory|         v52_7|         array|
+|v52_8_address0         |  out|    4|   ap_memory|         v52_8|         array|
+|v52_8_ce0              |  out|    1|   ap_memory|         v52_8|         array|
+|v52_8_we0              |  out|    1|   ap_memory|         v52_8|         array|
+|v52_8_d0               |  out|   32|   ap_memory|         v52_8|         array|
+|v52_9_address0         |  out|    4|   ap_memory|         v52_9|         array|
+|v52_9_ce0              |  out|    1|   ap_memory|         v52_9|         array|
+|v52_9_we0              |  out|    1|   ap_memory|         v52_9|         array|
+|v52_9_d0               |  out|   32|   ap_memory|         v52_9|         array|
+|v52_10_address0        |  out|    4|   ap_memory|        v52_10|         array|
+|v52_10_ce0             |  out|    1|   ap_memory|        v52_10|         array|
+|v52_10_we0             |  out|    1|   ap_memory|        v52_10|         array|
+|v52_10_d0              |  out|   32|   ap_memory|        v52_10|         array|
+|v52_11_address0        |  out|    4|   ap_memory|        v52_11|         array|
+|v52_11_ce0             |  out|    1|   ap_memory|        v52_11|         array|
+|v52_11_we0             |  out|    1|   ap_memory|        v52_11|         array|
+|v52_11_d0              |  out|   32|   ap_memory|        v52_11|         array|
+|v52_12_address0        |  out|    4|   ap_memory|        v52_12|         array|
+|v52_12_ce0             |  out|    1|   ap_memory|        v52_12|         array|
+|v52_12_we0             |  out|    1|   ap_memory|        v52_12|         array|
+|v52_12_d0              |  out|   32|   ap_memory|        v52_12|         array|
+|v52_13_address0        |  out|    4|   ap_memory|        v52_13|         array|
+|v52_13_ce0             |  out|    1|   ap_memory|        v52_13|         array|
+|v52_13_we0             |  out|    1|   ap_memory|        v52_13|         array|
+|v52_13_d0              |  out|   32|   ap_memory|        v52_13|         array|
+|v52_14_address0        |  out|    4|   ap_memory|        v52_14|         array|
+|v52_14_ce0             |  out|    1|   ap_memory|        v52_14|         array|
+|v52_14_we0             |  out|    1|   ap_memory|        v52_14|         array|
+|v52_14_d0              |  out|   32|   ap_memory|        v52_14|         array|
+|v52_15_address0        |  out|    4|   ap_memory|        v52_15|         array|
+|v52_15_ce0             |  out|    1|   ap_memory|        v52_15|         array|
+|v52_15_we0             |  out|    1|   ap_memory|        v52_15|         array|
+|v52_15_d0              |  out|   32|   ap_memory|        v52_15|         array|
+|v52_16_address0        |  out|    4|   ap_memory|        v52_16|         array|
+|v52_16_ce0             |  out|    1|   ap_memory|        v52_16|         array|
+|v52_16_we0             |  out|    1|   ap_memory|        v52_16|         array|
+|v52_16_d0              |  out|   32|   ap_memory|        v52_16|         array|
+|v52_17_address0        |  out|    4|   ap_memory|        v52_17|         array|
+|v52_17_ce0             |  out|    1|   ap_memory|        v52_17|         array|
+|v52_17_we0             |  out|    1|   ap_memory|        v52_17|         array|
+|v52_17_d0              |  out|   32|   ap_memory|        v52_17|         array|
+|v52_18_address0        |  out|    4|   ap_memory|        v52_18|         array|
+|v52_18_ce0             |  out|    1|   ap_memory|        v52_18|         array|
+|v52_18_we0             |  out|    1|   ap_memory|        v52_18|         array|
+|v52_18_d0              |  out|   32|   ap_memory|        v52_18|         array|
+|v52_19_address0        |  out|    4|   ap_memory|        v52_19|         array|
+|v52_19_ce0             |  out|    1|   ap_memory|        v52_19|         array|
+|v52_19_we0             |  out|    1|   ap_memory|        v52_19|         array|
+|v52_19_d0              |  out|   32|   ap_memory|        v52_19|         array|
+|v52_20_address0        |  out|    4|   ap_memory|        v52_20|         array|
+|v52_20_ce0             |  out|    1|   ap_memory|        v52_20|         array|
+|v52_20_we0             |  out|    1|   ap_memory|        v52_20|         array|
+|v52_20_d0              |  out|   32|   ap_memory|        v52_20|         array|
+|v52_21_address0        |  out|    4|   ap_memory|        v52_21|         array|
+|v52_21_ce0             |  out|    1|   ap_memory|        v52_21|         array|
+|v52_21_we0             |  out|    1|   ap_memory|        v52_21|         array|
+|v52_21_d0              |  out|   32|   ap_memory|        v52_21|         array|
+|v52_22_address0        |  out|    4|   ap_memory|        v52_22|         array|
+|v52_22_ce0             |  out|    1|   ap_memory|        v52_22|         array|
+|v52_22_we0             |  out|    1|   ap_memory|        v52_22|         array|
+|v52_22_d0              |  out|   32|   ap_memory|        v52_22|         array|
+|v52_23_address0        |  out|    4|   ap_memory|        v52_23|         array|
+|v52_23_ce0             |  out|    1|   ap_memory|        v52_23|         array|
+|v52_23_we0             |  out|    1|   ap_memory|        v52_23|         array|
+|v52_23_d0              |  out|   32|   ap_memory|        v52_23|         array|
+|v52_24_address0        |  out|    4|   ap_memory|        v52_24|         array|
+|v52_24_ce0             |  out|    1|   ap_memory|        v52_24|         array|
+|v52_24_we0             |  out|    1|   ap_memory|        v52_24|         array|
+|v52_24_d0              |  out|   32|   ap_memory|        v52_24|         array|
++-----------------------+-----+-----+------------+--------------+--------------+
+

@@ -1,0 +1,338 @@
+
+
+================================================================
+== Vitis HLS Report for 'mm1_Pipeline_l_j0_back'
+================================================================
+* Date:           Fri Sep 20 17:19:10 2024
+
+* Version:        2023.2 (Build 4023990 on Oct 11 2023)
+* Project:        3mm.prj
+* Solution:       solution1 (Vivado IP Flow Target)
+* Product family: virtexuplusHBM
+* Target device:  xcu280-fsvh2892-2L-e
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  |  3.33 ns|  2.692 ns|     0.90 ns|
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+---------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline|
+    |   min   |   max   |    min   |    max   | min | max |   Type  |
+    +---------+---------+----------+----------+-----+-----+---------+
+    |      192|      192|  0.639 us|  0.639 us|  192|  192|       no|
+    +---------+---------+----------+----------+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +-------------+---------+---------+----------+-----------+-----------+------+----------+
+        |             |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
+        |  Loop Name  |   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
+        +-------------+---------+---------+----------+-----------+-----------+------+----------+
+        |- l_j0_back  |      190|      190|         1|          1|          1|   190|       yes|
+        +-------------+---------+---------+----------+-----------+-----------+------+----------+
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++---------------------+---------+------+---------+---------+-----+
+|         Name        | BRAM_18K|  DSP |    FF   |   LUT   | URAM|
++---------------------+---------+------+---------+---------+-----+
+|DSP                  |        -|     -|        -|        -|    -|
+|Expression           |        -|     -|        0|       53|    -|
+|FIFO                 |        -|     -|        -|        -|    -|
+|Instance             |        -|     -|        0|     1006|    -|
+|Memory               |        -|     -|        -|        -|    -|
+|Multiplexer          |        -|     -|        -|       27|    -|
+|Register             |        -|     -|       10|        -|    -|
++---------------------+---------+------+---------+---------+-----+
+|Total                |        0|     0|       10|     1086|    0|
++---------------------+---------+------+---------+---------+-----+
+|Available SLR        |     1344|  3008|   869120|   434560|  320|
++---------------------+---------+------+---------+---------+-----+
+|Utilization SLR (%)  |        0|     0|       ~0|       ~0|    0|
++---------------------+---------+------+---------+---------+-----+
+|Available            |     4032|  9024|  2607360|  1303680|  960|
++---------------------+---------+------+---------+---------+-----+
+|Utilization (%)      |        0|     0|       ~0|       ~0|    0|
++---------------------+---------+------+---------+---------+-----+
+
++ Detail: 
+    * Instance: 
+    +-----------------------------+------------------------+---------+----+---+------+-----+
+    |           Instance          |         Module         | BRAM_18K| DSP| FF|  LUT | URAM|
+    +-----------------------------+------------------------+---------+----+---+------+-----+
+    |sparsemux_381_8_32_1_1_U859  |sparsemux_381_8_32_1_1  |        0|   0|  0|  1006|    0|
+    +-----------------------------+------------------------+---------+----+---+------+-----+
+    |Total                        |                        |        0|   0|  0|  1006|    0|
+    +-----------------------------+------------------------+---------+----+---+------+-----+
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +----------------------+----------+----+---+----+------------+------------+
+    |     Variable Name    | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +----------------------+----------+----+---+----+------------+------------+
+    |add_ln41_fu_1969_p2   |         +|   0|  0|  15|           8|           1|
+    |add_ln44_fu_1979_p2   |         +|   0|  0|  23|          16|          16|
+    |icmp_ln41_fu_1963_p2  |      icmp|   0|  0|  15|           8|           8|
+    +----------------------+----------+----+---+----+------------+------------+
+    |Total                 |          |   0|  0|  53|          32|          25|
+    +----------------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    +----------------------------+----+-----------+-----+-----------+
+    |            Name            | LUT| Input Size| Bits| Total Bits|
+    +----------------------------+----+-----------+-----+-----------+
+    |ap_done_int                 |   9|          2|    1|          2|
+    |ap_sig_allocacmp_j0_back_1  |   9|          2|    8|         16|
+    |j0_back_fu_792              |   9|          2|    8|         16|
+    +----------------------------+----+-----------+-----+-----------+
+    |Total                       |  27|          6|   17|         34|
+    +----------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +----------------+---+----+-----+-----------+
+    |      Name      | FF| LUT| Bits| Const Bits|
+    +----------------+---+----+-----+-----------+
+    |ap_CS_fsm       |  1|   0|    1|          0|
+    |ap_done_reg     |  1|   0|    1|          0|
+    |j0_back_fu_792  |  8|   0|    8|          0|
+    +----------------+---+----+-----+-----------+
+    |Total           | 10|   0|   10|          0|
+    +----------------+---+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++----------------+-----+-----+------------+------------------------+--------------+
+|    RTL Ports   | Dir | Bits|  Protocol  |      Source Object     |    C Type    |
++----------------+-----+-----+------------+------------------------+--------------+
+|ap_clk          |   in|    1|  ap_ctrl_hs|  mm1_Pipeline_l_j0_back|  return value|
+|ap_rst          |   in|    1|  ap_ctrl_hs|  mm1_Pipeline_l_j0_back|  return value|
+|ap_start        |   in|    1|  ap_ctrl_hs|  mm1_Pipeline_l_j0_back|  return value|
+|ap_done         |  out|    1|  ap_ctrl_hs|  mm1_Pipeline_l_j0_back|  return value|
+|ap_idle         |  out|    1|  ap_ctrl_hs|  mm1_Pipeline_l_j0_back|  return value|
+|ap_ready        |  out|    1|  ap_ctrl_hs|  mm1_Pipeline_l_j0_back|  return value|
+|phi_mul1        |   in|   16|     ap_none|                phi_mul1|        scalar|
+|v2_address0     |  out|   16|   ap_memory|                      v2|         array|
+|v2_ce0          |  out|    1|   ap_memory|                      v2|         array|
+|v2_we0          |  out|    1|   ap_memory|                      v2|         array|
+|v2_d0           |  out|   32|   ap_memory|                      v2|         array|
+|v11_reload      |   in|   32|     ap_none|              v11_reload|        scalar|
+|v11_1_reload    |   in|   32|     ap_none|            v11_1_reload|        scalar|
+|v11_2_reload    |   in|   32|     ap_none|            v11_2_reload|        scalar|
+|v11_3_reload    |   in|   32|     ap_none|            v11_3_reload|        scalar|
+|v11_4_reload    |   in|   32|     ap_none|            v11_4_reload|        scalar|
+|v11_5_reload    |   in|   32|     ap_none|            v11_5_reload|        scalar|
+|v11_6_reload    |   in|   32|     ap_none|            v11_6_reload|        scalar|
+|v11_7_reload    |   in|   32|     ap_none|            v11_7_reload|        scalar|
+|v11_8_reload    |   in|   32|     ap_none|            v11_8_reload|        scalar|
+|v11_9_reload    |   in|   32|     ap_none|            v11_9_reload|        scalar|
+|v11_10_reload   |   in|   32|     ap_none|           v11_10_reload|        scalar|
+|v11_11_reload   |   in|   32|     ap_none|           v11_11_reload|        scalar|
+|v11_12_reload   |   in|   32|     ap_none|           v11_12_reload|        scalar|
+|v11_13_reload   |   in|   32|     ap_none|           v11_13_reload|        scalar|
+|v11_14_reload   |   in|   32|     ap_none|           v11_14_reload|        scalar|
+|v11_15_reload   |   in|   32|     ap_none|           v11_15_reload|        scalar|
+|v11_16_reload   |   in|   32|     ap_none|           v11_16_reload|        scalar|
+|v11_17_reload   |   in|   32|     ap_none|           v11_17_reload|        scalar|
+|v11_18_reload   |   in|   32|     ap_none|           v11_18_reload|        scalar|
+|v11_19_reload   |   in|   32|     ap_none|           v11_19_reload|        scalar|
+|v11_20_reload   |   in|   32|     ap_none|           v11_20_reload|        scalar|
+|v11_21_reload   |   in|   32|     ap_none|           v11_21_reload|        scalar|
+|v11_22_reload   |   in|   32|     ap_none|           v11_22_reload|        scalar|
+|v11_23_reload   |   in|   32|     ap_none|           v11_23_reload|        scalar|
+|v11_24_reload   |   in|   32|     ap_none|           v11_24_reload|        scalar|
+|v11_25_reload   |   in|   32|     ap_none|           v11_25_reload|        scalar|
+|v11_26_reload   |   in|   32|     ap_none|           v11_26_reload|        scalar|
+|v11_27_reload   |   in|   32|     ap_none|           v11_27_reload|        scalar|
+|v11_28_reload   |   in|   32|     ap_none|           v11_28_reload|        scalar|
+|v11_29_reload   |   in|   32|     ap_none|           v11_29_reload|        scalar|
+|v11_30_reload   |   in|   32|     ap_none|           v11_30_reload|        scalar|
+|v11_31_reload   |   in|   32|     ap_none|           v11_31_reload|        scalar|
+|v11_32_reload   |   in|   32|     ap_none|           v11_32_reload|        scalar|
+|v11_33_reload   |   in|   32|     ap_none|           v11_33_reload|        scalar|
+|v11_34_reload   |   in|   32|     ap_none|           v11_34_reload|        scalar|
+|v11_35_reload   |   in|   32|     ap_none|           v11_35_reload|        scalar|
+|v11_36_reload   |   in|   32|     ap_none|           v11_36_reload|        scalar|
+|v11_37_reload   |   in|   32|     ap_none|           v11_37_reload|        scalar|
+|v11_38_reload   |   in|   32|     ap_none|           v11_38_reload|        scalar|
+|v11_39_reload   |   in|   32|     ap_none|           v11_39_reload|        scalar|
+|v11_40_reload   |   in|   32|     ap_none|           v11_40_reload|        scalar|
+|v11_41_reload   |   in|   32|     ap_none|           v11_41_reload|        scalar|
+|v11_42_reload   |   in|   32|     ap_none|           v11_42_reload|        scalar|
+|v11_43_reload   |   in|   32|     ap_none|           v11_43_reload|        scalar|
+|v11_44_reload   |   in|   32|     ap_none|           v11_44_reload|        scalar|
+|v11_45_reload   |   in|   32|     ap_none|           v11_45_reload|        scalar|
+|v11_46_reload   |   in|   32|     ap_none|           v11_46_reload|        scalar|
+|v11_47_reload   |   in|   32|     ap_none|           v11_47_reload|        scalar|
+|v11_48_reload   |   in|   32|     ap_none|           v11_48_reload|        scalar|
+|v11_49_reload   |   in|   32|     ap_none|           v11_49_reload|        scalar|
+|v11_50_reload   |   in|   32|     ap_none|           v11_50_reload|        scalar|
+|v11_51_reload   |   in|   32|     ap_none|           v11_51_reload|        scalar|
+|v11_52_reload   |   in|   32|     ap_none|           v11_52_reload|        scalar|
+|v11_53_reload   |   in|   32|     ap_none|           v11_53_reload|        scalar|
+|v11_54_reload   |   in|   32|     ap_none|           v11_54_reload|        scalar|
+|v11_55_reload   |   in|   32|     ap_none|           v11_55_reload|        scalar|
+|v11_56_reload   |   in|   32|     ap_none|           v11_56_reload|        scalar|
+|v11_57_reload   |   in|   32|     ap_none|           v11_57_reload|        scalar|
+|v11_58_reload   |   in|   32|     ap_none|           v11_58_reload|        scalar|
+|v11_59_reload   |   in|   32|     ap_none|           v11_59_reload|        scalar|
+|v11_60_reload   |   in|   32|     ap_none|           v11_60_reload|        scalar|
+|v11_61_reload   |   in|   32|     ap_none|           v11_61_reload|        scalar|
+|v11_62_reload   |   in|   32|     ap_none|           v11_62_reload|        scalar|
+|v11_63_reload   |   in|   32|     ap_none|           v11_63_reload|        scalar|
+|v11_64_reload   |   in|   32|     ap_none|           v11_64_reload|        scalar|
+|v11_65_reload   |   in|   32|     ap_none|           v11_65_reload|        scalar|
+|v11_66_reload   |   in|   32|     ap_none|           v11_66_reload|        scalar|
+|v11_67_reload   |   in|   32|     ap_none|           v11_67_reload|        scalar|
+|v11_68_reload   |   in|   32|     ap_none|           v11_68_reload|        scalar|
+|v11_69_reload   |   in|   32|     ap_none|           v11_69_reload|        scalar|
+|v11_70_reload   |   in|   32|     ap_none|           v11_70_reload|        scalar|
+|v11_71_reload   |   in|   32|     ap_none|           v11_71_reload|        scalar|
+|v11_72_reload   |   in|   32|     ap_none|           v11_72_reload|        scalar|
+|v11_73_reload   |   in|   32|     ap_none|           v11_73_reload|        scalar|
+|v11_74_reload   |   in|   32|     ap_none|           v11_74_reload|        scalar|
+|v11_75_reload   |   in|   32|     ap_none|           v11_75_reload|        scalar|
+|v11_76_reload   |   in|   32|     ap_none|           v11_76_reload|        scalar|
+|v11_77_reload   |   in|   32|     ap_none|           v11_77_reload|        scalar|
+|v11_78_reload   |   in|   32|     ap_none|           v11_78_reload|        scalar|
+|v11_79_reload   |   in|   32|     ap_none|           v11_79_reload|        scalar|
+|v11_80_reload   |   in|   32|     ap_none|           v11_80_reload|        scalar|
+|v11_81_reload   |   in|   32|     ap_none|           v11_81_reload|        scalar|
+|v11_82_reload   |   in|   32|     ap_none|           v11_82_reload|        scalar|
+|v11_83_reload   |   in|   32|     ap_none|           v11_83_reload|        scalar|
+|v11_84_reload   |   in|   32|     ap_none|           v11_84_reload|        scalar|
+|v11_85_reload   |   in|   32|     ap_none|           v11_85_reload|        scalar|
+|v11_86_reload   |   in|   32|     ap_none|           v11_86_reload|        scalar|
+|v11_87_reload   |   in|   32|     ap_none|           v11_87_reload|        scalar|
+|v11_88_reload   |   in|   32|     ap_none|           v11_88_reload|        scalar|
+|v11_89_reload   |   in|   32|     ap_none|           v11_89_reload|        scalar|
+|v11_90_reload   |   in|   32|     ap_none|           v11_90_reload|        scalar|
+|v11_91_reload   |   in|   32|     ap_none|           v11_91_reload|        scalar|
+|v11_92_reload   |   in|   32|     ap_none|           v11_92_reload|        scalar|
+|v11_93_reload   |   in|   32|     ap_none|           v11_93_reload|        scalar|
+|v11_94_reload   |   in|   32|     ap_none|           v11_94_reload|        scalar|
+|v11_95_reload   |   in|   32|     ap_none|           v11_95_reload|        scalar|
+|v11_96_reload   |   in|   32|     ap_none|           v11_96_reload|        scalar|
+|v11_97_reload   |   in|   32|     ap_none|           v11_97_reload|        scalar|
+|v11_98_reload   |   in|   32|     ap_none|           v11_98_reload|        scalar|
+|v11_99_reload   |   in|   32|     ap_none|           v11_99_reload|        scalar|
+|v11_100_reload  |   in|   32|     ap_none|          v11_100_reload|        scalar|
+|v11_101_reload  |   in|   32|     ap_none|          v11_101_reload|        scalar|
+|v11_102_reload  |   in|   32|     ap_none|          v11_102_reload|        scalar|
+|v11_103_reload  |   in|   32|     ap_none|          v11_103_reload|        scalar|
+|v11_104_reload  |   in|   32|     ap_none|          v11_104_reload|        scalar|
+|v11_105_reload  |   in|   32|     ap_none|          v11_105_reload|        scalar|
+|v11_106_reload  |   in|   32|     ap_none|          v11_106_reload|        scalar|
+|v11_107_reload  |   in|   32|     ap_none|          v11_107_reload|        scalar|
+|v11_108_reload  |   in|   32|     ap_none|          v11_108_reload|        scalar|
+|v11_109_reload  |   in|   32|     ap_none|          v11_109_reload|        scalar|
+|v11_110_reload  |   in|   32|     ap_none|          v11_110_reload|        scalar|
+|v11_111_reload  |   in|   32|     ap_none|          v11_111_reload|        scalar|
+|v11_112_reload  |   in|   32|     ap_none|          v11_112_reload|        scalar|
+|v11_113_reload  |   in|   32|     ap_none|          v11_113_reload|        scalar|
+|v11_114_reload  |   in|   32|     ap_none|          v11_114_reload|        scalar|
+|v11_115_reload  |   in|   32|     ap_none|          v11_115_reload|        scalar|
+|v11_116_reload  |   in|   32|     ap_none|          v11_116_reload|        scalar|
+|v11_117_reload  |   in|   32|     ap_none|          v11_117_reload|        scalar|
+|v11_118_reload  |   in|   32|     ap_none|          v11_118_reload|        scalar|
+|v11_119_reload  |   in|   32|     ap_none|          v11_119_reload|        scalar|
+|v11_120_reload  |   in|   32|     ap_none|          v11_120_reload|        scalar|
+|v11_121_reload  |   in|   32|     ap_none|          v11_121_reload|        scalar|
+|v11_122_reload  |   in|   32|     ap_none|          v11_122_reload|        scalar|
+|v11_123_reload  |   in|   32|     ap_none|          v11_123_reload|        scalar|
+|v11_124_reload  |   in|   32|     ap_none|          v11_124_reload|        scalar|
+|v11_125_reload  |   in|   32|     ap_none|          v11_125_reload|        scalar|
+|v11_126_reload  |   in|   32|     ap_none|          v11_126_reload|        scalar|
+|v11_127_reload  |   in|   32|     ap_none|          v11_127_reload|        scalar|
+|v11_128_reload  |   in|   32|     ap_none|          v11_128_reload|        scalar|
+|v11_129_reload  |   in|   32|     ap_none|          v11_129_reload|        scalar|
+|v11_130_reload  |   in|   32|     ap_none|          v11_130_reload|        scalar|
+|v11_131_reload  |   in|   32|     ap_none|          v11_131_reload|        scalar|
+|v11_132_reload  |   in|   32|     ap_none|          v11_132_reload|        scalar|
+|v11_133_reload  |   in|   32|     ap_none|          v11_133_reload|        scalar|
+|v11_134_reload  |   in|   32|     ap_none|          v11_134_reload|        scalar|
+|v11_135_reload  |   in|   32|     ap_none|          v11_135_reload|        scalar|
+|v11_136_reload  |   in|   32|     ap_none|          v11_136_reload|        scalar|
+|v11_137_reload  |   in|   32|     ap_none|          v11_137_reload|        scalar|
+|v11_138_reload  |   in|   32|     ap_none|          v11_138_reload|        scalar|
+|v11_139_reload  |   in|   32|     ap_none|          v11_139_reload|        scalar|
+|v11_140_reload  |   in|   32|     ap_none|          v11_140_reload|        scalar|
+|v11_141_reload  |   in|   32|     ap_none|          v11_141_reload|        scalar|
+|v11_142_reload  |   in|   32|     ap_none|          v11_142_reload|        scalar|
+|v11_143_reload  |   in|   32|     ap_none|          v11_143_reload|        scalar|
+|v11_144_reload  |   in|   32|     ap_none|          v11_144_reload|        scalar|
+|v11_145_reload  |   in|   32|     ap_none|          v11_145_reload|        scalar|
+|v11_146_reload  |   in|   32|     ap_none|          v11_146_reload|        scalar|
+|v11_147_reload  |   in|   32|     ap_none|          v11_147_reload|        scalar|
+|v11_148_reload  |   in|   32|     ap_none|          v11_148_reload|        scalar|
+|v11_149_reload  |   in|   32|     ap_none|          v11_149_reload|        scalar|
+|v11_150_reload  |   in|   32|     ap_none|          v11_150_reload|        scalar|
+|v11_151_reload  |   in|   32|     ap_none|          v11_151_reload|        scalar|
+|v11_152_reload  |   in|   32|     ap_none|          v11_152_reload|        scalar|
+|v11_153_reload  |   in|   32|     ap_none|          v11_153_reload|        scalar|
+|v11_154_reload  |   in|   32|     ap_none|          v11_154_reload|        scalar|
+|v11_155_reload  |   in|   32|     ap_none|          v11_155_reload|        scalar|
+|v11_156_reload  |   in|   32|     ap_none|          v11_156_reload|        scalar|
+|v11_157_reload  |   in|   32|     ap_none|          v11_157_reload|        scalar|
+|v11_158_reload  |   in|   32|     ap_none|          v11_158_reload|        scalar|
+|v11_159_reload  |   in|   32|     ap_none|          v11_159_reload|        scalar|
+|v11_160_reload  |   in|   32|     ap_none|          v11_160_reload|        scalar|
+|v11_161_reload  |   in|   32|     ap_none|          v11_161_reload|        scalar|
+|v11_162_reload  |   in|   32|     ap_none|          v11_162_reload|        scalar|
+|v11_163_reload  |   in|   32|     ap_none|          v11_163_reload|        scalar|
+|v11_164_reload  |   in|   32|     ap_none|          v11_164_reload|        scalar|
+|v11_165_reload  |   in|   32|     ap_none|          v11_165_reload|        scalar|
+|v11_166_reload  |   in|   32|     ap_none|          v11_166_reload|        scalar|
+|v11_167_reload  |   in|   32|     ap_none|          v11_167_reload|        scalar|
+|v11_168_reload  |   in|   32|     ap_none|          v11_168_reload|        scalar|
+|v11_169_reload  |   in|   32|     ap_none|          v11_169_reload|        scalar|
+|v11_170_reload  |   in|   32|     ap_none|          v11_170_reload|        scalar|
+|v11_171_reload  |   in|   32|     ap_none|          v11_171_reload|        scalar|
+|v11_172_reload  |   in|   32|     ap_none|          v11_172_reload|        scalar|
+|v11_173_reload  |   in|   32|     ap_none|          v11_173_reload|        scalar|
+|v11_174_reload  |   in|   32|     ap_none|          v11_174_reload|        scalar|
+|v11_175_reload  |   in|   32|     ap_none|          v11_175_reload|        scalar|
+|v11_176_reload  |   in|   32|     ap_none|          v11_176_reload|        scalar|
+|v11_177_reload  |   in|   32|     ap_none|          v11_177_reload|        scalar|
+|v11_178_reload  |   in|   32|     ap_none|          v11_178_reload|        scalar|
+|v11_179_reload  |   in|   32|     ap_none|          v11_179_reload|        scalar|
+|v11_180_reload  |   in|   32|     ap_none|          v11_180_reload|        scalar|
+|v11_181_reload  |   in|   32|     ap_none|          v11_181_reload|        scalar|
+|v11_182_reload  |   in|   32|     ap_none|          v11_182_reload|        scalar|
+|v11_183_reload  |   in|   32|     ap_none|          v11_183_reload|        scalar|
+|v11_184_reload  |   in|   32|     ap_none|          v11_184_reload|        scalar|
+|v11_185_reload  |   in|   32|     ap_none|          v11_185_reload|        scalar|
+|v11_186_reload  |   in|   32|     ap_none|          v11_186_reload|        scalar|
+|v11_187_reload  |   in|   32|     ap_none|          v11_187_reload|        scalar|
+|v11_188_reload  |   in|   32|     ap_none|          v11_188_reload|        scalar|
+|v11_189_reload  |   in|   32|     ap_none|          v11_189_reload|        scalar|
++----------------+-----+-----+------------+------------------------+--------------+
+

@@ -1,0 +1,92 @@
+
+Gurobi 12.0.0 (linux64) logging started Wed Jan  1 16:06:50 2025
+
+Set parameter LogFile to value "gemm_combined.log"
+Set parameter OutputFlag to value 1
+Set parameter InfUnbdInfo to value 1
+Gurobi Optimizer version 12.0.0 build v12.0.0rc1 (linux64 - "Ubuntu 22.04.1 LTS")
+
+CPU model: Intel(R) Core(TM) i9-10900K CPU @ 3.70GHz, instruction set [SSE2|AVX|AVX2]
+Thread count: 10 physical cores, 20 logical processors, using up to 20 threads
+
+Non-default parameters:
+TimeLimit  60
+OptimalityTol  1e-08
+InfUnbdInfo  1
+LogToConsole  0
+
+Optimize a model with 26 rows, 89 columns and 61 nonzeros
+Model fingerprint: 0x7109818a
+Model has 8 quadratic constraints
+Model has 2 simple general constraints
+  2 MAX
+Model has 7 general nonlinear constraints (86 nonlinear terms)
+Variable types: 0 continuous, 89 integer (0 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 4e+00]
+  QMatrix range    [1e+00, 8e+00]
+  QLMatrix range   [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+08]
+  RHS range        [1e+00, 1e+00]
+  QRHS range       [2e+02, 2e+02]
+Presolve model has 7 nlconstr
+Added 84 variables to disaggregate expressions.
+Presolve removed 14 rows and 52 columns
+Presolve time: 0.01s
+Presolved: 274 rows, 235 columns, 676 nonzeros
+Presolved model has 66 SOS constraint(s)
+Presolved model has 22 bilinear constraint(s)
+Warning: Model contains variables with very large bounds participating
+         in product terms.
+         Presolve was not able to compute smaller bounds for these variables.
+         Consider bounding these variables or reformulating the model.
+
+
+Solving non-convex MIQCP
+
+Variable types: 136 continuous, 99 integer (52 binary)
+
+Root relaxation: objective -1.482060e+05, 57 iterations, 0.00 seconds (0.00 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 -148206.00    0   19          - -148206.00      -     -    0s
+     0     0 -148206.00    0   18          - -148206.00      -     -    0s
+     0     0 -148206.00    0   35          - -148206.00      -     -    0s
+     0     0 -114794.11    0   59          - -114794.11      -     -    0s
+H    0     0                    2111996.0000 -95604.000   105%     -    0s
+H    0     0                    1919996.0000 -95604.000   105%     -    0s
+     0     0 -95604.000    0   66 1919996.00 -95604.000   105%     -    0s
+     0     0 -95604.000    0   66 1919996.00 -95604.000   105%     -    0s
+     0     0 -95604.000    0   58 1919996.00 -95604.000   105%     -    0s
+H    0     0                    1803995.0000 -95604.000   105%     -    0s
+H    0     0                    439996.00000 -95604.000   122%     -    0s
+     0     0 -95604.000    0   61 439996.000 -95604.000   122%     -    0s
+     0     0 -95604.000    0   47 439996.000 -95604.000   122%     -    0s
+     0     0 -95604.000    0   61 439996.000 -95604.000   122%     -    0s
+     0     0 -95604.000    0   50 439996.000 -95604.000   122%     -    0s
+     0     0 -95604.000    0   48 439996.000 -95604.000   122%     -    0s
+     0     0 -95604.000    0   66 439996.000 -95604.000   122%     -    0s
+     0     0 -95604.000    0   52 439996.000 -95604.000   122%     -    0s
+H    0     0                    175999.00000 -95604.000   154%     -    0s
+H    0     2                    164999.00000 -95604.000   158%     -    0s
+     0     2 -95604.000    0   52 164999.000 -95604.000   158%     -    0s
+H   17    12                    109999.00000 7283.00000  93.4%  19.7    0s
+
+Cutting planes:
+  Implied bound: 26
+  MIR: 4
+  StrongCG: 2
+  Mod-K: 1
+  RLT: 15
+  Relax-and-lift: 3
+
+Explored 284 nodes (2178 simplex iterations) in 0.14 seconds (0.05 work units)
+Thread count was 20 (of 20 available processors)
+
+Solution count 7: 109999 164999 175999 ... 2.112e+06
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 1.099990000000e+05, best bound 1.099990000000e+05, gap 0.0000%

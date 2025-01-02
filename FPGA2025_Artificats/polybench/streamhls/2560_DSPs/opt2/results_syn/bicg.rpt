@@ -1,0 +1,218 @@
+
+
+================================================================
+== Vitis HLS Report for 'forward'
+================================================================
+* Date:           Thu Oct  3 12:36:22 2024
+
+* Version:        2023.2 (Build 4023990 on Oct 11 2023)
+* Project:        hls_bicg
+* Solution:       solution1 (Vivado IP Flow Target)
+* Product family: virtexuplusHBM
+* Target device:  xcu280-fsvh2892-2L-e
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  |  3.33 ns|  2.507 ns|     0.90 ns|
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+--------+--------+----------+
+    |  Latency (cycles) |  Latency (absolute) |     Interval    | Pipeline |
+    |   min   |   max   |    min   |    max   |   min  |   max  |   Type   |
+    +---------+---------+----------+----------+--------+--------+----------+
+    |   159918|   159918|  0.533 ms|  0.533 ms|  159918|  159918|  dataflow|
+    +---------+---------+----------+----------+--------+--------+----------+
+
+    + Detail: 
+        * Instance: 
+        +----------+-------+---------+---------+----------+----------+--------+--------+---------+
+        |          |       |  Latency (cycles) |  Latency (absolute) |     Interval    | Pipeline|
+        | Instance | Module|   min   |   max   |    min   |    max   |   min  |   max  |   Type  |
+        +----------+-------+---------+---------+----------+----------+--------+--------+---------+
+        |node3_U0  |node3  |   159916|   159916|  0.533 ms|  0.533 ms|  159916|  159916|       no|
+        |node2_U0  |node2  |   159917|   159917|  0.533 ms|  0.533 ms|  159917|  159917|       no|
+        |node1_U0  |node1  |      392|      392|  1.305 us|  1.305 us|     392|     392|       no|
+        |node0_U0  |node0  |      412|      412|  1.372 us|  1.372 us|     412|     412|       no|
+        +----------+-------+---------+---------+----------+----------+--------+--------+---------+
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++---------------------+---------+------+---------+---------+-----+
+|         Name        | BRAM_18K|  DSP |    FF   |   LUT   | URAM|
++---------------------+---------+------+---------+---------+-----+
+|DSP                  |        -|     -|        -|        -|    -|
+|Expression           |        -|     -|        0|       14|    -|
+|FIFO                 |        2|     -|      190|      156|    -|
+|Instance             |        2|    11|     2222|     1721|    0|
+|Memory               |        -|     -|        -|        -|    -|
+|Multiplexer          |        -|     -|        -|       18|    -|
+|Register             |        -|     -|        2|        -|    -|
++---------------------+---------+------+---------+---------+-----+
+|Total                |        4|    11|     2414|     1909|    0|
++---------------------+---------+------+---------+---------+-----+
+|Available SLR        |     1344|  3008|   869120|   434560|  320|
++---------------------+---------+------+---------+---------+-----+
+|Utilization SLR (%)  |       ~0|    ~0|       ~0|       ~0|    0|
++---------------------+---------+------+---------+---------+-----+
+|Available            |     4032|  9024|  2607360|  1303680|  960|
++---------------------+---------+------+---------+---------+-----+
+|Utilization (%)      |       ~0|    ~0|       ~0|       ~0|    0|
++---------------------+---------+------+---------+---------+-----+
+
++ Detail: 
+    * Instance: 
+    +----------+-------+---------+----+------+-----+-----+
+    | Instance | Module| BRAM_18K| DSP|  FF  | LUT | URAM|
+    +----------+-------+---------+----+------+-----+-----+
+    |node0_U0  |node0  |        0|   0|    21|   83|    0|
+    |node1_U0  |node1  |        0|   0|    21|   83|    0|
+    |node2_U0  |node2  |        1|   6|  1112|  750|    0|
+    |node3_U0  |node3  |        1|   5|  1068|  805|    0|
+    +----------+-------+---------+----+------+-----+-----+
+    |Total     |       |        2|  11|  2222| 1721|    0|
+    +----------+-------+---------+----+------+-----+-----+
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    +-------+---------+----+----+-----+------+-----+---------+
+    |  Name | BRAM_18K| FF | LUT| URAM| Depth| Bits| Size:D*B|
+    +-------+---------+----+----+-----+------+-----+---------+
+    |v40_U  |        1|  95|   0|    -|   410|   32|    13120|
+    |v41_U  |        1|  95|   0|    -|   390|   32|    12480|
+    +-------+---------+----+----+-----+------+-----+---------+
+    |Total  |        2| 190|   0|    0|   800|   64|    25600|
+    +-------+---------+----+----+-----+------+-----+---------+
+
+    * Expression: 
+    +---------------------------+----------+----+---+----+------------+------------+
+    |       Variable Name       | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +---------------------------+----------+----+---+----+------------+------------+
+    |ap_idle                    |       and|   0|  0|   2|           1|           1|
+    |ap_sync_done               |       and|   0|  0|   2|           1|           1|
+    |ap_sync_ready              |       and|   0|  0|   2|           1|           1|
+    |node2_U0_ap_start          |       and|   0|  0|   2|           1|           1|
+    |node3_U0_ap_start          |       and|   0|  0|   2|           1|           1|
+    |ap_sync_node2_U0_ap_ready  |        or|   0|  0|   2|           1|           1|
+    |ap_sync_node3_U0_ap_ready  |        or|   0|  0|   2|           1|           1|
+    +---------------------------+----------+----+---+----+------------+------------+
+    |Total                      |          |   0|  0|  14|           7|           7|
+    +---------------------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    +-------------------------------+----+-----------+-----+-----------+
+    |              Name             | LUT| Input Size| Bits| Total Bits|
+    +-------------------------------+----+-----------+-----+-----------+
+    |ap_sync_reg_node2_U0_ap_ready  |   9|          2|    1|          2|
+    |ap_sync_reg_node3_U0_ap_ready  |   9|          2|    1|          2|
+    +-------------------------------+----+-----------+-----+-----------+
+    |Total                          |  18|          4|    2|          4|
+    +-------------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +-------------------------------+---+----+-----+-----------+
+    |              Name             | FF| LUT| Bits| Const Bits|
+    +-------------------------------+---+----+-----+-----------+
+    |ap_sync_reg_node2_U0_ap_ready  |  1|   0|    1|          0|
+    |ap_sync_reg_node3_U0_ap_ready  |  1|   0|    1|          0|
+    +-------------------------------+---+----+-----+-----------+
+    |Total                          |  2|   0|    2|          0|
+    +-------------------------------+---+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++--------------+-----+-----+------------+--------------+--------------+
+|   RTL Ports  | Dir | Bits|  Protocol  | Source Object|    C Type    |
++--------------+-----+-----+------------+--------------+--------------+
+|v34_address0  |  out|   18|   ap_memory|           v34|         array|
+|v34_ce0       |  out|    1|   ap_memory|           v34|         array|
+|v34_d0        |  out|   32|   ap_memory|           v34|         array|
+|v34_q0        |   in|   32|   ap_memory|           v34|         array|
+|v34_we0       |  out|    1|   ap_memory|           v34|         array|
+|v34_address1  |  out|   18|   ap_memory|           v34|         array|
+|v34_ce1       |  out|    1|   ap_memory|           v34|         array|
+|v34_d1        |  out|   32|   ap_memory|           v34|         array|
+|v34_q1        |   in|   32|   ap_memory|           v34|         array|
+|v34_we1       |  out|    1|   ap_memory|           v34|         array|
+|v35_address0  |  out|   18|   ap_memory|           v35|         array|
+|v35_ce0       |  out|    1|   ap_memory|           v35|         array|
+|v35_d0        |  out|   32|   ap_memory|           v35|         array|
+|v35_q0        |   in|   32|   ap_memory|           v35|         array|
+|v35_we0       |  out|    1|   ap_memory|           v35|         array|
+|v35_address1  |  out|   18|   ap_memory|           v35|         array|
+|v35_ce1       |  out|    1|   ap_memory|           v35|         array|
+|v35_d1        |  out|   32|   ap_memory|           v35|         array|
+|v35_q1        |   in|   32|   ap_memory|           v35|         array|
+|v35_we1       |  out|    1|   ap_memory|           v35|         array|
+|v36_address0  |  out|    9|   ap_memory|           v36|         array|
+|v36_ce0       |  out|    1|   ap_memory|           v36|         array|
+|v36_d0        |  out|   32|   ap_memory|           v36|         array|
+|v36_q0        |   in|   32|   ap_memory|           v36|         array|
+|v36_we0       |  out|    1|   ap_memory|           v36|         array|
+|v36_address1  |  out|    9|   ap_memory|           v36|         array|
+|v36_ce1       |  out|    1|   ap_memory|           v36|         array|
+|v36_d1        |  out|   32|   ap_memory|           v36|         array|
+|v36_q1        |   in|   32|   ap_memory|           v36|         array|
+|v36_we1       |  out|    1|   ap_memory|           v36|         array|
+|v37_address0  |  out|    9|   ap_memory|           v37|         array|
+|v37_ce0       |  out|    1|   ap_memory|           v37|         array|
+|v37_d0        |  out|   32|   ap_memory|           v37|         array|
+|v37_q0        |   in|   32|   ap_memory|           v37|         array|
+|v37_we0       |  out|    1|   ap_memory|           v37|         array|
+|v37_address1  |  out|    9|   ap_memory|           v37|         array|
+|v37_ce1       |  out|    1|   ap_memory|           v37|         array|
+|v37_d1        |  out|   32|   ap_memory|           v37|         array|
+|v37_q1        |   in|   32|   ap_memory|           v37|         array|
+|v37_we1       |  out|    1|   ap_memory|           v37|         array|
+|v38_address0  |  out|    9|   ap_memory|           v38|         array|
+|v38_ce0       |  out|    1|   ap_memory|           v38|         array|
+|v38_d0        |  out|   32|   ap_memory|           v38|         array|
+|v38_q0        |   in|   32|   ap_memory|           v38|         array|
+|v38_we0       |  out|    1|   ap_memory|           v38|         array|
+|v38_address1  |  out|    9|   ap_memory|           v38|         array|
+|v38_ce1       |  out|    1|   ap_memory|           v38|         array|
+|v38_d1        |  out|   32|   ap_memory|           v38|         array|
+|v38_q1        |   in|   32|   ap_memory|           v38|         array|
+|v38_we1       |  out|    1|   ap_memory|           v38|         array|
+|v39_address0  |  out|    9|   ap_memory|           v39|         array|
+|v39_ce0       |  out|    1|   ap_memory|           v39|         array|
+|v39_d0        |  out|   32|   ap_memory|           v39|         array|
+|v39_q0        |   in|   32|   ap_memory|           v39|         array|
+|v39_we0       |  out|    1|   ap_memory|           v39|         array|
+|v39_address1  |  out|    9|   ap_memory|           v39|         array|
+|v39_ce1       |  out|    1|   ap_memory|           v39|         array|
+|v39_d1        |  out|   32|   ap_memory|           v39|         array|
+|v39_q1        |   in|   32|   ap_memory|           v39|         array|
+|v39_we1       |  out|    1|   ap_memory|           v39|         array|
+|ap_clk        |   in|    1|  ap_ctrl_hs|       forward|  return value|
+|ap_rst        |   in|    1|  ap_ctrl_hs|       forward|  return value|
+|ap_start      |   in|    1|  ap_ctrl_hs|       forward|  return value|
+|ap_done       |  out|    1|  ap_ctrl_hs|       forward|  return value|
+|ap_ready      |  out|    1|  ap_ctrl_hs|       forward|  return value|
+|ap_idle       |  out|    1|  ap_ctrl_hs|       forward|  return value|
++--------------+-----+-----+------------+--------------+--------------+
+

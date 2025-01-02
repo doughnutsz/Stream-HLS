@@ -1,0 +1,76 @@
+================================================================
+== Design Size Report
+================================================================
+
+* Total Instructions per Compilation Phase
++---------------+-----------------------------+--------------+----------------------------------------------------------------------------------------+
+| Phase         | Step                        | Instructions | Description                                                                            |
++---------------+-----------------------------+--------------+----------------------------------------------------------------------------------------+
+| Compile/Link  |                             |  6,807       | After all functions are compiled and linked into a single design                       |
+|               |                             |              |                                                                                        |
+| Unroll/Inline |                             |              | After user unroll and inline pragmas are applied                                       |
+|               | (1) unroll                  | 37,097       | user unroll pragmas are applied                                                        |
+|               | (2) simplification          | 15,596       | simplification of applied user unroll pragmas                                          |
+|               | (3) inline                  | 15,356       | user inline pragmas are applied                                                        |
+|               | (4) simplification          | 10,987       | simplification of applied user inline pragmas                                          |
+|               |                             |              |                                                                                        |
+| Array/Struct  |                             |              | After user array partition and struct aggregate/disaggregate pragmas are applied       |
+|               | (1) array partition         | 95,700       | user array partition pragmas are applied                                               |
+|               | (2) simplification          | 20,620       | simplification of applied user array partition & struct aggregate/disaggregate pragmas |
+|               | (3) aggregate/disaggregate  | 20,620       | user struct aggregate/disaggregate pragmas are applied                                 |
+|               | (4) array reshape           | 20,620       | apply array reshape pragmas                                                            |
+|               | (5) access patterns         | 20,549       | array access pattern optmizations                                                      |
+|               |                             |              |                                                                                        |
+| Performance   |                             |              | After transformations are applied to meet performance pragma targets                   |
+|               | (1) loop simplification     | 19,921       | loop and instruction simplification                                                    |
+|               | (2) parallelization         | 19,857       | loops are unrolled or pipelined to meet performance targets                            |
+|               | (3) array partition         | 19,857       | arrays are partitioned to meet performance targets                                     |
+|               | (4) simplification          | 19,503       | simplification of design after performance transformations                             |
+|               |                             |              |                                                                                        |
+| HW Transforms |                             |              | After hardware transfomations                                                          |
+|               | (1) lowering                | 21,847       | initial conversion to HW specific instructions                                         |
+|               | (2) optimizations           | 21,879       | high level synthesis optimizations                                                     |
++---------------+-----------------------------+--------------+----------------------------------------------------------------------------------------+
+
+* Instructions per Function for each Compilation Phase
++-------------------------+---------------------------------+--------------+------------------+------------------+-------------+---------------+
+| Function                | Location                        | Compile/Link | Unroll/Inline    | Array/Struct     | Performance | HW Transforms |
++-------------------------+---------------------------------+--------------+------------------+------------------+-------------+---------------+
+| + forward               | MultiHeadSelfAttention1.cpp:956 | 6,807        | 10,987           | 20,549           | 19,503      | 21,879        |
+|    node25               | MultiHeadSelfAttention1.cpp:930 |   82         |    81            |    51            |    51       |   107         |
+|    node24               | MultiHeadSelfAttention1.cpp:905 |   59         |   151            |   203            |   203       |   243         |
+|    node23               | MultiHeadSelfAttention1.cpp:846 |  214         |   651            |   932            |   853       |   936         |
+|    node22               | MultiHeadSelfAttention1.cpp:819 |   72         |   117            |   123            |   123       |   187         |
+|    node21               | MultiHeadSelfAttention1.cpp:794 |   59         |   151            |   203            |   203       |   243         |
+|    node20               | MultiHeadSelfAttention1.cpp:735 |  214         |   651            |   932            |   853       |   936         |
+|    node19               | MultiHeadSelfAttention1.cpp:708 |   72         |   117            |   123            |   123       |   187         |
+|    node18               | MultiHeadSelfAttention1.cpp:683 |   59         |   151            |   203            |   203       |   243         |
+|    node17               | MultiHeadSelfAttention1.cpp:624 |  214         |   651            |   932            |   853       |   936         |
+|    node16               | MultiHeadSelfAttention1.cpp:597 |   72         |   117            |   123            |   123       |   187         |
+|    node15               | MultiHeadSelfAttention1.cpp:571 |   87         |   157            |   355            |   355       |   459         |
+|    node14               | MultiHeadSelfAttention1.cpp:541 |   86         |   157            |   451            |   451       |   459         |
+|    node13               | MultiHeadSelfAttention1.cpp:474 |  276         |   993            | 1,501            | 1,356       | 1,559         |
+|    node12               | MultiHeadSelfAttention1.cpp:447 |  103         |   235            |   139            |   139       |   403         |
+|  + node11               | MultiHeadSelfAttention1.cpp:410 | 3,016        | 1,940            | 1,823            | 1,711       | 1,831         |
+|     generic_fmax<float> | hls_fmax.h:19                   |              | 1,664 (32 calls) | 1,504 (32 calls) |             |               |
+|    node10               | MultiHeadSelfAttention1.cpp:373 |  153         |   386            |   324            |   322       |   634         |
+|    node9                | MultiHeadSelfAttention1.cpp:336 |  144         |   276            |   319            |   241       |   393         |
+|    node8                | MultiHeadSelfAttention1.cpp:302 |  139         |   290            |   260            |   258       |   506         |
+|    node7                | MultiHeadSelfAttention1.cpp:272 |   86         |   157            |   451            |   451       |   459         |
+|    node6                | MultiHeadSelfAttention1.cpp:201 |  275         |   993            | 1,661            | 1,516       | 1,623         |
+|    node5                | MultiHeadSelfAttention1.cpp:170 |   87         |   156            |   469            |   469       |   480         |
+|    node4                | MultiHeadSelfAttention1.cpp:147 |   68         |    92            |   118            |   118       |   174         |
+|    node3                | MultiHeadSelfAttention1.cpp:122 |   59         |    85            |   107            |   107       |   131         |
+|    node2                | MultiHeadSelfAttention1.cpp:63  |  214         | 1,201            | 1,785            | 1,460       | 1,711         |
+|    node1                | MultiHeadSelfAttention1.cpp:39  |   76         |   355            |   219            |   219       |   619         |
+|    node0                | MultiHeadSelfAttention1.cpp:17  |   66         |   283            |   331            |   331       |   531         |
++-------------------------+---------------------------------+--------------+------------------+------------------+-------------+---------------+
+
+* Design Size Message Settings
++---------------------------------------------+--------+------------------------------------------------------------------+
+| Message Setting                             | Value  | Description                                                      |
++---------------------------------------------+--------+------------------------------------------------------------------+
+| config_compile -design_size_maximum_warning | 100000 | Show a warning when total design instructions exceeds this value |
++---------------------------------------------+--------+------------------------------------------------------------------+
+
+
