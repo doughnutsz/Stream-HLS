@@ -66,4 +66,4 @@ for opt_name in opts:
     f"{opt_name} StreamHLS Cycles": f'${geo_mean["StreamHLS"]:.2f}\\times$',
     f"{opt_name} Vitis HLS Cycles": f'${geo_mean["Vitis"]:.2f}\\times$'
   }, ignore_index=True)
-  error_table.to_csv(f"tables/{opt_name}_error_table.csv", index=False)
+  error_table.to_csv(f"tables/table5_{opt_name}.csv", index=False)

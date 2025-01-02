@@ -87,4 +87,4 @@ ablation_table = ablation_table._append({
   "Opt4": geomean["Opt4"],
   "Opt5": geomean["Opt5"]
 }, ignore_index=True)
-ablation_table.to_csv("tables/ablation_table.csv", index=False)
+ablation_table.to_csv("tables/table10.csv", index=False)

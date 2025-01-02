@@ -147,4 +147,4 @@ for dsp in ["128", "256", "512"]:
     "POM": f'${geomean[dsp]["POM"]}\\times$',
     "Vitis": f'${geomean[dsp]["Vitis"]}\\times$',
   }, ignore_index=True)
-new_table.to_csv(f"tables/compare_all.csv", index=False)
+new_table.to_csv(f"tables/table7.csv", index=False)
