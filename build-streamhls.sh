@@ -32,8 +32,8 @@ mkdir -p build
 cd build
 # use clang/clang++ and enable lld linker
 cmake -G "${CMAKE_GENERATOR}" .. \
-  -DMLIR_DIR=/home/suhail/Projects/Stream-HLS/extern/llvm-project/build/lib/cmake/mlir \
-  -DLLVM_DIR=/home/suhail/Projects/Stream-HLS/extern/llvm-project/build/lib/cmake/llvm \
+  -DMLIR_DIR=${PRJ_DIR}/extern/llvm-project/build/lib/cmake/mlir \
+  -DLLVM_DIR=${PRJ_DIR}/extern/llvm-project/build/lib/cmake/llvm \
   -DLLVM_TARGETS_TO_BUILD="host" \
   -DLLVM_ENABLE_ASSERTIONS=ON \
   -DCMAKE_BUILD_TYPE=DEBUG \

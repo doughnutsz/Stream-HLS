@@ -1,16 +1,67 @@
 # Stream-HLS
 
-Stream-HLS is a novel framework designed to simplify the development of customized hardware circuits for software applications using high-level synthesis (HLS). Traditional HLS approaches often require significant expertise in hardware design and frameworks, making the process non-trivial.
+![Stream-HLS](framework.png)
+
+Stream-HLS is a novel framework designed to simplify the development of customized hardware circuits for software applications using high-level synthesis (HLS). Traditional HLS approaches often require significant expertise in hardware design and frameworks, making the process non-trivial. Stream-HLS takes PyTorch or C/C++ code and automatically generates a streaming dataflow design in HLS optimized for a target FPGA.
+
 ## Key Features
 
 Stream-HLS offers the following features:
 
 - **Automatic Hardware Generation**: Converts C/C++ or PyTorch software code into optimized custom hardware designs and host code for FPGAs.
 - **Streaming Dataflow Architectures**: Generates hardware designs consisting of modules that communicate purely through streaming channels.
-- **Global Scheduling Performance Model**: Provides an accurate analytical performance model for global scheduling of streaming dataflow architectures.
+- **Global Scheduling and Performance Model**: Provides an accurate analytical performance model for global scheduling of streaming dataflow architectures.
 - **High Performance**: Evaluated using various HLS benchmarks and real-world benchmarks from convolutional neural networks and transformer models. Stream-HLS designs outperform the designs of prior state-of-the-art automation frameworks and manually-optimized designs of abstraction frameworks by up to 79.43× and 10.62× geometric means respectively.
 - **Built on MLIR**: Utilizes the multi-level intermediate representation (MLIR) framework, allowing for future reuse and extensions.
 
+## Installation
+
+### External Tools (Front-end)
+#### 1- [Torch-MLIR](https://github.com/llvm/torch-mlir)
+You need to install the Torch and Torch-MLIR packages from this [link](https://github.com/llvm/torch-mlir/releases/tag/snapshot-20240127.1096), and install them using pip.
+#### 2- [Polygeist](https://github.com/llvm/Polygeist)
+Can be installed if the C/C++ front-end is needed.
+
+### Stream-HLS Prerequisites
+#### 1- LLVM/MLIR
+Clone and build [LLVM/MLIR](https://github.com/llvm/llvm-project/tree/llvmorg-18.1.2) version llvmorg-18.1.2 in extern using the following commands.
+
+```sh
+cd build
+cmake -G Ninja ../llvm \
+  -DLLVM_ENABLE_PROJECTS=mlir \
+  -DCMAKE_BUILD_TYPE=Debug \
+  -DLLVM_ENABLE_ASSERTIONS=ON \
+  -DCMAKE_C_COMPILER=clang \
+  -DCMAKE_CXX_COMPILER=clang++ \
+  -DLLVM_ENABLE_LLD=ON
+
+cmake --build . --target check-mlir
+```
+
+#### 2- Ampl and Gurobi Solvers
+Install the free version of [Ampl in academia](https://ampl.com/ampl-in-academia/) which is shipped with Gurobi.
+
+### Stream-HLS Installation
+After installing LLVM/MLIR and Ampl/Gurobi, please run:
+```sh
+./build-streamhls.sh
+``` 
+
 ## How to Use
 
-For simple usage, refer to the examples provided in the `example` directory. This directory includes sample scripts and configurations to help you get started with Stream-HLS.
+For simple usage, refer to the examples provided in the `examples` directory. This directory includes sample scripts and configurations to help you get started with Stream-HLS.
+
+
+## Publications
+Please refer to our FPGA'25 paper for more details. If you use Stream-HLS in your research, please use the following bibtex entry to cite us:
+```bibtex
+@article{streamhlsFPGA25,
+    author = {Suhail Basalama and Jason Cong},
+    title = {Stream-HLS: Towards Automatic Dataflow Acceleration},
+    booktitle={Proceedings of the 2025 ACM/SIGDA International Symposium on Field-Programmable Gate Arrays},
+    year={2025}
+}
+```
+
+
