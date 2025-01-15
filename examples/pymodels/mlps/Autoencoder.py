@@ -29,7 +29,3 @@ class Autoencoder(nn.Module):
         x = self.decoder(x)
         return x
 
-# # Model, loss, and optimizer
-# model = Autoencoder()
-# criterion = nn.MSELoss()
-# optimizer = optim.Adam(model.parameters(), lr=0.001)

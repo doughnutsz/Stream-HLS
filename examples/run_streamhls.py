@@ -176,7 +176,7 @@ logger.info(f'Generated HLS for {model}')
 # print(f'Compiling {model}...')
 logger.info(f'Compiling {model}...')
 cmd = f'export PRJ_PATH={prj_path}/hls\n'
-cmd += f'g++ {prj_path}/hls/src/{model}_tb.cpp {prj_path}/hls/src/{model}.cpp -lm -I${{HOME}}/hls_headers -o {prj_path}/hls/{model}.bin\n'
+cmd += f'g++ {prj_path}/hls/src/{model}_tb.cpp {prj_path}/hls/src/{model}.cpp -lm -I${{XILINX_HLS}}/include -o {prj_path}/hls/{model}.bin\n'
 cmd += f'cd {prj_path}/hls/ && ./{model}.bin'
 run_command(cmd)
 # print(f'Running csim for {model}...')

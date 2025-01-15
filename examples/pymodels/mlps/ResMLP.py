@@ -19,8 +19,3 @@ class ResMLP(nn.Module):
         out = self.fc3(out)
         out = self.fc4(out)
         return out
-
-# # Model, loss, and optimizer
-# model = ResMLP()
-# criterion = nn.CrossEntropyLoss()
-# optimizer = optim.Adam(model.parameters(), lr=0.001)

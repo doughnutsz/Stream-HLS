@@ -3,8 +3,8 @@ import os
 import sys
 
 permOpt=1
-paralOpt=0
-combOpt=0
+paralOpt=1
+combOpt=1
 tilelimit=8
 timelimit=20
 dsps=512
@@ -13,7 +13,7 @@ conv=1
 dbg_point=14
 benchmark="cnns"
 # outDir=f'experiments/{benchmark}/experiments_{dsps}_{permOpt}_{paralOpt}_{combOpt}_{tilelimit}_{timelimit}'
-outDir=f'experiments/{benchmark}/opt2'
+outDir=f'experiments/{benchmark}/opt5'
 kernels = ["DepthwiseSeparableConvBlock"] #model_configs[benchmark]
 
 for kernel in kernels:

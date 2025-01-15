@@ -14,11 +14,11 @@ paralOpt=1
 combOpt=1
 tilelimit=10
 timelimit=1
-dsps=512
+dsps=2560
 dbg_point=14
 benchmark=args.benchmark
 kernel = args.kernel
-outDir=f'experiments/single/{kernel}_{dsps}_{permOpt}_{paralOpt}_{combOpt}_{tilelimit}_{timelimit}'
+outDir=f'designs'
 
 cmd = f'python run_streamhls.py \
   --prjsdir={outDir} \

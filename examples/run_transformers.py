@@ -2,9 +2,9 @@ from data import model_configs
 import os
 import sys
 
-permOpt_list=[0]
-paralOpt_list=[0]
-combOpt_list=[0]
+permOpt_list=[1]
+paralOpt_list=[1]
+combOpt_list=[1]
 tilelimit=1
 timelimit=20
 dsps=512
@@ -12,7 +12,7 @@ bufferize=0
 conv=0
 dbg_point=5
 benchmark="transformers"
-kernels = ["FeedForward", "MultiHeadSelfAttention"] # model_configs[benchmark]
+kernels = model_configs[benchmark]
 for combOpt in combOpt_list:
   for permOpt in permOpt_list:
     for paralOpt in paralOpt_list:

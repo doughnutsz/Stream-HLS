@@ -15,18 +15,7 @@ class DepthwiseSeparableConvBlock(nn.Module):
         self.relu = nn.ReLU(inplace=True)
 
     def forward(self, x):
-        # conv1Ops = self.depthwise.in_channels * self.depthwise.kernel_size[0] * self.depthwise.kernel_size[1]
-        # conv1Ops *= x.size()[2] * x.size()[3]
         out = self.depthwise(x)
-        # conv2Ops = self.pointwise.in_channels * self.pointwise.out_channels * self.pointwise.kernel_size[0] * self.pointwise.kernel_size[1]
-        # conv2Ops *= out.size()[2] * out.size()[3]
         out = self.pointwise(out)
         out = self.bn(out)
-        # hlsmlir = max(conv1Ops, conv2Ops)
-        # hida = conv1Ops + conv2Ops
-        # print("conv1Ops:", conv1Ops)
-        # print("conv2Ops:", conv2Ops)
-        # print("hlsmlir:", hlsmlir)
-        # print("hida:", hida)
-        # print(f"speedup: {hida / hlsmlir:.2f}x")
         return self.relu(out)
