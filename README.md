@@ -50,7 +50,7 @@ After installing LLVM/MLIR and Ampl/Gurobi, please run:
 
 ## How to Use
 
-For simple usage, refer to the examples provided in the `examples` directory. This directory includes sample scripts and configurations to help you get started with Stream-HLS.
+For simple usage, refer to the examples provided in the [`examples`](./examples/) directory. This directory includes sample scripts and configurations to help you get started with Stream-HLS.
 
 
 ## Publications

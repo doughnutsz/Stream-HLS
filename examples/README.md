@@ -1,8 +1,8 @@
 # Running Examples
 
-This project focuses on converting PyTorch models into MLIR (Multi-Level Intermediate Representation) and running Stream-HLS to evaluate different optimization strategies.
+This project focuses on converting PyTorch models into MLIR (Multi-Level Intermediate Representation) and running Stream-HLS to evaluate different optimization strategies. If you run into problems or bugs, please open an issue.
 
-## Directory Structure
+# 1. Directory Files and Folders
 
 - **pymodels**: Contains PyTorch models used as test benchmarks.
 - **[gen_mlir_designs.py](gen_mlir_designs.py)**: Converts PyTorch models into MLIR and initializes the project structure.
@@ -12,11 +12,13 @@ This project focuses on converting PyTorch models into MLIR (Multi-Level Interme
 - **run_[benchmark].py**: Runs the applications of the specified [benchmark]
 
 
-## How to run current PyTorch models (in Pymodels)
+# 2. How to run current PyTorch models (in Pymodels)
 
 Running an example involves two steps which are pretty much automated using scripts above. We start with the non-automated way, and then show the simple script afterwards.
 
-## Step 1: Convert PyTorch Models to MLIR
+## A. Manual Flow (more details)  
+
+### Step 1: Convert PyTorch Models to MLIR
 
 This is done using the [gen_mlir_designs script](gen_mlir_designs.py).
 
@@ -48,9 +50,9 @@ The new project (./designs/gemm) structure is as follows:
     └── kernel        # mlir for the kernel code
 ```
 
-## Step 2: Run Stream-HLS Host and Kernel Pipelines
+### Step 2: Run Stream-HLS Host and Kernel Pipelines
 
-### Step 2.1: Stream-HLS Kernel Pipeline:
+#### Step 2.1: Stream-HLS Kernel Pipeline:
 
 ```bash
 # streamhls-opt to generate the optimized dataflow design as an mlir file under gemm/mlir/kernel/gemm.mlir
@@ -130,7 +132,7 @@ streamhls-translate ./designs/gemm/mlir/kernel/gemm.mlir \
 
 ```
 
-### Step 2.2: Stream-HLS Host Pipeline:
+#### Step 2.2: Stream-HLS Host Pipeline:
 
 ```bash
 # streamhls-opt to generate the host code as an mlir file under gemm/mlir/host/gemm.mlir
@@ -211,14 +213,14 @@ PRJ_PATH: ./designs/gemm/hls
 # otherwise, an "Error!" assertion will be raised
 ```
 
-# Automated Flow
+## B. Automated Flow (less details)
 The previous two steps are further automated for testing purposes, but can also be used for convenience as follows:
 ```bash
 # Performs Step 1, Step 2, and compiles the code for verification
 python run_single.py -b polybench -k gemm
 ```
 
-## Adding and running a new PyTorch model
+# 3. Adding and running a new PyTorch model
 
 ### Step 1: Create add a PyTorch model
 ```bash
