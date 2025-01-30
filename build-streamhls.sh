@@ -1,45 +1,37 @@
 #!/usr/bin/env bash
 
-set -o errexit
-set -o pipefail
-set -o nounset
-
-# Script options.
-while getopts 'j:p:' opt
-do
-  case $opt in
-    j) JOBS="${OPTARG}";;
-    p) PYBIND="${OPTARG}";;
-  esac
-done
-
 # If ninja is available, use it.
 CMAKE_GENERATOR="Unix Makefiles"
 if which ninja &>/dev/null; then
   CMAKE_GENERATOR="Ninja"
 fi
 
-# The absolute path to the directory of this script.
-PRJ_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-
-echo ""
-echo ">>> Stream-HLS build..."
-echo ""
-
-# Got to the build directory.
-cd "${PRJ_DIR}"
 mkdir -p build
 cd build
-# use clang/clang++ and enable lld linker
+
+LLVM_PRJ_PATH=$1
+
+# Check if the LLVM and MLIR paths are set.
+if [ -z "${LLVM_PRJ_PATH}" ]; then
+  echo "Error: LLVM project path is not set."
+  echo "Usage: ./build-streamhls.sh <LLVM_PROJECT_PATH>"
+  echo "Example: ./build-streamhls.sh /path/to/llvm-project"
+  exit 1
+fi
+# check if path exists
+if [ ! -d "${LLVM_PRJ_PATH}" ]; then
+  echo "Error: LLVM project path does not exist."
+  echo "Make sure the path is correct."
+  exit 1
+fi
+
+echo ""
+echo "Building Stream-HLS..."
+echo ""
+
 cmake -G "${CMAKE_GENERATOR}" .. \
-  -DMLIR_DIR=${PRJ_DIR}/extern/llvm-project/build/lib/cmake/mlir \
-  -DLLVM_DIR=${PRJ_DIR}/extern/llvm-project/build/lib/cmake/llvm \
-  -DLLVM_TARGETS_TO_BUILD="host" \
-  -DLLVM_ENABLE_ASSERTIONS=ON \
-  -DCMAKE_BUILD_TYPE=DEBUG \
-  -DCMAKE_C_COMPILER=clang \
-  -DCMAKE_CXX_COMPILER=clang++ \
-  -DLLVM_ENABLE_LLD=ON
+  -DMLIR_DIR=${LLVM_PRJ_PATH}/build/lib/cmake/mlir \
+  -DLLVM_DIR=${LLVM_PRJ_PATH}/build/lib/cmake/llvm \
 
 # Run building.
 if [ "${CMAKE_GENERATOR}" == "Ninja" ]; then

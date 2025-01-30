@@ -4,12 +4,11 @@ This project focuses on converting PyTorch models into MLIR (Multi-Level Interme
 
 # 1. Directory Files and Folders
 
-- **pymodels**: Contains PyTorch models used as test benchmarks.
+- **[pymodels](./pymodels/)**: Contains PyTorch models used as test benchmarks.
 - **[gen_mlir_designs.py](gen_mlir_designs.py)**: Converts PyTorch models into MLIR and initializes the project structure.
 - **[data.py](data.py)**: Configuration and initialization data for the PyTorch models.
-- **[run_streamhls.py](run_streamhls.py)**: Script to convert PyTorch models into MLIR (using gen_mlir_designs.py), call Stream-HLS kernel and host pipelines, and compile the code for csim (software simulation).
-- **[run_single.py](run_single.py)**: Runs Stream-HLS on a single application.
-- **run_[benchmark].py**: Runs the applications of the specified [benchmark]
+- **[streamhls_pipeline.py](streamhls_pipeline.py)**: Script to convert PyTorch models into MLIR (using gen_mlir_designs.py), call Stream-HLS kernel and host pipelines, and compile the code for csim (software simulation).
+- **[run_streamhls.py](run_streamhls.py)**: Runs Stream-HLS on an application from a test benchmark.
 
 
 # 2. How to run current PyTorch models (in Pymodels)
@@ -51,7 +50,10 @@ The new project (./designs/gemm) structure is as follows:
 ```
 
 ### Step 2: Run Stream-HLS Host and Kernel Pipelines
-
+Before running these commands, make sure Stream-HLS executables are added to the PATH variable. You can source the env.sh script as follows:
+```bash
+source env.sh
+```
 #### Step 2.1: Stream-HLS Kernel Pipeline:
 
 ```bash
@@ -217,7 +219,7 @@ PRJ_PATH: ./designs/gemm/hls
 The previous two steps are further automated for testing purposes, but can also be used for convenience as follows:
 ```bash
 # Performs Step 1, Step 2, and compiles the code for verification
-python run_single.py -b polybench -k gemm
+python run_streamhls.py -b polybench -k gemm
 ```
 
 # 3. Adding and running a new PyTorch model
@@ -262,11 +264,11 @@ model_configs = {
         randTensor(16, 784, dtype=dtype),
       )
     }
-  }...
+  },...
 ```
 
 ### Step 3: Run Torch-MLIR and Stream-HLS
 You can follow the same steps as in the previous section or use the automated flow:
 ```bash
-python run_single.py -b test -k MLP
+python run_streamhls.py -b test -k MLP
 ```
