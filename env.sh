@@ -1,4 +1,4 @@
-export PATH="./build/bin:$PATH"
+export PATH="$PWD/build/bin:$PATH"
 export XILINX_HLS="$HOME/hls_headers"
 
 # to install torch-mlir

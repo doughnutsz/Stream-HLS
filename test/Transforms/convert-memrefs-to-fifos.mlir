@@ -1,4 +1,4 @@
-// RUN: streamhls-opt -streamhls-convert-memrefs-to-fifos %s | FileCheck %s
+// RUN: streamhls-opt %s -streamhls-convert-memrefs-to-fifos | FileCheck %s
 
 #set = affine_set<(d0, d1) : (d0 == 0, d1 == 0)>
 #set1 = affine_set<(d0, d1) : (d0 - 15 == 0, d1 - 31 == 0)>
@@ -42,17 +42,17 @@ module attributes {torch.debug_module_name = "test"} {
 // CHECK:   func.func @forward(%arg0: memref<8xf32>, %arg1: memref<8xf32>) {
 // CHECK:     %cst = arith.constant 0.000000e+00 : f32
 // CHECK:     %alloc = memref.alloc() {alignment = 64 : i64} : memref<8xf32>
-// CHECK:     %0 = dataflow.stream {depth = 2 : i32} : <f32, 2>
-// CHECK:     %1 = dataflow.stream {depth = 2 : i32} : <f32, 2>
+// CHECK:     %0 = dataflow.stream {depth = 8 : i32} : <f32, 8>
+// CHECK:     %1 = dataflow.stream {depth = 8 : i32} : <f32, 8>
 // CHECK:     affine.for %arg2 = 0 to 8 {
-// CHECK:       dataflow.stream_write %1, %cst : <f32, 2>, f32
+// CHECK:       dataflow.stream_write %1, %cst : <f32, 8>, f32
 // CHECK:     }
 // CHECK:     affine.for %arg2 = 0 to 8 {
 // CHECK:       affine.for %arg3 = 0 to 16 {
 // CHECK:         affine.for %arg4 = 0 to 32 {
 // CHECK:           %2 = affine.load %arg0[%arg2] : memref<8xf32>
 // CHECK:           affine.if #set(%arg3, %arg4) {
-// CHECK:             %5 = dataflow.stream_read %1 : (!dataflow.stream<f32, 2>) -> f32
+// CHECK:             %5 = dataflow.stream_read %1 : (!dataflow.stream<f32, 8>) -> f32
 // CHECK:             affine.store %5, %alloc[%arg2] : memref<8xf32>
 // CHECK:           }
 // CHECK:           %3 = affine.load %alloc[%arg2] : memref<8xf32>
@@ -60,13 +60,13 @@ module attributes {torch.debug_module_name = "test"} {
 // CHECK:           affine.store %4, %alloc[%arg2] : memref<8xf32>
 // CHECK:           affine.if #set1(%arg3, %arg4) {
 // CHECK:             %5 = affine.load %alloc[%arg2] : memref<8xf32>
-// CHECK:             dataflow.stream_write %0, %5 : <f32, 2>, f32
+// CHECK:             dataflow.stream_write %0, %5 : <f32, 8>, f32
 // CHECK:           }
 // CHECK:         }
 // CHECK:       }
 // CHECK:     }
 // CHECK:     affine.for %arg2 = 0 to 8 {
-// CHECK:       %2 = dataflow.stream_read %0 : (!dataflow.stream<f32, 2>) -> f32
+// CHECK:       %2 = dataflow.stream_read %0 : (!dataflow.stream<f32, 8>) -> f32
 // CHECK:       affine.store %2, %arg1[%arg2] : memref<8xf32>
 // CHECK:     }
 // CHECK:     return
