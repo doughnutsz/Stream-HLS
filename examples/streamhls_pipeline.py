@@ -182,7 +182,7 @@ run_command(cmd)
 # print(f'Running csim for {model}...')
 # print(f'Done!')
 logger.info(f'Running csim for {model}...')
-logger.info(f'Done!')
+logger.info(f'Success!')
 
 report = {
   "Config": config,

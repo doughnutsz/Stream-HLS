@@ -10,6 +10,16 @@ I, J, K, L, M, N, O, P, Q = 64, 32, 64, 64, 128, 128, 64, 32, 16
 S = 64
 
 model_configs = {
+  # new benchmark
+  "new_benchmark" : {
+    "MNIST" : {
+      "class": "MNIST",
+      "config" : {},
+      "input" : (
+        randTensor(8, 1024, dtype=dtype),
+      )
+    },
+  },
   # polybench medium
   "polybench" : {
     "gemm" : {

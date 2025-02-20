@@ -70,7 +70,7 @@ if __name__ == "__main__":
         inferenceTime = generateGoldenResults(model_instance, sample_input, f"{output_path}/{model}/hls/data/")
         # generateGoldenResults(model_instance, sample_input, f"{output_path}/{model}/tapa/data/golden")
         # print inference time in seconds
-        print(f"{model} inference time: {inferenceTime} seconds")
+        # print(f"{model} inference time: {inferenceTime} seconds")
         # Append the instantiated model to the list
         # model_instances.append(model_instance)
 
