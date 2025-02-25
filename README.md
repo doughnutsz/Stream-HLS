@@ -66,11 +66,20 @@ If you encounter any problems, please feel free to open an [`issue`](https://git
 ## Publications
 Please refer to our FPGA'25 paper for more details. If you use Stream-HLS in your research, please use the following bibtex entry to cite us:
 ```bibtex
-@article{streamhlsFPGA25,
-    author = {Suhail Basalama and Jason Cong},
+@inproceedings{streamhlsFPGA25,
+    author = {Basalama, Suhail and Cong, Jason},
     title = {Stream-HLS: Towards Automatic Dataflow Acceleration},
-    booktitle={Proceedings of the 2025 ACM/SIGDA International Symposium on Field-Programmable Gate Arrays},
-    year={2025}
+    year={2025},
+    isbn = {9798400713965},
+    publisher = {Association for Computing Machinery},
+    address = {New York, NY, USA},
+    url = {https://doi.org/10.1145/3706628.3708878},
+    doi = {10.1145/3706628.3708878},
+    booktitle = {Proceedings of the 2025 ACM/SIGDA International Symposium on Field Programmable Gate Arrays},
+    numpages = {11},
+    keywords = {accelerator, sptrsv, stream-based architecture},
+    location = {Monterey, CA, USA},
+    series = {FPGA '25}
 }
 ```
 
