@@ -37,7 +37,7 @@ void node1(
 ) {
   float v9[180][210];
   float v10;
-  float v11[190];
+  float v11[180];
   loop2: for (int v12 = 0; v12 < 190; v12++) {
     loop3: for (int v13 = 0; v13 < 210; v13++) {
       loop4: for (int v14 = 0; v14 < 180; v14++) {
@@ -45,9 +45,9 @@ void node1(
         #pragma HLS loop_flatten
         if (v13 == 0) {
           float v15 = v5.read();
-          v11[v12] = v15;
+          v11[v14] = v15;
         }
-        float v16 = v11[v12];
+        float v16 = v11[v14];
         if (v14 == 0) {
           float v17 = v6.read();
           v10 = v17;

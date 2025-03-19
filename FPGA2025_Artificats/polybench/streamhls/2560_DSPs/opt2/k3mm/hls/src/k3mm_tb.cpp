@@ -88,8 +88,8 @@ int32_t main(int argc, char **argv) {
       float v10 = v6[v7][v8];
       float v11 = v9 - v10;
       float v12 = v10 - v9;
-      bool v13 = v11 > 0.100000;
-      bool v14 = v12 > 0.100000;
+      bool v13 = v11 > 0.00100;
+      bool v14 = v12 > 0.00100;
       bool v15 = v13 | v14;
       if (v15) {
         v5 = 0;
