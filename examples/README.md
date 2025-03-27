@@ -218,8 +218,8 @@ PRJ_PATH: ./designs/gemm/hls
 ## B. Automated Flow (less details)
 The previous two steps are further automated for testing purposes, but can also be used for convenience as follows:
 ```bash
-# Performs Step 1, Step 2, and compiles the code for verification
-python run_streamhls.py -b polybench -k gemm
+# Performs Step 1, Step 2, and compiles the code for verification -O# is for the level of optimization
+python run_streamhls.py -b polybench -k gemm -O5
 ```
 
 # 3. Adding and running a new PyTorch model

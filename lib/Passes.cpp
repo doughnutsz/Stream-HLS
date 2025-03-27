@@ -69,6 +69,9 @@ struct StreamHLSKernelPipelineOptions
   Option<bool> optimizeConvReuse{
       *this, "optimize-conv-reuse", llvm::cl::init(false),
       llvm::cl::desc("Optimize convolution reuse")};
+  Option<bool> minimizeOnChipBuffers{
+      *this, "minimize-on-chip-buffers", llvm::cl::init(false),
+      llvm::cl::desc("Minimize on-chip buffers")};
 };
 } // namespace
 
@@ -227,12 +230,9 @@ void streamhls::registerStreamHLSKernelPipeline() {
           return;
         }
 
-        // pm.addPass(streamhls::createSystolicArrayPass());
-        // pm.addPass(mlir::createCanonicalizerPass());
-        // pm.addPass(streamhls::createEliminateArrayOfStreamsPass());
-        // pm.addPass(mlir::createCanonicalizerPass());
-        if (opts.debugPoint == 12){
-          return;
+        if(opts.minimizeOnChipBuffers){
+          pm.addPass(streamhls::createMinimalBufferSizesPass());
+          pm.addPass(mlir::createCanonicalizerPass());
         }
 
         pm.addPass(streamhls::createPrintDataflowGraphPass(opts.graphPath + ".dot", /*merge nodes*/ false));
